@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>SuprTEK Contract Application</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="customcss.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+	<!-- Logo -->
+	<div class="page-header">
+  		<img src="images/SuprTEKLogo.jpg" alt="Logo" id="logo">
+	</div>
+	
+	<!--Navigation Tabs/-->
+	<div class="well">
+		<div id="tabs" class="row">
+			<ul class="nav nav-tabs" role="tablist">
+				<li><a href="Home.html">Home</a></li>
+				<li><a href="Contracts.html">Contracts</a></li>
+				<li><a href="Organizations.html">Organizations</a></li>
+				<li class="active"><a href="Contacts.html">Contacts</a></li>
+				<li><a href="Directives.html">Directives</a></li>  
+				<li><a href="Releases.html">Releases</a></li>
+				<li><a href="DataSets.html">Data Sets</a></li>
+				<li><a href="ExportRegulations.html">Export Regulations</a></li>
+				<li><a href="Travel.html">Travel</a></li>
+				<li><a href="Devices.html">Devices</a></li>
+				<li><a href="Codes.html">Codes</a></li>		
+				<li><a href="Reports.html">Reports</a></li>					
+			 </ul>
+		</div>
+		<div id="page" class="formPages">
+			<!-- SearchBox -->
+			<div id="searchBy">
+			<h2>Search for Contract</h2>
+			<h4 class="boxLabel">Search By:</h4>
+			
+			<select id="searchByDropdown" class = "dropdown">
+				<option value="Contract">Contract</option>
+				<option value="Organization">Organization</option>
+				<option value="ContractType">Contract Type</option>
+				<option value="Contractor">Contractor</option>
+			</select>
+			<form > 
+				<input id="searchByInput" type="text" name="SearchBy">
+				<input id="searchButton" type="submit" value="Search" name="SearchButton">
+			</form>
+			</div>
+			
+			<!-- Form -->
+			<div id="AddNew" ng-app="myApp" ng-controller="formCtrl">
+				<form>
+					<h2>Add New Contact</h2>
+					
+					<h4 class="boxLabel">Contact ID:</h4>
+							<input class="formBox" type="text" ng-model="contactID">
+							
+					<h4 class="boxLabel">Organization ID:</h4>
+						<select class = "dropdown formBox" ng-model="orgID">
+							<option value="AMC">Air Mobility Command (AMC)
+							<option value="SAIC">SAIC
+							<option value="suprTEK">SuprTEK
+							<option value="transcom">TRANSCOM
+						</select>
+						
+					<h4 class="boxLabel">Role:</h4>
+						<select class = "dropdown formBox" ng-model="role">
+							<option value="dataArch">Data Architect
+							<option value="projMan">Project Manager
+						</select>
+					
+					<h4 class="boxLabel">First Name:</h4>
+							<input class="formBox" type="text" ng-model="firstName">
+					
+					<h4 class="boxLabel">Middle Name:</h4>
+							<input class="formBox" type="text" ng-model="midName">
+							
+					<h4 class="boxLabel">Last Name:</h4>
+							<input class="formBox" type="text" ng-model="lastName">
+							
+					<h4 class="boxLabel">Name Title:</h4>
+							<input class="formBox" type="text" ng-model="titleName">
+							
+					<h4 class="boxLabel">Name Suffix:</h4>
+							<input class="formBox" type="text" ng-model="sufName">
+							
+					<h4 class="boxLabel">Address Line 1:</h4>
+							<input class="formBox" type="text" ng-model="add1">
+							
+					<h4 class="boxLabel">Address Line 2:</h4>
+							<input class="formBox" type="text" ng-model="add2">
+							
+					<h4 class="boxLabel">City:</h4>
+							<input class="formBox" type="text" ng-model="city">
+							
+					<h4 class="boxLabel">State or Province:</h4>
+							<select class = "dropdown formBox" ng-model="state">
+								<option value="AB">AB
+								<option value="AL">AL
+								<option value="AK">AK
+								<option value="AZ">AZ
+								<option value="AR">AR
+								<option value="AS">AS
+								<option value="BC">BC
+								<option value="CA">CA
+								<option value="CO">CO
+								<option value="CT">CT
+								<option value="DE">DE
+								<option value="DC">DC
+								<option value="FL">FL
+								<option value="GA">GA
+								<option value="GU">GU
+								<option value="HI">HI
+								<option value="ID">ID
+								<option value="IL">IL
+								<option value="IN">IN
+								<option value="IA">IA
+								<option value="KS">KS
+								<option value="KY">KY
+								<option value="LA">LA
+								<option value="MB">MB
+								<option value="ME">ME
+								<option value="MD">MD
+								<option value="MA">MA
+								<option value="MI">MI
+								<option value="MN">MN
+								<option value="MS">MS
+								<option value="MO">MO
+								<option value="MP">MP
+								<option value="MT">MT
+								<option value="NB">NB
+								<option value="NE">NE
+								<option value="NL">NL
+								<option value="NV">NV
+								<option value="NH">NH
+								<option value="NS">NS
+								<option value="NT">NT
+								<option value="NU">NU
+								<option value="NJ">NJ
+								<option value="NM">NM
+								<option value="NY">NY
+								<option value="NC">NC
+								<option value="ND">ND
+								<option value="OH">OH
+								<option value="OK">OK
+								<option value="ON">ON
+								<option value="OR">OR
+								<option value="QC">QC
+								<option value="PA">PA
+								<option value="PE">PE
+								<option value="PR">PR
+								<option value="RI">RI
+								<option value="SC">SC
+								<option value="SD">SD
+								<option value="SK">SK
+								<option value="TN">TN
+								<option value="TX">TX
+								<option value="UT">UT
+								<option value="VT">VT
+								<option value="VA">VA
+								<option value="VI">VI
+								<option value="WA">WA
+								<option value="WV">WV
+								<option value="WI">WI
+								<option value="YT">YT
+							</select>
+						
+					<h4 class="boxLabel">Postal Code:</h4>
+							<input class="formBox" type="text" ng-model="postCode">
+							
+					<h4 class="boxLabel">Country:</h4>
+						<select class = "dropdown formBox" ng-model="country">
+							<option value="usa">USA
+							<option value="can">CAN
+						</select>
+						
+					<h4 class="boxLabel2">Office Phone:</h4>
+							<input class="formBox2" type="text" ng-model="offPhone">
+						
+					<h4 class="boxLabel2">Mobile Phone:</h4>
+							<input class="formBox2" type="text" ng-model="mobPhone">
+						
+					<h4 class="boxLabel2">Home Phone:</h4>
+							<input class="formBox2" type="text" ng-model="homePhone">
+						
+					<h4 class="boxLabel2">Email:</h4>
+							<input class="formBox2" type="text" ng-model="email">
+						
+					<h4 class="boxLabel2">Alt Email:</h4>
+							<input class="formBox2" type="text" ng-model="emailAlt">
+				</form>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+</body>
+</html>

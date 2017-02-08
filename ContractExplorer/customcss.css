@@ -1,0 +1,98 @@
+.redbutton {
+	color: black;
+	font-size: 20px;
+	font-weight: bold;
+	background-color: #761729;
+}
+
+.blackbutton {
+	color: white;
+	font-size: 20px;
+	font-weight: bold;
+	background-color: black;
+}
+.paraEntry{
+	width:250px;
+	height: 125px;
+}
+
+.boxLabel{
+	color: #761729;
+	width: 200px;
+
+}
+
+.formBox{
+	position: relative;
+	top: -30px;
+	right: -150px;
+	height: 20px;
+}
+
+.boxLabel2{
+	position: relative;
+	left: 50%;
+	top: 0%;
+	color: #761729;
+}
+.paraBox2{
+	position: relative;
+	bottom: 599px;
+	left: 550px;
+	height: 75px;
+	width: 400px;
+}
+
+.formBox2{
+	position: relative;
+	left: 765px;
+	bottom: 630px;
+	height: 20px;
+}
+
+.tableLabel{
+	text-decoration: bold;
+	color: #761729;
+}
+
+.expandButton{
+	height: 100px;
+	padding-bottom: 70px;
+}
+
+.expandLabel{
+	color: white;
+	position: relative;
+	bottom: 50px;
+}
+
+#tabs {
+	color: gray;
+	border-style: solid;
+	border-width: 1px 1px 0px 1px;
+	border-color: gray;
+}
+
+#searchBy{
+	height: 65px;
+}
+
+#searchByDropdown{
+	position: relative;
+	top: -30px;
+	right: -150px;
+}
+
+#searchByInput{
+	position: relative;
+	top: -53px;
+	right: -266px;
+	height: 20px;
+}
+
+#searchButton{
+	position: relative;
+	top: -50px;
+	right: -266px;
+	height: 20px;
+}

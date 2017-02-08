@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>SuprTEK Contract Application</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="customcss.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+	<!-- Logo -->
+	<div class="page-header">
+  		<img src="images/SuprTEKLogo.jpg" alt="Logo" id="logo">
+	</div>
+	
+	<!--Navigation Tabs/-->
+	<div class="well">
+		<div id="tabs" class="row">
+			<ul class="nav nav-tabs" role="tablist">
+				<li><a href="Home.html">Home</a></li>
+				<li><a href="Contracts.html">Contracts</a></li>
+				<li><a href="Organizations.html">Organizations</a></li>
+				<li><a href="Contacts.html">Contacts</a></li>
+				<li class="active"><a href="Directives.html">Directives</a></li>  
+				<li><a href="Releases.html">Releases</a></li>
+				<li><a href="DataSets.html">Data Sets</a></li>
+				<li><a href="ExportRegulations.html">Export Regulations</a></li>
+				<li><a href="Travel.html">Travel</a></li>
+				<li><a href="Devices.html">Devices</a></li>
+				<li><a href="Codes.html">Codes</a></li>		
+				<li><a href="Reports.html">Reports</a></li>					
+			 </ul>
+		</div>
+		<div id="page" class="formPages">
+			<!-- SearchBox -->
+			<div id="searchBy">
+			<h2>Search for Contract</h2>
+			<h4 class="boxLabel">Search By:</h4>
+			
+			<select id="searchByDropdown" class = "dropdown">
+				<option value="Contract">Contract</option>
+				<option value="Organization">Organization</option>
+				<option value="ContractType">Contract Type</option>
+				<option value="Contractor">Contractor</option>
+			</select>
+			<form > 
+				<input id="searchByInput" type="text" name="SearchBy">
+				<input id="searchButton" type="submit" value="Search" name="SearchButton">
+			</form>
+			</div>
+			
+			<!-- Form -->
+			<div id="AddNew" ng-app="myApp" ng-controller="formCtrl">
+				<form>
+					<h2>Add New Directive</h2>
+					
+					<h4 class="boxLabel">Directive ID:</h4>
+							<input class="formBox" type="text" ng-model="dirID">
+							
+					<h4 class="boxLabel">Contract ID:</h4>
+						<select class = "dropdown formBox" ng-model="conID">
+							<option value="example">[Example Entry]
+						</select>
+						
+					<h4 class="boxLabel">Description:</h4> 
+							<textarea class="formBox" type="text" ng-model="descript"></textarea>
+							
+					<h4 class="boxLabel">Issued By:</h4>
+						<select class = "dropdown formBox" ng-model="issue">
+							<option value="bingham">Brent Bingham
+							<option value="shaffer">Dan Shaffer
+							<option value="lear">Kirk Lear
+							<option value="lecours">Michael Lecours
+						</select>
+					
+					<h4 class="boxLabel">Issue Date:</h4>
+							<input class="formBox" type="text" ng-model="date">
+							
+					<h4 class="boxLabel">Recieved By:</h4>
+						<select class = "dropdown formBox" ng-model="recieved">
+							<option value="shaffer">Dan Shaffer
+							<option value="lecours">Michael Lecours
+						</select>
+						
+					<h4 class="boxLabel">Recieved By:</h4>
+							<input class="formBox" type="text" ng-model="recievedText">
+					
+				</form>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+</body>
+</html>
