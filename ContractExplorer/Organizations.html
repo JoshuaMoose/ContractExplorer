@@ -33,7 +33,7 @@
 				<li><a href="Directives.html">Directives</a></li>  
 				<li><a href="Releases.html">Releases</a></li>
 				<li><a href="DataSets.html">Data Sets</a></li>
-				<li><a href="ExportRegulations.html">Export Regulations</a></li>
+				<li><a href="ExpertRegulations.html">Expert Regulations</a></li>
 				<li><a href="Travel.html">Travel</a></li>
 				<li><a href="Devices.html">Devices</a></li>
 				<li><a href="Codes.html">Codes</a></li>		
@@ -60,10 +60,9 @@
 			
 			<!-- Form -->
 			<div id="AddNew" ng-app="myApp" ng-controller="formCtrl">
-				<h2>Add New Organization</h2>
-			</div>
 				<form>
-					<div id="FormsCol1">
+					<h2>Add New Organization</h2>
+					
 						<h4 class="boxLabel">Organization ID:</h4>
 							<input class="formBox" type="text" ng-model="orgID">
 						
@@ -174,10 +173,9 @@
 					  
 						<h4 class="boxLabel">Cage Code:</h4>
 							<input class="formBox" type="text" ng-model="cageCode">
-					  <div id="FormsCol2"
-						<h4 class="boxLabel">Contract Vehicles for Organization:</h4> 
-							<textarea class="paraBox" type="text" ng-model="vehicles"></textarea>
-					  </div>
+					  
+						<h4 class="boxLabel2">Contract Vehicles for Organization:</h4> 
+							<textarea class="paraBox2" type="text" ng-model="vehicles"></textarea>
 					  
 				</form>
 			</div>

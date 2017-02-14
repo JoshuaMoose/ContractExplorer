@@ -18,6 +18,7 @@
 	</div>
 
 
+	<div class="well">
 		<div id="tabs" class="row">
 			<ul class="nav nav-tabs" role="tablist">
 				<li class="active"><a href="Home.html">Home</a></li>
@@ -27,7 +28,7 @@
 				<li><a href="#">Directives</a></li>  
 				<li><a href="#">Releases</a></li>
 				<li><a href="DataSets.html">Data Sets</a></li>
-				<li><a href="ExportRegulations.html">Export Regulations</a></li>
+				<li><a href="ExpertRegulations.html">Expert Regulations</a></li>
 				<li><a href="Travel.html">Travel</a></li>
 				<li><a href="Devices.html">Devices</a></li>
 				<li><a href="Codes.html">Codes</a></li>		
@@ -35,22 +36,18 @@
 			 </ul>
 		</div>
 	  
-	  <div class="row">
-		<div class="col-lg-12">
-			<button type="button"  class="btn btn-block redbutton" class="asdfg">Contract Oppoturnities</button>
-			<div id="searchBy">
-			<h4 class="expandLabel">Search for Contract: </h4>
-			<form > 
-				<input id="searchByInput" type="text" name="SearchBy">
-				<input id="searchButton" type="submit" value="Search" name="SearchButton">
-			</form>
-			</div>
-		</div>
-	  </div>
 
 	  <div class="row">
 		<div class="col-lg-12">
 			<button type="button" class="btn btn-block blackbutton">Current Contracts</button>
+			<div id="searchBy">
+			<h4 class="dropDownSearch">Search for Contract: </h4>
+			<form > 
+				<input id="searchContract" type="text" name="SearchBy">
+				<a href="Results.html" id="searchButtonDropDown" type="submit"><input type="button" value="Search" /></a>
+				<!--<input id="searchButtonDropDown" type="submit" value="Search" name="SearchButton">-->
+			</form>
+			</div>
 		</div>
 	  </div>
 
@@ -65,6 +62,7 @@
 			<button type="button" class="btn btn-block blackbutton">Employees</button>
 		</div>
 	  </div>
+	</div>
 
 </div>
 

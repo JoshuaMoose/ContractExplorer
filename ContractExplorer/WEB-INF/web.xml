@@ -5,17 +5,41 @@
     version="2.4">
 
     <display-name>Contract Explorer</display-name>
-    <description></description>
+    <description>
+	This is an application to explore contract and employee information.
+    </description>
 
-    <servlet></servlet>
-
-    <servlet-mapping></servlet-mapping>
-
+	<welcome-file-list>
+        <welcome-file>Home.html</welcome-file>
+    </welcome-file-list>
+		
 	<resource-ref>
-		<description>postgreSQL Datasource example</description>
+		<description>postgreSQL Datasource</description>
 		<res-ref-name>jdbc/postgres</res-ref-name>
 		<res-type>javax.sql.DataSource</res-type>
 		<res-auth>Container</res-auth>
-	</resource-ref>
+	</resource-ref>	
 	
+	
+	<servlet>
+		<servlet-name>DatabaseHandler</servlet-name>
+		<servlet-class>databasePackage.DatabaseHandler</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>DatabaseHandler</servlet-name>
+		<url-pattern>/databaseHandler</url-pattern>
+	</servlet-mapping>
+	
+<!--<servlet>
+        <servlet-name>HelloServlet</servlet-name>
+        <servlet-class>mypackage.Hello</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>HelloServlet</servlet-name>
+        <url-pattern>/hello</url-pattern>
+    </servlet-mapping>
+-->
+
 </web-app>
