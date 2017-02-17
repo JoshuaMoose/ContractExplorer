@@ -27,7 +27,6 @@ public class DBTest extends HttpServlet
             if (ds != null) 
             {
                 Connection conn = ds.getConnection();
-        
                 if(conn != null) 
                 {
                     foo = "Got Connection "+conn.toString();
@@ -65,7 +64,7 @@ public class DBTest extends HttpServlet
 			"<html>\n" +
 			"<head><title>" + "Database Result" + "</title></head>\n" +
 			"<body bgcolor=\"#f0f0f0\">\n" +
-			"<h1 align=\"center\">" + "Database Result" + "</h1>\n");
+			"<h1 align=\"center\">" + "Database Result: " + "</h1>\n");
 		
 		// Set response content type
 		response.setContentType("text/html");
@@ -80,7 +79,7 @@ public class DBTest extends HttpServlet
 				out.println("<li>" + rst.getInt("cont_id") + "</li>");
 				out.println("<li>" + rst.getString("cont_first_name") + "</li>");
 				out.println("<li>" + rst.getString("cont_last_name") + "</li>");
-				out.println("</ul></div><br/>");
+				out.println("</ul></div>");
 			}
 		}catch(SQLException se){
 			//Handle errors for JDBC
@@ -90,7 +89,7 @@ public class DBTest extends HttpServlet
 			e.printStackTrace();
       }
 		
-		out.println("</body><html>");
+		out.println("</body><html>"); 
 	}
 	
     public String getFoo() { return foo; }
