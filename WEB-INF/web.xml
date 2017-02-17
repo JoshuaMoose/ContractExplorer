@@ -20,17 +20,36 @@
 		<res-auth>Container</res-auth>
 	</resource-ref>	
 	
-	
 	<servlet>
-		<servlet-name>DatabaseHandler</servlet-name>
-		<servlet-class>databasePackage.DatabaseHandler</servlet-class>
+		<servlet-name>ServletTest</servlet-name>
+		<servlet-class>ServletTest</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>
-		<servlet-name>DatabaseHandler</servlet-name>
-		<url-pattern>/databaseHandler</url-pattern>
+		<servlet-name>ServletTest</servlet-name>
+		<url-pattern>/ServletTest</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+	   <servlet-name>HelloWorld</servlet-name>
+	   <servlet-class>HelloWorld</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+	   <servlet-name>HelloWorld</servlet-name>
+	   <url-pattern>/HelloWorld</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	   <servlet-name>DBTest</servlet-name>
+	   <servlet-class>DBTest</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+	   <servlet-name>DBTest</servlet-name>
+	   <url-pattern>/DBTest</url-pattern>
+	</servlet-mapping>
+		
 <!--<servlet>
         <servlet-name>HelloServlet</servlet-name>
         <servlet-class>mypackage.Hello</servlet-class>
