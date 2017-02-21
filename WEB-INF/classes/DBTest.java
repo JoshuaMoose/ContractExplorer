@@ -13,9 +13,39 @@ public class DBTest extends HttpServlet
     int bar = -1;
 	ResultSet rst;
     
-    public void init() // code from https://jdbc.postgresql.org/documentation/94/tomcat.html
+    public void init()
 	{
-        try
+    }
+
+	public void doGet(HttpServletRequest request, //Tutorial from https://www.tutorialspoint.com/servlets/servlets-database-access.htm
+					  HttpServletResponse response)
+				throws ServletException, IOException
+	{
+	
+		// Set response content type
+		response.setContentType("text/html");
+	
+		PrintWriter out = response.getWriter();
+		
+		//Formatting content and header for HTML page
+		String docType =
+			"<!doctype html public \"-//w3c//dtd html 4.0 " +
+			 "transitional//en\">\n";
+			
+			out.println(docType +
+			"<html>\n" +
+			"<head><title>" + "Database Result" + "</title></head>\n" + 
+			"<body bgcolor=\"#f0f0f0\">\n" + //Formatting
+			"<h1 align=\"center\">" + "Database Result:" + "</h1>\n"); //Formatting on top of page
+		
+		
+		// Set response content type
+		response.setContentType("text/html");
+
+		// Actual logic goes here; build HTML with database results
+		out.print("<table width=400 cellspacing=1 cellpadding=5 border=1>"); //Result Table start
+
+		try // Documentation https://jdbc.postgresql.org/documentation/94/tomcat.html
         {
             Context ctx = new InitialContext();
             if(ctx == null )
@@ -29,70 +59,36 @@ public class DBTest extends HttpServlet
                 Connection conn = ds.getConnection();
                 if(conn != null) 
                 {
-                    foo = "Got Connection "+conn.toString();
-                    Statement stmt = conn.createStatement();
-                    rst = stmt.executeQuery("select cont_id, cont_first_name, cont_last_name from contrs.contacts");
-                    
-                    if(rst.next())
-                    {
-                        foo= rst.getString(2);
-                        bar= rst.getInt(3);
-                    }
+                    //foo = "Got Connection "+conn.toString();
+                    Statement stmt = conn.createStatement(); 
+                    rst = stmt.executeQuery("select * from contrs.contacts"); //contains query results
+                    ResultSetMetaData rstm = rst.getMetaData(); //Contains details like row count and column names for auto populating and creating table
+					int numOfCols = rstm.getColumnCount();
+					
+					for ( int i=1; i<numOfCols+1; i++ ) {
+						out.print("<td><b>" + rstm.getColumnName(i) +
+						"</b></td>");
+					}
+					
+					while (rst.next()) {
+							out.print("<tr>");
+							for ( int i=1; i<numOfCols+1; i++ ) {
+									out.print("<td>" + rst.getString(i) + "</td>");
+							}
+							out.print("</tr>");
+					}
                     conn.close();
                 }
             }
         }
-        catch(Exception e) 
+        catch(Exception e) //error handling
         {
             e.printStackTrace();
         }
-    }
-
-	public void doGet(HttpServletRequest request, //some code from https://www.tutorialspoint.com/servlets/servlets-database-access.htm
-					  HttpServletResponse response)
-				throws ServletException, IOException
-	{
-		// Set response content type
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		//Formatting content and header for HTML page
-		String docType =
-			"<!doctype html public \"-//w3c//dtd html 4.0 " +
-			 "transitional//en\">\n";
-			
-			out.println(docType +
-			"<html>\n" +
-			"<head><title>" + "Database Result" + "</title></head>\n" +
-			"<body bgcolor=\"#f0f0f0\">\n" +
-			"<h1 align=\"center\">" + "Database Result: " + "</h1>\n");
 		
-		// Set response content type
-		response.setContentType("text/html");
-
-		// Actual logic goes here; build HTML with database results
-		//PrintWriter out = response.getWriter();
-		try{
-			//Extract data from result set (RST)
-			while(rst.next()){
-				//Retrieve by column name
-				out.println("<div>Result:<ul>");
-				out.println("<li>" + rst.getInt("cont_id") + "</li>");
-				out.println("<li>" + rst.getString("cont_first_name") + "</li>");
-				out.println("<li>" + rst.getString("cont_last_name") + "</li>");
-				out.println("</ul></div>");
-			}
-		}catch(SQLException se){
-			//Handle errors for JDBC
-			se.printStackTrace();
-		}catch(Exception e){
-			//Handle errors for Class.forName
-			e.printStackTrace();
-      }
+		//Closing html page formatting
+		out.print("</table>");
 		
 		out.println("</body><html>"); 
 	}
-	
-    public String getFoo() { return foo; }
-
-    public int getBar() { return bar;}
 }
