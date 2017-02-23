@@ -1,3 +1,23 @@
+.leftdiv {
+	float: left;
+	width: 50%;
+}
+
+.rightdiv {
+	float: right;
+	width: 50%;
+}
+
+.testdiv {
+	float: left;
+	width: 100%;
+	border-style: solid;
+}
+
+.inputbox {
+	right: -100px;
+}
+
 .redbutton {
 	color: white;
 	height: 150px;
