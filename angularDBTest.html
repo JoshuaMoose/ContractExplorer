@@ -1,17 +1,35 @@
-<!doctype html>
-<html ng-app="myApp">
-<head>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<script src="js/mainJSTest.js"></script>
-<link rel="stylesheet" href="css/main.css">
-</head>
+<!DOCTYPE html>
+<html>
+<script src="js\angular.min.js"></script>
 <body>
-    <div ng-controller="myCtrl">
-        <form ng-submit="sendPost()">
-            <input ng-model="name" />
-            <button type="submit">Send</button>
-        </form>
-        <p>Message from servlet: {{message}}
-    </div>
+
+<div>Angular Test</div>
+
+<div ng-app="myApp" ng-controller="resultsCtrl"> 
+	<button ng-click="myFunction()">Fetch Data</button>
+	<table width=400 cellspacing=1 cellpadding=5 border=1>
+		<tr ng-repeat="x in myResults">
+			<td>{{ x.cont_id }}</td>
+			<td>{{ x.cont_first_name }}</td>
+			<td>{{ x.cont_last_name }}</td>
+		</tr>
+	</table
+</div>
+
+<script>
+
+var app = angular.module('myApp', []);
+	
+	app.controller('resultsCtrl', function($scope, $http) {
+		$scope.myFunction = function() {
+		$http.get("ServletTest").then(function (response) {
+			$scope.myResults = response.data;
+		});
+	}
+	  
+});
+	
+</script>
+
 </body>
 </html>

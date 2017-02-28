@@ -69,8 +69,7 @@ public class DBTest extends HttpServlet
 					int numOfCols = rstm.getColumnCount(); //metadata from table to know how to build dynamically
 					
 					for ( int i=1; i<numOfCols+1; i++ ) { //build top row of datase results table (formatting containg column names for reference)
-						out.print("<td><b>" + rstm.getColumnName(i) +
-						"</b></td>");
+						out.print("<td><b>" + rstm.getColumnName(i) + "</b></td>");
 					}
 					
 					while (rst.next()) { //while there are results, print them to the restults table.
