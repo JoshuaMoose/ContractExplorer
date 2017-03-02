@@ -6,8 +6,9 @@
 <div>Angular Test</div>
 
 <div ng-app="myApp" ng-controller="resultsCtrl"> 
+	<input ng-model="f.cont_first_name" width=50 >
 	<button ng-click="myFunction()">Fetch Data</button>
-	<table width=400 cellspacing=1 cellpadding=5 border=1>
+	<table width=400 cellspacing=1 cellpadding=5>
 		<tr>
 			<td>cont_id</td>
 			<td>cont_org_id</td>
@@ -29,8 +30,8 @@
 			<td>cont_email</td>
 			<td>cont_alt_email</td>
 		</tr>
-		
-		<tr ng-repeat="x in myResults">
+
+		<tr ng-repeat="x in myResults | filter:f">
 			<td>{{ x.cont_id }}</td>
 			<td>{{ x.cont_org_id }}</td>
 			<td>{{ x.cont_role_cd }}</td>
@@ -64,7 +65,8 @@ var app = angular.module('myApp', []);
 			$scope.myResults = response.data;
 		});
 	}
-	  
+	
+	
 });
 	
 </script>
