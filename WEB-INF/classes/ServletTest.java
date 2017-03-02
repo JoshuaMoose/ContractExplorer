@@ -87,6 +87,7 @@ public class ServletTest extends HttpServlet {
 
 class Contact { //Contact object which stores instances of contacts
 	
+	//string items that hold database results
 	private String cont_id;
 	private String cont_org_id;
 	private String cont_role_cd;
