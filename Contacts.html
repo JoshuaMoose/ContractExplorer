@@ -8,8 +8,10 @@
   <link rel="stylesheet" href="customcss.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="js\angular.min.js"></script>
+  <script src="js\appController.js"></script>
 </head>
-<body>
+<body ng-app="myApp" ng-controller="resultsCtrl">
 
 <div class="container">
 	<!-- Logo -->
@@ -49,20 +51,30 @@
 				<option value="Contractor">Contractor</option>
 			</select>
 			-->
-				<input type="text" name="SearchBy">
+				<input type="text" name="SearchBy" ng-model="search.$" placeholder="Search Results">
 				<!--input id="searchButton" type="submit" value="Search" name="SearchButton"-->
-				<button type="submit" value="contacts" name="SearchButton" data-toggle="collapse" data-target="#search">Search</button>
+				<button type="submit" value="contacts" name="SearchButton" data-toggle="collapse" data-target="#search" ng-click="myFunction()">Search</button>
 				<div id="search" class="collapse" ng-app="myApp" ng-controller="searchCtrl">
 					<table>
 						<tr>
 							<th>Contact ID</th>
 							<th>Organization ID</th>
 							<th>Role</th>
-							<th>Title</th>
 							<th>First Name</th>
 							<th>Last Name</th>
-							<th>Suffix</th>
+							<th>Title</th>
+							<th>Primary Email</th>
 						</tr>
+
+						<tr ng-repeat="x in myResults | filter:search:strict">
+							<td>{{ x.cont_id }}</td>
+							<td>{{ x.cont_org_id }}</td>
+							<td>{{ x.cont_role_cd }}</td>
+							<td>{{ x.cont_first_name }}</td>
+							<td>{{ x.cont_last_name }}</td>
+							<td>{{ x.cont_name_title }}</td>
+							<td>{{ x.cont_email }}</td>
+						</tr>	
 					</table>
 				</div>	
 			</div>
@@ -72,7 +84,7 @@
 			<h2>Add New Contact</h2>
 			<button data-toggle="collapse" data-target="#addNew">Add New Contact</button> <!--Button to expand addNew div-->
 			
-			<div id="addNew" class="collapse" ng-app="myApp" ng-controller="formCtrl">
+			<div id="addNew" class="collapse" ng-app="myApp" <!--ng-controller="formCtrl"-->>
 				<form>
 					<h4 class="boxLabel">Contact ID:</h4>
 							<input class="formBox" type="text" ng-model="contactID">

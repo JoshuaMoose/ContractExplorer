@@ -29,3 +29,12 @@ app.controller('searchCtrl', function($scope) {
     $scope.searchParameter = "";
 	$scope.searchKeyword = "";
 });
+
+app.controller('resultsCtrl', function($scope, $http) {
+		$scope.myFunction = function() {
+		$http.get("ServletTest").then(function (response) {
+			$scope.myResults = response.data;
+		});
+	}
+	
+});
