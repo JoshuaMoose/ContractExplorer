@@ -180,6 +180,10 @@
 	height:50%;
 }
 
+#search{
+	background: #f5f5f5;
+}
+
 table{
     border: 0px; 
 	border-collapse: collapse;

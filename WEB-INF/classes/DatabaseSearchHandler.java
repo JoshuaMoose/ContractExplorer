@@ -17,7 +17,7 @@ import java.sql.*;
  
 import com.google.gson.Gson;
  
-public class ServletTest extends HttpServlet {
+public class DatabaseSearchHandler extends HttpServlet {
  
 	String connectionStatus = "Not Connected"; //Placeholder string to be used to validate connection
 	ResultSet rst; //stores the restult of the database query
