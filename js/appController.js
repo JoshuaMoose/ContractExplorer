@@ -1,4 +1,5 @@
 var app = angular.module('myApp', []);
+
 app.controller('personCtrl', function($scope) {
     $scope.contactID = "";
 	$scope.orgID = "";
@@ -31,10 +32,23 @@ app.controller('searchCtrl', function($scope) {
 });
 
 app.controller('resultsCtrl', function($scope, $http) {
-		$scope.myFunction = function() {
+	$scope.myFunction = function() {
+		console.log('Database data loaded.');
 		$http.get("ServletTest").then(function (response) {
 			$scope.myResults = response.data;
 		});
 	}
 	
 });
+
+app.controller('initCtrl', function($scope, $http, $timeout) {
+	$scope.init = function() {
+		$http.get("ServletTest").then(function (response) {
+			$scope.myResults = response.data;
+		});
+		
+		console.log('init called.');
+	}
+	$scope.init();
+});
+

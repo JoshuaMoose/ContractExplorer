@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>SuprTEK Contract Application</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="customcss.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="js\angular.min.js"></script>
+  <script src="js\appController.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="resultsCtrl">
+
+<div class="container">
+	<!-- Logo -->
+	<div class="page-header">
+  		<img src="images/SuprTEKLogo.jpg" alt="Logo" id="logo">
+	</div>
+	
+	<!--Navigation Tabs/-->
+	<div class="well">
+		<div id="tabs" class="row">
+			<ul class="nav nav-tabs" role="tablist">
+				<li><a href="Home.html">Home</a></li>
+				<li><a href="Contracts.html">Contracts</a></li>
+				<li><a href="Organizations.html">Organizations</a></li>
+				<li><a href="Contacts.html">Contacts</a></li>
+				<li><a href="Directives.html">Directives</a></li>  
+				<li><a href="Releases.html">Releases</a></li>
+				<li><a href="DataSets.html">Data Sets</a></li>
+				<li><a href="ExpertRegulations.html">Expert Regulations</a></li>
+				<li><a href="Travel.html">Travel</a></li>
+				<li><a href="Devices.html">Devices</a></li>
+				<li><a href="Codes.html">Codes</a></li>		
+				<li><a href="Reports.html">Reports</a></li>					
+			 </ul>
+		</div>
+		
+		<div class="panel-body">
+			<!--Search for contacts-->
+			
+			<div id="search" ng-controller="initCtrl">
+				<div id="scrollView" style="max-height:100%; overflow:auto; border:1px solid;">
+				<table style="padding: 3px;">
+					
+					<tr>
+						<td><input ng-model="f.cont_id" placeholder="Filter by Contact ID"></td>
+						<td><input ng-model="f.cont_org_id" placeholder="Filter by Organization ID"></td>
+						<td><input ng-model="f.cont_role_cd" placeholder="Filter by Role CD"></td>
+						<td><input ng-model="f.cont_first_name" placeholder="Filter by First Name"></td>
+						<td><input ng-model="f.cont_middle_name" placeholder="Filter by Middle Name"></td>
+						<td><input ng-model="f.cont_last_name" placeholder="Filter by Last name"></td>
+						<td><input ng-model="f.cont_name_title" placeholder="Filter by Name Title"></td>
+						<td><input ng-model="f.cont_name_suffix" placeholder="Filter by Name Suffix"></td>
+						<td><input ng-model="f.cont_addr1" placeholder="Filter by Address 1"></td>
+						<td><input ng-model="f.cont_addr2" placeholder="Filter by Address 2"></td>
+						<td><input ng-model="f.cont_city" placeholder="Filter by City"></td>
+						<td><input ng-model="f.cont_state_prov_cd" placeholder="Filter by State/Province"></td>
+						<td><input ng-model="f.cont_post_cd" placeholder="Filter by Postal Code"></td>
+						<td><input ng-model="f.cont_cntry_cd" placeholder="Filter by Country"></td>
+						<td><input ng-model="f.cont_office_phone" placeholder="Filter by Office Number"></td>
+						<td><input ng-model="f.cont_mobile_phone" placeholder="Filter by Mobile Number"></td>
+						<td><input ng-model="f.cont_home_phone" placeholder="Filter by Home Number"></td>
+						<td><input ng-model="f.cont_email" placeholder="Filter by Email"></td>
+						<td><input ng-model="f.cont_alt_email" placeholder="Filter by Alt Email"></td>
+					</tr>
+									
+					<tr>
+						<th>Contact ID</th>
+						<th>Organization ID</th>
+						<th>Role</th>
+						<th>First Name</th>
+						<th>Middle Name</th>
+						<th>Last Name</th>
+						<th>Title</th>
+						<th>Name Suffix</th>
+						<th>Address 1</th>
+						<th>Address 2</th>
+						<th>City</th>
+						<th>State/Province</th>
+						<th>Postal Code</th>
+						<th>Country</th>
+						<th>Office Phone</th>
+						<th>Mobile Phone</th>
+						<th>Home Phone</th>
+						<th>Primary Email</th>
+						<th>Alt Email</th>
+					</tr>
+
+					<tr ng-repeat="x in myResults | filter:f">
+						<td>{{ x.cont_id }}</td>
+						<td>{{ x.cont_org_id }}</td>
+						<td>{{ x.cont_role_cd }}</td>
+						<td>{{ x.cont_first_name }}</td>
+						<td>{{ x.cont_middle_name }}</td>
+						<td>{{ x.cont_last_name }}</td>
+						<td>{{ x.cont_name_title }}</td>
+						<td>{{ x.cont_name_suffix }}</td>
+						<td>{{ x.cont_addr1 }}</td>
+						<td>{{ x.cont_addr2 }}</td>
+						<td>{{ x.cont_city }}</td>
+						<td>{{ x.cont_state_prov_cd }}</td>
+						<td>{{ x.cont_post_cd }}</td>
+						<td>{{ x.cont_cntry_cd }}</td>
+						<td>{{ x.cont_office_phone }}</td>
+						<td>{{ x.cont_mobile_phone }}</td>
+						<td>{{ x.cont_home_phone }}</td>
+						<td>{{ x.cont_email }}</td>
+						<td>{{ x.cont_alt_email }}</td>
+	
+					</tr>	
+				</table>
+			</div>
+	
+						<!--End search for contacts-->
+		</div>
+	
+	</div>
+	
+</div>
+
+</body>
+
+</html>

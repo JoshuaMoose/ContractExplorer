@@ -50,8 +50,9 @@
 						<!--Search for contacts-->
 						
 						<input type="text" name="SearchBy" ng-model="search.$" placeholder="Search Results">
-
 						<button type="submit" value="contacts" name="SearchButton" data-toggle="collapse" data-target="#search" ng-click="myFunction()">Search</button>
+						<span><a href="ResultsAsTable.html">Advanced Search</span>
+						
 						<div id="search" class="collapse" ng-app="myApp" ng-controller="searchCtrl">
 							<table>
 								<tr>
@@ -72,6 +73,7 @@
 									<td>{{ x.cont_last_name }}</td>
 									<td>{{ x.cont_name_title }}</td>
 									<td>{{ x.cont_email }}</td>
+									<td><button id="edit" type="sumbit"  ng-app="myApp">Edit</button></td>
 								</tr>	
 							</table>
 						</div>
@@ -89,7 +91,7 @@
 				<div id="collapse2" class="panel-collapse collapse">
 					<div class="panel-body">
 						<!--Add new contact-->
-						<div ng-app="myApp" ng-controller="formCtrl">
+						<div> <!-- ng-app="myApp" ng-controller="formCtrl" ~~removed bc unused-->
 							<div class="row">
 								<div class="col-lg-3">Contact ID:</div>
 								<div class="col-lg-3"><input type="text" ng-model="contactID"></div>
