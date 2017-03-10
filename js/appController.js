@@ -33,21 +33,35 @@ app.controller('searchCtrl', function($scope) {
 
 app.controller('resultsCtrl', function($scope, $http) {
 	$scope.myFunction = function() {
-		console.log('Database data loaded.');
-		$http.get("DatabaseSearchHandler").then(function (response) {
+		$http.post("DatabaseSearchHandler")
+		.then(function (response) {
 			$scope.myResults = response.data;
-		});
+
+			console.log('Data loaded.');
+			}, function (error) {
+				console.log(error);
+		});	
 	}
 	
 });
 
-app.controller('initCtrl', function($scope, $http, $timeout) {
+app.controller('initCtrl', function($scope, $http) {
+	var pageData = 'contacts';
+	
 	$scope.init = function() {
-		$http.get("DatabaseSearchHandler").then(function (response) {
+		$http({
+			method : 'POST',
+			url : 'DatabaseSearchHandler',
+			contentType: 'application/json',
+			data : pageData,
+		})	
+		.then(function (response) {
 			$scope.myResults = response.data;
-		});
-		
-		console.log('init called.');
+
+			console.log('Data loaded.');
+			}, function (error) {
+				console.log(error);
+		});	
 	}
 	$scope.init();
 	

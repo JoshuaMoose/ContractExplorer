@@ -1,6 +1,7 @@
 //import java.io.BufferedReader;
 //import java.io.IOException;
 import java.io.*;
+import java.io.BufferedReader;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -16,17 +17,27 @@ import javax.sql.*;
 import java.sql.*; 
  
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
  
 public class DatabaseSearchHandler extends HttpServlet {
  
 	String connectionStatus = "Not Connected"; //Placeholder string to be used to validate connection
 	ResultSet rst; //stores the restult of the database query
  
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException {
 				
-		List<Contact> ContactList = new ArrayList<Contact>();
+		List<String> columnNames = new ArrayList<String>();
+		List<JsonObject> resultList = new ArrayList<JsonObject>();
 		
+		StringBuilder sb = new StringBuilder();
+        BufferedReader br = request.getReader();
+        String str = null;
+        while ((str = br.readLine()) != null) {
+            sb.append(str);
+        }
+		String tableName = sb.toString();
 		
 		try // Documentation https://jdbc.postgresql.org/documentation/94/tomcat.html
         {
@@ -43,32 +54,37 @@ public class DatabaseSearchHandler extends HttpServlet {
                 Connection conn = ds.getConnection(); //gets connection from datasource
                 if(conn != null) 
                 {
-                    //connectionStatus = "Got Connection "+conn.toString(); //show connection status/details
-                    Statement stmt = conn.createStatement(); 
-                    rst = stmt.executeQuery("select * from contrs.contacts"); //contains query Contact
                     
-					while (rst.next()) { //while there are Contact, print them to the restults table.
-						ContactList.add(new Contact(rst.getString("cont_id"), 
-													rst.getString("cont_org_id"),
-													rst.getString("cont_role_cd"),
-													rst.getString("cont_first_name"),
-													rst.getString("cont_middle_name"),
-													rst.getString("cont_last_name"),
-													rst.getString("cont_name_title"),
-													rst.getString("cont_name_suffix"),
-													rst.getString("cont_addr1"),
-													rst.getString("cont_addr2"),
-													rst.getString("cont_city"),
-													rst.getString("cont_state_prov_cd"),
-													rst.getString("cont_post_cd"),
-													rst.getString("cont_cntry_cd"),
-													rst.getString("cont_office_phone"),
-													rst.getString("cont_mobile_phone"),
-													rst.getString("cont_home_phone"),
-													rst.getString("cont_email"),
-													rst.getString("cont_alt_email"))); //add a new contact to the list 
+					/////// This code block will fetch database results using only table name passed in from get request ////////
+					
+					//connectionStatus = "Got Connection "+conn.toString(); //show connection status/details
+                    Statement stmt = conn.createStatement(); 
+                    rst = stmt.executeQuery("select * from contrs." + tableName); //contains query Contact
+                    
+					ResultSetMetaData rstm = rst.getMetaData(); //Contains details like row count and column names for auto populating and creating table
+					int numOfColumns = rstm.getColumnCount(); //metadata from table to know how to build dynamically
+					
+					for(int i=1;i<=numOfColumns;i++) {
+						columnNames.add(rstm.getColumnName(i)); //loop through to get all column names
 					}
+					
+			        while(rst.next()) { // convert each object to an human readable JSON object
+						JsonObject jsonObject = new JsonObject();
+						
+						for(int i=1; i<=numOfColumns; i++) {
+							//Get column name and associated value for this result
+							String key = columnNames.get(i - 1);
+							String value = rst.getString(i);
+							
+							jsonObject.addProperty(key, value); //Add a json element in format key: value -- ie. cont_first_name: Bill
+						}
+						
+						resultList.add(jsonObject);
+					}		
+					
                     conn.close();
+					
+					/////// End database fetch ////////
                 }
             }
         }
@@ -78,76 +94,16 @@ public class DatabaseSearchHandler extends HttpServlet {
         }
 		
 		PrintWriter out = response.getWriter();
-		String jsonString = new Gson().toJson(ContactList);
+		String jsonString = new Gson().toJson(resultList);
+		
+        /*JsonParser parserTest = new JsonParser();
+        JsonObject obj = (JsonObject) parserTest.parse(request.getParameter("data")); 
+		
+		String test = new Gson().toJson(obj);
+		System.out.println(test); */
+		//System.out.println(jsonString); //Used to validate JSON output
 		
 		out.println(jsonString);
     }
  
-}
-
-class Contact { //Contact object which stores instances of contacts
-	
-	//string items that hold database results
-	private String cont_id;
-	private String cont_org_id;
-	private String cont_role_cd;
-	private String cont_first_name;
-	private String cont_middle_name;
-	private String cont_last_name;
-	private String cont_name_title;
-	private String cont_name_suffix;
-	private String cont_addr1;
-	private String cont_addr2;
-	private String cont_city;
-	private String cont_state_prov_cd;
-	private String cont_post_cd;
-	private String cont_cntry_cd;
-	private String cont_office_phone;
-	private String cont_mobile_phone;
-	private String cont_home_phone;
-	private String cont_email;
-	private String cont_alt_email;
-	
-	
-	public Contact(String cont_id, 
-				String cont_org_id,
-				String cont_role_cd,
-				String cont_first_name,
-				String cont_middle_name,
-				String cont_last_name,
-				String cont_name_title,
-				String cont_name_suffix,
-				String cont_addr1,
-				String cont_addr2,
-				String cont_city,
-				String cont_state_prov_cd,
-				String cont_post_cd,
-				String cont_cntry_cd,
-				String cont_office_phone,
-				String cont_mobile_phone,
-				String cont_home_phone,
-				String cont_email,
-				String cont_alt_email) 
-	{
-		this.cont_id = cont_id;
-		this.cont_org_id = cont_org_id;
-		this.cont_role_cd = cont_role_cd;
-		this.cont_first_name = cont_first_name;
-		this.cont_middle_name = cont_middle_name;
-		this.cont_last_name = cont_last_name;
-		this.cont_name_title = cont_name_title;
-		this.cont_name_suffix = cont_name_suffix;
-		this.cont_addr1 = cont_addr1;
-		this.cont_addr2 = cont_addr2;
-		this.cont_city = cont_city;
-		this.cont_state_prov_cd = cont_state_prov_cd;
-		this.cont_post_cd = cont_post_cd;
-		this.cont_cntry_cd = cont_cntry_cd;
-		this.cont_office_phone = cont_office_phone;
-		this.cont_mobile_phone = cont_mobile_phone;
-		this.cont_home_phone = cont_home_phone;
-		this.cont_email = cont_email;
-		this.cont_alt_email = cont_alt_email;	
-	}
-	
 }
