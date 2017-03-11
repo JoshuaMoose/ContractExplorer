@@ -89,7 +89,7 @@
 						<a data-toggle="collapse" data-parent="#accordion" href="#collapse2"><h2>Add New Contact</h2></a>
 					</h4>
 				</div>
-				<div id="collapse2" class="panel-collapse collapse">
+				<div id="collapse2" class="panel-collapse collapse" ng-controller="addContactCtrl">
 					<div class="panel-body">
 						<!--Add new contact-->
 						<div> <!-- ng-app="myApp" ng-controller="formCtrl" ~~removed bc unused-->
@@ -231,7 +231,7 @@
 							<div class="row">
 								<div class="col-lg-3">Address Line 2:</div>
 								<div class="col-lg-3"><input type="text" ng-model="addLine2"></div>
-								<div class="col-lg-6"><button>Submit</button></div>
+								<div class="col-lg-6"><button type="submit" value="contacts" ng-click="addFunction()" >Add New Contact</button></div>
 							</div><!--row-->
 						</div>
 						<!---End add new contact-->
