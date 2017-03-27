@@ -76,6 +76,33 @@ app.controller('initCtrl', function($scope, $http) { //On page load, this conrol
 	}
 	$scope.init();
 	
+	////////////////////////////////////////////
+	
+	$scope.searchParameter = "";
+	$scope.searchKeyword = "";
+
+
+    $scope.newField = {};
+    $scope.editing = false;
+
+	$scope.editResults = function(field) {
+		$scope.editing = $scope.myResults.indexOf(field);
+		$scope.newField = angular.copy(field);
+	}
+
+	$scope.saveField = function(index) {
+		if ($scope.editing !== false) {
+			$scope.myResults[$scope.editing] = $scope.newField;
+			$scope.editing = false;
+		}       
+	};
+
+	$scope.cancel = function(index) {
+		if ($scope.editing !== false) {
+			$scope.myResults[$scope.editing] = $scope.newField;
+			$scope.editing = false;
+		}       
+	};
 	
 });
 
@@ -120,4 +147,9 @@ app.controller('addContactCtrl', function($scope, $http) {
 	
 });
 
+app.controller('editCtrl', function($scope) {
+    
+	
+
+});
 

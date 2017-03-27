@@ -43,7 +43,7 @@
 			
 			<div id="search" ng-controller="initCtrl">
 				
-				<button type="submit" value="clearResults">Clear Results</button>
+				<!--button type="submit" value="clearResults">Clear Results</button-->
 				
 				<div id="scrollView" style="max-height:100%; overflow:auto; border:1px solid;">
 				<table style="padding: 3px;">
@@ -90,29 +90,89 @@
 						<th>Home Phone</th>
 						<th>Primary Email</th>
 						<th>Alt Email</th>
+						<th>Edit</th>
 					</tr>
 
-					<tr ng-repeat="x in myResults | filter:f">
+					<tr ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}">
 						<td>{{ x.cont_id }}</td>
-						<td>{{ x.cont_org_id }}</td>
-						<td>{{ x.cont_role_cd }}</td>
-						<td>{{ x.cont_first_name }}</td>
-						<td>{{ x.cont_middle_name }}</td>
-						<td>{{ x.cont_last_name }}</td>
-						<td>{{ x.cont_name_title }}</td>
-						<td>{{ x.cont_name_suffix }}</td>
-						<td>{{ x.cont_addr1 }}</td>
-						<td>{{ x.cont_addr2 }}</td>
-						<td>{{ x.cont_city }}</td>
-						<td>{{ x.cont_state_prov_cd }}</td>
-						<td>{{ x.cont_post_cd }}</td>
-						<td>{{ x.cont_cntry_cd }}</td>
-						<td>{{ x.cont_office_phone }}</td>
-						<td>{{ x.cont_mobile_phone }}</td>
-						<td>{{ x.cont_home_phone }}</td>
-						<td>{{ x.cont_email }}</td>
-						<td>{{ x.cont_alt_email }}</td>
-	
+						<!-- The special block here will swap to being input boxes when the -->
+						<td>
+							<span data-ng-hide="editMode">{{x.cont_org_id}}</span>
+							<input type="text" data-ng-show="editMode" data-ng-model="x.cont_org_id" data-ng-required />
+						</td>
+						<td>
+							<span data-ng-hide="editMode">{{x.cont_role_cd}}</span>
+							<input type="text" data-ng-show="editMode" data-ng-model="x.cont_role_cd" data-ng-required />
+						</td>
+						<td>
+							<span data-ng-hide="editMode">{{x.cont_first_name}}</span>
+							<input type="text" data-ng-show="editMode" data-ng-model="x.cont_first_name" data-ng-required />
+						</td>
+						<td>
+							<span data-ng-hide="editMode">{{x.cont_middle_name}}</span>
+							<input type="text" data-ng-show="editMode" data-ng-model="x.cont_middle_name" data-ng-required />
+						</td>
+						<td>
+							<span data-ng-hide="editMode">{{x.cont_last_name}}</span>
+							<input type="text" data-ng-show="editMode" data-ng-model="x.cont_last_name" data-ng-required />
+						</td>
+						<td>
+							<span data-ng-hide="editMode">{{x.cont_name_title}}</span>
+							<input type="text" data-ng-show="editMode" data-ng-model="x.cont_name_title" data-ng-required />
+						</td>
+						<td>
+							<span data-ng-hide="editMode">{{x.cont_name_suffix}}</span>
+							<input type="text" data-ng-show="editMode" data-ng-model="x.cont_name_suffix" data-ng-required />
+						</td>
+						<td>
+							<span data-ng-hide="editMode">{{x.cont_addr1}}</span>
+							<input type="text" data-ng-show="editMode" data-ng-model="x.cont_addr1" data-ng-required />
+						</td>
+						<td>
+							<span data-ng-hide="editMode">{{x.cont_addr2}}</span>
+							<input type="text" data-ng-show="editMode" data-ng-model="x.cont_addr2" data-ng-required />
+						</td>
+						<td>
+							<span data-ng-hide="editMode">{{x.cont_city}}</span>
+							<input type="text" data-ng-show="editMode" data-ng-model="x.cont_city" data-ng-required />
+						</td>
+						<td>
+							<span data-ng-hide="editMode">{{x.cont_state_prov_cd}}</span>
+							<input type="text" data-ng-show="editMode" data-ng-model="x.cont_state_prov_cd" data-ng-required />
+						</td>
+						<td>
+							<span data-ng-hide="editMode">{{x.cont_post_cd}}</span>
+							<input type="text" data-ng-show="editMode" data-ng-model="x.cont_post_cd" data-ng-required />
+						</td>
+						<td>
+							<span data-ng-hide="editMode">{{x.cont_cntry_cd}}</span>
+							<input type="text" data-ng-show="editMode" data-ng-model="x.cont_cntry_cd" data-ng-required />
+						</td>
+						<td>
+							<span data-ng-hide="editMode">{{x.cont_office_phone}}</span>
+							<input type="text" data-ng-show="editMode" data-ng-model="x.cont_office_phone" data-ng-required />
+						</td>
+						<td>
+							<span data-ng-hide="editMode">{{x.cont_mobile_phone}}</span>
+							<input type="text" data-ng-show="editMode" data-ng-model="x.cont_mobile_phone" data-ng-required />
+						</td>
+						<td>
+							<span data-ng-hide="editMode">{{x.cont_home_phone}}</span>
+							<input type="text" data-ng-show="editMode" data-ng-model="x.cont_home_phone" data-ng-required />
+						</td>
+						<td>
+							<span data-ng-hide="editMode">{{x.cont_email}}</span>
+							<input type="text" data-ng-show="editMode" data-ng-model="x.cont_email" data-ng-required />
+						</td>
+						<td>
+							<span data-ng-hide="editMode">{{x.cont_alt_email}}</span>
+							<input type="text" data-ng-show="editMode" data-ng-model="x.cont_alt_email" data-ng-required />
+						</td>
+						<td>
+							<button type="submit" data-ng-hide="editMode" data-ng-click="editMode = true; editResults(x)" class="btn btn-default">Edit</button>
+							<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false" class="btn btn-default">Save</button>
+							<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; cancel()" class="btn btn-default">Cancel</button>
+						</td>
 					</tr>	
 				</table>
 			</div>
