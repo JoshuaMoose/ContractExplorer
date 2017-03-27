@@ -53,7 +53,13 @@ public class DatabaseAddHandler extends HttpServlet {
 		for (int i = 1; i < addNames.size(); i++) {
 			//System.out.println(addNames.get(i));
 			insertTable = insertTable + addNames.get(i);
-			insertValue = insertValue + jsonRequestObject.get(addNames.get(i).toString()).getAsString();
+			
+			if ( isNumeric(jsonRequestObject.get(addNames.get(i).toString()).getAsString()) ) 
+			{
+				insertValue = insertValue + jsonRequestObject.get(addNames.get(i).toString()).getAsString();
+			} else {
+				insertValue = insertValue + "'" + jsonRequestObject.get(addNames.get(i).toString()).getAsString() + "'";
+			}
 			
 			if ( i < (addNames.size() - 1) ) {
 				insertTable = insertTable + ", ";
@@ -87,7 +93,7 @@ public class DatabaseAddHandler extends HttpServlet {
 					//connectionStatus = "Got Connection "+conn.toString(); //show connection status/details
 					Statement stmt = conn.createStatement(); 
 					
-					stmt.execute(insertTable + insert);
+					stmt.execute(insertTable + insertValue);
 												
 					conn.close();
 				}
@@ -98,5 +104,11 @@ public class DatabaseAddHandler extends HttpServlet {
             e.printStackTrace();
         }
 	}
+	
+	public boolean isNumeric(String s) 
+	{  
+		return s.matches("[-+]?\\d*\\.?\\d+");  
+	}  
+
 
 }
