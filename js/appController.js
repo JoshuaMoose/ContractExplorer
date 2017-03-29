@@ -58,7 +58,7 @@ app.controller('initCtrl', function($scope, $http) { //On page load, this conrol
 	var pageData = {
 		table: 'contacts',
 	};
-	
+		
 	$scope.init = function() {
 		$http({
 			method : 'POST',
@@ -90,10 +90,26 @@ app.controller('initCtrl', function($scope, $http) { //On page load, this conrol
 		$scope.newField = angular.copy(field);
 	}
 
-	$scope.saveField = function(index) {
+	$scope.saveField = function(index) {		
+		var editData = {
+			'table': 'contacts',
+		}
+		
+		editData.original = $scope.newField;
+		editData.updated = $scope.myResults[$scope.editing];
+		
 		if ($scope.editing !== false) {
-			$scope.myResults[$scope.editing] = $scope.newField;
-			$scope.editing = false;
+			//$scope.myResults[$scope.editing] = $scope.newField;
+			//$scope.editing = false;
+			console.log(editData);
+			
+			/*$http({
+				method : 'POST',
+				url : 'DatabaseEditHandler',
+				contentType: 'application/json',
+				data : editData,
+			})*/
+			
 		}       
 	};
 
@@ -101,7 +117,7 @@ app.controller('initCtrl', function($scope, $http) { //On page load, this conrol
 		if ($scope.editing !== false) {
 			$scope.myResults[$scope.editing] = $scope.newField;
 			$scope.editing = false;
-		}       
+		}
 	};
 	
 });
@@ -109,26 +125,26 @@ app.controller('initCtrl', function($scope, $http) { //On page load, this conrol
 app.controller('addContactCtrl', function($scope, $http) { 
 	$scope.addFunction = function() {
 		var addData = {
-			table: 'contacts', 
-			cont_id: $scope.contactID,
-			cont_org_id: $scope.orgID,
-			cont_role_cd: $scope.role,
-			cont_first_name: $scope.firstName,
-			cont_middle_name: $scope.midName,
-			cont_last_name: $scope.lastName,
-			cont_name_title: $scope.nameTitle,
-			cont_name_suffix: $scope.nameSufx,
-			cont_addr1: $scope.addLine1,
-			cont_addr2: $scope.addLine2,
-			cont_city: $scope.addCity,
-			cont_state_prov_cd: $scope.addState,
-			cont_post_cd: $scope.addPost,
-			cont_cntry_cd: $scope.addCity,
-			cont_office_phone: $scope.phoneOff,
-			cont_mobile_phone: $scope.phoneMobl,
-			cont_home_phone: $scope.phoneHome,
-			cont_email: $scope.email,
-			cont_alt_email: $scope.emailAlt,
+			'table': 'contacts', 
+			'cont_id': $scope.contactID,
+			'cont_org_id': $scope.orgID,
+			'cont_role_cd': $scope.role,
+			'cont_first_name': $scope.firstName,
+			'cont_middle_name': $scope.midName,
+			'cont_last_name': $scope.lastName,
+			'cont_name_title': $scope.nameTitle,
+			'cont_name_suffix': $scope.nameSufx,
+			'cont_addr1': $scope.addLine1,
+			'cont_addr2': $scope.addLine2,
+			'cont_city': $scope.addCity,
+			'cont_state_prov_cd': $scope.addState,
+			'cont_post_cd': $scope.addPost,
+			'cont_cntry_cd': $scope.addCity,
+			'cont_office_phone': $scope.phoneOff,
+			'cont_mobile_phone': $scope.phoneMobl,
+			'cont_home_phone': $scope.phoneHome,
+			'cont_email': $scope.email,
+			'cont_alt_email': $scope.emailAlt,
 		};
 		
 		$http({
@@ -149,7 +165,5 @@ app.controller('addContactCtrl', function($scope, $http) {
 
 app.controller('editCtrl', function($scope) {
     
-	
-
 });
 

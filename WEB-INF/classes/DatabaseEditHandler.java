@@ -18,17 +18,15 @@ import com.google.gson.*;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
  
-public class DatabaseAddHandler extends HttpServlet {
+public class DatabaseEditHandler extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException {
 		
 		List addNames = new ArrayList();
 		
-		//System.out.println("Post request made to DatabaseAddHandler."); //Console Logging
+		System.out.println("Post request made to DatabaseAddHandler.");
 		
-		
-		//Get json request object from the webpage
 		StringBuilder sb = new StringBuilder();
         BufferedReader br = request.getReader();
         String str = null;
@@ -37,48 +35,51 @@ public class DatabaseAddHandler extends HttpServlet {
         }
 		String requestData = sb.toString();
 		
-		JsonObject jsonRequestObject = new Gson().fromJson(requestData, JsonObject.class); //parse the json as a string to a json object
+		JsonObject jsonRequestObject = new Gson().fromJson(requestData, JsonObject.class);
 		
+		String updateTable = "UPDATE contrs." + jsonRequestObject.get("table").getAsString();
+		String updateSet = " SET (";
+		String updateWhere = " WHERE (";
 		
-		//Format for the table to insert in to data and the values to be inserted (to be combined upon SQL execution)
-		String insertTable = "INSERT INTO contrs." + jsonRequestObject.get("table").getAsString() + " (";
-		String insertValue = "VALUES (";
+		System.out.println("Made it past string creation.");
 		
-		//Mapping to retrieve the keys/names of the json elements which correspond to the column names for the database
-		Set<Map.Entry<String, JsonElement>> entries = jsonRequestObject.entrySet();
+		JsonObject original = jsonRequestObject.getAsJsonObject("original");
+		JsonObject updated = jsonRequestObject.getAsJsonObject("updated");
 		
-		for (Map.Entry<String, JsonElement> entry: entries) { //loop through map, get the keys/names
+		Set<Map.Entry<String, JsonElement>> entries = original.entrySet();//will return members of your object
+		
+		for (Map.Entry<String, JsonElement> entry: entries) {
 			//System.out.println(entry.getKey());
-			addNames.add(entry.getKey().toString()); //add the keys/names to a list
+			addNames.add(entry.getKey().toString());
 		}
 		
-		
-		//loop through to create the sql insert statement
 		for (int i = 1; i < addNames.size(); i++) {
 			//System.out.println(addNames.get(i));
-			insertTable = insertTable + addNames.get(i);
+			updateTable = updateTable + addNames.get(i);
 			
-			if ( isNumeric(jsonRequestObject.get(addNames.get(i).toString()).getAsString()) ) // check if the insert value is numeric for INSERT purposes
+			if ( isNumeric(jsonRequestObject.get(addNames.get(i).toString()).getAsString()) ) 
 			{
-				insertValue = insertValue + jsonRequestObject.get(addNames.get(i).toString()).getAsString();
+				updateSet = updateSet + updated.get(addNames.get(i).toString()).getAsString();
+				updateWhere = updateWhere + "'" + original.get(addNames.get(i).toString()).getAsString() + "'";
 			} 
 			else {
-				insertValue = insertValue + "'" + jsonRequestObject.get(addNames.get(i).toString()).getAsString() + "'"; //add quotes to indicate strings for INSERT
+				updateSet = updateSet + "'" + updated.get(addNames.get(i).toString()).getAsString() + "'";
+				updateWhere = updateWhere + "'" + original.get(addNames.get(i).toString()).getAsString() + "'"; 
 			}
 			
-			if ( i < (addNames.size() - 1) ) { //commas after all but last element
-				insertTable = insertTable + ", ";
-				insertValue = insertValue + ", ";
+			if ( i < (addNames.size() - 1) ) {
+				updateTable = updateTable + ", ";
+				updateSet = updateSet + ", ";
+				updateWhere = updateWhere + "' ";
 			}
 		}
 
-		//closing formatting for two parts of string 
-		insertTable = insertTable + ") ";
-		insertValue = insertValue + ");";
+		updateTable = updateTable + ") ";
+		updateSet = updateSet + ") ";
+		updateWhere = updateWhere + ");";
+		//end insert building
 		
-		//end INSERT building
-		
-		//System.out.println("Insert Attempted: " + insertTable + insertValue); //console logging
+		System.out.println("Insert Attempted: " + updateTable + updateSet + updateWhere);
 		
 		
 		try // Documentation https://jdbc.postgresql.org/documentation/94/tomcat.html
@@ -100,7 +101,7 @@ public class DatabaseAddHandler extends HttpServlet {
 					//connectionStatus = "Got Connection "+conn.toString(); //show connection status/details
 					Statement stmt = conn.createStatement(); 
 					
-					stmt.execute(insertTable + insertValue); //execute insert
+					//stmt.execute(updateTable + updateSet + updateWhere);
 												
 					conn.close();
 				}
@@ -112,7 +113,7 @@ public class DatabaseAddHandler extends HttpServlet {
         }
 	}
 	
-	public boolean isNumeric(String s) //basic check to see if a string can be parsed to a number 
+	public boolean isNumeric(String s) 
 	{  
 		return s.matches("[-+]?\\d*\\.?\\d+");  
 	}  

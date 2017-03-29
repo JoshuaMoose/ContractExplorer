@@ -71,30 +71,33 @@
 					</tr>
 									
 					<tr>
-						<th>Contact ID</th>
-						<th>Organization ID</th>
-						<th>Role</th>
-						<th>First Name</th>
-						<th>Middle Name</th>
-						<th>Last Name</th>
-						<th>Title</th>
-						<th>Name Suffix</th>
-						<th>Address 1</th>
-						<th>Address 2</th>
-						<th>City</th>
-						<th>State/Province</th>
-						<th>Postal Code</th>
-						<th>Country</th>
-						<th>Office Phone</th>
-						<th>Mobile Phone</th>
-						<th>Home Phone</th>
-						<th>Primary Email</th>
-						<th>Alt Email</th>
+						<th value="cont_id">Contact ID</th>
+						<th value="cont_org_id">Organization ID</th>
+						<th value="cont_role_cd">Role</th>
+						<th value="cont_first_name">First Name</th>
+						<th value="cont_middle_name">Middle Name</th>
+						<th value="cont_last_name">Last Name</th>
+						<th value="cont_name_title">Title</th>
+						<th value="cont_name_suffix">Name Suffix</th>
+						<th value="cont_addr1">Address 1</th>
+						<th value="cont_addr2">Address 2</th>
+						<th value="cont_city">City</th>
+						<th value="cont_state_prov_cd">State/Province</th>
+						<th value="cont_post_cd">Postal Code</th>
+						<th value="cont_cntry_cd">Country</th>
+						<th value="cont_office_phone">Office Phone</th>
+						<th value="cont_mobile_phone">Mobile Phone</th>
+						<th value="cont_home_phone">Home Phone</th>
+						<th value="cont_email">Primary Email</th>
+						<th value="cont_alt_email">Alt Email</th>
 						<th>Edit</th>
 					</tr>
 
 					<tr ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}">
-						<td>{{ x.cont_id }}</td>
+						<td>
+							<span data-ng-hide="editMode">{{ x.cont_id }}</span>
+							<input type="text" data-ng-show="editMode" data-ng-model="x.cont_id" data-ng-required />
+						</td>
 						<!-- The special block here will swap to being input boxes when the -->
 						<td>
 							<span data-ng-hide="editMode">{{x.cont_org_id}}</span>
@@ -170,7 +173,7 @@
 						</td>
 						<td>
 							<button type="submit" data-ng-hide="editMode" data-ng-click="editMode = true; editResults(x)" class="btn btn-default">Edit</button>
-							<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false" class="btn btn-default">Save</button>
+							<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; saveField(x)" class="btn btn-default">Save</button>
 							<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; cancel()" class="btn btn-default">Cancel</button>
 						</td>
 					</tr>	
