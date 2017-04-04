@@ -103,12 +103,12 @@ app.controller('initCtrl', function($scope, $http) { //On page load, this conrol
 			//$scope.editing = false;
 			console.log(editData);
 			
-			/*$http({
+			$http({
 				method : 'POST',
 				url : 'DatabaseEditHandler',
 				contentType: 'application/json',
 				data : editData,
-			})*/
+			})
 			
 		}       
 	};
