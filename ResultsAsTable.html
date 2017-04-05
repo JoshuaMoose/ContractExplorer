@@ -46,142 +46,142 @@
 				<!--button type="submit" value="clearResults">Clear Results</button-->
 				
 				<div id="scrollView" style="max-height:100%; overflow:auto; border:1px solid;">
-				<table style="padding: 3px;">
-					
-					<tr>
-						<td><input ng-model="f.cont_id" placeholder="Filter by Contact ID"></td>
-						<td><input ng-model="f.cont_org_id" placeholder="Filter by Organization ID"></td>
-						<td><input ng-model="f.cont_role_cd" placeholder="Filter by Role CD"></td>
-						<td><input ng-model="f.cont_first_name" placeholder="Filter by First Name"></td>
-						<td><input ng-model="f.cont_middle_name" placeholder="Filter by Middle Name"></td>
-						<td><input ng-model="f.cont_last_name" placeholder="Filter by Last name"></td>
-						<td><input ng-model="f.cont_name_title" placeholder="Filter by Name Title"></td>
-						<td><input ng-model="f.cont_name_suffix" placeholder="Filter by Name Suffix"></td>
-						<td><input ng-model="f.cont_addr1" placeholder="Filter by Address 1"></td>
-						<td><input ng-model="f.cont_addr2" placeholder="Filter by Address 2"></td>
-						<td><input ng-model="f.cont_city" placeholder="Filter by City"></td>
-						<td><input ng-model="f.cont_state_prov_cd" placeholder="Filter by State/Province"></td>
-						<td><input ng-model="f.cont_post_cd" placeholder="Filter by Postal Code"></td>
-						<td><input ng-model="f.cont_cntry_cd" placeholder="Filter by Country"></td>
-						<td><input ng-model="f.cont_office_phone" placeholder="Filter by Office Number"></td>
-						<td><input ng-model="f.cont_mobile_phone" placeholder="Filter by Mobile Number"></td>
-						<td><input ng-model="f.cont_home_phone" placeholder="Filter by Home Number"></td>
-						<td><input ng-model="f.cont_email" placeholder="Filter by Email"></td>
-						<td><input ng-model="f.cont_alt_email" placeholder="Filter by Alt Email"></td>
-					</tr>
-									
-					<tr>
-						<th value="cont_id">Contact ID</th>
-						<th value="cont_org_id">Organization ID</th>
-						<th value="cont_role_cd">Role</th>
-						<th value="cont_first_name">First Name</th>
-						<th value="cont_middle_name">Middle Name</th>
-						<th value="cont_last_name">Last Name</th>
-						<th value="cont_name_title">Title</th>
-						<th value="cont_name_suffix">Name Suffix</th>
-						<th value="cont_addr1">Address 1</th>
-						<th value="cont_addr2">Address 2</th>
-						<th value="cont_city">City</th>
-						<th value="cont_state_prov_cd">State/Province</th>
-						<th value="cont_post_cd">Postal Code</th>
-						<th value="cont_cntry_cd">Country</th>
-						<th value="cont_office_phone">Office Phone</th>
-						<th value="cont_mobile_phone">Mobile Phone</th>
-						<th value="cont_home_phone">Home Phone</th>
-						<th value="cont_email">Primary Email</th>
-						<th value="cont_alt_email">Alt Email</th>
-						<th>Edit</th>
-					</tr>
+					<table style="padding: 3px;">
+						
+						<tr>
+							<td><input ng-model="f.cont_id" placeholder="Filter by Contact ID"></td>
+							<td><input ng-model="f.cont_org_id" placeholder="Filter by Organization ID"></td>
+							<td><input ng-model="f.cont_role_cd" placeholder="Filter by Role CD"></td>
+							<td><input ng-model="f.cont_first_name" placeholder="Filter by First Name"></td>
+							<td><input ng-model="f.cont_middle_name" placeholder="Filter by Middle Name"></td>
+							<td><input ng-model="f.cont_last_name" placeholder="Filter by Last name"></td>
+							<td><input ng-model="f.cont_name_title" placeholder="Filter by Name Title"></td>
+							<td><input ng-model="f.cont_name_suffix" placeholder="Filter by Name Suffix"></td>
+							<td><input ng-model="f.cont_addr1" placeholder="Filter by Address 1"></td>
+							<td><input ng-model="f.cont_addr2" placeholder="Filter by Address 2"></td>
+							<td><input ng-model="f.cont_city" placeholder="Filter by City"></td>
+							<td><input ng-model="f.cont_state_prov_cd" placeholder="Filter by State/Province"></td>
+							<td><input ng-model="f.cont_post_cd" placeholder="Filter by Postal Code"></td>
+							<td><input ng-model="f.cont_cntry_cd" placeholder="Filter by Country"></td>
+							<td><input ng-model="f.cont_office_phone" placeholder="Filter by Office Number"></td>
+							<td><input ng-model="f.cont_mobile_phone" placeholder="Filter by Mobile Number"></td>
+							<td><input ng-model="f.cont_home_phone" placeholder="Filter by Home Number"></td>
+							<td><input ng-model="f.cont_email" placeholder="Filter by Email"></td>
+							<td><input ng-model="f.cont_alt_email" placeholder="Filter by Alt Email"></td>
+						</tr>
+										
+						<tr>
+							<th value="cont_id">Contact ID</th>
+							<th value="cont_org_id">Organization ID</th>
+							<th value="cont_role_cd">Role</th>
+							<th value="cont_first_name">First Name</th>
+							<th value="cont_middle_name">Middle Name</th>
+							<th value="cont_last_name">Last Name</th>
+							<th value="cont_name_title">Title</th>
+							<th value="cont_name_suffix">Name Suffix</th>
+							<th value="cont_addr1">Address 1</th>
+							<th value="cont_addr2">Address 2</th>
+							<th value="cont_city">City</th>
+							<th value="cont_state_prov_cd">State/Province</th>
+							<th value="cont_post_cd">Postal Code</th>
+							<th value="cont_cntry_cd">Country</th>
+							<th value="cont_office_phone">Office Phone</th>
+							<th value="cont_mobile_phone">Mobile Phone</th>
+							<th value="cont_home_phone">Home Phone</th>
+							<th value="cont_email">Primary Email</th>
+							<th value="cont_alt_email">Alt Email</th>
+							<th>Edit</th>
+						</tr>
 
-					<tr ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}">
-						<td>
-							<span data-ng-hide="editMode">{{ x.cont_id }}</span>
-							<input type="text" data-ng-show="editMode" data-ng-model="x.cont_id" data-ng-required />
-						</td>
-						<!-- The special block here will swap to being input boxes when the -->
-						<td>
-							<span data-ng-hide="editMode">{{x.cont_org_id}}</span>
-							<input type="text" data-ng-show="editMode" data-ng-model="x.cont_org_id" data-ng-required />
-						</td>
-						<td>
-							<span data-ng-hide="editMode">{{x.cont_role_cd}}</span>
-							<input type="text" data-ng-show="editMode" data-ng-model="x.cont_role_cd" data-ng-required />
-						</td>
-						<td>
-							<span data-ng-hide="editMode">{{x.cont_first_name}}</span>
-							<input type="text" data-ng-show="editMode" data-ng-model="x.cont_first_name" data-ng-required />
-						</td>
-						<td>
-							<span data-ng-hide="editMode">{{x.cont_middle_name}}</span>
-							<input type="text" data-ng-show="editMode" data-ng-model="x.cont_middle_name" data-ng-required />
-						</td>
-						<td>
-							<span data-ng-hide="editMode">{{x.cont_last_name}}</span>
-							<input type="text" data-ng-show="editMode" data-ng-model="x.cont_last_name" data-ng-required />
-						</td>
-						<td>
-							<span data-ng-hide="editMode">{{x.cont_name_title}}</span>
-							<input type="text" data-ng-show="editMode" data-ng-model="x.cont_name_title" data-ng-required />
-						</td>
-						<td>
-							<span data-ng-hide="editMode">{{x.cont_name_suffix}}</span>
-							<input type="text" data-ng-show="editMode" data-ng-model="x.cont_name_suffix" data-ng-required />
-						</td>
-						<td>
-							<span data-ng-hide="editMode">{{x.cont_addr1}}</span>
-							<input type="text" data-ng-show="editMode" data-ng-model="x.cont_addr1" data-ng-required />
-						</td>
-						<td>
-							<span data-ng-hide="editMode">{{x.cont_addr2}}</span>
-							<input type="text" data-ng-show="editMode" data-ng-model="x.cont_addr2" data-ng-required />
-						</td>
-						<td>
-							<span data-ng-hide="editMode">{{x.cont_city}}</span>
-							<input type="text" data-ng-show="editMode" data-ng-model="x.cont_city" data-ng-required />
-						</td>
-						<td>
-							<span data-ng-hide="editMode">{{x.cont_state_prov_cd}}</span>
-							<input type="text" data-ng-show="editMode" data-ng-model="x.cont_state_prov_cd" data-ng-required />
-						</td>
-						<td>
-							<span data-ng-hide="editMode">{{x.cont_post_cd}}</span>
-							<input type="text" data-ng-show="editMode" data-ng-model="x.cont_post_cd" data-ng-required />
-						</td>
-						<td>
-							<span data-ng-hide="editMode">{{x.cont_cntry_cd}}</span>
-							<input type="text" data-ng-show="editMode" data-ng-model="x.cont_cntry_cd" data-ng-required />
-						</td>
-						<td>
-							<span data-ng-hide="editMode">{{x.cont_office_phone}}</span>
-							<input type="text" data-ng-show="editMode" data-ng-model="x.cont_office_phone" data-ng-required />
-						</td>
-						<td>
-							<span data-ng-hide="editMode">{{x.cont_mobile_phone}}</span>
-							<input type="text" data-ng-show="editMode" data-ng-model="x.cont_mobile_phone" data-ng-required />
-						</td>
-						<td>
-							<span data-ng-hide="editMode">{{x.cont_home_phone}}</span>
-							<input type="text" data-ng-show="editMode" data-ng-model="x.cont_home_phone" data-ng-required />
-						</td>
-						<td>
-							<span data-ng-hide="editMode">{{x.cont_email}}</span>
-							<input type="text" data-ng-show="editMode" data-ng-model="x.cont_email" data-ng-required />
-						</td>
-						<td>
-							<span data-ng-hide="editMode">{{x.cont_alt_email}}</span>
-							<input type="text" data-ng-show="editMode" data-ng-model="x.cont_alt_email" data-ng-required />
-						</td>
-						<td>
-							<button type="submit" data-ng-hide="editMode" data-ng-click="editMode = true; editResults(x)" class="btn btn-default">Edit</button>
-							<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; saveField(x)" class="btn btn-default">Save</button>
-							<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; cancel()" class="btn btn-default">Cancel</button>
-						</td>
-					</tr>	
-				</table>
-			</div>
+						<tr ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}">
+							<td>
+								<span data-ng-hide="editMode">{{ x.cont_id }}</span>
+								<input type="text" data-ng-show="editMode" data-ng-model="x.cont_id" data-ng-required />
+							</td>
+							<!-- The special block here will swap to being input boxes when the -->
+							<td>
+								<span data-ng-hide="editMode">{{x.cont_org_id}}</span>
+								<input type="text" data-ng-show="editMode" data-ng-model="x.cont_org_id" data-ng-required />
+							</td>
+							<td>
+								<span data-ng-hide="editMode">{{x.cont_role_cd}}</span>
+								<input type="text" data-ng-show="editMode" data-ng-model="x.cont_role_cd" data-ng-required />
+							</td>
+							<td>
+								<span data-ng-hide="editMode">{{x.cont_first_name}}</span>
+								<input type="text" data-ng-show="editMode" data-ng-model="x.cont_first_name" data-ng-required />
+							</td>
+							<td>
+								<span data-ng-hide="editMode">{{x.cont_middle_name}}</span>
+								<input type="text" data-ng-show="editMode" data-ng-model="x.cont_middle_name" data-ng-required />
+							</td>
+							<td>
+								<span data-ng-hide="editMode">{{x.cont_last_name}}</span>
+								<input type="text" data-ng-show="editMode" data-ng-model="x.cont_last_name" data-ng-required />
+							</td>
+							<td>
+								<span data-ng-hide="editMode">{{x.cont_name_title}}</span>
+								<input type="text" data-ng-show="editMode" data-ng-model="x.cont_name_title" data-ng-required />
+							</td>
+							<td>
+								<span data-ng-hide="editMode">{{x.cont_name_suffix}}</span>
+								<input type="text" data-ng-show="editMode" data-ng-model="x.cont_name_suffix" data-ng-required />
+							</td>
+							<td>
+								<span data-ng-hide="editMode">{{x.cont_addr1}}</span>
+								<input type="text" data-ng-show="editMode" data-ng-model="x.cont_addr1" data-ng-required />
+							</td>
+							<td>
+								<span data-ng-hide="editMode">{{x.cont_addr2}}</span>
+								<input type="text" data-ng-show="editMode" data-ng-model="x.cont_addr2" data-ng-required />
+							</td>
+							<td>
+								<span data-ng-hide="editMode">{{x.cont_city}}</span>
+								<input type="text" data-ng-show="editMode" data-ng-model="x.cont_city" data-ng-required />
+							</td>
+							<td>
+								<span data-ng-hide="editMode">{{x.cont_state_prov_cd}}</span>
+								<input type="text" data-ng-show="editMode" data-ng-model="x.cont_state_prov_cd" data-ng-required />
+							</td>
+							<td>
+								<span data-ng-hide="editMode">{{x.cont_post_cd}}</span>
+								<input type="text" data-ng-show="editMode" data-ng-model="x.cont_post_cd" data-ng-required />
+							</td>
+							<td>
+								<span data-ng-hide="editMode">{{x.cont_cntry_cd}}</span>
+								<input type="text" data-ng-show="editMode" data-ng-model="x.cont_cntry_cd" data-ng-required />
+							</td>
+							<td>
+								<span data-ng-hide="editMode">{{x.cont_office_phone}}</span>
+								<input type="text" data-ng-show="editMode" data-ng-model="x.cont_office_phone" data-ng-required />
+							</td>
+							<td>
+								<span data-ng-hide="editMode">{{x.cont_mobile_phone}}</span>
+								<input type="text" data-ng-show="editMode" data-ng-model="x.cont_mobile_phone" data-ng-required />
+							</td>
+							<td>
+								<span data-ng-hide="editMode">{{x.cont_home_phone}}</span>
+								<input type="text" data-ng-show="editMode" data-ng-model="x.cont_home_phone" data-ng-required />
+							</td>
+							<td>
+								<span data-ng-hide="editMode">{{x.cont_email}}</span>
+								<input type="text" data-ng-show="editMode" data-ng-model="x.cont_email" data-ng-required />
+							</td>
+							<td>
+								<span data-ng-hide="editMode">{{x.cont_alt_email}}</span>
+								<input type="text" data-ng-show="editMode" data-ng-model="x.cont_alt_email" data-ng-required />
+							</td>
+							<td>
+								<button type="submit" data-ng-hide="editMode" data-ng-click="editMode = true; editResults(x)" class="btn btn-default">Edit</button>
+								<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; saveField(x)" class="btn btn-default">Save</button>
+								<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; cancel()" class="btn btn-default">Cancel</button>
+							</td>
+						</tr>	
+					</table>
+				</div>
 	
 						<!--End search for contacts-->
-		</div>
+			</div>
 	
 	</div>
 	
