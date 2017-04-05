@@ -10,7 +10,180 @@
 <body>
 
 <div class="container">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>SuprTEK Contract Application</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="customcss.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="js\angular.min.js"></script>
+  <script src="js\appController.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="resultsCtrl">
 
+<div class="container">
+	<!-- Logo -->
+	<div class="page-header">
+  		<img src="images/SuprTEKLogo.jpg" alt="Logo" id="logo">
+	</div>
+	
+	<!--Navigation Tabs  SET ACTIVE PAGE/-->
+	<div class="well">
+		<div id="tabs" class="row">
+			<ul class="nav nav-tabs" role="tablist">
+				<li><a href="Home.html">Home</a></li>
+				<li><a href="Contracts.html">Contracts</a></li>
+				<li><a href="Organizations.html">Organizations</a></li>
+				<li><a href="Contacts.html">Contacts</a></li>
+				<li><a href="Directives.html">Directives</a></li>  
+				<li><a href="Releases.html">Releases</a></li>
+				<li><a href="DataSets.html">Data Sets</a></li>
+				<li><a href="ExpertRegulations.html">Expert Regulations</a></li>
+				<li><a href="Travel.html">Travel</a></li>
+				<li class="active"><a href="Devices.html">Devices</a></li>
+				<li><a href="Codes.html">Codes</a></li>		
+				<li><a href="Reports.html">Reports</a></li>					
+			 </ul>
+		</div>
+		
+		<div class="panel-group" id="accordion">
+			<div class="panel panel-default">
+			    <div class="panel-heading">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapse1"><h2>SEARCH PAGE NAME</h2></a>
+					</h4>
+			    </div>
+				<div id="collapse1" class="panel-collapse collapse in">
+					<div class="panel-body">
+						<!--Search for contacts-->
+						
+						<input type="text" name="SearchBy" ng-model="search.$" placeholder="Search Results">
+						<button type="submit" value="contacts" name="SearchButton" data-toggle="collapse" data-target="#search" ng-click="myFunction()">Search</button>
+						<span><a href="ResultsAsTable.html">Advanced Search</a></span>
+		
+		
+		<!-- Table Start**************************** -->				
+				<div id="search" ng-controller="initCtrl">
+					
+					<!--button type="submit" value="clearResults">Clear Results</button-->
+					
+					<div id="scrollView" style="max-height:100%; overflow:auto; border:1px solid;">
+						<table style="padding: 3px;">
+							
+							<tr>
+								<td><input ng-model="f.dev_id" placeholder="Filter by Device ID"></td>
+								<td><input ng-model="f.dev_type" placeholder="Filter by Device Type"></td>
+								<td><input ng-model="f.dev_desc" placeholder="Filter by Device Describe"></td>
+								<td><input ng-model="f.dev_owner" placeholder="Filter by Device Owner"></td>
+								<td><input ng-model="f.dev_user_id" placeholder="Filter by Device User ID"></td>
+								<td><input ng-model="f.dev_sn" placeholder="Filter by Device Serial Number"></td>
+								</tr>
+											
+							<tr>
+								<th value="dev_id">Device ID</th>
+								<th value="dev_type">Device Type</th>
+								<th value="dev_desc">Device Description</th>
+								<th value="dev_owner">Device Owner</th>
+								<th value="dev_user_id">Device User ID</th>
+								<th value="dev_sn">Device Serial Number</th>
+								<th>Edit</th>
+							</tr>
+
+							<tr ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}">
+								<td>
+									<span data-ng-hide="editMode">{{ x.dev_id }}</span>
+									<input type="text" data-ng-show="editMode" data-ng-model="x.dev_id" data-ng-required />
+								</td>
+								<!-- The special block here will swap to being input boxes when the -->
+								<td>
+									<span data-ng-hide="editMode">{{x.dev_type}}</span>
+									<input type="text" data-ng-show="editMode" data-ng-model="x.dev_type" data-ng-required />
+								</td>
+								<td>
+									<span data-ng-hide="editMode">{{x.dev_description}}</span>
+									<input type="text" data-ng-show="editMode" data-ng-model="x.dev_descriptio" data-ng-required />
+								</td>
+								<td>
+									<span data-ng-hide="editMode">{{x.dev_owner}}</span>
+									<input type="text" data-ng-show="editMode" data-ng-model="x.dev_owner" data-ng-required />
+								</td>
+								<td>
+									<span data-ng-hide="editMode">{{x.dev_user_id}}</span>
+									<input type="text" data-ng-show="editMode" data-ng-model="x.dev_user_id" data-ng-required />
+								</td>
+								<td>
+									<span data-ng-hide="editMode">{{x.dev_sn}}</span>
+									<input type="text" data-ng-show="editMode" data-ng-model="x.dev_sn" data-ng-required />
+								</td>
+							</tr>	
+						</table>
+					</div>
+	
+						<!--End search for contacts-->
+				</div>
+				<!-- Table end ********************************-->
+				
+				
+				
+						<!--End search for contacts-->
+					</div>
+				</div>
+			</div>
+			
+			<!-- ADDING BLOCK ********************************-->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapse2"><h2>Add New Contact</h2></a>
+					</h4>
+				</div>
+				<div id="collapse2" class="panel-collapse collapse" ng-controller="addContactCtrl">
+					<div class="panel-body">
+						<!--Add new contact-->
+						<div> <!-- ng-app="myApp" ng-controller="formCtrl" ~~removed bc unused-->
+							<div class="row">
+								<div class="col-lg-3">Device ID:</div>
+								<div class="col-lg-3"><input type="text" ng-model="add_dev_id"></div>
+								<div class="col-lg-3">Device Type:</div>
+								<div class="col-lg-3"><input type="text" ng-model="add_dev_type"></div>
+							</div><!--row-->
+							
+							
+							
+							<div class="row">
+								<div class="col-lg-3">Device Describe:</div>
+								<div class="col-lg-3"><input type="text" ng-model="add_dev_desc"></div>
+								<div class="col-lg-3">Device Owner:</div>
+								<div class="col-lg-3"><input type="text" ng-model="add_dev_owner"></div>
+							</div><!--row-->
+							
+							<div class="row">
+								<div class="col-lg-3">Device User ID:</div>
+								<div class="col-lg-3"><input type="text" ng-model="add_dev_user_ID"></div>
+								<div class="col-lg-3">Device Serial Number:</div>
+								<div class="col-lg-3"><input type="text" ng-model="add_dev_sn"></div>
+							</div><!--row-->
+						</div>
+						<!---End add new contact-->
+					</div>
+				</div>
+			</div>
+			<!-- ADDING BLOCK END *********************************************** -->
+			
+			
+			
+		</div><!--accordian-->
+	
+	</div><!--well-->
+
+</div><!--container-->
+
+</body>
+</html>
 	<div class="page-header">
   		<img src="images/SuprTEKLogo.jpg" alt="Logo" style="width:170px;height:132px;">
 	</div>
