@@ -8,8 +8,10 @@
   <link rel="stylesheet" href="customcss.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="js\angular.min.js"></script>
+  <script src="js\appController.js"></script>
 </head>
-<body>
+<body ng-app="myApp" ng-controller="resultsCtrl">
 
 <div class="container">
 	<!-- Logo -->
@@ -35,68 +37,168 @@
 				<li><a href="Reports.html">Reports</a></li>					
 			 </ul>
 		</div>
-		<div id="page" class="formPages">
-			<!-- SearchBox -->
-			<div id="searchBy">
-			<h2>Search for Contract</h2>
-			<h4 class="boxLabel">Search By:</h4>
-			
-			<select id="searchByDropdown" class = "dropdown">
-				<option value="Contract">Contract</option>
-				<option value="Organization">Organization</option>
-				<option value="ContractType">Contract Type</option>
-				<option value="Contractor">Contractor</option>
-			</select>
-			<form > 
-				<input id="searchByInput" type="text" name="SearchBy">
-				<input id="searchButton" type="submit" value="Search" name="SearchButton">
-			</form>
-			</div>
-			
-			<!-- Form -->
-			<div id="AddNew" ng-app="myApp" ng-controller="formCtrl">
-				<form>
-					<h2>Add New Release</h2>
-					
-					<h4 class="boxLabel">Release ID:</h4>
-							<input class="formBox" type="text" ng-model="relID">
-							
-					<h4 class="boxLabel">Directive ID:</h4>
-						<select class = "dropdown formBox" ng-model="dirID">
-							<option value="example">[Example Entry]
-						</select>
+		<!--End Nav Tabs-->
+		
+		<div class="panel-group" id="accordion">
+			<div class="panel panel-default">
+			    <div class="panel-heading">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapse1"><h2>Search Releases</h2></a>
+					</h4>
+			    </div>
+				<div id="collapse1" class="panel-collapse collapse in">
+					<div class="panel-body">
+						<!--Search for contacts-->
 						
-					<h4 class="boxLabel">Released by ID:</h4>
-						<select class = "dropdown formBox" ng-model="relbyID">
-							<option value="shaffer">Dan Shaffer
-							<option value="lecours">Michael Lecours
-						</select>
+						<input type="text" name="SearchBy" ng-model="search.$" placeholder="Search Results">
+						<button type="submit" value="contacts" name="SearchButton" data-toggle="collapse" data-target="#search" ng-click="myFunction()">Search</button>
+						<span><a href="ResultsAsTable.html">Advanced Search</a></span>
+		
+		
+		<!-- Table Start**************************** -->				
+				<div id="search" ng-controller="initCtrl">
 					
-					<h4 class="boxLabel">Release Date:</h4>
-							<input class="formBox" type="text" ng-model="relDate">
-							
-					<h4 class="boxLabel">Recieved by ID:</h4>
-						<select class = "dropdown formBox" ng-model="recbyID">
-							<option value="bingham">Brent Bingham
-							<option value="shaffer">Dan Shaffer
-							<option value="lear">Kirk Lear
-							<option value="lecours">Michael Lecours
-						</select>
+					<!--button type="submit" value="clearResults">Clear Results</button-->
 					
-					<h4 class="boxLabel">Recieve Date:</h4>
-							<input class="formBox" type="text" ng-model="recDate">
+					<div id="scrollView" style="max-height:100%; overflow:auto; border:1px solid;">
+						<table style="padding: 3px;">
 							
-					<h4 class="boxLabel">Recieving Country:</h4>
-							<input class="formBox" type="text" ng-model="recCon">
-							
-					<h4 class="boxLabel">Data Sets for this Release:</h4> 
-							<textarea class="paraBox" type="text" ng-model="dataSets"></textarea>
-				</form>
-			</div>
-		</div>
-	</div>
+							<tr>
+								<td><input ng-model="f.rel_id" placeholder="Filter by Release ID"></td>
+								<td><input ng-model="f.dir_id" placeholder="Filter by Directive ID"></td>
+								<td><input ng-model="f.rel_by" placeholder="Filter by Released by ID"></td>
+								<td><input ng-model="f.rel_date" placeholder="Filter by Release Date"></td>
+								<td><input ng-model="f.recv_by" placeholder="Filter by Recieved by ID"></td>
+								<td><input ng-model="f.recv_date" placeholder="Filter by Recieved Date"></td>
+								<td><input ng-model="f.rel_cntry_cd" placeholder="Filter by Recieving Countries"></td>
+							</tr>
+											
+							<tr>
+								<th value="rel_id">Release ID</th>
+								<th value="dir_id">Directive ID</th>
+								<th value="rel_by">Released by ID</th>
+								<th value="rel_date">Release Date</th>
+								<th value="recv_by">Recieved by ID</th>
+								<th value="recv_date">Recieved Date</th>
+								<th value="rel_cntry_cd">Recieving Country</th>
+								<th>Edit</th>
+							</tr>
 
-</div>
+							<tr ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}">
+								<td>
+									<span data-ng-hide="editMode">{{ x.rel_id }}</span>
+									<input type="text" data-ng-show="editMode" data-ng-model="x.rel_id" data-ng-required />
+								</td>
+								<!-- The special block here will swap to being input boxes when the -->
+								<td>
+									<span data-ng-hide="editMode">{{x.dir_id}}</span>
+									<input type="text" data-ng-show="editMode" data-ng-model="x.dir_id" data-ng-required />
+								</td>
+								<td>
+									<span data-ng-hide="editMode">{{x.rel_by}}</span>
+									<input type="text" data-ng-show="editMode" data-ng-model="x.rel_by" data-ng-required />
+								</td>
+								<td>
+									<span data-ng-hide="editMode">{{x.rel_date}}</span>
+									<input type="text" data-ng-show="editMode" data-ng-model="x.rel_date" data-ng-required />
+								</td>
+								<td>
+									<span data-ng-hide="editMode">{{x.recv_by}}</span>
+									<input type="text" data-ng-show="editMode" data-ng-model="x.recv_by" data-ng-required />
+								</td>
+								<td>
+									<span data-ng-hide="editMode">{{x.recv_date}}</span>
+									<input type="text" data-ng-show="editMode" data-ng-model="x.recv_date" data-ng-required />
+								</td>
+								<td>
+									<span data-ng-hide="editMode">{{x.rel_cntry_cd}}</span>
+									<input type="text" data-ng-show="editMode" data-ng-model="x.rel_cntry_cd" data-ng-required />
+								</td>
+								<td>
+									<button type="submit" data-ng-hide="editMode" data-ng-click="editMode = true; editResults(x)" class="btn btn-default">Edit</button>
+									<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; saveField(x)" class="btn btn-default">Save</button>
+									<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; cancel()" class="btn btn-default">Cancel</button>
+								</td>
+							</tr>	
+						</table>
+					</div>
+	
+						<!--End search for contacts-->
+				</div>
+				<!-- Table end ********************************-->
+				
+				
+				
+						<!--End search for contacts-->
+					</div>
+				</div>
+			</div>
+			
+			<!-- ADDING BLOCK ********************************-->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapse2"><h2>Add New Contract</h2></a>
+					</h4>
+				</div>
+				<div id="collapse2" class="panel-collapse collapse" ng-controller="addContractCtrl">
+					<div class="panel-body">
+						<!--Add new contact-->
+						<div> <!-- ng-app="myApp" ng-controller="formCtrl" ~~removed bc unused-->
+							<div class="row">
+								<div class="col-lg-3">Release ID:</div>
+								<div class="col-lg-3"><input type="text" ng-model="rel_id"></div>
+								<div class="col-lg-3">Directive ID:</div>
+								<div class="col-lg-3"><input type="text" ng-model="dir_id"></div>
+							</div><!--row-->
+							
+							<div class="row">
+								<div class="col-lg-3">Released by ID:</div>
+								<div class="col-lg-3"><select class = "dropdown" ng-model="rel_by">
+											<option value="Dan Shaffer">Dan Shaffer
+											<option value="Michael Lecours">Michael Lecours
+									</select></div>
+								<div class="col-lg-3">Release Date:</div>
+								<div class="col-lg-3"><input type="text" ng-model="rel_date"></div>
+							</div><!--row-->
+							
+							<div class="row">
+								<div class="col-lg-3">Recieved by ID:</div>
+								<div class="col-lg-3"><select class="dropdown" ng-model="recv_by"></div>
+											<option value="Kirk Lear">Kirk Lear
+											<option value="Brent Bingham">Brent Bingham
+											<option value="Dan Shaffer">Dan Shaffer
+											<option value="Michael Lecours">Michael Lecours
+									</select></div>
+								<div class="col-lg-3">Recieved Date:</div>
+								<div class="col-lg-3"><input type="text" ng-model="recv_date"></div>
+							</div><!--row-->
+							
+							<div class="row">
+								<div class="col-lg-3">Recieving Country:</div>
+								<div class="col-lg-3"><input type="text" ng-model="rel_cntry_cd"></div>
+								<div class="col-lg-3">Data Sets for this Release:</div>
+								<div class="col-lg-3"><input type="text" ng-model="unknown"></div> <!--no known ng model-->
+							</div><!--row-->
+							
+							<div class="row">
+								<div class="col-lg-6"><button type="submit" value="contacts" ng-click="addFunction()" >Add New Contract</button></div>
+							</div><!--row-->
+							
+						</div>
+						<!---End add new contact-->
+					</div>
+				</div>
+			</div>
+			<!-- ADDING BLOCK END *********************************************** -->
+			
+			
+			
+		</div><!--accordian-->
+	
+	</div><!--well-->
+
+</div><!--container-->
 
 </body>
 </html>
