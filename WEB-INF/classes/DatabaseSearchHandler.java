@@ -28,8 +28,6 @@ public class DatabaseSearchHandler extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException {
 		
-		
-
 		////// This code block reads the request data sent with the post request and parses it to a JSON object to read //////
 		List<String> columnNames = new ArrayList<String>();
 		List<JsonObject> resultList = new ArrayList<JsonObject>();
@@ -47,7 +45,7 @@ public class DatabaseSearchHandler extends HttpServlet {
 		// Convert the request data string to a JSON object so we can read it
 		JsonObject jsonRequestObject = new Gson().fromJson(requestData, JsonObject.class);
 		//Read the relevant data (table for this servlet)
-		String tableName = jsonRequestObject.get("table").toString();
+		String tableName = jsonRequestObject.get("table").getAsString();
 		
 		System.out.println("Table to be Queried: " + tableName); //Log query to console
 		
@@ -75,7 +73,7 @@ public class DatabaseSearchHandler extends HttpServlet {
 					
 					//connectionStatus = "Got Connection "+conn.toString(); //show connection status/details
                     Statement stmt = conn.createStatement(); 
-                    rst = stmt.executeQuery("select * from contrs.contacts"); //contains query Contact
+                    rst = stmt.executeQuery("select * from contrs." + tableName); //contains query Contact
                     
 					ResultSetMetaData rstm = rst.getMetaData(); //Contains details like row count and column names for auto populating and creating table
 					int numOfColumns = rstm.getColumnCount(); //metadata from table to know how to build dynamically

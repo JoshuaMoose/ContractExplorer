@@ -46,6 +46,7 @@ public class DatabaseEditHandler extends HttpServlet {
 		JsonObject original = jsonRequestObject.getAsJsonObject("original");
 		JsonObject updated = jsonRequestObject.getAsJsonObject("updated");
 		
+		
 		Set<Map.Entry<String, JsonElement>> entries = original.entrySet();//will return members of your object
 		
 		for (Map.Entry<String, JsonElement> entry: entries) {
@@ -53,24 +54,26 @@ public class DatabaseEditHandler extends HttpServlet {
 			addNames.add(entry.getKey().toString());
 		}
 		
-		for (int i = 1; i < addNames.size(); i++) {
+		for (int i = 0; i < addNames.size(); i++) {
 			//System.out.println(addNames.get(i));
 			updateTable = updateTable + addNames.get(i);
 			
-			if ( isNumeric(jsonRequestObject.get(addNames.get(i).toString()).getAsString()) ) 
+			if ( isNumeric(original.get(addNames.get(i).toString()).getAsString()) ) 
 			{
 				updateSet = updateSet + updated.get(addNames.get(i).toString()).getAsString();
-				updateWhere = updateWhere + "'" + original.get(addNames.get(i).toString()).getAsString() + "'";
+				updateWhere = updateWhere + original.get(addNames.get(i).toString()).getAsString();
 			} 
 			else {
 				updateSet = updateSet + "'" + updated.get(addNames.get(i).toString()).getAsString() + "'";
 				updateWhere = updateWhere + "'" + original.get(addNames.get(i).toString()).getAsString() + "'"; 
 			}
 			
+			System.out.println(addNames.size());
+			
 			if ( i < (addNames.size() - 1) ) {
 				updateTable = updateTable + ", ";
 				updateSet = updateSet + ", ";
-				updateWhere = updateWhere + "' ";
+				updateWhere = updateWhere + ", ";
 			}
 		}
 

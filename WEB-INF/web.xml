@@ -39,17 +39,17 @@
 		<servlet-name>DatabaseAddHandler</servlet-name>
 		<url-pattern>/DatabaseAddHandler</url-pattern>
 	</servlet-mapping>
-		
+	
 	<servlet>
-	   <servlet-name>DBTest</servlet-name>
-	   <servlet-class>DBTest</servlet-class>
+		<servlet-name>DatabaseEditHandler</servlet-name>
+		<servlet-class>DatabaseEditHandler</servlet-class>
 	</servlet>
-
+	
 	<servlet-mapping>
-	   <servlet-name>DBTest</servlet-name>
-	   <url-pattern>/DBTest</url-pattern>
+		<servlet-name>DatabaseEditHandler</servlet-name>
+		<url-pattern>/DatabaseEditHandler</url-pattern>
 	</servlet-mapping>
-		
+	
 <!--<servlet>
         <servlet-name>HelloServlet</servlet-name>
         <servlet-class>mypackage.Hello</servlet-class>

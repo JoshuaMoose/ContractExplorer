@@ -9,9 +9,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="js\angular.min.js"></script>
-  <script src="js\appController.js"></script>
+  <script src="js\contractsController.js"></script>
 </head>
-<body ng-app="myApp" ng-controller="resultsCtrl">
+<body ng-app="myApp" >
 
 <div class="container">
 	<!-- Logo -->
@@ -38,7 +38,7 @@
 			 </ul>
 		</div>
 		
-		<div class="panel-group" id="accordion">
+		<div class="panel-group" id="accordion" ng-controller="resultsCtrl">
 			<div class="panel panel-default">
 			    <div class="panel-heading">
 					<h4 class="panel-title">
@@ -55,11 +55,11 @@
 		
 		
 		<!-- Table Start**************************** -->				
-				<div id="search" ng-controller="initCtrl">
+				<div id="search" class="collapse">
 					
 					<!--button type="submit" value="clearResults">Clear Results</button-->
 					
-					<div id="scrollView" style="max-height:100%; overflow:auto; border:1px solid;">
+					<div id="scrollView" style="max-height:100%; overflow:auto; margin: 10px">
 						<table style="padding: 3px;">
 							
 							<tr>
@@ -112,11 +112,11 @@
 									<input type="text" data-ng-show="editMode" data-ng-model="x.contr_org_id" data-ng-required />
 								</td>
 								<td>
-									<span data-ng-hide="editMode">{{x.cont_end_cust_id}}</span>
+									<span data-ng-hide="editMode">{{x.contr_end_cust_id}}</span>
 									<input type="text" data-ng-show="editMode" data-ng-model="x.cont_end_cust_id" data-ng-required />
 								</td>
 								<td>
-									<span data-ng-hide="editMode">{{x.contr_type_id}}</span>
+									<span data-ng-hide="editMode">{{x.contr_type_cd}}</span>
 									<input type="text" data-ng-show="editMode" data-ng-model="x.contr_type_id" data-ng-required />
 								</td>
 								<td>
@@ -193,7 +193,7 @@
 						<a data-toggle="collapse" data-parent="#accordion" href="#collapse2"><h2>Add New Contract</h2></a>
 					</h4>
 				</div>
-				<div id="collapse2" class="panel-collapse collapse" ng-controller="addContractCtrl">
+				<div id="collapse2" class="panel-collapse collapse" ng-controller="addCtrl">
 					<div class="panel-body">
 						<!--Add new contact-->
 						<div> <!-- ng-app="myApp" ng-controller="formCtrl" ~~removed bc unused-->
