@@ -9,9 +9,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="js\angular.min.js"></script>
-  <script src="js\appController.js"></script>
+  <script src="js\contactsController.js"></script>
 </head>
-<body ng-app="myApp" ng-controller="resultsCtrl">
+<body ng-app="myApp" >
 
 <div class="container">
 	<!-- Logo -->
@@ -39,20 +39,18 @@
 		</div>
 		<!--End Nav Tabs-->
 		
-		<div class="panel-group" id="accordion">
+		<div class="panel-group" id="accordion" ng-controller="resultsCtrl">
 			<div class="panel panel-default">
 			    <div class="panel-heading">
 					<h4 class="panel-title">
-						<a data-toggle="collapse" data-parent="#accordion" href="#collapse1"><h2>SEARCH PAGE NAME</h2></a>
 						<a data-toggle="collapse" data-parent="#accordion" href="#collapse1"><h2>Search Releases</h2></a>
-
 					</h4>
 			    </div>
 				<div id="collapse1" class="panel-collapse collapse in">
 					<div class="panel-body">
 						<!--Search for contacts-->
 						
-						<button type="submit" style="margin-bottom: 10px; margin-top: 10px" class="btn btn-default" value="contacts" name="SearchButton" data-toggle="collapse" data-target="#search" ng-click="myFunction()">Load Contacts</button>
+						<button type="submit" style="margin-bottom: 10px; margin-top: 10px; margin-left: 1px;" class="btn btn-default" value="contacts" name="SearchButton" data-toggle="collapse" data-target="#search" ng-click="myFunction()">Load Contacts</button>
 						<!--span><a href="ResultsAsTable.html">Advanced Search</a></span-->
 		
 		
@@ -63,7 +61,7 @@
 					
 					<!--button type="submit" value="clearResults">Clear Results</button-->
 					
-					<div id="scrollView" style="max-height:100%; overflow:auto; border:1px solid;">
+					<div id="scrollView" style="max-height:100%; overflow:auto; margin: 10px">
 						<table style="padding: 3px;">
 							
 							<tr>
@@ -76,7 +74,7 @@
 								<td><input ng-model="f.rel_cntry_cd" placeholder="Filter by Country of Release"></td>
 							</tr>
 											
-							<tr>
+							<!--tr>
 								<th value="rel_id">Contact ID</th>
 								<th value="dir_id">Organization ID</th>
 								<th value="rel_by">Role</th>
@@ -89,7 +87,7 @@
 								<td><input ng-model="f.recv_by" placeholder="Filter by Recieved by ID"></td>
 								<td><input ng-model="f.recv_date" placeholder="Filter by Recieved Date"></td>
 								<td><input ng-model="f.rel_cntry_cd" placeholder="Filter by Recieving Countries"></td>
-							</tr>
+							</tr-->
 											
 							<tr>
 								<th value="rel_id">Release ID</th>
@@ -157,11 +155,7 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h4 class="panel-title">
-						<a data-toggle="collapse" data-parent="#accordion" href="#collapse2"><h2>Add New Contact</h2></a>
-					</h4>
-				</div>
-				<div id="collapse2" class="panel-collapse collapse" ng-controller="addContactCtrl">
-						<a data-toggle="collapse" data-parent="#accordion" href="#collapse2"><h2>Add New Contract</h2></a>
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapse2"><h2>Add New Release</h2></a>
 					</h4>
 				</div>
 				<div id="collapse2" class="panel-collapse collapse" ng-controller="addContractCtrl">
@@ -176,50 +170,22 @@
 							</div><!--row-->
 														
 							<div class="row">
-								<div class="col-lg-3">Release by ID:</div>
-								<div class="col-lg-3"><input type="text" ng-model="add_rel_id"></div>
-								<div class="col-lg-3">Release Date:</div>
-								<div class="col-lg-3"><input type="text" ng-model="add_rel_date"></div>
-								<div class="col-lg-3"><input type="text" ng-model="rel_id"></div>
-								<div class="col-lg-3">Directive ID:</div>
-								<div class="col-lg-3"><input type="text" ng-model="dir_id"></div>
-							</div><!--row-->
-							
-							<div class="row">
 								<div class="col-lg-3">Released by ID:</div>
-								<div class="col-lg-3"><select class = "dropdown" ng-model="rel_by">
-											<option value="Dan Shaffer">Dan Shaffer
-											<option value="Michael Lecours">Michael Lecours
-									</select></div>
+								<div class="col-lg-3"><input type="text" ng-model="rel_by"></div>
 								<div class="col-lg-3">Release Date:</div>
 								<div class="col-lg-3"><input type="text" ng-model="rel_date"></div>
 							</div><!--row-->
 							
 							<div class="row">
 								<div class="col-lg-3">Recieved by ID:</div>
-								<div class="col-lg-3"><input type="text" ng-model="add_recv_by"></div>
+								<div class="col-lg-3"><input type="text" ng-model="recv_by"></div>
 								<div class="col-lg-3">Recieved Date:</div>
-								<div class="col-lg-3"><input type="text" ng-model="add_recv_date"></div></div>
+								<div class="col-lg-3"><input type="text" ng-model="recv_date"></div></div>
 							</div><!--row-->
 							
 							<div class="row">
 								<div class="col-lg-3">Release Country:</div>
-								<div class="col-lg-3"><input type="text" ng-model="add_rel_cntry_cd"></div>
-								<div class="col-lg-3"><select class="dropdown" ng-model="recv_by"></div>
-											<option value="Kirk Lear">Kirk Lear
-											<option value="Brent Bingham">Brent Bingham
-											<option value="Dan Shaffer">Dan Shaffer
-											<option value="Michael Lecours">Michael Lecours
-									</select></div>
-								<div class="col-lg-3">Recieved Date:</div>
-								<div class="col-lg-3"><input type="text" ng-model="recv_date"></div>
-							</div><!--row-->
-							
-							<div class="row">
-								<div class="col-lg-3">Recieving Country:</div>
 								<div class="col-lg-3"><input type="text" ng-model="rel_cntry_cd"></div>
-								<div class="col-lg-3">Data Sets for this Release:</div>
-								<div class="col-lg-3"><input type="text" ng-model="unknown"></div> <!--no known ng model-->
 							</div><!--row-->
 							
 							<div class="row">

@@ -9,9 +9,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="js\angular.min.js"></script>
-  <script src="js\appController.js"></script>
+  <script src="js\contactsController.js"></script>
 </head>
-<body ng-app="myApp" ng-controller="resultsCtrl">
+<body ng-app="myApp" >
 
 <div class="container">
 	<!-- Logo -->
@@ -19,47 +19,49 @@
   		<img src="images/SuprTEKLogo.jpg" alt="Logo" id="logo">
 	</div>
 	
-	<!--Navigation Tabs/-->
+	<!--Navigation Tabs  SET ACTIVE PAGE/-->
 	<div class="well">
 		<div id="tabs" class="row">
 			<ul class="nav nav-tabs" role="tablist">
 				<li><a href="Home.html">Home</a></li>
 				<li><a href="Contracts.html">Contracts</a></li>
 				<li><a href="Organizations.html">Organizations</a></li>
-				<li class="active"><a href="Contacts.html">Contacts</a></li>
+				<li><a href="Contacts.html">Contacts</a></li>
 				<li><a href="Directives.html">Directives</a></li>  
 				<li><a href="Releases.html">Releases</a></li>
 				<li><a href="DataSets.html">Data Sets</a></li>
 				<li><a href="ExportRegulations.html">Export Regulations</a></li>
 				<li><a href="Travel.html">Travel</a></li>
-				<li><a href="Devices.html">Devices</a></li>
+				<li class="active"><a href="Devices.html">Devices</a></li>
 				<li><a href="Codes.html">Codes</a></li>		
 				<li><a href="Reports.html">Reports</a></li>					
 			 </ul>
 		</div>
+		<!--End Nav Tabs-->
 		
-		<div class="panel-group" id="accordion">
+		<div class="panel-group" id="accordion" ng-controller="resultsCtrl">
 			<div class="panel panel-default">
 			    <div class="panel-heading">
 					<h4 class="panel-title">
-						<a data-toggle="collapse" data-parent="#accordion" href="#collapse1"><h2>SEARCH PAGE NAME</h2></a>
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapse1"><h2>Search Devices</h2></a>
 					</h4>
 			    </div>
 				<div id="collapse1" class="panel-collapse collapse in">
 					<div class="panel-body">
 						<!--Search for contacts-->
 						
-						<input type="text" name="SearchBy" ng-model="search.$" placeholder="Search Results">
-						<button type="submit" value="contacts" name="SearchButton" data-toggle="collapse" data-target="#search" ng-click="myFunction()">Search</button>
-						<span><a href="ResultsAsTable.html">Advanced Search</a></span>
+						<button type="submit" style="margin-bottom: 10px; margin-top: 10px; margin-left: 1px;" class="btn btn-default" value="contacts" name="SearchButton" data-toggle="collapse" data-target="#search" ng-click="myFunction()">Load Contacts</button>
+						<!--span><a href="ResultsAsTable.html">Advanced Search</a></span-->
 		
 		
 		<!-- Table Start**************************** -->				
-				<div id="search" ng-controller="initCtrl">
+				<div id="search" class="collapse">
+					
+					<input type="text" name="SearchBy" style="margin: 20px; margin-bottom: -25px;" ng-model="f.$" placeholder="Search All Fields">
 					
 					<!--button type="submit" value="clearResults">Clear Results</button-->
 					
-					<div id="scrollView" style="max-height:100%; overflow:auto; border:1px solid;">
+					<div id="scrollView" style="max-height:100%; overflow:auto; margin: 10px">
 						<table style="padding: 3px;">
 							
 							<tr>
@@ -69,7 +71,7 @@
 								<td><input ng-model="f.dev_owner" placeholder="Filter by Device Owner"></td>
 								<td><input ng-model="f.dev_user_id" placeholder="Filter by Device User ID"></td>
 								<td><input ng-model="f.dev_sn" placeholder="Filter by Device Serial Number"></td>
-								</tr>
+							</tr>
 											
 							<tr>
 								<th value="dev_id">Device ID</th>
@@ -139,8 +141,6 @@
 								<div class="col-lg-3">Device Type:</div>
 								<div class="col-lg-3"><input type="text" ng-model="add_dev_type"></div>
 							</div><!--row-->
-							
-							
 							
 							<div class="row">
 								<div class="col-lg-3">Device Describe:</div>
