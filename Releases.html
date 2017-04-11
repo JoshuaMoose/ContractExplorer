@@ -9,7 +9,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="js\angular.min.js"></script>
-  <script src="js\contactsController.js"></script>
+  <script src="js\releasesController.js"></script>
 </head>
 <body ng-app="myApp" >
 
@@ -50,7 +50,7 @@
 					<div class="panel-body">
 						<!--Search for contacts-->
 						
-						<button type="submit" style="margin-bottom: 10px; margin-top: 10px; margin-left: 1px;" class="btn btn-default" value="contacts" name="SearchButton" data-toggle="collapse" data-target="#search" ng-click="myFunction()">Load Contacts</button>
+						<button type="submit" style="margin-bottom: 10px; margin-top: 10px; margin-left: 1px;" class="btn btn-default" value="contacts" name="SearchButton" data-toggle="collapse" data-target="#search" ng-click="myFunction()">Load Releases</button>
 						<!--span><a href="ResultsAsTable.html">Advanced Search</a></span-->
 		
 		
@@ -116,7 +116,6 @@
 								</td>
 								<td>
 									<span data-ng-hide="editMode">{{x.rel_date}}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.relDate" data-ng-required />
 									<input type="text" data-ng-show="editMode" data-ng-model="x.rel_date" data-ng-required />
 								</td>
 								<td>
@@ -158,15 +157,15 @@
 						<a data-toggle="collapse" data-parent="#accordion" href="#collapse2"><h2>Add New Release</h2></a>
 					</h4>
 				</div>
-				<div id="collapse2" class="panel-collapse collapse" ng-controller="addContractCtrl">
+				<div id="collapse2" class="panel-collapse collapse" ng-controller="addCtrl">
 					<div class="panel-body">
 						<!--Add new contact-->
 						<div> <!-- ng-app="myApp" ng-controller="formCtrl" ~~removed bc unused-->
 							<div class="row">
 								<div class="col-lg-3">Release ID:</div>
-								<div class="col-lg-3"><input type="text" ng-model="add_rel_id"></div>
+								<div class="col-lg-3"><input type="text" ng-model="rel_id"></div>
 								<div class="col-lg-3">Directive ID:</div>
-								<div class="col-lg-3"><input type="text" ng-model="add_dir_id"></div>
+								<div class="col-lg-3"><input type="text" ng-model="dir_id"></div>
 							</div><!--row-->
 														
 							<div class="row">
@@ -189,7 +188,7 @@
 							</div><!--row-->
 							
 							<div class="row">
-								<div class="col-lg-6"><button type="submit" value="contacts" ng-click="addFunction()" >Add New Contract</button></div>
+								<div class="col-lg-6"><button type="submit" value="contacts" ng-click="addFunction()" >Add New Releases</button></div>
 							</div><!--row-->
 							
 						</div>

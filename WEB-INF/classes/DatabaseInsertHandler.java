@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.util.*;
 //import java.util.ArrayList;
 
-import javax.servlet.*; //find specifics later
+import javax.servlet.*; 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,17 +18,12 @@ import com.google.gson.*;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
  
-public class DatabaseAddHandler extends HttpServlet {
+public class DatabaseInsertHandler extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException {
 		
-		List addNames = new ArrayList();
-		
-		//System.out.println("Post request made to DatabaseAddHandler."); //Console Logging
-		
-		
-		//Get json request object from the webpage
+		//Get json-formatted request object from the webpage
 		StringBuilder sb = new StringBuilder();
         BufferedReader br = request.getReader();
         String str = null;
@@ -36,35 +31,41 @@ public class DatabaseAddHandler extends HttpServlet {
             sb.append(str);
         }
 		String requestData = sb.toString();
+		//End request builder
+		
+		//Variable Declarations
+		List <String> addNames = new ArrayList<String>();
 		
 		JsonObject jsonRequestObject = new Gson().fromJson(requestData, JsonObject.class); //parse the json as a string to a json object
-		
+		JsonObject newValues = jsonRequestObject.getAsJsonObject("values");
+		JsonObject types = jsonRequestObject.getAsJsonObject("types");
 		
 		//Format for the table to insert in to data and the values to be inserted (to be combined upon SQL execution)
 		String insertTable = "INSERT INTO contrs." + jsonRequestObject.get("table").getAsString() + " (";
 		String insertValue = "VALUES (";
 		
+		//Temp variables in statement building
+		String value = new String();
+		String dataType = new String();
+		String columnName = new String();
+		int prepIndex = 1;		
+		
 		//Mapping to retrieve the keys/names of the json elements which correspond to the column names for the database
-		Set<Map.Entry<String, JsonElement>> entries = jsonRequestObject.entrySet();
+		Set<Map.Entry<String, JsonElement>> entries = newValues.entrySet();
 		
 		for (Map.Entry<String, JsonElement> entry: entries) { //loop through map, get the keys/names
-			//System.out.println(entry.getKey());
 			addNames.add(entry.getKey().toString()); //add the keys/names to a list
 		}
 		
 		
-		//loop through to create the sql insert statement
-		for (int i = 1; i < addNames.size(); i++) {
-			//System.out.println(addNames.get(i));
-			insertTable = insertTable + addNames.get(i);
+		//loop through to create the sql insert statement (using placeholder ? values to be changed in prepared statement)
+		for (int i = 0; i < addNames.size(); i++) {
 			
-			if ( isNumeric(jsonRequestObject.get(addNames.get(i).toString()).getAsString()) ) // check if the insert value is numeric for INSERT purposes
-			{
-				insertValue = insertValue + jsonRequestObject.get(addNames.get(i).toString()).getAsString();
-			} 
-			else {
-				insertValue = insertValue + "'" + jsonRequestObject.get(addNames.get(i).toString()).getAsString() + "'"; //add quotes to indicate strings for INSERT
-			}
+			columnName = addNames.get(i);
+			
+			insertTable = insertTable + columnName;
+			
+			insertValue = insertValue + " ? ";
 			
 			if ( i < (addNames.size() - 1) ) { //commas after all but last element
 				insertTable = insertTable + ", ";
@@ -97,10 +98,45 @@ public class DatabaseAddHandler extends HttpServlet {
 				Connection conn = ds.getConnection(); //gets connection from datasource
 				if(conn != null) 
 				{		
-					//connectionStatus = "Got Connection "+conn.toString(); //show connection status/details
-					Statement stmt = conn.createStatement(); 
+					//Use a prepared statement: avoids injection issues and escape characters
+					PreparedStatement stmt = conn.prepareStatement( insertTable + insertValue ); 
 					
-					stmt.execute(insertTable + insertValue); //execute insert
+					//Loop through prepared statement and replace values where appropriate
+					for (int i = 0; i < addNames.size(); i++ ) {
+						
+						//Placeholder assignment
+						columnName =  addNames.get(i);
+						value = newValues.get(columnName).getAsString();
+						dataType = types.get(columnName).getAsString();
+						
+						//Handle different data types
+						switch( dataType ) {
+							case "String" :
+								stmt.setString(prepIndex, value);
+								break;
+								
+							case "Boolean" :
+								if ( ( value ).equals("t") ) {
+									stmt.setBoolean(prepIndex, true);
+								} else {
+									stmt.setBoolean(prepIndex, false);
+								}								
+								break;
+								
+							case "Integer" :
+								stmt.setInt(prepIndex, Integer.parseInt(value));
+								break;
+							
+							case "TimeStamp":
+								Timestamp timeStamp = Timestamp.valueOf(value);
+								stmt.setTimestamp(prepIndex, timeStamp);
+								break;
+						}
+						
+						prepIndex++;
+					}
+					
+					stmt.executeUpdate(); //execute insert
 												
 					conn.close();
 				}
@@ -108,14 +144,8 @@ public class DatabaseAddHandler extends HttpServlet {
 		}
         catch(Exception e) //error handling
         {
-            e.printStackTrace();
+            e.printStackTrace(); //Default -- to be changed later
         }
 	}
-	
-	public boolean isNumeric(String s) //basic check to see if a string can be parsed to a number 
-	{  
-		return s.matches("[-+]?\\d*\\.?\\d+");  
-	}  
-
 
 }

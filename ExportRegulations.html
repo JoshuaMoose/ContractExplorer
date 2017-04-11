@@ -9,7 +9,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="js\angular.min.js"></script>
-  <script src="js\appController.js"></script>
+  <script src="js\exportRegulationsController.js"></script>
 </head>
 <body ng-app="myApp" ng-controller="resultsCtrl">
 
@@ -49,7 +49,7 @@
 					<div class="panel-body">
 						<!--Search for contacts-->
 						
-						<button type="submit" style="margin-bottom: 10px; margin-top: 10px; margin-left: 1px;" class="btn btn-default" value="contacts" name="SearchButton" data-toggle="collapse" data-target="#search" ng-click="myFunction()">Load Contacts</button>
+						<button type="submit" style="margin-bottom: 10px; margin-top: 10px; margin-left: 1px;" class="btn btn-default" value="contacts" name="SearchButton" data-toggle="collapse" data-target="#search" ng-click="myFunction()">Load Export Regulations</button>
 						<!--span><a href="ResultsAsTable.html">Advanced Search</a></span-->
 		
 		
@@ -120,10 +120,10 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h4 class="panel-title">
-						<a data-toggle="collapse" data-parent="#accordion" href="#collapse2"><h2>Add New Contact</h2></a>
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapse2"><h2>Add New Export Regulation</h2></a>
 					</h4>
 				</div>
-				<div id="collapse2" class="panel-collapse collapse" ng-controller="addContactCtrl">
+				<div id="collapse2" class="panel-collapse collapse" ng-controller="addCtrl">
 					<div class="panel-body">
 						<!--Add new contact-->
 						<div> <!-- ng-app="myApp" ng-controller="formCtrl" ~~removed bc unused-->
@@ -196,7 +196,7 @@
 							<div class="row">
 								<div class="col-lg-3">Address Line 2:</div>
 								<div class="col-lg-3"><input type="text" ng-model="addLine2"></div>
-								<div class="col-lg-6"><button type="submit" value="contacts" ng-click="addFunction()" >Add New Contact</button></div>
+								<div class="col-lg-6"><button type="submit" value="contacts" ng-click="addFunction()" >Add New Export Regulation</button></div>
 							</div><!--row-->
 						</div>
 						<!---End add new contact-->

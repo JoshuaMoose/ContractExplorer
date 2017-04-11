@@ -1,0 +1,116 @@
+var app = angular.module('myApp', []);
+
+app.controller('searchCtrl', function($scope) {
+    $scope.searchParameter = "";
+	$scope.searchKeyword = "";
+});
+
+app.controller('resultsCtrl', function($scope, $http) { //On button click this function will populate table
+	////// GET RESULTS //////
+	$scope.init = function() {
+		var pageData = {
+			table: 'devices', //CHANGE THIS TO NAME OF TABLE (CHECK ACCESS FOR TABLE NAME)
+		};		
+		
+		$http({
+			method : 'POST',
+			url : 'DatabaseSearchHandler',
+			contentType: 'application/json',
+			data : {table: 'contract_type_codes'},
+		})
+		.then(function (response) {
+			$scope.contractTypeCodes = response.data;
+		}, function (error) {
+				console.log(error);
+		});	
+		
+		$http({
+			method : 'POST',
+			url : 'DatabaseSearchHandler',
+			contentType: 'application/json',
+			data : {table: 'program_codes'},
+		})
+		.then(function (response) {
+			$scope.programCodes = response.data;
+		}, function (error) {
+				console.log(error);
+		});	
+		
+		$http({
+			method : 'POST',
+			url : 'DatabaseSearchHandler',
+			contentType: 'application/json',
+			data : {table: 'contract_vehicle_codes'},
+		})
+		.then(function (response) {
+			$scope.contractVehicleCodes = response.data;
+		}, function (error) {
+				console.log(error);
+		});	
+		
+		$http({
+			method : 'POST',
+			url : 'DatabaseSearchHandler',
+			contentType: 'application/json',
+			data : {table: 'secirity_class_codes'},
+		})
+		.then(function (response) {
+			$scope.securityCodes = response.data;
+		}, function (error) {
+				console.log(error);
+		});	
+		
+		$http({
+			method : 'POST',
+			url : 'DatabaseSearchHandler',
+			contentType: 'application/json',
+			data : {table: 'device_type_codes'},
+		})
+		.then(function (response) {
+			$scope.deviceTypeCodes = response.data;
+		}, function (error) {
+				console.log(error);
+		});	
+		
+		$http({
+			method : 'POST',
+			url : 'DatabaseSearchHandler',
+			contentType: 'application/json',
+			data : {table: 'state_prov_cntry_codes'},
+		})
+		.then(function (response) {
+			$scope.stateProvCntryCodes = response.data;
+		}, function (error) {
+				console.log(error);
+		});	
+		
+		$http({
+			method : 'POST',
+			url : 'DatabaseSearchHandler',
+			contentType: 'application/json',
+			data : {table: 'organization_type_codes'},
+		})
+		.then(function (response) {
+			$scope.organizationTypeCodes = response.data;
+		}, function (error) {
+				console.log(error);
+		});
+		
+		$http({
+			method : 'POST',
+			url : 'DatabaseSearchHandler',
+			contentType: 'application/json',
+			data : {table: 'role_codes'},
+		})
+		.then(function (response) {
+			$scope.roleCodes = response.data;
+		}, function (error) {
+				console.log(error);
+		});	
+	}
+	
+	$scope.init();
+	////// END RESULTS //////
+	
+});
+

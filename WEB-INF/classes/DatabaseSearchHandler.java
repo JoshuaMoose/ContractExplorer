@@ -49,7 +49,7 @@ public class DatabaseSearchHandler extends HttpServlet {
 		
 		System.out.println("Table to be Queried: " + tableName); //Log query to console
 		
-		////// End code block //////
+		////// End parsing block //////
 		
 		
 		
@@ -71,8 +71,7 @@ public class DatabaseSearchHandler extends HttpServlet {
                     
 					/////// This code block will fetch database results using only table name passed in from get request ////////
 					
-					//connectionStatus = "Got Connection "+conn.toString(); //show connection status/details
-                    Statement stmt = conn.createStatement(); 
+					Statement stmt = conn.createStatement(); 
                     rst = stmt.executeQuery("select * from contrs." + tableName); //contains query Contact
                     
 					ResultSetMetaData rstm = rst.getMetaData(); //Contains details like row count and column names for auto populating and creating table
@@ -104,18 +103,12 @@ public class DatabaseSearchHandler extends HttpServlet {
         }
         catch(Exception e) //error handling
         {
-            e.printStackTrace();
+            e.printStackTrace(); // Default -- to be changed later
         }
 		
+		// Send results back to frontend
 		PrintWriter out = response.getWriter();
 		String jsonString = new Gson().toJson(resultList);
-		
-        /*JsonParser parserTest = new JsonParser();
-        JsonObject obj = (JsonObject) parserTest.parse(request.getParameter("data")); 
-		
-		String test = new Gson().toJson(obj);
-		System.out.println(test); */
-		//System.out.println(jsonString); //Used to validate JSON output
 		
 		out.println(jsonString);
     }

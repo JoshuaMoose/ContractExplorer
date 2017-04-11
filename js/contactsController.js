@@ -1,5 +1,26 @@
 var app = angular.module('myApp', []);
 
+var types = {
+	'cont_id': "Integer",
+	'cont_org_id': "Integer",
+	'cont_role_cd': "String",
+	'cont_first_name': "String",
+	'cont_middle_name': "String",
+	'cont_last_name': "String",
+	'cont_name_title': "String",
+	'cont_name_suffix': "String",
+	'cont_addr1': "String",
+	'cont_addr2': "String",
+	'cont_city': "String",
+	'cont_state_prov_cd': "String",
+	'cont_post_cd': "String",
+	'cont_cntry_cd': "String",
+	'cont_office_phone': "String",
+	'cont_mobile_phone': "String",
+	'cont_home_phone': "String",
+	'cont_email': "String",
+	'cont_alt_email': "String",
+}
 
 app.controller('searchCtrl', function($scope) {
     $scope.searchParameter = "";
@@ -7,6 +28,7 @@ app.controller('searchCtrl', function($scope) {
 });
 
 app.controller('resultsCtrl', function($scope, $http) { //On button click this function will populate table
+	////// GET RESULTS //////
 	$scope.myFunction = function() {
 		var pageData = {
 			table: 'contacts', //CHANGE THIS TO NAME OF TABLE (CHECK ACCESS FOR TABLE NAME)
@@ -26,7 +48,9 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 				console.log(error);
 		});	
 	}
+	////// END RESULTS //////
 	
+	////// EDITING RESULTS //////
 	$scope.newField = {};
     $scope.editing = false;
 
@@ -40,8 +64,9 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 			'table': 'contacts',
 		}
 		
-		editData.original = $scope.newField;
+		editData.original =	$scope.newField;
 		editData.updated = $scope.myResults[$scope.editing];
+		editData.types = types;
 		
 		if ($scope.editing !== false) {
 			//$scope.myResults[$scope.editing] = $scope.newField;
@@ -50,7 +75,7 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 			
 			$http({
 				method : 'POST',
-				url : 'DatabaseEditHandler',
+				url : 'DatabaseUpdateHandler',
 				contentType: 'application/json',
 				data : editData,
 			})
@@ -64,7 +89,7 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 			$scope.editing = false;
 		}
 	};
-	
+	////// END EDITING RESULTS //////
 	
 });
 
@@ -74,30 +99,34 @@ app.controller('addCtrl', function($scope, $http) {
 		//CHANGE THESE: ORDER ORDER IS (NAME OF COLUMN FROM DATABASE): $SCOPE.(NAME OF COLUMN FROM DATABASE)
 		var addData = {
 			'table': 'contacts', 
-			'cont_id': $scope.contactID,
-			'cont_org_id': $scope.orgID,
-			'cont_role_cd': $scope.role,
-			'cont_first_name': $scope.firstName,
-			'cont_middle_name': $scope.midName,
-			'cont_last_name': $scope.lastName,
-			'cont_name_title': $scope.nameTitle,
-			'cont_name_suffix': $scope.nameSufx,
-			'cont_addr1': $scope.addLine1,
-			'cont_addr2': $scope.addLine2,
-			'cont_city': $scope.addCity,
-			'cont_state_prov_cd': $scope.addState,
-			'cont_post_cd': $scope.addPost,
-			'cont_cntry_cd': $scope.addCity,
-			'cont_office_phone': $scope.phoneOff,
-			'cont_mobile_phone': $scope.phoneMobl,
-			'cont_home_phone': $scope.phoneHome,
-			'cont_email': $scope.email,
-			'cont_alt_email': $scope.emailAlt,
 		};
+		
+		addData.values = {
+			'cont_id': $scope.cont_id,
+			'cont_org_id': $scope.cont_org_id,
+			'cont_role_cd': $scope.cont_role_cd,
+			'cont_first_name': $scope.cont_first_name,
+			'cont_middle_name': $scope.cont_middle_name,
+			'cont_last_name': $scope.cont_last_name,
+			'cont_name_title': $scope.cont_name_title,
+			'cont_name_suffix': $scope.cont_name_suffix,
+			'cont_addr1': $scope.cont_addr1,
+			'cont_addr2': $scope.cont_addr2,
+			'cont_city': $scope.cont_city,
+			'cont_state_prov_cd': $scope.cont_state_prov_cd,
+			'cont_post_cd': $scope.cont_post_cd,
+			'cont_cntry_cd': $scope.cont_cntry_cd,
+			'cont_office_phone': $scope.cont_office_phone,
+			'cont_mobile_phone': $scope.cont_mobile_phone,
+			'cont_home_phone': $scope.cont_home_phone,
+			'cont_email': $scope.cont_email,
+			'cont_alt_email': $scope.cont_alt_email,
+		}
+		addData.types = types; 
 		
 		$http({
 			method : 'POST',
-			url : 'DatabaseAddHandler',
+			url : 'DatabaseInsertHandler',
 			contentType: 'application/json',
 			data : addData,
 		})

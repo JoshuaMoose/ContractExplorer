@@ -1,5 +1,14 @@
 var app = angular.module('myApp', []);
 
+var types = {
+	'travel_id': 'Integer',
+	'contr_id': 'String',
+	'destination': 'String',
+	'travel_begin_date': 'TimeStamp',
+	'travel_end_date': 'TimeStamp',
+	'tech_restrict_cd': 'String',
+	'recv_travel_brief': 'String',
+}
 
 app.controller('searchCtrl', function($scope) {
     $scope.searchParameter = "";
@@ -7,9 +16,10 @@ app.controller('searchCtrl', function($scope) {
 });
 
 app.controller('resultsCtrl', function($scope, $http) { //On button click this function will populate table
+	////// GET RESULTS //////
 	$scope.myFunction = function() {
 		var pageData = {
-			table: 'contracts', //CHANGE THIS TO NAME OF TABLE (CHECK ACCESS FOR TABLE NAME)
+			table: 'travel', //CHANGE THIS TO NAME OF TABLE (CHECK ACCESS FOR TABLE NAME)
 		};		
 		
 		$http({
@@ -26,7 +36,9 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 				console.log(error);
 		});	
 	}
+	////// END RESULTS //////
 	
+	////// EDITING RESULTS //////
 	$scope.newField = {};
     $scope.editing = false;
 
@@ -37,11 +49,12 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 
 	$scope.saveField = function(index) {		
 		var editData = {
-			'table': 'contracts',
+			'table': 'travel',
 		}
 		
-		editData.original = $scope.newField;
+		editData.original =	$scope.newField;
 		editData.updated = $scope.myResults[$scope.editing];
+		editData.types = types;
 		
 		if ($scope.editing !== false) {
 			//$scope.myResults[$scope.editing] = $scope.newField;
@@ -64,7 +77,7 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 			$scope.editing = false;
 		}
 	};
-	
+	////// END EDITING RESULTS //////
 	
 });
 
@@ -73,26 +86,19 @@ app.controller('addCtrl', function($scope, $http) {
 		
 		//CHANGE THESE: ORDER ORDER IS (NAME OF COLUMN FROM DATABASE): $SCOPE.(NAME OF COLUMN FROM DATABASE)
 		var addData = {
-			'table': 'contracts', 
-			'newValues': [{
-				'contr_id': $scope.contr_id,
-				'contr_org_id': $scope.contr_org_id,
-				'contr_end_cust_id': $scope.contr_end_cust_id,
-				'cont_type_cd': $scope.contr_type_cd,
-				'prime_contr_id': $scope.prime_contr_id,
-				'prime_contract_no': $scope.prime_contract_no,
-				'contr_prog_cd': $scope.contr_prog_cd,
-				'contr_vehicle_cd': $scope.contr_vehicle_cd,
-				'contr_sec_level_cd': $scope.contr_sec_level_cd,
-				'contr_info_safe_level_cd': $scope.contr_info_safe_level_cd,
-				'contr_open_date': $scope.contr_open_date,
-				'contr_close_date': $scope.contr_close_date,
-				'is_open': $scope.is_open,
-				'exemptions': $scope.exemptions,
-				'dd254_recv': $scope.dd254_recv,
-				'dd254_date': $scope.dd254_date,
-			}],
+			'table': 'travel', 
 		};
+		
+		addData.values = {
+			'travel_id': $scope.travel_id,
+			'contr_id': $scope.contr_id,
+			'destination': $scope.destination,
+			'travel_begin_date': $scope.travel_begin_date,
+			'travel_end_date': $scope.travel_end_date,
+			'tech_restrict_cd': $scope.tech_restrict_cd,
+			'recv_travel_brief': $scope.recv_travel_brief,
+		}
+		addData.types = types; 
 		
 		$http({
 			method : 'POST',

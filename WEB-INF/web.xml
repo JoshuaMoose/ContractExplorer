@@ -31,23 +31,23 @@
 	</servlet-mapping>
 		
 	<servlet>
-		<servlet-name>DatabaseAddHandler</servlet-name>
-		<servlet-class>DatabaseAddHandler</servlet-class>
+		<servlet-name>DatabaseInsertHandler</servlet-name>
+		<servlet-class>DatabaseInsertHandler</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>
-		<servlet-name>DatabaseAddHandler</servlet-name>
-		<url-pattern>/DatabaseAddHandler</url-pattern>
+		<servlet-name>DatabaseInsertHandler</servlet-name>
+		<url-pattern>/DatabaseInsertHandler</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
-		<servlet-name>DatabaseEditHandler</servlet-name>
-		<servlet-class>DatabaseEditHandler</servlet-class>
+		<servlet-name>DatabaseUpdateHandler</servlet-name>
+		<servlet-class>DatabaseUpdateHandler</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>
-		<servlet-name>DatabaseEditHandler</servlet-name>
-		<url-pattern>/DatabaseEditHandler</url-pattern>
+		<servlet-name>DatabaseUpdateHandler</servlet-name>
+		<url-pattern>/DatabaseUpdateHandler</url-pattern>
 	</servlet-mapping>
 	
 <!--<servlet>

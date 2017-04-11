@@ -80,7 +80,7 @@ app.controller('initCtrl', function($scope, $http) { //On page load, this conrol
 			
 			$http({
 				method : 'POST',
-				url : 'DatabaseEditHandler',
+				url : 'DatabaseUpdateHandler',
 				contentType: 'application/json',
 				data : editData,
 			})
