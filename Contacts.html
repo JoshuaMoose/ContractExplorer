@@ -12,38 +12,52 @@
   <script src="js\contactsController.js"></script>
 </head>
 <body ng-app="myApp" >
-
-<div class="container">
-	<!-- Logo -->
-	<div class="page-header">
-  		<img src="images/SuprTEKLogo.jpg" alt="Logo" id="logo">
-	</div>
-	
-	<!--Navigation Tabs  SET ACTIVE PAGE/-->
-	<div class="well">
-		<div id="tabs" class="row">
-			<ul class="nav nav-tabs" role="tablist">
-				<li><a href="Home.html">Home</a></li>
+<nav class="navbar navbar-default navbar-fixed-top"style="margin-bottom: 30px;-webkit-box-shadow: 0 8px 6px -6px #999;
+    -moz-box-shadow: 0 8px 6px -6px #999;
+    box-shadow: 0 8px 6px -6px #999;">
+<div class="container-fluid">
+<div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+      </button>
+      <a class="navbar-brand" href="Home.html">Supr<b>TEK</b> Contract Explorer</a>
+    </div>
+	 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+         <li><a href="Home.html">Home</a></li>
 				<li><a href="Contracts.html">Contracts</a></li>
 				<li><a href="Organizations.html">Organizations</a></li>
-				<li class="active"><a href="Contacts.html">Contacts</a></li>
+				<li><a href="Contacts.html">Contacts</a></li>
 				<li><a href="Directives.html">Directives</a></li>  
 				<li><a href="Releases.html">Releases</a></li>
 				<li><a href="DataSets.html">Data Sets</a></li>
-				<li><a href="ExportRegulations.html">Export Regulations</a></li>
+				<li><a href="ExpertRegulations.html">Expert Regulations</a></li>
 				<li><a href="Travel.html">Travel</a></li>
 				<li><a href="Devices.html">Devices</a></li>
 				<li><a href="Codes.html">Codes</a></li>		
-				<li><a href="Reports.html">Reports</a></li>					
-			 </ul>
-		</div>
+				<li><a href="Reports.html">Reports</a></li>	
+          </ul>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<div class="row"></div>  
+
+<div class="container-fluid" style="margin-top:50px;">
+	<!-- Logo -->
+	<div class="page-header" style="text-align:center;">
+  		<h1>Contacts</h1>
+	</div>
+	
+	<!--Navigation Tabs  SET ACTIVE PAGE/-->
+
 		<!--End Nav Tabs-->
 		
 		<div class="panel-group" id="accordion" ng-controller="resultsCtrl">
 			<div class="panel panel-default">
 			    <div class="panel-heading">
 					<h4 class="panel-title">
-						<a data-toggle="collapse" data-parent="#accordion" href="#collapse1"><h2>Search Contacts</h2></a>
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapse1"><h2>Search Contacts</h2></a>
 					</h4>
 			    </div>
 				<div id="collapse1" class="panel-collapse collapse in">
@@ -374,4 +388,21 @@
 </div><!--container-->
 
 </body>
+ <section id="footer" style="background-color:#292b34;">
+        <div class="container">
+    		<center style="color:#fff;>
+    		<div class="container">
+    		    <div class="navbar-default navbar-fixed-bottom"  style="background-color:#292b34; border:0px">
+    		        <div class="row">
+    		            <div class="col-md-12">
+    		                <div class="row">
+    		                        ©Copyright 2017 | SUPERLATIVE TECHNOLOGIES, INC. (dba SUPRTEK)
+    		                </div><!--end .row-->
+    		            </div><!--end .col-md-12-->
+    		        </div><!--end .row-->
+    		    </div><!--end .well .well-sm .main-footer-->
+    		</div><!--end .container-->
+    		</center>
+    	</div><!--end .container-->
+    </section><!--end #footer-->
 </html>
