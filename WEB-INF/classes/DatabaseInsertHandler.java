@@ -1,26 +1,29 @@
-import java.io.*;
 import java.io.BufferedReader;
+import java.io.IOException;
 
-import java.util.*;
-//import java.util.ArrayList;
+import java.util.Map;
+import java.util.Set;
+import java.util.List;
+import java.util.ArrayList;
 
-import javax.servlet.*; 
+import javax.naming.Context;
+import javax.naming.InitialContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
- 
-import javax.naming.*;
-import javax.sql.*;
-import java.sql.*; 
- 
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.Timestamp;
+import javax.sql.DataSource;
+
 import com.google.gson.*;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
  
 public class DatabaseInsertHandler extends HttpServlet {
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+		protected void doPost(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException {
 		
 		//Get json-formatted request object from the webpage
@@ -86,14 +89,15 @@ public class DatabaseInsertHandler extends HttpServlet {
         {
             //attempt to connect to the database
 			Context ctx = new InitialContext();
-            if(ctx == null )
-                throw new Exception("Boom - No Context");
+            
+			//if(ctx == null )
+            //    throw new Exception("Boom - No Context");
     
             // /jdbc/postgres is the name of the resource above 
             DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/postgres");
         
 		
-			if (ds != null) //datasourse exists
+			if (ds != null) //data source exists
 			{
 				Connection conn = ds.getConnection(); //gets connection from datasource
 				if(conn != null) 
@@ -106,17 +110,33 @@ public class DatabaseInsertHandler extends HttpServlet {
 						
 						//Placeholder assignment
 						columnName =  addNames.get(i);
-						value = newValues.get(columnName).getAsString();
+						
+						if (newValues.has(columnName)) {
+							value = newValues.get(columnName).getAsString();
+						} else {
+							value = null;
+						}
+						System.out.println("Column " + columnName + "Value = " + value);
+						
 						dataType = types.get(columnName).getAsString();
+						
+						System.out.println("ColumnName = " + columnName + " Datatype = " + dataType);
+						
 						
 						//Handle different data types
 						switch( dataType ) {
 							case "String" :
-								stmt.setString(prepIndex, value);
+								if ( value == null ) {
+									stmt.setNull(prepIndex, java.sql.Types.CHAR);
+								} else {
+									stmt.setString(prepIndex, value);
+								}
 								break;
 								
 							case "Boolean" :
-								if ( ( value ).equals("t") ) {
+								if( value == null ) {
+									stmt.setNull(prepIndex, java.sql.Types.BOOLEAN);
+								} else if ( ( value ).equals("t") ) {
 									stmt.setBoolean(prepIndex, true);
 								} else {
 									stmt.setBoolean(prepIndex, false);
@@ -124,12 +144,20 @@ public class DatabaseInsertHandler extends HttpServlet {
 								break;
 								
 							case "Integer" :
-								stmt.setInt(prepIndex, Integer.parseInt(value));
+								if ( value == null ) {
+									stmt.setNull(prepIndex, java.sql.Types.INTEGER);
+								} else {
+									stmt.setInt(prepIndex, Integer.parseInt(value));
+								}
 								break;
 							
 							case "TimeStamp":
-								Timestamp timeStamp = Timestamp.valueOf(value);
-								stmt.setTimestamp(prepIndex, timeStamp);
+								if ( value == null ) {
+									stmt.setNull(prepIndex, java.sql.Types.TIMESTAMP);
+								} else {
+									Timestamp timeStamp = Timestamp.valueOf(value);
+									stmt.setTimestamp(prepIndex, timeStamp);
+								}
 								break;
 						}
 						

@@ -63,119 +63,156 @@
 					<!--button type="submit" value="clearResults">Clear Results</button-->
 					
 					<div id="scrollView" style="max-height:100%; overflow:auto; margin: 10px">
-						<table style="padding: 3px;">
-							
-							<tr>
-								<td><input ng-model="f.contr_id" placeholder="Filter by Contract Number"></td>
-								<td><input ng-model="f.contr_org_id" placeholder="Filter by Customer Organization ID"></td>
-								<td><input ng-model="f.cont_end_cust_id" placeholder="Filter by Contract End Customer"></td>
-								<td><input ng-model="f.contr_type_id" placeholder="Filter by Contract Type"></td>
-								<td><input ng-model="f.prime_contr_id" placeholder="Filter by Prime Contractior ID"></td>
-								<td><input ng-model="f.prime_contract_no" placeholder="Filter by Prime Contractor Number"></td>
-								<td><input ng-model="f.contr_prog_cd" placeholder="Filter by Contract Program"></td>
-								<td><input ng-model="f.contr_vehicle_cd" placeholder="Filter by Contract Vehicle"></td>
-								<td><input ng-model="f.contr_sec_level_cd" placeholder="Filter by Contract Security Level"></td>
-								<td><input ng-model="f.contr_info_safe_level_cd" placeholder="Information Security Level"></td>
-								<td><input ng-model="f.contr_open_date" placeholder="Filter by Date Contract Opened"></td>
-								<td><input ng-model="f.contr_close_date" placeholder="Filter by Date Contract Closed"></td>
-								<td><input ng-model="f.is_open" placeholder="Canceled"></td>
-								<td><input ng-model="f.exemptions" placeholder="Exemptions and Restrictions"></td>
-								<td><input ng-model="f.dd254_recv" placeholder="DD254 Recieved"></td>
-								<td><input ng-model="f.dd254_date" placeholder="Filter by DD254 Date"></td>
-							</tr>
-											
-							<tr>
-								<th value="contr_id">Contract Number</th>
-								<th value="contr_org_id">Customer Organization ID</th>
-								<th value="cont_end_cust_id">Contract End Customer</th>
-								<th value="contr_type_id">Contract Type</th>
-								<th value="prime_contr_id">Prime Contractor ID</th>
-								<th value="prime_contract_no">Prime Contract Number</th>
-								<th value="contr_prog_cd">Contract Program</th>
-								<th value="contr_vehicle_cd">Contract Vehicle</th>
-								<th value="contr_sec_level_cd">Contract Security Level</th>
-								<th value="contr_info_safe_level_cd">Information Security Level</th>
-								<th value="contr_open_date">Date Contract Opened</th>
-								<th value="contr_close_date">Date Contract Closed</th>
-								<th value="is_open">Canceled</th>
-								<th value="exemptions">Exemptions and Restrictions</th>
-								<th value="dd254_recv">DD254 Recieved</th>
-								<th value="dd254_date">Current DD254 Date</th>
-								<th>Edit</th>
-							</tr>
-
-							<tr ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}">
-								<td>
-									<span data-ng-hide="editMode">{{ x.contr_id }}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.contr_id" data-ng-required />
-								</td>
-								<!-- The special block here will swap to being input boxes when the -->
-								<td>
-									<span data-ng-hide="editMode">{{x.contr_org_id}}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.contr_org_id" data-ng-required />
-								</td>
-								<td>
-									<span data-ng-hide="editMode">{{x.contr_end_cust_id}}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.cont_end_cust_id" data-ng-required />
-								</td>
-								<td>
-									<span data-ng-hide="editMode">{{x.contr_type_cd}}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.contr_type_id" data-ng-required />
-								</td>
-								<td>
-									<span data-ng-hide="editMode">{{x.prime_contr_id}}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.prime_contr_id" data-ng-required />
-								</td>
-								<td>
-									<span data-ng-hide="editMode">{{x.prime_contract_no}}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.prime_contract_no" data-ng-required />
-								</td>
-								<td>
-									<span data-ng-hide="editMode">{{x.contr_prog_cd}}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.contr_prog_cd" data-ng-required />
-								</td>
-								<td>
-									<span data-ng-hide="editMode">{{x.contr_vehicle_cd}}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.contr_vehicle_cd" data-ng-required />
-								</td>
-								<td>
-									<span data-ng-hide="editMode">{{x.contr_sec_level_cd}}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.contr_sec_level_cd" data-ng-required />
-								</td>
-								<td>
-									<span data-ng-hide="editMode">{{x.contr_info_safe_level_cd}}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.contr_info_safe_level_cd" data-ng-required />
-								</td>
-								<td>
-									<span data-ng-hide="editMode">{{x.contr_open_date}}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.contr_open_date" data-ng-required />
-								</td>
-								<td>
-									<span data-ng-hide="editMode">{{x.contr_close_date}}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.contr_close_date" data-ng-required />
-								</td>
-								<td>
-									<span data-ng-hide="editMode">{{x.is_open}}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.is_open" data-ng-required />
-								</td>
-								<td>
-									<span data-ng-hide="editMode">{{x.exemptions}}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.exemptions" data-ng-required />
-								</td>
-								<td>
-									<span data-ng-hide="editMode">{{x.dd254_recv}}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.dd254_recv" data-ng-required />
-								</td>
-								<td>
-									<span data-ng-hide="editMode">{{x.dd254_date}}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.dd254_date" data-ng-required />
-								<td>
-									<button type="submit" data-ng-hide="editMode" data-ng-click="editMode = true; editResults(x)" class="btn btn-default">Edit</button>
-									<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; saveField(x)" class="btn btn-default">Save</button>
-									<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; cancel()" class="btn btn-default">Cancel</button>
-								</td>
-							</tr>	
-						</table>
+						<form name="updateForm">
+							<table style="padding: 3px;">
+								
+								<tr>
+									<td><input ng-model="f.contr_id" placeholder="Filter by Contract Number"></td>
+									<td><input ng-model="f.contr_org_id" placeholder="Filter by Customer Organization ID"></td>
+									<td><input ng-model="f.cont_end_cust_id" placeholder="Filter by Contract End Customer"></td>
+									<td><input ng-model="f.contr_type_cd" placeholder="Filter by Contract Type"></td>
+									<td><input ng-model="f.prime_contr_id" placeholder="Filter by Prime Contractior ID"></td>
+									<td><input ng-model="f.prime_contract_no" placeholder="Filter by Prime Contractor Number"></td>
+									<td><input ng-model="f.contr_prog_cd" placeholder="Filter by Contract Program"></td>
+									<td><input ng-model="f.contr_vehicle_cd" placeholder="Filter by Contract Vehicle"></td>
+									<td><input ng-model="f.contr_sec_level_cd" placeholder="Filter by Contract Security Level"></td>
+									<td><input ng-model="f.contr_info_safe_level_cd" placeholder="Information Security Level"></td>
+									<td><input ng-model="f.contr_open_date" placeholder="Filter by Date Contract Opened"></td>
+									<td><input ng-model="f.contr_close_date" placeholder="Filter by Date Contract Closed"></td>
+									<td><input ng-model="f.is_open" placeholder="Canceled"></td>
+									<td><input ng-model="f.exemptions" placeholder="Exemptions and Restrictions"></td>
+									<td><input ng-model="f.dd254_recv" placeholder="DD254 Recieved"></td>
+									<td><input ng-model="f.dd254_date" placeholder="Filter by DD254 Date"></td>
+								</tr>
+												
+								<tr>
+									<th value="contr_id">Contract Number</th>
+									<th value="contr_org_id">Customer Organization ID</th>
+									<th value="cont_end_cust_id">Contract End Customer</th>
+									<th value="contr_type_id">Contract Type</th>
+									<th value="prime_contr_id">Prime Contractor ID</th>
+									<th value="prime_contract_no">Prime Contract Number</th>
+									<th value="contr_prog_cd">Contract Program</th>
+									<th value="contr_vehicle_cd">Contract Vehicle</th>
+									<th value="contr_sec_level_cd">Contract Security Level</th>
+									<th value="contr_info_safe_level_cd">Information Security Level</th>
+									<th value="contr_open_date">Date Contract Opened</th>
+									<th value="contr_close_date">Date Contract Closed</th>
+									<th value="is_open">Canceled</th>
+									<th value="exemptions">Exemptions and Restrictions</th>
+									<th value="dd254_recv">DD254 Recieved</th>
+									<th value="dd254_date">Current DD254 Date</th>
+									<th>Edit</th>
+								</tr>
+	
+								<tr id="results" ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}">
+									<td>
+										<span data-ng-hide="editMode">{{ x.contr_id }}</span>
+										<input type="text" ng-minlength="1" ng-maxlength="255" required
+											data-ng-show="editMode" data-ng-model="x.contr_id" 
+											title="Contract ID: Required; String" />
+									</td>
+									<td>
+										<span data-ng-hide="editMode">{{x.contr_org_id}}</span>
+										<input type="text" pattern="^\d+$" ng-maxlength="9" 
+											data-ng-show="editMode" data-ng-model="x.contr_org_id"
+											title="Contract Organization ID: Integer" />
+									</td>
+									<td>
+										<span data-ng-hide="editMode">{{x.contr_end_cust_id}}</span>
+										<input type="text" pattern="^\d+$" ng-maxlength="9" 
+											data-ng-show="editMode" data-ng-model="x.contr_end_cust_id" 
+											title="Contract End Customer ID: Integer"/>
+									</td>
+									<td>
+										<span data-ng-hide="editMode">{{x.contr_type_cd}}</span>
+										<input type="text" ng-minlength="1" ng-maxlength="255" 
+											data-ng-show="editMode" data-ng-model="x.contr_type_cd" required
+											title="Contract Type Code: Required; String" />
+									</td>
+									<td>
+										<span data-ng-hide="editMode">{{x.prime_contr_id}}</span>
+										<input type="text" pattern="\d+" ng-maxlength="9" 
+											data-ng-show="editMode" data-ng-model="x.prime_contr_id"
+											title="Prime Contractor ID: Integer" />
+									</td>
+									<td>
+										<span data-ng-hide="editMode">{{x.prime_contract_no}}</span>
+										<input type="text" ng-maxlength="255" 
+											data-ng-show="editMode" data-ng-model="x.prime_contract_no"
+											title="Prime Contract Number: String" />
+									</td>
+									<td>
+										<span data-ng-hide="editMode">{{x.contr_prog_cd}}</span>
+										<input type="text" ng-maxlength="255" 
+											data-ng-show="editMode" data-ng-model="x.contr_prog_cd"
+											title="Contract Program: String" />
+									</td>
+									<td>
+										<span data-ng-hide="editMode">{{x.contr_vehicle_cd}}</span>
+										<input type="text" ng-maxlength="255" 
+											data-ng-show="editMode" data-ng-model="x.contr_vehicle_cd"
+											title="Contract Vehicle Code: String" />
+									</td>
+									<td>
+										<span data-ng-hide="editMode">{{x.contr_sec_level_cd}}</span>
+										<input type="text" ng-maxlength="255" 
+											data-ng-show="editMode" data-ng-model="x.contr_sec_level_cd"
+											title="Contract Security Level Code: String" />
+									</td>
+									<td>
+										<span data-ng-hide="editMode">{{x.contr_info_safe_level_cd}}</span>
+										<input type="text" ng-maxlength="255" 
+											data-ng-show="editMode" data-ng-model="x.contr_info_safe_level_cd"
+											title="Contract Information Security Level: String" />
+									</td>
+									<td>
+										<span data-ng-hide="editMode">{{x.contr_open_date}}</span>
+										<input type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" 
+											data-ng-show="editMode" data-ng-model="x.contr_open_date"
+											title="Contract Opened Date: yyyy-dd-mm hh:mm:ss" />
+									</td>
+									<td>
+										<span data-ng-hide="editMode">{{x.contr_close_date}}</span>
+										<input type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" 
+											data-ng-show="editMode" data-ng-model="x.contr_close_date" 
+											title="Contract Close Date: yyyy-dd-mm hh:mm:ss"/>
+									</td>
+									<td>
+										<span data-ng-hide="editMode">{{x.is_open}}</span>
+										<select data-ng-show="editMode" class = "dropdown" ng-model="x.is_open">
+												<option value="">
+												<option value="t">True
+												<option value="f">False
+										</select>
+									</td>
+									<td>
+										<span data-ng-hide="editMode">{{x.exemptions}}</span>
+										<input type="text" 
+											data-ng-show="editMode" data-ng-model="x.exemptions"
+											title="Exemptions and Exceptions: Text, no length limit" />
+									</td>
+									<td>
+										<span data-ng-hide="editMode">{{x.dd254_recv}}</span>
+										<select data-ng-show="editMode" class = "dropdown" ng-model="x.dd254_recv">
+												<option value="">
+												<option value="t">True
+												<option value="f">False
+										</select>
+									</td>
+									<td>
+										<span data-ng-hide="editMode">{{x.dd254_date}}</span>
+										<input type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" 
+										data-ng-show="editMode" data-ng-model="x.dd254_date"
+										title="DD254 date: yyyy-dd-mm hh:mm:ss" />
+									<td >
+										<button type="submit" data-ng-hide="editMode" data-ng-click="editMode = true; editResults(x)" class="btn btn-default">Edit</button>
+										<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; saveField(x)" class="btn btn-default" ng-disabled="!updateForm.$valid" >Save</button>
+										<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; cancel()" class="btn btn-default">Cancel</button>
+									</td>
+								</tr>	
+							</table>
+						</form>
 					</div>
 	
 						<!--End search for contacts-->
@@ -199,48 +236,51 @@
 				<div id="collapse2" class="panel-collapse collapse" ng-controller="addCtrl">
 					<div class="panel-body">
 						<!--Add new contact-->
-						<div> <!-- ng-app="myApp" ng-controller="formCtrl" ~~removed bc unused-->
+						<form name="addForm" > <!-- ng-app="myApp" ng-controller="formCtrl" ~~removed bc unused-->
 							<div class="row">
 								<div class="col-lg-3">Contract Number:</div>
-								<div class="col-lg-3"><input type="text" ng-model="contr_id"></div>
+								<div class="col-lg-3"><input type="text" ng-minlength="1" ng-maxlength="255" required data-ng-model="contr_id" 
+														title="Contract ID: Required; String" /></div>
 								<div class="col-lg-3">Customer Organization ID:</div>
-								<div class="col-lg-3"><select class = "dropdown" ng-model="contr_org_id">
-											<option value="TRANSCOM">TRANSCOM
-											<option value="Air Mobility Command (AMC)">Air Mobility Command (AMC)
-											<option value="SAIC">SAIC
-											<option value="SuprTEK">SuprTEK
+								<div class="col-lg-3"><select class = "dropdown" ng-model="contr_org_id" >
+											<option value="2">TRANSCOM
+											<option value="3">Air Mobility Command (AMC)
+											<option value="4">SAIC
+											<option value="1">SuprTEK
 									</select></div>
 							</div><!--row-->
 							
 							<div class="row">
 								<div class="col-lg-3">Contract Type:</div>
-								<div class="col-lg-3"><select class = "dropdown" ng-model="contr_type">
+								<div class="col-lg-3"><select class = "dropdown" ng-model="contr_type_cd" required>
 											<option value="Prime">Prime
 											<option value="Sub">Sub
 									</select></div>
 								<div class="col-lg-3">Prime Contractor ID:</div>
 								<div class="col-lg-3"><select class = "dropdown" ng-model="prime_contr_id">
-											<option value="TRANSCOM">TRANSCOM
-											<option value="Air Mobility Command (AMC)">Air Mobility Command (AMC)
-											<option value="SAIC">SAIC
-											<option value="SuprTEK">SuprTEK
+											<option value="2">TRANSCOM
+											<option value="3">Air Mobility Command (AMC)
+											<option value="4">SAIC
+											<option value="1">SuprTEK
 									</select></div>
 							</div><!--row-->
 							
 							<div class="row">
 								<div class="col-lg-3">Prime Contract Number:</div>
-								<div class="col-lg-3"><input type="text" ng-model="prime_contract_no"></div>
+								<div class="col-lg-3"><input type="text" pattern="\d+" ng-maxlength="9" data-ng-model="prime_contr_id"
+														title="Prime Contractor ID: Integer" /></div>
 								<div class="col-lg-3">Contract Program:</div>
-								<div class="col-lg-3"><input type="text" ng-model="contr_prog_cd"></div>
+								<div class="col-lg-3"><input type="text" ng-maxlength="255" data-ng-model="contr_prog_cd"
+														title="Contract Program: String" /></div>
 							</div><!--row-->
 							
 							<div class="row">
 								<div class="col-lg-3">Contract End Customer:</div>
 								<div class="col-lg-3"><select class = "dropdown" ng-model="contr_end_cust_id">
-											<option value="TRANSCOM">TRANSCOM
-											<option value="Air Mobility Command (AMC)">Air Mobility Command (AMC)
-											<option value="SAIC">SAIC
-											<option value="SuprTEK">SuprTEK
+											<option value="2">TRANSCOM
+											<option value="3">Air Mobility Command (AMC)
+											<option value="4">SAIC
+											<option value="1">SuprTEK
 									</select></div>
 								<div class="col-lg-3">Contract Vehicle:</div>
 								<div class="col-lg-3"><select class = "dropdown" ng-model="contr_vehicle_id">
@@ -251,23 +291,35 @@
 							
 							<div class="row">
 								<div class="col-lg-3">Date Contract Opened:</div>
-								<div class="col-lg-3"><input type="text" ng-model="contr_open_date"></div>
+								<div class="col-lg-3"><input type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" data-ng-model="contr_open_date"
+											title="Contract Opened Date: yyyy-dd-mm hh:mm:ss" /></div>
 								<div class="col-lg-3">Date Contract Closed:</div>
-								<div class="col-lg-3"><input type="text" ng-model="contr_close_date"></div>
+								<div class="col-lg-3"><input type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" data-ng-model="contr_close_date" 
+											title="Contract Close Date: yyyy-dd-mm hh:mm:ss"/></div>
 							</div><!--row-->
 							
 							<div class="row">
 								<div class="col-lg-3">Exemptions and Restrictions:</div>
-								<div class="col-lg-3"><input type="text" ng-model="exemptions"></div>
+								<div class="col-lg-3"><input type="text" data-ng-model="x.exemptions"
+														title="Exemptions and Exceptions: Text, no length limit" /></div>
 								<div class="col-lg-3">Current DD254 Date:</div>
-								<div class="col-lg-3"><input type="text" ng-model="dd254_date"></div>
+								<div class="col-lg-3"><input type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" data-ng-model="dd254_date"
+														title="DD254 date: yyyy-dd-mm hh:mm:ss" /></div>
 							</div><!--row-->
 							
 							<div class="row">
 								<div class="col-lg-3">DD254 Recieved:</div>
-								<div class="col-lg-3"><input type="checkbox" ng-model="dd254_recv"></div>
-								<div class="col-lg-3">Canceled:</div>
-								<div class="col-lg-3"><input type="checkbox" ng-model="is_open"></div>
+								<div class="col-lg-3"><select class = "dropdown" ng-model="dd254_recv">
+														<option value="">
+														<option value="t">True
+														<option value="f">False
+												</select></div>
+								<div class="col-lg-3">Is Open?:</div>
+								<div class="col-lg-3"><select class = "dropdown" ng-model="is_open">
+												<option value="">
+												<option value="t">True
+												<option value="f">False
+										</select></div>
 							</div><!--row-->
 							
 							<div class="row">
@@ -288,12 +340,10 @@
 							</div><!--row-->
 							
 							<div class="row">
-								<div class="col-lg-3">Key Contacts for this Contract:</div>
-								<div class="col-lg-3"><input type="text" ng-model="uknown"></div> <!--Needs reference-->
-								<div class="col-lg-6"><button type="submit" class="btn btn-default"  value="contacts" ng-click="addFunction()" >Add New Contract</button></div>
+								<div class="col-lg-6"><button type="submit" class="btn btn-default" ng-disabled="!addForm.$valid" value="contacts" ng-click="addFunction()" >Add New Contract</button></div>
 							</div><!--row-->
 							
-						</div>
+						</form>
 						<!---End add new contact-->
 					</div>
 				</div>

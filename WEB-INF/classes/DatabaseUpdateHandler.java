@@ -1,24 +1,25 @@
-import java.io.*;
 import java.io.BufferedReader;
+import java.io.IOException;
 
-import java.lang.Integer;
+import java.util.Map;
+import java.util.Set;
+import java.util.List;
+import java.util.ArrayList;
 
-import java.util.*;
-//import java.util.ArrayList;
-
-import javax.servlet.*;
+import javax.naming.Context;
+import javax.naming.InitialContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
- 
-import javax.naming.*;
-import javax.sql.*;
-import java.sql.*; 
- 
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.Timestamp;
+import javax.sql.DataSource;
+
 import com.google.gson.*;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
  
 public class DatabaseUpdateHandler extends HttpServlet {
 
@@ -53,12 +54,12 @@ public class DatabaseUpdateHandler extends HttpServlet {
 		
 		Set<Map.Entry<String, JsonElement>> entriesOriginal = original.entrySet();//will return members of your object
 		
-		System.out.println(types.get("cont_id").getAsString());
 		
 		for (Map.Entry<String, JsonElement> entry: entriesOriginal) {
-			//System.out.println(entry.getKey());
 			addNamesOriginal.add(entry.getKey().toString());
 		}
+		
+		//System.out.println("Made it past second mapping");
 		
 		//Format for update SQL (to be combined upon SQL execution)
 		String updateTable = "UPDATE contrs." + jsonRequestObject.get("table").getAsString();
@@ -108,8 +109,9 @@ public class DatabaseUpdateHandler extends HttpServlet {
         {
             //attempt to connect to the database
 			Context ctx = new InitialContext();
-            if(ctx == null )
-                throw new Exception("Boom - No Context");
+			
+			//if(ctx == null )
+			//	throw new Exception("Boom - No Context");
     
             // /jdbc/postgres is the name of the resource above 
             DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/postgres");
@@ -146,7 +148,12 @@ public class DatabaseUpdateHandler extends HttpServlet {
 								break;
 								
 							case "Integer" :
-								stmt.setInt(i+1, Integer.parseInt(value));
+								stmt.setInt(prepIndex, Integer.parseInt(value));
+								break;
+								
+							case "TimeStamp":
+								Timestamp timeStamp = Timestamp.valueOf(value);
+								stmt.setTimestamp(prepIndex, timeStamp);
 								break;
 						}
 						

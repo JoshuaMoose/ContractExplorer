@@ -1,12 +1,10 @@
-//import java.io.BufferedReader;
-//import java.io.IOException;
-import java.io.*;
 import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 import java.util.List;
 import java.util.ArrayList;
 
-import javax.servlet.*; //find specifics later
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,12 +16,11 @@ import java.sql.*;
  
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
  
 public class DatabaseSearchHandler extends HttpServlet {
  
 	String connectionStatus = "Not Connected"; //Placeholder string to be used to validate connection
-	ResultSet rst; //stores the restult of the database query
+	ResultSet rst; //stores the results of the database query
  
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException {
@@ -57,8 +54,9 @@ public class DatabaseSearchHandler extends HttpServlet {
         {
             //attempt to connect to the database
 			Context ctx = new InitialContext();
-            if(ctx == null )
-                throw new Exception("Boom - No Context");
+            
+			//if(ctx == null )
+            //    throw new Exception("Boom - No Context");
     
             // /jdbc/postgres is the name of the resource above 
             DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/postgres");

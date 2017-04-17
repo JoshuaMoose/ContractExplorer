@@ -214,9 +214,21 @@ tr:nth-child(even) {
     -moz-box-shadow: 0 8px 6px -6px #999;
     box-shadow: 0 8px 6px -6px #999;"
 }
-.panel-body .img-thumbnail{padding:0px;border:1px solid transparent} /*remove padding and add transparent border*/
+
+.panel-body .img-thumbnail{
+	padding:0px;border:1px solid transparent
+} /*remove padding and add transparent border*/
+
 .panel-heading:hover {
    background-color:#c0c0c0 ; /*change the transparent border to yellow*/
    border size: 50px;
    /*color: #fff;*/
+}
+
+#results input.ng-invalid, .row input.ng-invalid, .row select.ng-invalid {
+	border-color: #FA787E;
+}
+
+#results input.ng-valid, .row input.ng-valid, .row select.ng-valid {
+	border-color: #78FA89;
 }
