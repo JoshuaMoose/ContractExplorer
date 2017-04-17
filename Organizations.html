@@ -96,47 +96,47 @@
 							<tr ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}">
 								<td>
 									<span data-ng-hide="editMode">{{ x.org_id }}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.org_id" data-ng-required />
+									<input type="text" data-ng-show="editMode" pattern="^\d+$" data-ng-model="x.org_id" data-ng-required />
 								</td>
 								<td>
 									<span data-ng-hide="editMode">{{ x.org_type_cd }}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.org_id" data-ng-required />
+									<input type="text" data-ng-show="editMode" ng-minlength="1" ng-maxlength="255" required data-ng-model="x.org_id" data-ng-required />
 								</td>
 								<td>
 									<span data-ng-hide="editMode">{{x.org_name}}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.org_name" data-ng-required />
+									<input type="text" data-ng-show="editMode" ng-minlength="1" ng-maxlength="255" required data-ng-model="x.org_name" data-ng-required />
 								</td>
 								<td>
 									<span data-ng-hide="editMode">{{x.org_div}}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.org_div" data-ng-required />
+									<input type="text" data-ng-show="editMode" ng-minlength="1" ng-maxlength="255" data-ng-model="x.org_div" data-ng-required />
 								</td>
 								<td>
 									<span data-ng-hide="editMode">{{x.org_addr1}}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.org_addr1" data-ng-required />
+									<input type="text" data-ng-show="editMode" ng-minlength="1" ng-maxlength="255" data-ng-model="x.org_addr1" data-ng-required />
 								</td>
 								<td>
 									<span data-ng-hide="editMode">{{x.org_addr2}}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.org_addr2" data-ng-required />
+									<input type="text" data-ng-show="editMode" ng-minlength="1" ng-maxlength="255" data-ng-model="x.org_addr2" data-ng-required />
 								</td>
 								<td>
 									<span data-ng-hide="editMode">{{x.org_city}}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.org_city" data-ng-required />
+									<input type="text" data-ng-show="editMode" ng-minlength="1" ng-maxlength="255" data-ng-model="x.org_city" data-ng-required />
 								</td>
 								<td>
 									<span data-ng-hide="editMode">{{x.org_state_prov_cd}}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.org_state_prov_cd" data-ng-required />
+									<input type="text" data-ng-show="editMode" ng-minlength="1" ng-maxlength="255" data-ng-model="x.org_state_prov_cd" data-ng-required />
 								</td>
 								<td>
 									<span data-ng-hide="editMode">{{x.org_post_cd}}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.org_post_cd" data-ng-required />
+									<input type="text" data-ng-show="editMode" ng-minlength="1" ng-maxlength="255" data-ng-model="x.org_post_cd" data-ng-required />
 								</td>
 								<td>
 									<span data-ng-hide="editMode">{{x.org_cntry_cd}}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.org_cntry_cd" data-ng-required />
+									<input type="text" data-ng-show="editMode" ng-minlength="1" ng-maxlength="255" data-ng-model="x.org_cntry_cd" data-ng-required />
 								</td>
 								<td>
 									<span data-ng-hide="editMode">{{x.cage_cd}}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.cage_cd" data-ng-required />
+									<input type="text" data-ng-show="editMode" ng-minlength="1" ng-maxlength="255" data-ng-model="x.cage_cd" data-ng-required />
 								</td>
 								<td>
 									<button type="submit" data-ng-hide="editMode" data-ng-click="editMode = true; editResults(x)" class="btn btn-default">Edit</button>
