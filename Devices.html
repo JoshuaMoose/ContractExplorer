@@ -62,60 +62,62 @@
 					<!--button type="submit" value="clearResults">Clear Results</button-->
 					
 					<div id="scrollView" style="max-height:100%; overflow:auto; margin: 10px">
-						<table style="padding: 3px;">
-							
-							<tr>
-								<td><input ng-model="f.dev_id" placeholder="Filter by Device ID"></td>
-								<td><input ng-model="f.dev_type" placeholder="Filter by Device Type"></td>
-								<td><input ng-model="f.dev_desc" placeholder="Filter by Device Describe"></td>
-								<td><input ng-model="f.dev_owner_id" placeholder="Filter by Device Owner"></td>
-								<td><input ng-model="f.dev_user_id" placeholder="Filter by Device User ID"></td>
-								<td><input ng-model="f.dev_sn" placeholder="Filter by Device Serial Number"></td>
-							</tr>
-											
-							<tr>
-								<th value="dev_id">Device ID</th>
-								<th value="dev_type">Device Type</th>
-								<th value="dev_desc">Device Description</th>
-								<th value="dev_owner">Device Owner</th>
-								<th value="dev_user_id">Device User ID</th>
-								<th value="dev_sn">Device Serial Number</th>
-								<th>Edit</th>
-							</tr>
-
-							<tr ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}">
-								<td>
-									<span data-ng-hide="editMode">{{ x.dev_id }}</span>
-									<input type="text" pattern="^\d+$" ng-maxlength="9" data-ng-show="editMode" data-ng-model="x.dev_id" required />
-								</td>
-								<!-- The special block here will swap to being input boxes when the -->
-								<td>
-									<span data-ng-hide="editMode">{{x.dev_type}}</span>
-									<input type="text" ng-maxlength="255" data-ng-show="editMode" data-ng-model="x.dev_type" required />
-								</td>
-								<td>
-									<span data-ng-hide="editMode">{{x.dev_desc}}</span>
-									<input type="text" ng-maxlength="255" data-ng-show="editMode" data-ng-model="x.dev_desc" required />
-								</td>
-								<td>
-									<span data-ng-hide="editMode">{{x.dev_owner)id}}</span>
-									<input type="text" pattern="^\d+$" ng-maxlength="9" data-ng-show="editMode" data-ng-model="x.dev_owner_id" required />
-								</td>
-								<td>
-									<span data-ng-hide="editMode">{{x.dev_user_id}}</span>
-									<input type="text" pattern="^\d+$" ng-maxlength="9" data-ng-show="editMode" data-ng-model="x.dev_user_id" required />
-								</td>
-								<td>
-									<span data-ng-hide="editMode">{{x.dev_sn}}</span>
-									<input type="text" pattern="^\d+$" ng-maxlength="9" data-ng-show="editMode" data-ng-model="x.dev_sn"/>
-								</td>
-								<td >
-										<button type="submit" data-ng-hide="editMode" data-ng-click="editMode = true; editResults(x)" class="btn btn-default">Edit</button>
-										<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; saveField(x)" class="btn btn-default" ng-disabled="!updateForm.$valid" >Save</button>
-										<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; cancel()" class="btn btn-default">Cancel</button>
-								</td>
-							</tr>	
-						</table>
+						<form name="updateForm" >
+							<table style="padding: 3px;">
+								
+								<tr>
+									<td><input ng-model="f.dev_id" placeholder="Filter by Device ID"></td>
+									<td><input ng-model="f.dev_type" placeholder="Filter by Device Type"></td>
+									<td><input ng-model="f.dev_desc" placeholder="Filter by Device Describe"></td>
+									<td><input ng-model="f.dev_owner_id" placeholder="Filter by Device Owner"></td>
+									<td><input ng-model="f.dev_user_id" placeholder="Filter by Device User ID"></td>
+									<td><input ng-model="f.dev_sn" placeholder="Filter by Device Serial Number"></td>
+								</tr>
+												
+								<tr>
+									<th value="dev_id">Device ID</th>
+									<th value="dev_type">Device Type</th>
+									<th value="dev_desc">Device Description</th>
+									<th value="dev_owner">Device Owner</th>
+									<th value="dev_user_id">Device User ID</th>
+									<th value="dev_sn">Device Serial Number</th>
+									<th>Edit</th>
+								</tr>
+	
+								<tr ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}">
+									<td>
+										<span data-ng-hide="editMode">{{ x.dev_id }}</span>
+										<input type="text" pattern="^\d+$" ng-maxlength="9" data-ng-show="editMode" data-ng-model="x.dev_id" required />
+									</td>
+									<!-- The special block here will swap to being input boxes when the -->
+									<td>
+										<span data-ng-hide="editMode">{{x.dev_type}}</span>
+										<input type="text" ng-maxlength="255" data-ng-show="editMode" data-ng-model="x.dev_type" required />
+									</td>
+									<td>
+										<span data-ng-hide="editMode">{{x.dev_desc}}</span>
+										<input type="text" ng-maxlength="255" data-ng-show="editMode" data-ng-model="x.dev_desc" required />
+									</td>
+									<td>
+										<span data-ng-hide="editMode">{{x.dev_owner)id}}</span>
+										<input type="text" pattern="^\d+$" ng-maxlength="9" data-ng-show="editMode" data-ng-model="x.dev_owner_id" required />
+									</td>
+									<td>
+										<span data-ng-hide="editMode">{{x.dev_user_id}}</span>
+										<input type="text" pattern="^\d+$" ng-maxlength="9" data-ng-show="editMode" data-ng-model="x.dev_user_id" required />
+									</td>
+									<td>
+										<span data-ng-hide="editMode">{{x.dev_sn}}</span>
+										<input type="text" pattern="^\d+$" ng-maxlength="9" data-ng-show="editMode" data-ng-model="x.dev_sn"/>
+									</td>
+									<td >
+											<button type="submit" data-ng-hide="editMode" data-ng-click="editMode = true; editResults(x)" class="btn btn-default">Edit</button>
+											<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; saveField(x)" class="btn btn-default" ng-disabled="!updateForm.$valid" >Save</button>
+											<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; cancel()" class="btn btn-default">Cancel</button>
+									</td>
+								</tr>	
+							</table>
+						</form>
 					</div>
 	
 						<!--End search for contacts-->
@@ -140,29 +142,77 @@
 					<div class="panel-body">
 						<!--Add new contact-->
 						<div> <!-- ng-app="myApp" ng-controller="formCtrl" ~~removed bc unused-->
-							<div class="row">
-								<div class="col-lg-3">Device ID:</div>
-								<div class="col-lg-3"><input type="text" pattern="^\d+$" ng-maxlength="9" ng-model="dev_id" required></div>
-								<div class="col-lg-3">Device Type:</div>
-								<div class="col-lg-3"><input type="text" ng-maxlength="255" ng-model="dev_type" required></div>
-							</div><!--row-->
-							
-							<div class="row">
-								<div class="col-lg-3">Device Describe:</div>
-								<div class="col-lg-3"><input type="text" ng-maxlength="255" ng-model="dev_desc" required></div>
-								<div class="col-lg-3">Device Owner:</div>
-								<div class="col-lg-3"><input type="text" pattern="^\d+$" ng-maxlength="9" ng-model="dev_owner" required></div>
-							</div><!--row-->
-							
-							<div class="row">
-								<div class="col-lg-3">Device User ID:</div>
-								<div class="col-lg-3"><input type="text" pattern="^\d+$" ng-maxlength="9" ng-model="dev_user_ID" required></div>
-								<div class="col-lg-3">Device Serial Number:</div>
-								<div class="col-lg-3"><input type="text" pattern="^\d+$" ng-maxlength="9" ng-model="dev_sn"></div>
-							</div><!--row-->
-							<div class="row">
-								<div class="col-lg-6"><button type="submit" ng-disabled="!addForm.$valid" class="btn btn-default" value="contacts" ng-click="addFunction()" >Add New Devices</button></div>
-							</div><!--row-->
+							<form name="addForm" >
+								<div class="row">
+									<div class="col-lg-3">Device ID:</div>
+									<div class="col-lg-3"><input type="text" name="devid" pattern="^\d+$" ng-maxlength="9" ng-model="dev_id" required></div>
+									<div class="col-lg-3">Device Type:</div>
+									<div class="col-lg-3"><input type="text" name="devtype" ng-maxlength="255" ng-model="dev_type" required></div>
+								</div><!--row-->
+								
+								<div class="row">
+									<div class="col-lg-3">Device Description:</div>
+									<div class="col-lg-3"><input type="text" name="devdesc" ng-maxlength="255" ng-model="dev_desc" required></div>
+									<div class="col-lg-3">Device Owner:</div>
+									<div class="col-lg-3"><input type="text" name="devowner" pattern="^\d+$" ng-maxlength="9" ng-model="dev_owner" required></div>
+								</div><!--row-->
+								
+								<div class="row">
+									<div class="col-lg-3">Device User ID:</div>
+									<div class="col-lg-3"><input type="text" name="devuserid" pattern="^\d+$" ng-maxlength="9" ng-model="dev_user_ID" required></div>
+									<div class="col-lg-3">Device Serial Number:</div>
+									<div class="col-lg-3"><input type="text" name="devsn" pattern="^\d+$" ng-maxlength="9" ng-model="dev_sn"></div>
+								</div><!--row-->
+								<div class="row">
+									<div class="col-lg-6"><button type="submit" data-ng-disabled="!addForm.$valid" class="btn btn-default" value="contacts" ng-click="addFunction()" >Add New Devices</button>
+															<button type="submit" data-ng-disabled="addForm.$valid" class="btn btn-default" data-toggle="modal" data-target="#addErrorsModal" >Validation Issues</button></div>
+								</div><!--row-->
+									
+								<!-- Modal -->
+								<div id="addErrorsModal" class="modal fade" role="dialog">
+								  	<div class="modal-dialog">
+									
+									    <!-- Modal content-->
+									    <div class="modal-content">
+									   		<div class="modal-header">
+									        	<button type="button" class="close" data-dismiss="modal">&times;</button>
+									        	<h4 class="modal-title">Adding New Record Validation Errors</h4>
+									      	</div>
+									      	
+											<div class="modal-body">
+												<div>Device ID Errors = {{addForm.devid.$error}}</div>
+												<div>Device Type Errors = {{addForm.devtype.$error}}</div>
+												<div>Device Description Errors = {{addForm.devdesc.$error}}</div>
+												<div>Device Owner Errors = {{addForm.devowner.$error}}</div>
+												<div>Device User ID Errors = {{addForm.devuserid.$error}}</div>
+												<div>Device Serial Number Errors = {{addForm.devsn.$error}}</div>
+										        <!-- div>Is Device ID present= {{!addForm.devid.$error.required}}</div><br/>
+										        <div>Is Device ID an integer: {{!addForm.devid.$error.pattern}}</div><br/>
+										        <div>Is Device ID short enough: {{!addForm.devid.$error.maxlength}}</div><br/>
+										        <div>Is Device Type present: {{!addForm.devtype.$error.required}}</div><br/>
+										        <div>Is Device Type a short enough: {{!addForm.$error.devtype.maxlength}}</div><br/>
+										        <div>Is Device Description present: {{!addForm.devdesc.$error.required}}</div><br/>
+										        <div>Is Device Description short enough: {{!addForm.devdesc.$error.maxlength}}</div><br/>
+										        <div>Is Device Owner present: {{!addForm.devowner.$error.required}}</div><br/>
+										        <div>Is Device Owner an Integer: {{!addForm.devowner.$error.pattern}}</div><br/>
+										        <div>Is Device Owner short enough: {{!addForm.devowner.$error.maxlength}}</div><br/>
+										        <div>Is Device User ID present: {{!addForm.devuserid.$error.required}}</div><br/>
+										        <div>Is Device User ID an Integer: {{!addForm.devuserid.$error.pattern}}</div><br/>
+										        <div>Is Device User ID short enough: {{!addForm.devuserid.$error.maxlength}}</div><br/>
+										        <div>Is Device Serial Number an Integer: {{!addForm.devsn.$error.pattern}}</div><br/>
+										        <div>Is Device Serial Number short enough: {{!addForm.devsn.$error.maxlength}}</div><br/-->
+										    </div>
+										   		
+										   	<div class="modal-footer">
+										        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+										    </div>
+									    </div>
+								
+								  	</div>
+								</div>
+								
+								
+							</form>
 						</div>
 						<!---End add new contact-->
 					</div>

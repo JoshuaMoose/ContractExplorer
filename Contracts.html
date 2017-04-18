@@ -233,16 +233,16 @@
 						<a data-toggle="collapse" data-parent="#accordion" href="#collapse2"><h2>Add New Contract</h2></a>
 					</h4>
 				</div>
-				<div id="collapse2" class="panel-collapse collapse" ng-controller="addCtrl">
+				<div id="collapse2" class="panel-collapse collapse" data-ng-controller="addCtrl">
 					<div class="panel-body">
 						<!--Add new contact-->
 						<form name="addForm" > <!-- ng-app="myApp" ng-controller="formCtrl" ~~removed bc unused-->
 							<div class="row">
 								<div class="col-lg-3">Contract Number:</div>
-								<div class="col-lg-3"><input type="text" ng-minlength="1" ng-maxlength="255" required data-ng-model="contr_id" 
+								<div class="col-lg-3"><input type="text" data-ng-minlength="1" data-ng-maxlength="255" required data-ng-model="contr_id" 
 														title="Contract ID: Required; String" /></div>
 								<div class="col-lg-3">Customer Organization ID:</div>
-								<div class="col-lg-3"><select class = "dropdown" ng-model="contr_org_id" >
+								<div class="col-lg-3"><select class = "dropdown" data-ng-model="contr_org_id" >
 											<option value="2">TRANSCOM
 											<option value="3">Air Mobility Command (AMC)
 											<option value="4">SAIC
@@ -252,12 +252,12 @@
 							
 							<div class="row">
 								<div class="col-lg-3">Contract Type:</div>
-								<div class="col-lg-3"><select class = "dropdown" ng-model="contr_type_cd" required>
+								<div class="col-lg-3"><select class = "dropdown" data-ng-model="contr_type_cd" required>
 											<option value="Prime">Prime
 											<option value="Sub">Sub
 									</select></div>
 								<div class="col-lg-3">Prime Contractor ID:</div>
-								<div class="col-lg-3"><select class = "dropdown" ng-model="prime_contr_id">
+								<div class="col-lg-3"><select class = "dropdown" data-ng-model="prime_contr_id">
 											<option value="2">TRANSCOM
 											<option value="3">Air Mobility Command (AMC)
 											<option value="4">SAIC
@@ -276,14 +276,14 @@
 							
 							<div class="row">
 								<div class="col-lg-3">Contract End Customer:</div>
-								<div class="col-lg-3"><select class = "dropdown" ng-model="contr_end_cust_id">
+								<div class="col-lg-3"><select class = "dropdown" data-ng-model="contr_end_cust_id">
 											<option value="2">TRANSCOM
 											<option value="3">Air Mobility Command (AMC)
 											<option value="4">SAIC
 											<option value="1">SuprTEK
 									</select></div>
 								<div class="col-lg-3">Contract Vehicle:</div>
-								<div class="col-lg-3"><select class = "dropdown" ng-model="contr_vehicle_id">
+								<div class="col-lg-3"><select class = "dropdown" data-ng-model="contr_vehicle_id">
 										<option value="SMB">SMB
 										<option value="VET">VET
 									</select></div>
@@ -309,13 +309,13 @@
 							
 							<div class="row">
 								<div class="col-lg-3">DD254 Recieved:</div>
-								<div class="col-lg-3"><select class = "dropdown" ng-model="dd254_recv">
+								<div class="col-lg-3"><select class = "dropdown" data-ng-model="dd254_recv">
 														<option value="">
 														<option value="t">True
 														<option value="f">False
 												</select></div>
 								<div class="col-lg-3">Is Open?:</div>
-								<div class="col-lg-3"><select class = "dropdown" ng-model="is_open">
+								<div class="col-lg-3"><select class = "dropdown" data-ng-model="is_open">
 												<option value="">
 												<option value="t">True
 												<option value="f">False
@@ -324,14 +324,14 @@
 							
 							<div class="row">
 								<div class="col-lg-3">Contract Security Level:</div>
-								<div class="col-lg-3"><select class = "dropdown" ng-model="contr_sec_level_cd">
+								<div class="col-lg-3"><select class = "dropdown" data-ng-model="contr_sec_level_cd">
 											<option value="CN">CN
 											<option value="NO">NO
 											<option value="SC">SC
 											<option value="TS">TS
 									</select></div>
 								<div class="col-lg-3">Information Security Level:</div>
-								<div class="col-lg-3"><select class = "dropdown" ng-model="contr_info_safe_level_cd">
+								<div class="col-lg-3"><select class = "dropdown" data-ng-model="contr_info_safe_level_cd">
 											<option value="CN">CN
 											<option value="NO">NO
 											<option value="SC">SC
@@ -340,7 +340,7 @@
 							</div><!--row-->
 							
 							<div class="row">
-								<div class="col-lg-6"><button type="submit" class="btn btn-default" ng-disabled="!addForm.$valid" value="contacts" ng-click="addFunction()" >Add New Contract</button></div>
+								<div class="col-lg-6"><button type="submit" class="btn btn-default" data-ng-disabled="!addForm.$valid" value="contacts" ng-click="addFunction()" >Add New Contract</button></div>
 							</div><!--row-->
 							
 						</form>

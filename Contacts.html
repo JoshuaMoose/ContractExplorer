@@ -11,13 +11,13 @@
   <script src="js\angular.min.js"></script>
   <script src="js\contactsController.js"></script>
 </head>
-<body ng-app="myApp" >
+<body data-ng-app="myApp" >
 <nav class="navbar navbar-default navbar-fixed-top"style="margin-bottom: 30px;-webkit-box-shadow: 0 8px 6px -6px #999;
     -moz-box-shadow: 0 8px 6px -6px #999;
     box-shadow: 0 8px 6px -6px #999;">
 <div class="container-fluid">
 <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" area-expanded="false">
         <span class="sr-only">Toggle navigation</span>
       </button>
       <a class="navbar-brand" href="Home.html">Supr<b>TEK</b> Contract Explorer</a>
@@ -36,8 +36,7 @@
 				<li><a href="Devices.html">Devices</a></li>
 				<li><a href="Codes.html">Codes</a></li>		
 				<li><a href="Reports.html">Reports</a></li>	
-          </ul>
-      </ul>
+	   </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
@@ -53,7 +52,7 @@
 
 		<!--End Nav Tabs-->
 		
-		<div class="panel-group" id="accordion" ng-controller="resultsCtrl">
+		<div class="panel-group" id="accordion" data-ng-controller="resultsCtrl">
 			<div class="panel panel-default">
 			    <div class="panel-heading">
 					<h4 class="panel-title">
@@ -64,7 +63,7 @@
 					<div class="panel-body">
 						<!--Search for contacts-->
 						
-						<button type="submit" style="margin-bottom: 10px; margin-top: 10px; margin-left: 1px;" class="btn btn-default" value="contacts" name="SearchButton" data-toggle="collapse" data-target="#search" ng-click="myFunction()">Load Contacts</button>
+						<button type="submit" style="margin-bottom: 10px; margin-top: 10px; margin-left: 1px;" class="btn btn-default" value="contacts" name="SearchButton" data-toggle="collapse" data-target="#search" data-ng-click="myFunction()">Load Contacts</button>
 						<!--span><a href="ResultsAsTable.html">Advanced Search</a></span-->
 		
 		
@@ -79,25 +78,25 @@
 						<table style="padding: 3px;">
 							
 							<tr>
-								<td><input ng-model="f.cont_id" placeholder="Filter by Contact ID"></td>
-								<td><input ng-model="f.cont_org_id" placeholder="Filter by Organization ID"></td>
-								<td><input ng-model="f.cont_role_cd" placeholder="Filter by Role CD"></td>
-								<td><input ng-model="f.cont_first_name" placeholder="Filter by First Name"></td>
-								<td><input ng-model="f.cont_middle_name" placeholder="Filter by Middle Name"></td>
-								<td><input ng-model="f.cont_last_name" placeholder="Filter by Last name"></td>
-								<td><input ng-model="f.cont_name_title" placeholder="Filter by Name Title"></td>
-								<td><input ng-model="f.cont_name_suffix" placeholder="Filter by Name Suffix"></td>
-								<td><input ng-model="f.cont_addr1" placeholder="Filter by Address 1"></td>
-								<td><input ng-model="f.cont_addr2" placeholder="Filter by Address 2"></td>
-								<td><input ng-model="f.cont_city" placeholder="Filter by City"></td>
-								<td><input ng-model="f.cont_state_prov_cd" placeholder="Filter by State/Province"></td>
-								<td><input ng-model="f.cont_post_cd" placeholder="Filter by Postal Code"></td>
-								<td><input ng-model="f.cont_cntry_cd" placeholder="Filter by Country"></td>
-								<td><input ng-model="f.cont_office_phone" placeholder="Filter by Office Number"></td>
-								<td><input ng-model="f.cont_mobile_phone" placeholder="Filter by Mobile Number"></td>
-								<td><input ng-model="f.cont_home_phone" placeholder="Filter by Home Number"></td>
-								<td><input ng-model="f.cont_email" placeholder="Filter by Email"></td>
-								<td><input ng-model="f.cont_alt_email" placeholder="Filter by Alt Email"></td>
+								<td><input data-ng-model="f.cont_id" placeholder="Filter by Contact ID"></td>
+								<td><input data-ng-model="f.cont_org_id" placeholder="Filter by Organization ID"></td>
+								<td><input data-ng-model="f.cont_role_cd" placeholder="Filter by Role CD"></td>
+								<td><input data-ng-model="f.cont_first_name" placeholder="Filter by First Name"></td>
+								<td><input data-ng-model="f.cont_middle_name" placeholder="Filter by Middle Name"></td>
+								<td><input data-ng-model="f.cont_last_name" placeholder="Filter by Last name"></td>
+								<td><input data-ng-model="f.cont_name_title" placeholder="Filter by Name Title"></td>
+								<td><input data-ng-model="f.cont_name_suffix" placeholder="Filter by Name Suffix"></td>
+								<td><input data-ng-model="f.cont_addr1" placeholder="Filter by Address 1"></td>
+								<td><input data-ng-model="f.cont_addr2" placeholder="Filter by Address 2"></td>
+								<td><input data-ng-model="f.cont_city" placeholder="Filter by City"></td>
+								<td><input data-ng-model="f.cont_state_prov_cd" placeholder="Filter by State/Province"></td>
+								<td><input data-ng-model="f.cont_post_cd" placeholder="Filter by Postal Code"></td>
+								<td><input data-ng-model="f.cont_cntry_cd" placeholder="Filter by Country"></td>
+								<td><input data-ng-model="f.cont_office_phone" placeholder="Filter by Office Number"></td>
+								<td><input data-ng-model="f.cont_mobile_phone" placeholder="Filter by Mobile Number"></td>
+								<td><input data-ng-model="f.cont_home_phone" placeholder="Filter by Home Number"></td>
+								<td><input data-ng-model="f.cont_email" placeholder="Filter by Email"></td>
+								<td><input data-ng-model="f.cont_alt_email" placeholder="Filter by Alt Email"></td>
 							</tr>
 											
 							<tr>
@@ -123,7 +122,7 @@
 								<th>Edit</th>
 							</tr>
 
-							<tr ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}">
+							<tr data-ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}">
 								<td>
 									<span data-ng-hide="editMode">{{ x.cont_id }}</span>
 									<input type="text" data-ng-show="editMode" data-ng-model="x.cont_id" data-ng-required />
@@ -228,7 +227,7 @@
 						<a data-toggle="collapse" data-parent="#accordion" href="#collapse2"><h2>Add New Contact</h2></a>
 					</h4>
 				</div>
-				<div id="collapse2" class="panel-collapse collapse" ng-controller="addCtrl">
+				<div id="collapse2" class="panel-collapse collapse" data-ng-controller="addCtrl">
 					<div class="panel-body">
 						<!--Add new contact-->
 						<div> <!-- ng-app="myApp" ng-controller="formCtrl" ~~removed bc unused-->

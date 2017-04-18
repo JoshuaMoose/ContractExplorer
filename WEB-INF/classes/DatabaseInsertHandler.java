@@ -18,7 +18,8 @@ import java.sql.PreparedStatement;
 import java.sql.Timestamp;
 import javax.sql.DataSource;
 
-import com.google.gson.*;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
  
 public class DatabaseInsertHandler extends HttpServlet {
