@@ -1,321 +1,331 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>SuprTEK Contract Application</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/bootstrap.css">
-  <link rel="stylesheet" href="customcss.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="js\angular.min.js"></script>
-  <script src="js\organizationsController.js"></script>
+    <title>SuprTEK Contract Application</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="customcss.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js\angular.min.js"></script>
+    <script src="js\contactsController.js"></script>
 </head>
-<body ng-app="myApp" ng-controller="resultsCtrl">
+<body data-ng-app="myApp">
+    <nav class="navbar navbar-default navbar-fixed-top" style="margin-bottom: 30px;-webkit-box-shadow: 0 8px 6px -6px #999;
+    -moz-box-shadow: 0 8px 6px -6px #999;
+    box-shadow: 0 8px 6px -6px #999;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" area-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                </button>
+                <a class="navbar-brand" href="Home.html">Supr<b>TEK</b> Contract Explorer</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="Home.html">Home</a></li>
+                    <li><a href="Contracts.html">Contracts</a></li>
+                    <li><a href="Organizations.html">Organizations</a></li>
+                    <li><a href="Contacts.html">Contacts</a></li>
+                    <li><a href="Directives.html">Directives</a></li>
+                    <li><a href="Releases.html">Releases</a></li>
+                    <li><a href="DataSets.html">Data Sets</a></li>
+                    <li><a href="ExportRegulations.html">Export Regulations</a></li>
+                    <li><a href="Travel.html">Travel</a></li>
+                    <li><a href="Devices.html">Devices</a></li>
+                    <li><a href="Codes.html">Codes</a></li>
+                    <li><a href="Reports.html">Reports</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <div class="row"></div>
+    <div class="container-fluid" style="margin-top:50px;">
+        <!-- Logo -->
+        <div class="page-header" style="text-align:center;">
+            <h1>Organizations</h1>
+        </div>
 
-<div class="container">
-	<!-- Logo -->
-	<div class="page-header">
-  		<h1>SUPRTEK Contract Explorer</h1>
-	</div>
-	
-	<!--Navigation Tabs  SET ACTIVE PAGE/-->
-	<div class="well">
-		<div id="tabs" class="row">
-			<ul class="nav nav-tabs" role="tablist">
-				<li><a href="Home.html">Home</a></li>
-				<li><a href="Contracts.html">Contracts</a></li>
-				<li class="active"><a href="Organizations.html">Organizations</a></li>
-				<li><a href="Contacts.html">Contacts</a></li>
-				<li><a href="Directives.html">Directives</a></li>  
-				<li><a href="Releases.html">Releases</a></li>
-				<li><a href="DataSets.html">Data Sets</a></li>
-				<li><a href="ExpertRegulations.html">Expert Regulations</a></li>
-				<li><a href="Travel.html">Travel</a></li>
-				<li><a href="Devices.html">Devices</a></li>
-				<li><a href="Codes.html">Codes</a></li>		
-				<li><a href="Reports.html">Reports</a></li>					
-			 </ul>
-		</div>
-		
-		<div class="panel-group" id="accordion">
-			<div class="panel panel-default">
-			    <div class="panel-heading">
-					<h4 class="panel-title">
-						<a data-toggle="collapse" data-parent="#accordion" href="#collapse1"><h2>Search Organizations</h2></a>
-					</h4>
-			    </div>
-				<div id="collapse1" class="panel-collapse collapse in">
-					<div class="panel-body">
-						<!--Search for contacts-->
-						
-						<button type="submit" style="margin-bottom: 10px; margin-top: 10px; margin-left: 1px;" class="btn btn-default" value="contacts" name="SearchButton" data-toggle="collapse" data-target="#search" ng-click="myFunction()">Load Organizations</button>
-						<!--span><a href="ResultsAsTable.html">Advanced Search</a></span-->
-		
-		
-		<!-- Table Start**************************** -->				
-				<div id="search" class="collapse">
-					
-					<input type="text" name="SearchBy" style="margin: 20px; margin-bottom: -25px;" ng-model="f.$" placeholder="Search All Fields">
-					
-					<!--button type="submit" value="clearResults">Clear Results</button-->
-					
-					<div id="scrollView" style="max-height:100%; overflow:auto; margin: 10px">
-						<table style="padding: 3px;">
-							
-							<tr>
-								<td><input ng-model="f.org_id" placeholder="Filter by Organizatoin ID"></td>
-								<td><input ng-model="f.org_type_cd" placeholder="Filter by Organization"></td>
-								<td><input ng-model="f.org_name" placeholder="Filter by Organization Name"></td>
-								<td><input ng-model="f.org_div" placeholder="Filter by Division or Business Unit"></td>
-								<td><input ng-model="f.org_addr1" placeholder="Filter by Address Line 1"></td>
-								<td><input ng-model="f.org_addr2" placeholder="Filter by Address Line 2"></td>
-								<td><input ng-model="f.org_city" placeholder="Filter by City"></td>
-								<td><input ng-model="f.org_state_prov_cd" placeholder="Filter by Sate"></td>
-								<td><input ng-model="f.org_post_cd" placeholder="Filter by Postal Code"></td>
-								<td><input ng-model="f.org_cntry_cd" placeholder="Filter by Country"></td>
-								<td><input ng-model="f.cage_cd" placeholder="Filter by Cage Code"></td>
-								<!-- Contract vehicle code-->
-							</tr>
-											
-							<tr>
-								<th value="org_id">Organization ID</th>
-								<th value="org_type_cd">Organization Type</th>
-								<th value="org_name">Organization Name</th>
-								<th value="org_div">Division or Business Unit</th>
-								<th value="org_addr1">Address Line 1</th>
-								<th value="org_addr2">Address Line 2</th>
-								<th value="org_city">City</th>
-								<th value="org_state_prov_cd">State or Province</th>
-								<th value="org_post_cd">Postal Code</th>
-								<th value="org_cntry_cd">Country</th>
-								<th value="cage_cd">Cage Code</th>
-								<th>Edit</th>
-							</tr>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1"><h2>Search Organizations</h2></a>
+                    </h4>
+                </div>
+                <div id="collapse1" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <!--Search for contacts-->
 
-							<tr ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}">
-								<td>
-									<span data-ng-hide="editMode">{{ x.org_id }}</span>
-									<input type="text" data-ng-show="editMode" pattern="^\d+$" data-ng-model="x.org_id" data-ng-required />
-								</td>
-								<td>
-									<span data-ng-hide="editMode">{{ x.org_type_cd }}</span>
-									<input type="text" data-ng-show="editMode" ng-minlength="1" ng-maxlength="255" required data-ng-model="x.org_id" data-ng-required />
-								</td>
-								<td>
-									<span data-ng-hide="editMode">{{x.org_name}}</span>
-									<input type="text" data-ng-show="editMode" ng-minlength="1" ng-maxlength="255" required data-ng-model="x.org_name" data-ng-required />
-								</td>
-								<td>
-									<span data-ng-hide="editMode">{{x.org_div}}</span>
-									<input type="text" data-ng-show="editMode" ng-minlength="1" ng-maxlength="255" data-ng-model="x.org_div" data-ng-required />
-								</td>
-								<td>
-									<span data-ng-hide="editMode">{{x.org_addr1}}</span>
-									<input type="text" data-ng-show="editMode" ng-minlength="1" ng-maxlength="255" data-ng-model="x.org_addr1" data-ng-required />
-								</td>
-								<td>
-									<span data-ng-hide="editMode">{{x.org_addr2}}</span>
-									<input type="text" data-ng-show="editMode" ng-minlength="1" ng-maxlength="255" data-ng-model="x.org_addr2" data-ng-required />
-								</td>
-								<td>
-									<span data-ng-hide="editMode">{{x.org_city}}</span>
-									<input type="text" data-ng-show="editMode" ng-minlength="1" ng-maxlength="255" data-ng-model="x.org_city" data-ng-required />
-								</td>
-								<td>
-									<span data-ng-hide="editMode">{{x.org_state_prov_cd}}</span>
-									<input type="text" data-ng-show="editMode" ng-minlength="1" ng-maxlength="255" data-ng-model="x.org_state_prov_cd" data-ng-required />
-								</td>
-								<td>
-									<span data-ng-hide="editMode">{{x.org_post_cd}}</span>
-									<input type="text" data-ng-show="editMode" ng-minlength="1" ng-maxlength="255" data-ng-model="x.org_post_cd" data-ng-required />
-								</td>
-								<td>
-									<span data-ng-hide="editMode">{{x.org_cntry_cd}}</span>
-									<input type="text" data-ng-show="editMode" ng-minlength="1" ng-maxlength="255" data-ng-model="x.org_cntry_cd" data-ng-required />
-								</td>
-								<td>
-									<span data-ng-hide="editMode">{{x.cage_cd}}</span>
-									<input type="text" data-ng-show="editMode" ng-minlength="1" ng-maxlength="255" data-ng-model="x.cage_cd" data-ng-required />
-								</td>
-								<td>
-									<button type="submit" data-ng-hide="editMode" data-ng-click="editMode = true; editResults(x)" class="btn btn-default">Edit</button>
-									<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; saveField(x)" class="btn btn-default">Save</button>
-									<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; cancel()" class="btn btn-default">Cancel</button>
-								</td>
-							</tr>	
-						</table>
-					</div>
-	
-						<!--End search for contacts-->
-				</div>
-				<!-- Table end ********************************-->
-				
-				
-				
-						<!--End search for contacts-->
-					</div>
-				</div>
-			</div>
-			
-			<!-- ADDING BLOCK ********************************-->
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h4 class="panel-title">
-						<a data-toggle="collapse" data-parent="#accordion" href="#collapse2"><h2>Add New Organization</h2></a>
-					</h4>
-				</div>
-				<div id="collapse2" class="panel-collapse collapse" ng-controller="addCtrl">
-					<div class="panel-body">
-						<!--Add new contact-->
-						<div> <!-- ng-app="myApp" ng-controller="formCtrl" ~~removed bc unused-->
-							<div class="row">
-								<div class="col-lg-3">Organization ID:</div>
-								<div class="col-lg-3"><input type="text" ng-model="org_id"></div>
-								<!--Insert vehicle code-->
-							</div><!--row-->
-							
-							<div class="row">
-								<div class="col-lg-3">Organization Type:</div>
-								<div class="col-lg-3"><select class = "dropdown" ng-model="org_type_cd">
-										<option value="Contr">Contr
-										<option value="Cust">Cust
-										<option value="Part">Part
-										<option value="Ven">Ven
-									</select></div>
-							</div><!--row-->
-							
-							<div class="row">
-								<div class="col-lg-3">Organization Name:</div>
-								<div class="col-lg-3"><input type="text" ng-model="org_name"></div>			
-							</div><!--row-->
-							
-							<div class="row">
-								<div class="col-lg-3">Division or Business Unit:</div>
-								<div class="col-lg-3"><input type="text" ng-model="org_div"></div>
-							</div><!--row-->
-							
-							<div class="row">
-								<div class="col-lg-3">Address Line 1:</div>
-								<div class="col-lg-3"><input type="text" ng-model="org_addr1"></div>
-							</div><!--row-->
-							
-							<div class="row">
-								<div class="col-lg-3">Address Line 2:</div>
-								<div class="col-lg-3"><input type="text" ng-model="org_addr2"></div>
-								
-							</div><!--row-->
-							
-							<div class="row">
-								<div class="col-lg-3">City:</div>
-								<div class="col-lg-3"><input type="text" ng-model="org_city"></div>
-							</div><!--row-->
-							
-							<div class="row">
-									<div class="col-lg-3">State or Province:</div>
-								<div class="col-lg-3"><select class = "dropdown" ng-model="org_state_prov_cd">
-											<option value="AB">AB
-											<option value="AL">AL
-											<option value="AK">AK
-											<option value="AZ">AZ
-											<option value="AR">AR
-											<option value="AS">AS
-											<option value="BC">BC
-											<option value="CA">CA
-											<option value="CO">CO
-											<option value="CT">CT
-											<option value="DE">DE
-											<option value="DC">DC
-											<option value="FL">FL
-											<option value="GA">GA
-											<option value="GU">GU
-											<option value="HI">HI
-											<option value="ID">ID
-											<option value="IL">IL
-											<option value="IN">IN
-											<option value="IA">IA
-											<option value="KS">KS
-											<option value="KY">KY
-											<option value="LA">LA
-											<option value="MB">MB
-											<option value="ME">ME
-											<option value="MD">MD
-											<option value="MA">MA
-											<option value="MI">MI
-											<option value="MN">MN
-											<option value="MS">MS
-											<option value="MO">MO
-											<option value="MP">MP
-											<option value="MT">MT
-											<option value="NB">NB
-											<option value="NE">NE
-											<option value="NL">NL
-											<option value="NV">NV
-											<option value="NH">NH
-											<option value="NS">NS
-											<option value="NT">NT
-											<option value="NU">NU
-											<option value="NJ">NJ
-											<option value="NM">NM
-											<option value="NY">NY
-											<option value="NC">NC
-											<option value="ND">ND
-											<option value="OH">OH
-											<option value="OK">OK
-											<option value="ON">ON
-											<option value="OR">OR
-											<option value="QC">QC
-											<option value="PA">PA
-											<option value="PE">PE
-											<option value="PR">PR
-											<option value="RI">RI
-											<option value="SC">SC
-											<option value="SD">SD
-											<option value="SK">SK
-											<option value="TN">TN
-											<option value="TX">TX
-											<option value="UT">UT
-											<option value="VT">VT
-											<option value="VA">VA
-											<option value="VI">VI
-											<option value="WA">WA
-											<option value="WV">WV
-											<option value="WI">WI
-											<option value="YT">YT
-									</select></div>
-							</div><!--row-->
-							
-							<div class="row">
-								<div class="col-lg-3">Postal Code:</div>
-								<div class="col-lg-3"><input type="text" ng-model="org_post_cd"></div>
-							</div><!--row-->
-							
-							<div class="row">
-								<div class="col-lg-3">Country:</div>
-								<div class="col-lg-3"><select class = "dropdown" ng-model="org_cntry_cd">
-										<option value="USA">USA
-										<option value="CAN">CAN
-									</select></div>
-							</div>
-							<div class="row">
-								<div class="col-lg-3">Cage code:</div>
-								<div class="col-lg-3"><input type="text" ng-model="cage_cd"></div>
-								<div class="col-lg-6"><button type="submit" value="contacts" ng-click="addFunction()" >Add New Organization</button></div>
-							</div><!--row-->
-						</div>
-						<!---End add new contact-->
-					</div>
-				</div>
-			</div>
-			<!-- ADDING BLOCK END *********************************************** -->
-			
-			
-			
-		</div><!--accordian-->
-	
-	</div><!--well-->
+                        <button type="submit" style="margin-bottom: 10px; margin-top: 10px; margin-left: 1px;" class="btn btn-default" value="contacts" name="SearchButton" data-toggle="collapse" data-target="#search" ng-click="myFunction()">Load Organizations</button>
+                        <!--span><a href="ResultsAsTable.html">Advanced Search</a></span-->
+                        <!-- Table Start**************************** -->
+                        <div id="search" class="collapse">
 
-</div><!--container-->
+                            <input type="text" name="SearchBy" style="margin: 20px; margin-bottom: -25px;" ng-model="f.$" placeholder="Search All Fields">
+
+                            <!--button type="submit" value="clearResults">Clear Results</button-->
+
+                            <div id="scrollView" style="max-height:100%; overflow:auto; margin: 10px">
+                                <table style="padding: 3px;">
+
+                                    <tr>
+                                        <td><input ng-model="f.org_id" placeholder="Filter by Organizatoin ID"></td>
+                                        <td><input ng-model="f.org_type_cd" placeholder="Filter by Organization"></td>
+                                        <td><input ng-model="f.org_name" placeholder="Filter by Organization Name"></td>
+                                        <td><input ng-model="f.org_div" placeholder="Filter by Division or Business Unit"></td>
+                                        <td><input ng-model="f.org_addr1" placeholder="Filter by Address Line 1"></td>
+                                        <td><input ng-model="f.org_addr2" placeholder="Filter by Address Line 2"></td>
+                                        <td><input ng-model="f.org_city" placeholder="Filter by City"></td>
+                                        <td><input ng-model="f.org_state_prov_cd" placeholder="Filter by Sate"></td>
+                                        <td><input ng-model="f.org_post_cd" placeholder="Filter by Postal Code"></td>
+                                        <td><input ng-model="f.org_cntry_cd" placeholder="Filter by Country"></td>
+                                        <td><input ng-model="f.cage_cd" placeholder="Filter by Cage Code"></td>
+                                        <!-- Contract vehicle code-->
+                                    </tr>
+
+                                    <tr>
+                                        <th value="org_id">Organization ID</th>
+                                        <th value="org_type_cd">Organization Type</th>
+                                        <th value="org_name">Organization Name</th>
+                                        <th value="org_div">Division or Business Unit</th>
+                                        <th value="org_addr1">Address Line 1</th>
+                                        <th value="org_addr2">Address Line 2</th>
+                                        <th value="org_city">City</th>
+                                        <th value="org_state_prov_cd">State or Province</th>
+                                        <th value="org_post_cd">Postal Code</th>
+                                        <th value="org_cntry_cd">Country</th>
+                                        <th value="cage_cd">Cage Code</th>
+                                        <th>Edit</th>
+                                    </tr>
+
+                                    <tr ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}">
+                                        <td>
+                                            <span data-ng-hide="editMode">{{ x.org_id }}</span>
+                                            <input type="text" data-ng-show="editMode" pattern="^\d+$" data-ng-model="x.org_id" data-ng-required />
+                                        </td>
+                                        <td>
+                                            <span data-ng-hide="editMode">{{ x.org_type_cd }}</span>
+                                            <input type="text" data-ng-show="editMode" ng-minlength="1" ng-maxlength="255" required data-ng-model="x.org_id" data-ng-required />
+                                        </td>
+                                        <td>
+                                            <span data-ng-hide="editMode">{{x.org_name}}</span>
+                                            <input type="text" data-ng-show="editMode" ng-minlength="1" ng-maxlength="255" required data-ng-model="x.org_name" data-ng-required />
+                                        </td>
+                                        <td>
+                                            <span data-ng-hide="editMode">{{x.org_div}}</span>
+                                            <input type="text" data-ng-show="editMode" ng-minlength="1" ng-maxlength="255" data-ng-model="x.org_div" data-ng-required />
+                                        </td>
+                                        <td>
+                                            <span data-ng-hide="editMode">{{x.org_addr1}}</span>
+                                            <input type="text" data-ng-show="editMode" ng-minlength="1" ng-maxlength="255" data-ng-model="x.org_addr1" data-ng-required />
+                                        </td>
+                                        <td>
+                                            <span data-ng-hide="editMode">{{x.org_addr2}}</span>
+                                            <input type="text" data-ng-show="editMode" ng-minlength="1" ng-maxlength="255" data-ng-model="x.org_addr2" data-ng-required />
+                                        </td>
+                                        <td>
+                                            <span data-ng-hide="editMode">{{x.org_city}}</span>
+                                            <input type="text" data-ng-show="editMode" ng-minlength="1" ng-maxlength="255" data-ng-model="x.org_city" data-ng-required />
+                                        </td>
+                                        <td>
+                                            <span data-ng-hide="editMode">{{x.org_state_prov_cd}}</span>
+                                            <input type="text" data-ng-show="editMode" ng-minlength="1" ng-maxlength="255" data-ng-model="x.org_state_prov_cd" data-ng-required />
+                                        </td>
+                                        <td>
+                                            <span data-ng-hide="editMode">{{x.org_post_cd}}</span>
+                                            <input type="text" data-ng-show="editMode" ng-minlength="1" ng-maxlength="255" data-ng-model="x.org_post_cd" data-ng-required />
+                                        </td>
+                                        <td>
+                                            <span data-ng-hide="editMode">{{x.org_cntry_cd}}</span>
+                                            <input type="text" data-ng-show="editMode" ng-minlength="1" ng-maxlength="255" data-ng-model="x.org_cntry_cd" data-ng-required />
+                                        </td>
+                                        <td>
+                                            <span data-ng-hide="editMode">{{x.cage_cd}}</span>
+                                            <input type="text" data-ng-show="editMode" ng-minlength="1" ng-maxlength="255" data-ng-model="x.cage_cd" data-ng-required />
+                                        </td>
+                                        <td>
+                                            <button type="submit" data-ng-hide="editMode" data-ng-click="editMode = true; editResults(x)" class="btn btn-default">Edit</button>
+                                            <button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; saveField(x)" class="btn btn-default">Save</button>
+                                            <button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; cancel()" class="btn btn-default">Cancel</button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <!--End search for contacts-->
+                        </div>
+                        <!-- Table end ********************************-->
+                        <!--End search for contacts-->
+                    </div>
+                </div>
+            </div>
+
+            <!-- ADDING BLOCK ********************************-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2"><h2>Add New Organization</h2></a>
+                    </h4>
+                </div>
+                <div id="collapse2" class="panel-collapse collapse" ng-controller="addCtrl">
+                    <div class="panel-body">
+                        <!--Add new contact-->
+                        <div>
+                            <!-- ng-app="myApp" ng-controller="formCtrl" ~~removed bc unused-->
+                            <div class="row">
+                                <div class="col-lg-3">Organization ID:</div>
+                                <div class="col-lg-3"><input type="text" ng-model="org_id"></div>
+                                <!--Insert vehicle code-->
+                            </div><!--row-->
+
+                            <div class="row">
+                                <div class="col-lg-3">Organization Type:</div>
+                                <div class="col-lg-3">
+                                    <select class="dropdown" ng-model="org_type_cd">
+                                        <option value="Contr">Contr
+                                        <option value="Cust">Cust
+                                        <option value="Part">Part
+                                        <option value="Ven">Ven
+                                    </select>
+                                </div>
+                            </div><!--row-->
+
+                            <div class="row">
+                                <div class="col-lg-3">Organization Name:</div>
+                                <div class="col-lg-3"><input type="text" ng-model="org_name"></div>
+                            </div><!--row-->
+
+                            <div class="row">
+                                <div class="col-lg-3">Division or Business Unit:</div>
+                                <div class="col-lg-3"><input type="text" ng-model="org_div"></div>
+                            </div><!--row-->
+
+                            <div class="row">
+                                <div class="col-lg-3">Address Line 1:</div>
+                                <div class="col-lg-3"><input type="text" ng-model="org_addr1"></div>
+                            </div><!--row-->
+
+                            <div class="row">
+                                <div class="col-lg-3">Address Line 2:</div>
+                                <div class="col-lg-3"><input type="text" ng-model="org_addr2"></div>
+
+                            </div><!--row-->
+
+                            <div class="row">
+                                <div class="col-lg-3">City:</div>
+                                <div class="col-lg-3"><input type="text" ng-model="org_city"></div>
+                            </div><!--row-->
+
+                            <div class="row">
+                                <div class="col-lg-3">State or Province:</div>
+                                <div class="col-lg-3">
+                                    <select class="dropdown" ng-model="org_state_prov_cd">
+                                        <option value="AB">AB
+                                        <option value="AL">AL
+                                        <option value="AK">AK
+                                        <option value="AZ">AZ
+                                        <option value="AR">AR
+                                        <option value="AS">AS
+                                        <option value="BC">BC
+                                        <option value="CA">CA
+                                        <option value="CO">CO
+                                        <option value="CT">CT
+                                        <option value="DE">DE
+                                        <option value="DC">DC
+                                        <option value="FL">FL
+                                        <option value="GA">GA
+                                        <option value="GU">GU
+                                        <option value="HI">HI
+                                        <option value="ID">ID
+                                        <option value="IL">IL
+                                        <option value="IN">IN
+                                        <option value="IA">IA
+                                        <option value="KS">KS
+                                        <option value="KY">KY
+                                        <option value="LA">LA
+                                        <option value="MB">MB
+                                        <option value="ME">ME
+                                        <option value="MD">MD
+                                        <option value="MA">MA
+                                        <option value="MI">MI
+                                        <option value="MN">MN
+                                        <option value="MS">MS
+                                        <option value="MO">MO
+                                        <option value="MP">MP
+                                        <option value="MT">MT
+                                        <option value="NB">NB
+                                        <option value="NE">NE
+                                        <option value="NL">NL
+                                        <option value="NV">NV
+                                        <option value="NH">NH
+                                        <option value="NS">NS
+                                        <option value="NT">NT
+                                        <option value="NU">NU
+                                        <option value="NJ">NJ
+                                        <option value="NM">NM
+                                        <option value="NY">NY
+                                        <option value="NC">NC
+                                        <option value="ND">ND
+                                        <option value="OH">OH
+                                        <option value="OK">OK
+                                        <option value="ON">ON
+                                        <option value="OR">OR
+                                        <option value="QC">QC
+                                        <option value="PA">PA
+                                        <option value="PE">PE
+                                        <option value="PR">PR
+                                        <option value="RI">RI
+                                        <option value="SC">SC
+                                        <option value="SD">SD
+                                        <option value="SK">SK
+                                        <option value="TN">TN
+                                        <option value="TX">TX
+                                        <option value="UT">UT
+                                        <option value="VT">VT
+                                        <option value="VA">VA
+                                        <option value="VI">VI
+                                        <option value="WA">WA
+                                        <option value="WV">WV
+                                        <option value="WI">WI
+                                        <option value="YT">YT
+                                    </select>
+                                </div>
+                            </div><!--row-->
+
+                            <div class="row">
+                                <div class="col-lg-3">Postal Code:</div>
+                                <div class="col-lg-3"><input type="text" ng-model="org_post_cd"></div>
+                            </div><!--row-->
+
+                            <div class="row">
+                                <div class="col-lg-3">Country:</div>
+                                <div class="col-lg-3">
+                                    <select class="dropdown" ng-model="org_cntry_cd">
+                                        <option value="USA">USA
+                                        <option value="CAN">CAN
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3">Cage code:</div>
+                                <div class="col-lg-3"><input type="text" ng-model="cage_cd"></div>
+                                <div class="col-lg-6"><button type="submit" value="contacts" ng-click="addFunction()">Add New Organization</button></div>
+                            </div><!--row-->
+                        </div>
+                        <!---End add new contact-->
+                    </div>
+                </div>
+            </div>
+            <!-- ADDING BLOCK END *********************************************** -->
+
+
+
+        </div><!--accordian-->
+
+    </div><!--well-->
+    </div><!--container-->
 
 </body>
 </html>
