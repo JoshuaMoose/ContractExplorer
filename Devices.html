@@ -11,32 +11,41 @@
   <script src="js\angular.min.js"></script>
   <script src="js\controllers\devicesController.js"></script>
 </head>
-<body ng-app="myApp" >
-
-<div class="container">
-	<!-- Logo -->
-	<div class="page-header">
-  		<h1>SUPRTEK Contract Explorer</h1>
-	</div>
-	
-	<!--Navigation Tabs  SET ACTIVE PAGE/-->
-	<div class="well">
-		<div id="tabs" class="row">
-			<ul class="nav nav-tabs" role="tablist">
-				<li><a href="Home.html">Home</a></li>
-				<li><a href="Contracts.html">Contracts</a></li>
-				<li><a href="Organizations.html">Organizations</a></li>
-				<li><a href="Contacts.html">Contacts</a></li>
-				<li><a href="Directives.html">Directives</a></li>  
-				<li><a href="Releases.html">Releases</a></li>
-				<li><a href="DataSets.html">Data Sets</a></li>
-				<li><a href="ExportRegulations.html">Export Regulations</a></li>
-				<li><a href="Travel.html">Travel</a></li>
-				<li class="active"><a href="Devices.html">Devices</a></li>
-				<li><a href="Codes.html">Codes</a></li>		
-				<li><a href="Reports.html">Reports</a></li>					
-			 </ul>
-		</div>
+<body data-ng-app="myApp">
+    <nav class="navbar navbar-default navbar-fixed-top" style="margin-bottom: 30px;-webkit-box-shadow: 0 8px 6px -6px #999;
+    -moz-box-shadow: 0 8px 6px -6px #999;
+    box-shadow: 0 8px 6px -6px #999;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" area-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                </button>
+                <a class="navbar-brand" href="Home.html">Supr<b>TEK</b> Contract Explorer</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="Home.html">Home</a></li>
+                    <li><a href="Contracts.html">Contracts</a></li>
+                    <li><a href="Organizations.html">Organizations</a></li>
+                    <li><a href="Contacts.html">Contacts</a></li>
+                    <li><a href="Directives.html">Directives</a></li>
+                    <li><a href="Releases.html">Releases</a></li>
+                    <li><a href="DataSets.html">Data Sets</a></li>
+                    <li><a href="ExportRegulations.html">Export Regulations</a></li>
+                    <li><a href="Travel.html">Travel</a></li>
+                    <li><a href="Devices.html">Devices</a></li>
+                    <li><a href="Codes.html">Codes</a></li>
+                    <li><a href="Reports.html">Reports</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <div class="row"></div>
+    <div class="container-fluid" style="margin-top:50px;">
+        <!-- Logo -->
+        <div class="page-header">
+            <h1>SUPRTEK Contract Explorer</h1>
+        </div>
 		<!--End Nav Tabs-->
 		
 		<div class="panel-group" id="accordion" ng-controller="resultsCtrl">

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <title>SuprTEK Contract Application</title>
@@ -11,207 +11,216 @@
   <script src="js\angular.min.js"></script>
   <script src="js\controllers\exportRegulationsController.js"></script>
 </head>
-<body ng-app="myApp" ng-controller="resultsCtrl">
+<body data-ng-app="myApp">
+    <nav class="navbar navbar-default navbar-fixed-top" style="margin-bottom: 30px;-webkit-box-shadow: 0 8px 6px -6px #999;
+    -moz-box-shadow: 0 8px 6px -6px #999;
+    box-shadow: 0 8px 6px -6px #999;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" area-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                </button>
+                <a class="navbar-brand" href="Home.html">Supr<b>TEK</b> Contract Explorer</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="Home.html">Home</a></li>
+                    <li><a href="Contracts.html">Contracts</a></li>
+                    <li><a href="Organizations.html">Organizations</a></li>
+                    <li><a href="Contacts.html">Contacts</a></li>
+                    <li><a href="Directives.html">Directives</a></li>
+                    <li><a href="Releases.html">Releases</a></li>
+                    <li><a href="DataSets.html">Data Sets</a></li>
+                    <li><a href="ExportRegulations.html">Export Regulations</a></li>
+                    <li><a href="Travel.html">Travel</a></li>
+                    <li><a href="Devices.html">Devices</a></li>
+                    <li><a href="Codes.html">Codes</a></li>
+                    <li><a href="Reports.html">Reports</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <div class="row"></div>
+    <div class="container-fluid" style="margin-top:50px;">
+        <!-- Logo -->
+        <div class="page-header" style="text-align:center;">
+            <h1>Export Regulations</h1>
+        </div>
 
-<div class="container">
-	<!-- Logo -->
-	<div class="page-header">
-  		<h1>SUPRTEK Contract Explorer</h1>
-	</div>
-	
-	<!--Navigation Tabs  SET ACTIVE PAGE/-->
-	<div class="well">
-		<div id="tabs" class="row">
-			<ul class="nav nav-tabs" role="tablist">
-				<li><a href="Home.html">Home</a></li>
-				<li><a href="Contracts.html">Contracts</a></li>
-				<li><a href="Organizations.html">Organizations</a></li>
-				<li><a href="Contacts.html">Contacts</a></li>
-				<li><a href="Directives.html">Directives</a></li>  
-				<li><a href="Releases.html">Releases</a></li>
-				<li><a href="DataSets.html">Data Sets</a></li>
-				<li class="active"><a href="ExportRegulations.html">Export Regulations</a></li>
-				<li><a href="Travel.html">Travel</a></li>
-				<li><a href="Devices.html">Devices</a></li>
-				<li><a href="Codes.html">Codes</a></li>		
-				<li><a href="Reports.html">Reports</a></li>					
-			 </ul>
-		</div>
-		
-		<div class="panel-group" id="accordion" ng-controller="resultsCtrl">
-			<div class="panel panel-default">
-			    <div class="panel-heading">
-					<h4 class="panel-title">
-						<a data-toggle="collapse" data-parent="#accordion" href="#collapse1"><h2>Search Export Regulations</h2></a>
-					</h4>
-			    </div>
-				<div id="collapse1" class="panel-collapse collapse in">
-					<div class="panel-body">
-						<!--Search for contacts-->
-						
-						<button type="submit" style="margin-bottom: 10px; margin-top: 10px; margin-left: 1px;" class="btn btn-default" value="contacts" name="SearchButton" data-toggle="collapse" data-target="#search" ng-click="myFunction()">Load Export Regulations</button>
-						<!--span><a href="ResultsAsTable.html">Advanced Search</a></span-->
-		
-		
-		<!-- Table Start**************************** -->				
-				<div id="search" class="collapse">
-					
-					<input type="text" name="SearchBy" style="margin: 20px; margin-bottom: -25px;" ng-model="f.$" placeholder="Search All Fields">
-					
-					<!--button type="submit" value="clearResults">Clear Results</button-->
-					
-					<div id="scrollView" style="max-height:100%; overflow:auto; margin: 10px">
-						<table style="padding: 3px;">
-							
-							<tr>
-								<td><input ng-model="f.reg_id" placeholder="Filter by Regulation ID"></td>
-								<td><input ng-model="f.reg_title" placeholder="Filter by Title"></td>
-								<td><input ng-model="f.reg_desc" placeholder="Filter by Description">
-								<td><input ng-model="f.appl_cntries" placeholder="Filter by Applicable Countries"></td>
-							</tr>
-											
-							<tr>
-								<th value="reg_id">Regulation ID</th>
-								<th value="reg_title">Title</th>
-								<th value="reg_desc">Description</th>
-								<th value="appl_cntries">Applicable Countries</th>
-								<th>Edit</th>
-							</tr>
+        <!--Navigation Tabs  SET ACTIVE PAGE/-->
 
-							<tr ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}">
-								<td>
-									<span data-ng-hide="editMode">{{ x.reg_id }}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.reg_id" data-ng-required />
-								</td>
-								<!-- The special block here will swap to being input boxes when the -->
-								<td>
-									<span data-ng-hide="editMode">{{x.reg_title}}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.reg_title" data-ng-required />
-								</td>
-								<td>
-									<span data-ng-hide="editMode">{{x.reg_desc}}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.reg_desc" data-ng-required />
-								</td>
-								<td>
-									<span data-ng-hide="editMode">{{x.appl_cntries}}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.appl_cntries" data-ng-required />
-								</td>
-								<td>
-									<button type="submit" data-ng-hide="editMode" data-ng-click="editMode = true; editResults(x)" class="btn btn-default">Edit</button>
-									<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; saveField(x)" class="btn btn-default">Save</button>
-									<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; cancel()" class="btn btn-default">Cancel</button>
-								</td>
-							</tr>	
-						</table>
-					</div>
-	
-						<!--End search for contacts-->
-				</div>
-				<!-- Table end ********************************-->
-				
-				
-				
-						<!--End search for contacts-->
-					</div>
-				</div>
-			</div>
-			
-			<!-- ADDING BLOCK ********************************-->
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h4 class="panel-title">
-						<a data-toggle="collapse" data-parent="#accordion" href="#collapse2"><h2>Add New Export Regulation</h2></a>
-					</h4>
-				</div>
-				<div id="collapse2" class="panel-collapse collapse" ng-controller="addCtrl">
-					<div class="panel-body">
-						<!--Add new contact-->
-						<div> <!-- ng-app="myApp" ng-controller="formCtrl" ~~removed bc unused-->
-							<div class="row">
-								<div class="col-lg-3">Regulation ID:</div>
-								<div class="col-lg-3"><input type="textarea" cols="50" rows="10" ng-model="reg_id"></div>
-								<div class="col-lg-3">Title:</div>
-								<div class="col-lg-3"><input type="textarea" cols="50" rows="10" ng-model="reg_title"></div>
-							</div><!--row-->
-							
-							<div class="row">
-								<div class="col-lg-3">Description:</div>
-								<div class="col-lg-3"><input type="textarea" cols="50" rows="10" ng-model="reg_desc"></div>
-								<div class="col-lg-3">Applicable Countries:</div>
-								<div class="col-lg-3"><input type="textarea" cols="50" rows="10" ng-model="appl_cntries"></div>
-							</div><!--row-->
-							
-							<div class="row">
-								<div class="col-lg-3">Role:</div>
-								<div class="col-lg-3"><input type="text" ng-model="role"></div>
-								<div class="col-lg-3">Postal Code:</div>
-								<div class="col-lg-3"><input type="text" ng-model="addPost"></div>
-							</div><!--row-->
-							
-							<div class="row">
-								<div class="col-lg-3">First Name:</div>
-								<div class="col-lg-3"><input type="text" ng-model="firstName"></div>
-								<div class="col-lg-3">Country:</div>
-								<div class="col-lg-3"><select class = "dropdown" ng-model="addCountry">
-										<option value="USA">USA
-										<option value="CAN">CAN
-									</select></div>
-							</div><!--row-->
-							
-							<div class="row">
-								<div class="col-lg-3">Middle Name:</div>
-								<div class="col-lg-3"><input type="text" ng-model="midName"></div>
-								<div class="col-lg-3">Office Phone:</div>
-								<div class="col-lg-3"><input type="text" ng-model="phoneOff"></div>
-							</div><!--row-->
-							
-							<div class="row">
-								<div class="col-lg-3">Last Name:</div>
-								<div class="col-lg-3"><input type="text" ng-model="lastName"></div>
-								<div class="col-lg-3">Mobile Phone:</div>
-								<div class="col-lg-3"><input type="text" ng-model="phoneMobl"></div>
-							</div><!--row-->
-							
-							<div class="row">
-								<div class="col-lg-3">Name Title:</div>
-								<div class="col-lg-3"><input type="text" ng-model="nameTitle"></div>
-								<div class="col-lg-3">Home Phone:</div>
-								<div class="col-lg-3"><input type="text" ng-model="phoneHome"></div>
-							</div><!--row-->
-							
-							<div class="row">
-								<div class="col-lg-3">Name Suffix:</div>
-								<div class="col-lg-3"><input type="text" ng-model="nameSufx"></div>
-								<div class="col-lg-3">Email:</div>
-								<div class="col-lg-3"><input type="text" ng-model="email"></div>
-							</div><!--row-->
-							
-							<div class="row">
-								<div class="col-lg-3">Address Line 1:</div>
-								<div class="col-lg-3"><input type="text" ng-model="addLine1"></div>
-								<div class="col-lg-3">Alt Email:</div>
-								<div class="col-lg-3"><input type="text" ng-model="emailAlt"></div>
-							</div><!--row-->
-							
-							<div class="row">
-								<div class="col-lg-3">Address Line 2:</div>
-								<div class="col-lg-3"><input type="text" ng-model="addLine2"></div>
-								<div class="col-lg-6"><button type="submit" value="contacts" ng-click="addFunction()" >Add New Export Regulation</button></div>
-							</div><!--row-->
-						</div>
-						<!---End add new contact-->
-					</div>
-				</div>
-			</div>
-			<!-- ADDING BLOCK END *********************************************** -->
-			
-			
-			
-		</div><!--accordian-->
-	
-	</div><!--well-->
+            <div class="panel-group" id="accordion" ng-controller="resultsCtrl">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1"><h2>Search Export Regulations</h2></a>
+                        </h4>
+                    </div>
+                    <div id="collapse1" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <!--Search for contacts-->
 
-</div><!--container-->
+                            <button type="submit" style="margin-bottom: 10px; margin-top: 10px; margin-left: 1px;" class="btn btn-default" value="contacts" name="SearchButton" data-toggle="collapse" data-target="#search" ng-click="myFunction()">Load Export Regulations</button>
+                            <!--span><a href="ResultsAsTable.html">Advanced Search</a></span-->
+                            <!-- Table Start**************************** -->
+                            <div id="search" class="collapse">
+
+                                <input type="text" name="SearchBy" style="margin: 20px; margin-bottom: -25px;" ng-model="f.$" placeholder="Search All Fields">
+
+                                <!--button type="submit" value="clearResults">Clear Results</button-->
+
+                                <div id="scrollView" style="max-height:100%; overflow:auto; margin: 10px">
+                                    <table style="padding: 3px;">
+
+                                        <tr>
+                                            <td><input ng-model="f.reg_id" placeholder="Filter by Regulation ID"></td>
+                                            <td><input ng-model="f.reg_title" placeholder="Filter by Title"></td>
+                                            <td><input ng-model="f.reg_desc" placeholder="Filter by Description">
+                                            <td><input ng-model="f.appl_cntries" placeholder="Filter by Applicable Countries"></td>
+                                        </tr>
+
+                                        <tr>
+                                            <th value="reg_id">Regulation ID</th>
+                                            <th value="reg_title">Title</th>
+                                            <th value="reg_desc">Description</th>
+                                            <th value="appl_cntries">Applicable Countries</th>
+                                            <th>Edit</th>
+                                        </tr>
+
+                                        <tr ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}">
+                                            <td>
+                                                <span data-ng-hide="editMode">{{ x.reg_id }}</span>
+                                                <input type="text" data-ng-show="editMode" data-ng-model="x.reg_id" data-ng-required />
+                                            </td>
+                                            <!-- The special block here will swap to being input boxes when the -->
+                                            <td>
+                                                <span data-ng-hide="editMode">{{x.reg_title}}</span>
+                                                <input type="text" data-ng-show="editMode" data-ng-model="x.reg_title" data-ng-required />
+                                            </td>
+                                            <td>
+                                                <span data-ng-hide="editMode">{{x.reg_desc}}</span>
+                                                <input type="text" data-ng-show="editMode" data-ng-model="x.reg_desc" data-ng-required />
+                                            </td>
+                                            <td>
+                                                <span data-ng-hide="editMode">{{x.appl_cntries}}</span>
+                                                <input type="text" data-ng-show="editMode" data-ng-model="x.appl_cntries" data-ng-required />
+                                            </td>
+                                            <td>
+                                                <button type="submit" data-ng-hide="editMode" data-ng-click="editMode = true; editResults(x)" class="btn btn-default">Edit</button>
+                                                <button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; saveField(x)" class="btn btn-default">Save</button>
+                                                <button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; cancel()" class="btn btn-default">Cancel</button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <!--End search for contacts-->
+                            </div>
+                            <!-- Table end ********************************-->
+                            <!--End search for contacts-->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ADDING BLOCK ********************************-->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2"><h2>Add New Export Regulation</h2></a>
+                        </h4>
+                    </div>
+                    <div id="collapse2" class="panel-collapse collapse" ng-controller="addCtrl">
+                        <div class="panel-body">
+                            <!--Add new contact-->
+                            <div>
+                                <!-- ng-app="myApp" ng-controller="formCtrl" ~~removed bc unused-->
+                                <div class="row">
+                                    <div class="col-lg-3">Regulation ID:</div>
+                                    <div class="col-lg-3"><input type="textarea" cols="50" rows="10" ng-model="reg_id"></div>
+                                    <div class="col-lg-3">Title:</div>
+                                    <div class="col-lg-3"><input type="textarea" cols="50" rows="10" ng-model="reg_title"></div>
+                                </div><!--row-->
+
+                                <div class="row">
+                                    <div class="col-lg-3">Description:</div>
+                                    <div class="col-lg-3"><input type="textarea" cols="50" rows="10" ng-model="reg_desc"></div>
+                                    <div class="col-lg-3">Applicable Countries:</div>
+                                    <div class="col-lg-3"><input type="textarea" cols="50" rows="10" ng-model="appl_cntries"></div>
+                                </div><!--row-->
+
+                                <div class="row">
+                                    <div class="col-lg-3">Role:</div>
+                                    <div class="col-lg-3"><input type="text" ng-model="role"></div>
+                                    <div class="col-lg-3">Postal Code:</div>
+                                    <div class="col-lg-3"><input type="text" ng-model="addPost"></div>
+                                </div><!--row-->
+
+                                <div class="row">
+                                    <div class="col-lg-3">First Name:</div>
+                                    <div class="col-lg-3"><input type="text" ng-model="firstName"></div>
+                                    <div class="col-lg-3">Country:</div>
+                                    <div class="col-lg-3">
+                                        <select class="dropdown" ng-model="addCountry">
+                                            <option value="USA">USA
+                                            <option value="CAN">CAN
+                                        </select>
+                                    </div>
+                                </div><!--row-->
+
+                                <div class="row">
+                                    <div class="col-lg-3">Middle Name:</div>
+                                    <div class="col-lg-3"><input type="text" ng-model="midName"></div>
+                                    <div class="col-lg-3">Office Phone:</div>
+                                    <div class="col-lg-3"><input type="text" ng-model="phoneOff"></div>
+                                </div><!--row-->
+
+                                <div class="row">
+                                    <div class="col-lg-3">Last Name:</div>
+                                    <div class="col-lg-3"><input type="text" ng-model="lastName"></div>
+                                    <div class="col-lg-3">Mobile Phone:</div>
+                                    <div class="col-lg-3"><input type="text" ng-model="phoneMobl"></div>
+                                </div><!--row-->
+
+                                <div class="row">
+                                    <div class="col-lg-3">Name Title:</div>
+                                    <div class="col-lg-3"><input type="text" ng-model="nameTitle"></div>
+                                    <div class="col-lg-3">Home Phone:</div>
+                                    <div class="col-lg-3"><input type="text" ng-model="phoneHome"></div>
+                                </div><!--row-->
+
+                                <div class="row">
+                                    <div class="col-lg-3">Name Suffix:</div>
+                                    <div class="col-lg-3"><input type="text" ng-model="nameSufx"></div>
+                                    <div class="col-lg-3">Email:</div>
+                                    <div class="col-lg-3"><input type="text" ng-model="email"></div>
+                                </div><!--row-->
+
+                                <div class="row">
+                                    <div class="col-lg-3">Address Line 1:</div>
+                                    <div class="col-lg-3"><input type="text" ng-model="addLine1"></div>
+                                    <div class="col-lg-3">Alt Email:</div>
+                                    <div class="col-lg-3"><input type="text" ng-model="emailAlt"></div>
+                                </div><!--row-->
+
+                                <div class="row">
+                                    <div class="col-lg-3">Address Line 2:</div>
+                                    <div class="col-lg-3"><input type="text" ng-model="addLine2"></div>
+                                    <div class="col-lg-6"><button type="submit" value="contacts" ng-click="addFunction()">Add New Export Regulation</button></div>
+                                </div><!--row-->
+                            </div>
+                            <!---End add new contact-->
+                        </div>
+                    </div>
+                </div>
+                <!-- ADDING BLOCK END *********************************************** -->
+
+
+
+            </div><!--accordian-->
+
+        </div><!--well-->
+
+    </div><!--container-->
 
 </body>
 </html>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -207,4 +208,219 @@
 </div><!--container-->
 
 </body>
+=======
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>SuprTEK Contract Application</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="customcss.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js\angular.min.js"></script>
+    <script src="js\contactsController.js"></script>
+</head>
+<body data-ng-app="myApp">
+    <nav class="navbar navbar-default navbar-fixed-top" style="margin-bottom: 30px;-webkit-box-shadow: 0 8px 6px -6px #999;
+    -moz-box-shadow: 0 8px 6px -6px #999;
+    box-shadow: 0 8px 6px -6px #999;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" area-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                </button>
+                <a class="navbar-brand" href="Home.html">Supr<b>TEK</b> Contract Explorer</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="Home.html">Home</a></li>
+                    <li><a href="Contracts.html">Contracts</a></li>
+                    <li><a href="Organizations.html">Organizations</a></li>
+                    <li><a href="Contacts.html">Contacts</a></li>
+                    <li><a href="Directives.html">Directives</a></li>
+                    <li><a href="Releases.html">Releases</a></li>
+                    <li><a href="DataSets.html">Data Sets</a></li>
+                    <li><a href="ExportRegulations.html">Export Regulations</a></li>
+                    <li><a href="Travel.html">Travel</a></li>
+                    <li><a href="Devices.html">Devices</a></li>
+                    <li><a href="Codes.html">Codes</a></li>
+                    <li><a href="Reports.html">Reports</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <div class="row"></div>
+    <div class="container-fluid" style="margin-top:50px;">
+        <!-- Logo -->
+        <div class="page-header" style="text-align:center;">
+            <h1>Releases</h1>
+        </div>
+        <!--End Nav Tabs-->
+
+        <div class="panel-group" id="accordion" ng-controller="resultsCtrl">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1"><h2>Search Releases</h2></a>
+                    </h4>
+                </div>
+                <div id="collapse1" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <!--Search for contacts-->
+
+                        <button type="submit" style="margin-bottom: 10px; margin-top: 10px; margin-left: 1px;" class="btn btn-default" value="contacts" name="SearchButton" data-toggle="collapse" data-target="#search" ng-click="myFunction()">Load Releases</button>
+                        <!--span><a href="ResultsAsTable.html">Advanced Search</a></span-->
+                        <!-- Table Start**************************** -->
+                        <div id="search" class="collapse">
+
+                            <input type="text" name="SearchBy" style="margin: 20px; margin-bottom: -25px;" ng-model="f.$" placeholder="Search All Fields">
+
+                            <!--button type="submit" value="clearResults">Clear Results</button-->
+
+                            <div id="scrollView" style="max-height:100%; overflow:auto; margin: 10px">
+                                <table style="padding: 3px;">
+
+                                    <tr>
+                                        <td><input ng-model="f.rel_id" placeholder="Filter by Release ID"></td>
+                                        <td><input ng-model="f.dir_id" placeholder="Filter by Directive ID"></td>
+                                        <td><input ng-model="f.rel_by" placeholder="Filter by Release Employee"></td>
+                                        <td><input ng-model="f.rel_date" placeholder="Filter by Release Date"></td>
+                                        <td><input ng-model="f.recv_by" placeholder="Filter by Recipient of the Relase"></td>
+                                        <td><input ng-model="f.recv_date" placeholder="Filter by Date Recieved"></td>
+                                        <td><input ng-model="f.rel_cntry_cd" placeholder="Filter by Country of Release"></td>
+                                    </tr>
+
+                                    <!--tr>
+                                        <th value="rel_id">Contact ID</th>
+                                        <th value="dir_id">Organization ID</th>
+                                        <th value="rel_by">Role</th>
+                                        <th value="rel_date">First Name</th>
+                                        <th value="recv_by">Middle Name</th>
+                                        <th value="recv_date">Last Name</th>
+                                        <th value="rel_cntry_cd">Title</th>
+                                        <td><input ng-model="f.rel_by" placeholder="Filter by Released by ID"></td>
+                                        <td><input ng-model="f.rel_date" placeholder="Filter by Release Date"></td>
+                                        <td><input ng-model="f.recv_by" placeholder="Filter by Recieved by ID"></td>
+                                        <td><input ng-model="f.recv_date" placeholder="Filter by Recieved Date"></td>
+                                        <td><input ng-model="f.rel_cntry_cd" placeholder="Filter by Recieving Countries"></td>
+                                    </tr-->
+
+                                    <tr>
+                                        <th value="rel_id">Release ID</th>
+                                        <th value="dir_id">Directive ID</th>
+                                        <th value="rel_by">Released by ID</th>
+                                        <th value="rel_date">Release Date</th>
+                                        <th value="recv_by">Recieved by ID</th>
+                                        <th value="recv_date">Recieved Date</th>
+                                        <th value="rel_cntry_cd">Recieving Country</th>
+                                        <th>Edit</th>
+                                    </tr>
+
+                                    <tr ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}">
+                                        <td>
+                                            <span data-ng-hide="editMode">{{ x.rel_id }}</span>
+                                            <input type="text" data-ng-show="editMode" data-ng-model="x.rel_id" data-ng-required />
+                                        </td>
+                                        <!-- The special block here will swap to being input boxes when the -->
+                                        <td>
+                                            <span data-ng-hide="editMode">{{x.dir_id}}</span>
+                                            <input type="text" data-ng-show="editMode" data-ng-model="x.dir_id" data-ng-required />
+                                        </td>
+                                        <td>
+                                            <span data-ng-hide="editMode">{{x.rel_by}}</span>
+                                            <input type="text" data-ng-show="editMode" data-ng-model="x.rel_by" data-ng-required />
+                                        </td>
+                                        <td>
+                                            <span data-ng-hide="editMode">{{x.rel_date}}</span>
+                                            <input type="text" data-ng-show="editMode" data-ng-model="x.rel_date" data-ng-required />
+                                        </td>
+                                        <td>
+                                            <span data-ng-hide="editMode">{{x.recv_by}}</span>
+                                            <input type="text" data-ng-show="editMode" data-ng-model="x.recv_by" data-ng-required />
+                                        </td>
+                                        <td>
+                                            <span data-ng-hide="editMode">{{x.recv_date}}</span>
+                                            <input type="text" data-ng-show="editMode" data-ng-model="x.recv_date" data-ng-required />
+                                        </td>
+                                        <td>
+                                            <span data-ng-hide="editMode">{{x.rel_cntry_cd}}</span>
+                                            <input type="text" data-ng-show="editMode" data-ng-model="x.rel_cntry_cd" data-ng-required />
+                                        </td>
+                                        <td>
+                                            <button type="submit" data-ng-hide="editMode" data-ng-click="editMode = true; editResults(x)" class="btn btn-default">Edit</button>
+                                            <button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; saveField(x)" class="btn btn-default">Save</button>
+                                            <button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; cancel()" class="btn btn-default">Cancel</button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <!--End search for contacts-->
+                        </div>
+                        <!-- Table end ********************************-->
+                        <!--End search for contacts-->
+                    </div>
+                </div>
+            </div>
+
+            <!-- ADDING BLOCK ********************************-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2"><h2>Add New Release</h2></a>
+                    </h4>
+                </div>
+                <div id="collapse2" class="panel-collapse collapse" ng-controller="addCtrl">
+                    <div class="panel-body">
+                        <!--Add new contact-->
+                        <div>
+                            <!-- ng-app="myApp" ng-controller="formCtrl" ~~removed bc unused-->
+                            <div class="row">
+                                <div class="col-lg-3">Release ID:</div>
+                                <div class="col-lg-3"><input type="text" ng-model="rel_id"></div>
+                                <div class="col-lg-3">Directive ID:</div>
+                                <div class="col-lg-3"><input type="text" ng-model="dir_id"></div>
+                            </div><!--row-->
+
+                            <div class="row">
+                                <div class="col-lg-3">Released by ID:</div>
+                                <div class="col-lg-3"><input type="text" ng-model="rel_by"></div>
+                                <div class="col-lg-3">Release Date:</div>
+                                <div class="col-lg-3"><input type="text" ng-model="rel_date"></div>
+                            </div><!--row-->
+
+                            <div class="row">
+                                <div class="col-lg-3">Recieved by ID:</div>
+                                <div class="col-lg-3"><input type="text" ng-model="recv_by"></div>
+                                <div class="col-lg-3">Recieved Date:</div>
+                                <div class="col-lg-3"><input type="text" ng-model="recv_date"></div>
+                            </div>
+                        </div><!--row-->
+
+                        <div class="row">
+                            <div class="col-lg-3">Release Country:</div>
+                            <div class="col-lg-3"><input type="text" ng-model="rel_cntry_cd"></div>
+                        </div><!--row-->
+
+                        <div class="row">
+                            <div class="col-lg-6"><button type="submit" value="contacts" ng-click="addFunction()">Add New Releases</button></div>
+                        </div><!--row-->
+
+                    </div>
+                    <!---End add new contact-->
+                </div>
+            </div>
+        </div>
+        <!-- ADDING BLOCK END *********************************************** -->
+
+
+
+    </div><!--accordian-->
+    </div><!--well-->
+    </div><!--container-->
+
+</body>
+>>>>>>> d2ac5da8b54c7e790e314520654d3947e4f8fb34
 </html>

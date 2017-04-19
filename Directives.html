@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <title>SuprTEK Contract Application</title>
@@ -11,182 +11,189 @@
   <script src="js\angular.min.js"></script>
   <script src="js\controllers\directivesController.js"></script>
 </head>
-<body ng-app="myApp" ng-controller="resultsCtrl">
+<body data-ng-app="myApp">
+    <nav class="navbar navbar-default navbar-fixed-top" style="margin-bottom: 30px;-webkit-box-shadow: 0 8px 6px -6px #999;
+    -moz-box-shadow: 0 8px 6px -6px #999;
+    box-shadow: 0 8px 6px -6px #999;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" area-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                </button>
+                <a class="navbar-brand" href="Home.html">Supr<b>TEK</b> Contract Explorer</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="Home.html">Home</a></li>
+                    <li><a href="Contracts.html">Contracts</a></li>
+                    <li><a href="Organizations.html">Organizations</a></li>
+                    <li><a href="Contacts.html">Contacts</a></li>
+                    <li><a href="Directives.html">Directives</a></li>
+                    <li><a href="Releases.html">Releases</a></li>
+                    <li><a href="DataSets.html">Data Sets</a></li>
+                    <li><a href="ExportRegulations.html">Export Regulations</a></li>
+                    <li><a href="Travel.html">Travel</a></li>
+                    <li><a href="Devices.html">Devices</a></li>
+                    <li><a href="Codes.html">Codes</a></li>
+                    <li><a href="Reports.html">Reports</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <div class="row"></div>
+    <div class="container-fluid" style="margin-top:50px;">
+        <!-- Logo -->
+        <div class="page-header" style="text-align:center;">
+            <h1>Directives</h1>
+        </div>
 
-<div class="container">
-	<!-- Logo -->
-	<div class="page-header">
-  		<h1>SUPRTEK Contract Explorer</h1>
-	</div>
-	
-	<!--Navigation Tabs  SET ACTIVE PAGE/-->
-	<div class="well">
-		<div id="tabs" class="row">
-			<ul class="nav nav-tabs" role="tablist">
-				<li><a href="Home.html">Home</a></li>
-				<li><a href="Contracts.html">Contracts</a></li>
-				<li><a href="Organizations.html">Organizations</a></li>
-				<li><a href="Contacts.html">Contacts</a></li>
-				<li class="active"><a href="Directives.html">Directives</a></li>  
-				<li><a href="Releases.html">Releases</a></li>
-				<li><a href="DataSets.html">Data Sets</a></li>
-				<li><a href="ExportRegulations.html">Export Regulations</a></li>
-				<li><a href="Travel.html">Travel</a></li>
-				<li><a href="Devices.html">Devices</a></li>
-				<li><a href="Codes.html">Codes</a></li>		
-				<li><a href="Reports.html">Reports</a></li>					
-			 </ul>
-		</div>
-		
-		<div class="panel-group" id="accordion">
-			<div class="panel panel-default">
-			    <div class="panel-heading">
-					<h4 class="panel-title">
-						<a data-toggle="collapse" data-parent="#accordion" href="#collapse1"><h2>Search Directives</h2></a>
-					</h4>
-			    </div>
-				<div id="collapse1" class="panel-collapse collapse in">
-					<div class="panel-body">
-						<!--Search for contacts-->
-						
-						<button type="submit" style="margin-bottom: 10px; margin-top: 10px; margin-left: 1px;" class="btn btn-default" value="contacts" name="SearchButton" data-toggle="collapse" data-target="#search" ng-click="myFunction()">Load Directives</button>
-						<!--span><a href="ResultsAsTable.html">Advanced Search</a></span-->
-		
-		
-		<!-- Table Start**************************** -->				
-				<div id="search" class="collapse">
-					
-					<input type="text" name="SearchBy" style="margin: 20px; margin-bottom: -25px;" ng-model="f.$" placeholder="Search All Fields">
-					
-					<!--button type="submit" value="clearResults">Clear Results</button-->
-					
-					<div id="scrollView" style="max-height:100%; overflow:auto; margin: 10px">
-						<table style="padding: 3px;">
-							
-							<tr>
-								<td><input ng-model="f.dir_id" placeholder="Filter by Directive ID"></td>
-								<td><input ng-model="f.dir_contr_id" placeholder="Filter by Contract ID"></td>
-								<td><input ng-model="f.dir_desc" placeholder="Filter by Description"></td>
-								<td><input ng-model="f.dir_issued_by" placeholder="Filter by Directive Issued By"></td>
-								<td><input ng-model="f.dir_issued_date" placeholder="Filter by Directive Issue Date"></td>
-								<td><input ng-model="f.dir_recv_by" placeholder="Filter by Directive Received By"></td>
-								<td><input ng-model="f.dir_recv_date" placeholder="Filter by Directive Recieved Date"></td>
-							</tr>
-											
-							<tr>
-								<th value="dir_id">Directive ID</th>
-								<th value="dir_contr_id">Contract ID</th>
-								<th value="dir_desc">Description</th>
-								<th value="dir_issued_by">Issued By</th>
-								<th value="dir_issued_date">Issue Date</th>
-								<th value="dir_recv_by">Recieved By</th>
-								<th value="dir_recv_date">Recieved Date</th>
-								<th>Edit</th>
-							</tr>
+        <!--Navigation Tabs  SET ACTIVE PAGE/-->
 
-							<tr ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}">
-								<td>
-									<span data-ng-hide="editMode">{{ x.dir_id }}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.dir_id" data-ng-required />
-								</td>
-								<!-- The special block here will swap to being input boxes when the -->
-								<td>
-									<span data-ng-hide="editMode">{{x.dir_contr_id}}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.dir_contr_id" data-ng-required />
-								</td>
-								<td>
-									<span data-ng-hide="editMode">{{x.dir_desc}}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.dir_desc" data-ng-required />
-								</td>
-								<td>
-									<span data-ng-hide="editMode">{{x.dir_issued_by}}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.dir_issued_by" data-ng-required />
-								</td>
-								<td>
-									<span data-ng-hide="editMode">{{x.dir_issued_date}}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.dir_issued_date" data-ng-required />
-								</td>
-								<td>
-									<span data-ng-hide="editMode">{{x.dir_recv_by}}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.dir_recv_by" data-ng-required />
-								</td>
-								<td>
-									<span data-ng-hide="editMode">{{x.dir_recv_date}}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.dir_recv_date" data-ng-required />
-								</td>
-								<td>
-									<button type="submit" data-ng-hide="editMode" data-ng-click="editMode = true; editResults(x)" class="btn btn-default">Edit</button>
-									<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; saveField(x)" class="btn btn-default">Save</button>
-									<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; cancel()" class="btn btn-default">Cancel</button>
-								</td>
-							</tr>	
-						</table>
-					</div>
-	
-						<!--End search for contacts-->
-				</div>
-				<!-- Table end ********************************-->
-				
-				
-				
-						<!--End search for contacts-->
-					</div>
-				</div>
-			</div>
-			
-			<!-- ADDING BLOCK ********************************-->
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h4 class="panel-title">
-						<a data-toggle="collapse" data-parent="#accordion" href="#collapse2"><h2>Add New Directive</h2></a>
-					</h4>
-				</div>
-				<div id="collapse2" class="panel-collapse collapse" ng-controller="addCtrl">
-					<div class="panel-body">
-						<!--Add new contact-->
-						<div> <!-- ng-app="myApp" ng-controller="formCtrl" ~~removed bc unused-->
-							<div class="row">
-								<div class="col-lg-3">Directive ID:</div>
-								<div class="col-lg-3"><input type="text" ng-model="dir_id"></div>
-								<div class="col-lg-3">Contract ID:</div>
-								<div class="col-lg-3"><input type="text" ng-model="dir_contr_id"></div>
-							</div><!--row-->
-							
-							<div class="row">
-								<div class="col-lg-3">Description:</div>
-								<div class="col-lg-3"><input type="textarea" cols="50" rows="10" ng-model="dir_desc"></div>
-								<div class="col-lg-3">Issued By:</div>
-								<div class="col-lg-3"><select class = "dropdown" ng-model="dir_issued_by">
-											
-									</select></div>
-							</div><!--row-->
-							
-							<div class="row">
-								<div class="col-lg-3">Issued Date:</div>
-								<div class="col-lg-3"><input type="text" ng-model="dir_issued_date"></div>
-								<div class="col-lg-3">Recieved By:</div>
-								<div class="col-lg-3"><input type="text" ng-model="role"></div>	
-							</div><!--row-->
-							
-							<div class="row">
-								<div class="col-lg-3">Recieved Date:</div>
-								<div class="col-lg-3"><input type="text" ng-model="dir_recv_by"></div>
-								<div class="col-lg-6"><button type="submit" class="btn btn-default" value="contacts" ng-click="addFunction()" >Add New Directive</button></div>
-							</div><!--row-->							
-						</div>
-						<!---End add new contact-->
-					</div>
-				</div>
-			</div>
-			<!-- ADDING BLOCK END *********************************************** -->
-			
-			
-			
-		</div><!--accordian-->
-	
-	</div><!--well-->
 
-</div><!--container-->
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1"><h2>Search Directives</h2></a>
+                    </h4>
+                </div>
+                <div id="collapse1" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <!--Search for contacts-->
+
+                        <button type="submit" style="margin-bottom: 10px; margin-top: 10px; margin-left: 1px;" class="btn btn-default" value="contacts" name="SearchButton" data-toggle="collapse" data-target="#search" ng-click="myFunction()">Load Directives</button>
+                        <!--span><a href="ResultsAsTable.html">Advanced Search</a></span-->
+                        <!-- Table Start**************************** -->
+                        <div id="search" class="collapse">
+
+                            <input type="text" name="SearchBy" style="margin: 20px; margin-bottom: -25px;" ng-model="f.$" placeholder="Search All Fields">
+
+                            <!--button type="submit" value="clearResults">Clear Results</button-->
+
+                            <div id="scrollView" style="max-height:100%; overflow:auto; margin: 10px">
+                                <table style="padding: 3px;">
+
+                                    <tr>
+                                        <td><input ng-model="f.dir_id" placeholder="Filter by Directive ID"></td>
+                                        <td><input ng-model="f.dir_contr_id" placeholder="Filter by Contract ID"></td>
+                                        <td><input ng-model="f.dir_desc" placeholder="Filter by Description"></td>
+                                        <td><input ng-model="f.dir_issued_by" placeholder="Filter by Directive Issued By"></td>
+                                        <td><input ng-model="f.dir_issued_date" placeholder="Filter by Directive Issue Date"></td>
+                                        <td><input ng-model="f.dir_recv_by" placeholder="Filter by Directive Received By"></td>
+                                        <td><input ng-model="f.dir_recv_date" placeholder="Filter by Directive Recieved Date"></td>
+                                    </tr>
+
+                                    <tr>
+                                        <th value="dir_id">Directive ID</th>
+                                        <th value="dir_contr_id">Contract ID</th>
+                                        <th value="dir_desc">Description</th>
+                                        <th value="dir_issued_by">Issued By</th>
+                                        <th value="dir_issued_date">Issue Date</th>
+                                        <th value="dir_recv_by">Recieved By</th>
+                                        <th value="dir_recv_date">Recieved Date</th>
+                                        <th>Edit</th>
+                                    </tr>
+
+                                    <tr ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}">
+                                        <td>
+                                            <span data-ng-hide="editMode">{{ x.dir_id }}</span>
+                                            <input type="text" data-ng-show="editMode" data-ng-model="x.dir_id" data-ng-required />
+                                        </td>
+                                        <!-- The special block here will swap to being input boxes when the -->
+                                        <td>
+                                            <span data-ng-hide="editMode">{{x.dir_contr_id}}</span>
+                                            <input type="text" data-ng-show="editMode" data-ng-model="x.dir_contr_id" data-ng-required />
+                                        </td>
+                                        <td>
+                                            <span data-ng-hide="editMode">{{x.dir_desc}}</span>
+                                            <input type="text" data-ng-show="editMode" data-ng-model="x.dir_desc" data-ng-required />
+                                        </td>
+                                        <td>
+                                            <span data-ng-hide="editMode">{{x.dir_issued_by}}</span>
+                                            <input type="text" data-ng-show="editMode" data-ng-model="x.dir_issued_by" data-ng-required />
+                                        </td>
+                                        <td>
+                                            <span data-ng-hide="editMode">{{x.dir_issued_date}}</span>
+                                            <input type="text" data-ng-show="editMode" data-ng-model="x.dir_issued_date" data-ng-required />
+                                        </td>
+                                        <td>
+                                            <span data-ng-hide="editMode">{{x.dir_recv_by}}</span>
+                                            <input type="text" data-ng-show="editMode" data-ng-model="x.dir_recv_by" data-ng-required />
+                                        </td>
+                                        <td>
+                                            <span data-ng-hide="editMode">{{x.dir_recv_date}}</span>
+                                            <input type="text" data-ng-show="editMode" data-ng-model="x.dir_recv_date" data-ng-required />
+                                        </td>
+                                        <td>
+                                            <button type="submit" data-ng-hide="editMode" data-ng-click="editMode = true; editResults(x)" class="btn btn-default">Edit</button>
+                                            <button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; saveField(x)" class="btn btn-default">Save</button>
+                                            <button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; cancel()" class="btn btn-default">Cancel</button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <!--End search for contacts-->
+                        </div>
+                        <!-- Table end ********************************-->
+                        <!--End search for contacts-->
+                    </div>
+                </div>
+            </div>
+
+            <!-- ADDING BLOCK ********************************-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2"><h2>Add New Directive</h2></a>
+                    </h4>
+                </div>
+                <div id="collapse2" class="panel-collapse collapse" ng-controller="addCtrl">
+                    <div class="panel-body">
+                        <!--Add new contact-->
+                        <div>
+                            <!-- ng-app="myApp" ng-controller="formCtrl" ~~removed bc unused-->
+                            <div class="row">
+                                <div class="col-lg-3">Directive ID:</div>
+                                <div class="col-lg-3"><input type="text" ng-model="dir_id"></div>
+                                <div class="col-lg-3">Contract ID:</div>
+                                <div class="col-lg-3"><input type="text" ng-model="dir_contr_id"></div>
+                            </div><!--row-->
+
+                            <div class="row">
+                                <div class="col-lg-3">Description:</div>
+                                <div class="col-lg-3"><input type="textarea" cols="50" rows="10" ng-model="dir_desc"></div>
+                                <div class="col-lg-3">Issued By:</div>
+                                <div class="col-lg-3">
+                                    <select class="dropdown" ng-model="dir_issued_by"></select>
+                                </div>
+                            </div><!--row-->
+
+                            <div class="row">
+                                <div class="col-lg-3">Issued Date:</div>
+                                <div class="col-lg-3"><input type="text" ng-model="dir_issued_date"></div>
+                                <div class="col-lg-3">Recieved By:</div>
+                                <div class="col-lg-3"><input type="text" ng-model="role"></div>
+                            </div><!--row-->
+
+                            <div class="row">
+                                <div class="col-lg-3">Recieved Date:</div>
+                                <div class="col-lg-3"><input type="text" ng-model="dir_recv_by"></div>
+                                <div class="col-lg-6"><button type="submit" class="btn btn-default" value="contacts" ng-click="addFunction()">Add New Directive</button></div>
+                            </div><!--row-->
+                        </div>
+                        <!---End add new contact-->
+                    </div>
+                </div>
+            </div>
+            <!-- ADDING BLOCK END *********************************************** -->
+
+
+
+        </div><!--accordian-->
+
+    </div><!--well-->
+    </div><!--container-->
 
 </body>
 </html>
