@@ -6,7 +6,7 @@ var types = {
 	'dev_desc': 'String',
 	'dev_owner_id': 'Integer',
 	'dev_user_id': 'Integer',
-	'dev_sn': 'Integer',	
+	'dev_sn': 'String',	
 }
 
 app.controller('searchCtrl', function($scope) {
@@ -81,36 +81,39 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 });
 
 app.controller('addCtrl', function($scope, $http) { 
+	
 	$scope.addFunction = function() {
-		
-		//CHANGE THESE: ORDER ORDER IS (NAME OF COLUMN FROM DATABASE): $SCOPE.(NAME OF COLUMN FROM DATABASE)
-		var addData = {
-			'table': 'devices', 
-		};
-		
-		addData.values = {
-			'dev_id': $scope.dev_id,
-			'dev_type': $scope.dev_type,
-			'dev_desc': $scope.dev_desc,
-			'dev_owner_id': $scope.dev_owner_id,
-			'dev_user_id': $scope.dev_user_id,
-			'dev_sn': $scope.dev_sn,
+		if ($scope.addForm.$invalid ) {
+			$('#addErrorsModal').modal('show');
+		} else {
+			//CHANGE THESE: ORDER ORDER IS (NAME OF COLUMN FROM DATABASE): $SCOPE.(NAME OF COLUMN FROM DATABASE)
+			var addData = {
+				'table': 'devices', 
+			};
+			
+			addData.values = {
+				'dev_id': $scope.dev_id,
+				'dev_type': $scope.dev_type,
+				'dev_desc': $scope.dev_desc,
+				'dev_owner_id': $scope.dev_owner_id,
+				'dev_user_id': $scope.dev_user_id,
+				'dev_sn': $scope.dev_sn,
+			}
+			addData.types = types; 
+			
+			$http({
+				method : 'POST',
+				url : 'DatabaseInsertHandler',
+				contentType: 'application/json',
+				data : addData,
+			})
+			.then(function (response) {
+				//$scope.myResults = response.data;
+				console.log(addData);
+				}, function (error) {
+					console.log(error);
+			});	
 		}
-		addData.types = types; 
-		
-		$http({
-			method : 'POST',
-			url : 'DatabaseInsertHandler',
-			contentType: 'application/json',
-			data : addData,
-		})
-		.then(function (response) {
-			//$scope.myResults = response.data;
-			console.log('Item Added.');
-			}, function (error) {
-				console.log(error);
-		});	
-		
 	}	
 });
 

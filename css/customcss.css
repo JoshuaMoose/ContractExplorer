@@ -206,6 +206,11 @@ th, td {
 	padding: 10px;
 }
 
+.editColumn {
+	position:absolute;
+	left:100%;
+}
+
 tr:nth-child(even) {
 	background: #FFF
 }
@@ -227,8 +232,4 @@ tr:nth-child(even) {
 
 #results input.ng-invalid, .row input.ng-invalid, .row select.ng-invalid {
 	border-color: #FA787E;
-}
-
-#results input.ng-valid, .row input.ng-valid, .row select.ng-valid {
-	border-color: #78FA89;
 }

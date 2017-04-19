@@ -119,10 +119,7 @@ public class DatabaseInsertHandler extends HttpServlet {
 						}
 						System.out.println("Column " + columnName + "Value = " + value);
 						
-						dataType = types.get(columnName).getAsString();
-						
-						System.out.println("ColumnName = " + columnName + " Datatype = " + dataType);
-						
+						dataType = types.get(columnName).getAsString();					
 						
 						//Handle different data types
 						switch( dataType ) {

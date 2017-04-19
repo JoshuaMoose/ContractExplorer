@@ -149,6 +149,7 @@ public class DatabaseUpdateHandler extends HttpServlet {
 								break;
 								
 							case "Integer" :
+								System.out.println("Integer value = " + value);
 								stmt.setInt(prepIndex, Integer.parseInt(value));
 								break;
 								

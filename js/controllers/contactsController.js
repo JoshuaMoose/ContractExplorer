@@ -57,6 +57,7 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 	$scope.editResults = function(field) {
 		$scope.editing = $scope.myResults.indexOf(field);
 		$scope.newField = angular.copy(field);
+		$scope.myResults.editing = false;
 	}
 
 	$scope.saveField = function(index) {		
