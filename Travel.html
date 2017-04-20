@@ -61,14 +61,12 @@
 					<div class="panel-body">
 						<!--Search for contacts-->
 						
-						<button type="submit" value="travel" name="SearchButton" data-toggle="collapse" data-target="#search" data-ng-click="myFunction()">Search</button>
-		
-		
+						<input type="text" name="SearchBy" style="margin: 20px; margin-bottom: -25px;" data-ng-model="f.$" placeholder="Search All Fields">
+						<button type="submit" style="margin-bottom: 10px; margin-top: 10px; margin-left: 1px;" class="btn btn-default" value="contacts" name="SearchButton" data-toggle="collapse" data-target="#search" ng-click="myFunction()">Search Travel</button>
+                            
 		<!-- Table Start**************************** -->				
 				<div id="search" class="collapse">
-					
-					<input type="text" name="SearchBy" style="margin: 20px; margin-bottom: -25px;" data-ng-model="f.$" placeholder="Search All Fields">
-					
+									
 					<!--button type="submit" value="clearResults">Clear Results</button-->
 					
 					<div id="scrollView" style="max-height:100%; overflow:auto; margin: 10px">
@@ -195,19 +193,11 @@
 	</div><!--well-->
 
 </body>
- <section id="footer" style="background-color:#292b34;">
+	<section id="footer" style="background-color:#292b34;">
         <div class="container">
-    		<div class="container">
-    		    <div class="navbar-default navbar-fixed-bottom"  style="color: #fff; text-align: center; background-color:#292b34; border:0px">
-    		        <div class="row">
-    		            <div class="col-md-12">
-    		                <div class="row">
-    		                        ©Copyright 2017 | SUPERLATIVE TECHNOLOGIES, INC. (dba SUPRTEK)
-    		                </div><!--end .row-->
-    		            </div><!--end .col-md-12-->
-    		        </div><!--end .row-->
-    		    </div><!--end .well .well-sm .main-footer-->
-    		</div><!--end .container-->
+    	    <div class="navbar-default navbar-fixed-bottom"  style="color: #fff; text-align: center; background-color:#292b34; border:0px; padding: 20px;">
+			©Copyright 2017 | SUPERLATIVE TECHNOLOGIES, INC. (dba SUPRTEK)
+    	    </div><!--end .well .well-sm .main-footer-->
     	</div><!--end .container-->
     </section><!--end #footer-->
 </html>

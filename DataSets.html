@@ -58,12 +58,11 @@
                     <div class="panel-body">
                         <!--Search for contacts-->
 
-                        <button type="submit" style="margin-bottom: 10px; margin-top: 10px; margin-left: 1px;" class="btn btn-default" value="contacts" name="SearchButton" data-toggle="collapse" data-target="#search" ng-click="myFunction()">Load Foreign Entry Data Sets</button>
+						<input type="text" name="SearchBy" style="margin: 20px; margin-bottom: -25px;" ng-model="f.$" placeholder="Search All Fields">
+                        <button type="submit" style="margin-bottom: 10px; margin-top: 10px; margin-left: 1px;" class="btn btn-default" value="contacts" name="SearchButton" data-toggle="collapse" data-target="#search" ng-click="myFunction()">Search Foreign Entry Data Sets</button>
                         <!--span><a href="ResultsAsTable.html">Advanced Search</a></span-->
                         <!-- Table Start**************************** -->
                         <div id="search" class="collapse">
-
-                            <input type="text" name="SearchBy" style="margin: 20px; margin-bottom: -25px;" ng-model="f.$" placeholder="Search All Fields">
 
                             <!--button type="submit" value="clearResults">Clear Results</button-->
 
@@ -160,4 +159,11 @@
     </div><!--container-->
 
 </body>
+	<section id="footer" style="background-color:#292b34;">
+        <div class="container">
+    	    <div class="navbar-default navbar-fixed-bottom"  style="color: #fff; text-align: center; background-color:#292b34; border:0px; padding: 20px;">
+			©Copyright 2017 | SUPERLATIVE TECHNOLOGIES, INC. (dba SUPRTEK)
+    	    </div><!--end .well .well-sm .main-footer-->
+    	</div><!--end .container-->
+    </section><!--end #footer-->
 </html>
