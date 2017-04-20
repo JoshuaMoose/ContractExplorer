@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css\bootstrap.css">
   <link rel="stylesheet" href="css\customcss.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="js\jquery-3.2.1.min.js"></script>
   <script src="js\bootstrap.min.js"></script>
   <script src="js\angular.min.js"></script>
   <script src="js\controllers\contractsController.js"></script>
@@ -40,7 +40,7 @@
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
-    <div class="row"></div>
+    
     <div class="container-fluid" style="margin-top:50px;">
         <!-- Logo -->
         <div class="page-header" style="text-align:center;">
@@ -118,13 +118,13 @@
 										<span data-ng-hide="editMode">{{ x.contr_id }}</span>
 										<input type="text" ng-minlength="1" ng-maxlength="255" required
 											data-ng-show="editMode" data-ng-model="x.contr_id" 
-											title="Contract ID: Required; String" />
+											title="Contract ID: Required; String"></script>
 									</td>
 									<td>
 										<span data-ng-hide="editMode">{{x.contr_org_id}}</span>
 										<input type="text" pattern="^\d+$" ng-maxlength="9" 
 											data-ng-show="editMode" data-ng-model="x.contr_org_id"
-											title="Contract Organization ID: Integer" />
+											title="Contract Organization ID: Integer"></script>
 									</td>
 									<td>
 										<span data-ng-hide="editMode">{{x.contr_end_cust_id}}</span>
@@ -136,49 +136,49 @@
 										<span data-ng-hide="editMode">{{x.contr_type_cd}}</span>
 										<input type="text" ng-minlength="1" ng-maxlength="255" 
 											data-ng-show="editMode" data-ng-model="x.contr_type_cd" required
-											title="Contract Type Code: Required; String" />
+											title="Contract Type Code: Required; String"></script>
 									</td>
 									<td>
 										<span data-ng-hide="editMode">{{x.prime_contr_id}}</span>
 										<input type="text" pattern="\d+" ng-maxlength="9" 
 											data-ng-show="editMode" data-ng-model="x.prime_contr_id"
-											title="Prime Contractor ID: Integer" />
+											title="Prime Contractor ID: Integer"></script>
 									</td>
 									<td>
 										<span data-ng-hide="editMode">{{x.prime_contract_no}}</span>
 										<input type="text" ng-maxlength="255" 
 											data-ng-show="editMode" data-ng-model="x.prime_contract_no"
-											title="Prime Contract Number: String" />
+											title="Prime Contract Number: String"></script>
 									</td>
 									<td>
 										<span data-ng-hide="editMode">{{x.contr_prog_cd}}</span>
 										<input type="text" ng-maxlength="255" 
 											data-ng-show="editMode" data-ng-model="x.contr_prog_cd"
-											title="Contract Program: String" />
+											title="Contract Program: String"></script>
 									</td>
 									<td>
 										<span data-ng-hide="editMode">{{x.contr_vehicle_cd}}</span>
 										<input type="text" ng-maxlength="255" 
 											data-ng-show="editMode" data-ng-model="x.contr_vehicle_cd"
-											title="Contract Vehicle Code: String" />
+											title="Contract Vehicle Code: String"></script>
 									</td>
 									<td>
 										<span data-ng-hide="editMode">{{x.contr_sec_level_cd}}</span>
 										<input type="text" ng-maxlength="255" 
 											data-ng-show="editMode" data-ng-model="x.contr_sec_level_cd"
-											title="Contract Security Level Code: String" />
+											title="Contract Security Level Code: String"></script>
 									</td>
 									<td>
 										<span data-ng-hide="editMode">{{x.contr_info_safe_level_cd}}</span>
 										<input type="text" ng-maxlength="255" 
 											data-ng-show="editMode" data-ng-model="x.contr_info_safe_level_cd"
-											title="Contract Information Security Level: String" />
+											title="Contract Information Security Level: String"></script>
 									</td>
 									<td>
 										<span data-ng-hide="editMode">{{x.contr_open_date}}</span>
 										<input type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" 
 											data-ng-show="editMode" data-ng-model="x.contr_open_date"
-											title="Contract Opened Date: yyyy-dd-mm hh:mm:ss" />
+											title="Contract Opened Date: yyyy-dd-mm hh:mm:ss"></script>
 									</td>
 									<td>
 										<span data-ng-hide="editMode">{{x.contr_close_date}}</span>
@@ -198,7 +198,7 @@
 										<span data-ng-hide="editMode">{{x.exemptions}}</span>
 										<input type="text" 
 											data-ng-show="editMode" data-ng-model="x.exemptions"
-											title="Exemptions and Exceptions: Text, no length limit" />
+											title="Exemptions and Exceptions: Text, no length limit"></script>
 									</td>
 									<td>
 										<span data-ng-hide="editMode">{{x.dd254_recv}}</span>
@@ -212,7 +212,7 @@
 										<span data-ng-hide="editMode">{{x.dd254_date}}</span>
 										<input type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" 
 										data-ng-show="editMode" data-ng-model="x.dd254_date"
-										title="DD254 date: yyyy-dd-mm hh:mm:ss" />
+										title="DD254 date: yyyy-dd-mm hh:mm:ss"></script>
 									<td >
 										<button type="submit" data-ng-hide="editMode" data-ng-click="editMode = true; editResults(x)" class="btn btn-default">Edit</button>
 										<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; saveField(x)" class="btn btn-default" ng-disabled="!updateForm.$valid" >Save</button>
@@ -248,7 +248,7 @@
 							<div class="row">
 								<div class="col-lg-3">Contract Number:</div>
 								<div class="col-lg-3"><input type="text" data-ng-minlength="1" data-ng-maxlength="255" required data-ng-model="contr_id" 
-														title="Contract ID: Required; String" /></div>
+														title="Contract ID: Required; String"></script></div>
 								<div class="col-lg-3">Customer Organization ID:</div>
 								<div class="col-lg-3"><select class = "dropdown" data-ng-model="contr_org_id" >
 											<option value="2">TRANSCOM
@@ -276,10 +276,10 @@
 							<div class="row">
 								<div class="col-lg-3">Prime Contract Number:</div>
 								<div class="col-lg-3"><input type="text" pattern="\d+" ng-maxlength="9" data-ng-model="prime_contr_id"
-														title="Prime Contractor ID: Integer" /></div>
+														title="Prime Contractor ID: Integer"></script></div>
 								<div class="col-lg-3">Contract Program:</div>
 								<div class="col-lg-3"><input type="text" ng-maxlength="255" data-ng-model="contr_prog_cd"
-														title="Contract Program: String" /></div>
+														title="Contract Program: String"></script></div>
 							</div><!--row-->
 							
 							<div class="row">
@@ -300,7 +300,7 @@
 							<div class="row">
 								<div class="col-lg-3">Date Contract Opened:</div>
 								<div class="col-lg-3"><input type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" data-ng-model="contr_open_date"
-											title="Contract Opened Date: yyyy-dd-mm hh:mm:ss" /></div>
+											title="Contract Opened Date: yyyy-dd-mm hh:mm:ss"></script></div>
 								<div class="col-lg-3">Date Contract Closed:</div>
 								<div class="col-lg-3"><input type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" data-ng-model="contr_close_date" 
 											title="Contract Close Date: yyyy-dd-mm hh:mm:ss"/></div>
@@ -309,10 +309,10 @@
 							<div class="row">
 								<div class="col-lg-3">Exemptions and Restrictions:</div>
 								<div class="col-lg-3"><input type="text" data-ng-model="x.exemptions"
-														title="Exemptions and Exceptions: Text, no length limit" /></div>
+														title="Exemptions and Exceptions: Text, no length limit"></script></div>
 								<div class="col-lg-3">Current DD254 Date:</div>
 								<div class="col-lg-3"><input type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" data-ng-model="dd254_date"
-														title="DD254 date: yyyy-dd-mm hh:mm:ss" /></div>
+														title="DD254 date: yyyy-dd-mm hh:mm:ss"></script></div>
 							</div><!--row-->
 							
 							<div class="row">
