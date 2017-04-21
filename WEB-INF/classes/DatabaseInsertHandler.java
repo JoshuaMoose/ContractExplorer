@@ -124,7 +124,7 @@ public class DatabaseInsertHandler extends HttpServlet {
 						//Handle different data types
 						switch( dataType ) {
 							case "String" :
-								if ( value == null ) {
+								if ( value == null || value.equals("")) {
 									stmt.setNull(prepIndex, java.sql.Types.CHAR);
 								} else {
 									stmt.setString(prepIndex, value);
@@ -132,7 +132,7 @@ public class DatabaseInsertHandler extends HttpServlet {
 								break;
 								
 							case "Boolean" :
-								if( value == null ) {
+								if( value == null || value.equals("")) {
 									stmt.setNull(prepIndex, java.sql.Types.BOOLEAN);
 								} else if ( ( value ).equals("t") ) {
 									stmt.setBoolean(prepIndex, true);
@@ -142,7 +142,7 @@ public class DatabaseInsertHandler extends HttpServlet {
 								break;
 								
 							case "Integer" :
-								if ( value == null ) {
+								if ( value == null || value.equals("")) {
 									stmt.setNull(prepIndex, java.sql.Types.INTEGER);
 								} else {
 									stmt.setInt(prepIndex, Integer.parseInt(value));
@@ -150,7 +150,7 @@ public class DatabaseInsertHandler extends HttpServlet {
 								break;
 							
 							case "TimeStamp":
-								if ( value == null ) {
+								if ( value == null || value.equals("")) {
 									stmt.setNull(prepIndex, java.sql.Types.TIMESTAMP);
 								} else {
 									Timestamp timeStamp = Timestamp.valueOf(value);

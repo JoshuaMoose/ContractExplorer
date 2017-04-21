@@ -153,23 +153,23 @@
 							<form name="addForm">
 								<div class="row">
 									<div class="col-lg-3">Device ID:</div>
-									<div class="col-lg-3"><input type="text" name="devid" pattern="^\d+$" ng-maxlength="9" ng-model="dev_id" required></div>
+									<div class="col-lg-3"><input id="dev_id" type="text" name="devid" pattern="^\d+$" ng-maxlength="9" ng-model="dev_id" required></div>
 									<div class="col-lg-3">Device Type:</div>
-									<div class="col-lg-3"><input type="text" name="devtype" ng-maxlength="255" ng-model="dev_type" required></div>
+									<div class="col-lg-3"><input id="dev_type" type="text" name="devtype" ng-maxlength="255" ng-model="dev_type" required></div>
 								</div><!--row-->
 								
 								<div class="row">
 									<div class="col-lg-3">Device Description:</div>
-									<div class="col-lg-3"><input type="text" name="devdesc" ng-maxlength="255" ng-model="dev_desc" required></div>
+									<div class="col-lg-3"><input id="dev_desc" type="text" name="devdesc" ng-maxlength="255" ng-model="dev_desc" required></div>
 									<div class="col-lg-3">Device Owner:</div>
-									<div class="col-lg-3"><input type="text" name="devownerid" pattern="^\d+$" ng-maxlength="9" ng-model="dev_owner_id" required></div>
+									<div class="col-lg-3"><input id="dev_owner_id" type="text" name="devownerid" pattern="^\d+$" ng-maxlength="9" ng-model="dev_owner_id" required></div>
 								</div><!--row-->
 								
 								<div class="row">
 									<div class="col-lg-3">Device User ID:</div>
-									<div class="col-lg-3"><input type="text" name="devuserid" pattern="^\d+$" ng-maxlength="9" ng-model="dev_user_id" required></div>
+									<div class="col-lg-3"><input id="dev_user_id" type="text" name="devuserid" pattern="^\d+$" ng-maxlength="9" ng-model="dev_user_id" required></div>
 									<div class="col-lg-3">Device Serial Number:</div>
-									<div class="col-lg-3"><input type="text" name="devsn" pattern="^\d+$" ng-maxlength="9" ng-model="dev_sn"></div>
+									<div class="col-lg-3"><input id="dev_sn" type="text" name="devsn" pattern="^\d+$" ng-maxlength="9" ng-model="dev_sn"></div>
 								</div><!--row-->
 								<div class="row">
 									<div class="col-lg-6"><button type="submit" class="btn btn-default" value="contacts" ng-click="addFunction()" >Add New Devices</button></div>

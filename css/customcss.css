@@ -193,6 +193,10 @@
 	margin-left: 15px;
 }
 
+.scrollView {
+	width: 70%;
+}
+
 table{
     border: 0px; 
 	border-collapse: collapse;
@@ -205,15 +209,19 @@ th, td {
 	text-align: center;
 	white-space: nowrap;
 	padding: 10px;
+	padding-top: 13px;
+	padding-bottom: 13px;
 }
 
 .editColumn {
 	position:absolute;
-	left:100%;
+	right: 30px;
+	align: center;
+	width: 155px;
 }
 
 tr:nth-child(even) {
-	background: #FFF
+	background: #FFF;
 }
 .panel-heading{
  margin-bottom: 30px;-webkit-box-shadow: 0 8px 6px -6px #999;

@@ -137,11 +137,17 @@ public class DatabaseUpdateHandler extends HttpServlet {
 						//Handle different data types
 						switch( dataType ) {
 							case "String" :
-								stmt.setString(prepIndex, value);
+								if ( value == null || value.equals("")) {
+									stmt.setNull(prepIndex, java.sql.Types.CHAR);
+								} else {
+									stmt.setString(prepIndex, value);
+								}
 								break;
 								
 							case "Boolean" :
-								if ( ( value ).equals("t") ) {
+								if( value == null || value.equals("")) {
+									stmt.setNull(prepIndex, java.sql.Types.BOOLEAN);
+								} else if ( ( value ).equals("t") ) {
 									stmt.setBoolean(prepIndex, true);
 								} else {
 									stmt.setBoolean(prepIndex, false);
@@ -149,13 +155,20 @@ public class DatabaseUpdateHandler extends HttpServlet {
 								break;
 								
 							case "Integer" :
-								System.out.println("Integer value = " + value);
-								stmt.setInt(prepIndex, Integer.parseInt(value));
+								if ( value == null || value.equals("")) {
+									stmt.setNull(prepIndex, java.sql.Types.INTEGER);
+								} else {
+									stmt.setInt(prepIndex, Integer.parseInt(value));
+								}
 								break;
-								
+							
 							case "TimeStamp":
-								Timestamp timeStamp = Timestamp.valueOf(value);
-								stmt.setTimestamp(prepIndex, timeStamp);
+								if ( value == null || value.equals("")) {
+									stmt.setNull(prepIndex, java.sql.Types.TIMESTAMP);
+								} else {
+									Timestamp timeStamp = Timestamp.valueOf(value);
+									stmt.setTimestamp(prepIndex, timeStamp);
+								}
 								break;
 						}
 						

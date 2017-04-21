@@ -48,6 +48,30 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 	
 	////// END RESULTS //////
 	
+	
+	///// REFRESH RESULTS //////
+	$scope.refreshSearch = function() {
+		var pageData = {
+			table: 'contracts', //CHANGE THIS TO NAME OF TABLE (CHECK ACCESS FOR TABLE NAME)
+		};		
+		
+		$http({
+			method : 'POST',
+			url : 'DatabaseSearchHandler',
+			contentType: 'application/json',
+			data : pageData,
+		})
+		.then(function (response) {
+			$scope.myResults = response.data;
+
+			console.log('Data loaded.');
+		}, function (error) {
+				console.log(error);
+		});	
+	}
+	///// END REFRESH RESULTS
+	
+	
 	////// EDITING RESULTS //////
 	$scope.newField = {};
     $scope.editing = false;
@@ -66,19 +90,17 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 		editData.updated = $scope.myResults[$scope.editing];
 		editData.types = types;
 		
-		if ($scope.editing !== false && $scope.editing.$valid) {
-			//$scope.myResults[$scope.editing] = $scope.newField;
-			//$scope.editing = false;
-			console.log(editData);
+		//$scope.myResults[$scope.editing] = $scope.newField;
+		//$scope.editing = false;
+		console.log(editData);
 			
-			$http({
-				method : 'POST',
-				url : 'DatabaseUpdateHandler',
-				contentType: 'application/json',
-				data : editData,
-			})
-			
-		}       
+		$http({
+			method : 'POST',
+			url : 'DatabaseUpdateHandler',
+			contentType: 'application/json',
+			data : editData,
+		})
+			       
 	};
 
 	$scope.cancel = function(index) {
@@ -91,6 +113,7 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 });
 
 app.controller('addCtrl', function($scope, $http) { 
+	
 	$scope.addFunction = function() {
 		
 		//CHANGE THESE: ORDER ORDER IS (NAME OF COLUMN FROM DATABASE): $SCOPE.(NAME OF COLUMN FROM DATABASE)
