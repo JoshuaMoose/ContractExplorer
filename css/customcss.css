@@ -214,9 +214,8 @@ th, td {
 }
 
 .editColumn {
-	position:absolute;
+	position:absolute; -webkit-transform: translateZ(0);
 	right: 30px;
-	align: center;
 	width: 155px;
 }
 
@@ -239,6 +238,6 @@ tr:nth-child(even) {
    /*color: #fff;*/
 }
 
-#results input.ng-invalid, .row input.ng-invalid, .row select.ng-invalid {
+#results input.ng-invalid, .row input.ng-invalid, .row select.ng-invalid, td input.ng-invalid {
 	border-color: #FA787E;
 }

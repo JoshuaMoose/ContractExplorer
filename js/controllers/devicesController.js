@@ -26,6 +26,7 @@ app.controller('searchCtrl', function($scope) {
 app.controller('resultsCtrl', function($scope, $http) { //On button click this function will populate table
 	////// GET RESULTS //////
 	$scope.myFunction = function() {
+		
 		var pageData = {
 			table: 'devices', //CHANGE THIS TO NAME OF TABLE (CHECK ACCESS FOR TABLE NAME)
 		};		
@@ -39,6 +40,7 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 		.then(function (response) {
 			$scope.myResults = response.data;
 
+			console.log($scope.myResults);
 			console.log('Data loaded.');
 		}, function (error) {
 				console.log(error);
@@ -46,11 +48,42 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 	}
 	////// END RESULTS //////
 	
+	$scope.refreshSearch = function() {
+		var pageData = {
+			table: 'devices', //CHANGE THIS TO NAME OF TABLE (CHECK ACCESS FOR TABLE NAME)
+		};		
+		
+		$http({
+			method : 'POST',
+			url : 'DatabaseSearchHandler',
+			contentType: 'application/json',
+			data : pageData,
+		})
+		.then(function (response) {
+			$scope.myResults = response.data;
+			
+			console.log($scope.myResults);
+			console.log('Data loaded.');
+		}, function (error) {
+				console.log(error);
+		});	
+		
+		//$scope.$apply();
+	}
+	
 	////// EDITING RESULTS //////
 	$scope.newField = {};
     $scope.editing = false;
 
 	$scope.editResults = function(field) {
+		
+		$('#edit_dev_id').tooltip({'trigger':'focus', 'title': 'Required Field. Must be an integer with 9 digits or less.', 'placement': 'bottom'});
+		$('#edit_dev_type').tooltip({'trigger':'focus', 'title': 'Required Field. Must be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('#edit_dev_desc').tooltip({'trigger':'focus', 'title': 'Required Field. Must be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('#edit_dev_owner_id').tooltip({'trigger':'focus', 'title': 'Required Field. Must be an integer with 9 digits or less.', 'placement': 'bottom'});
+		$('#edit_dev_user_id').tooltip({'trigger':'focus', 'title': 'Required Field. Must be an integer with 9 digits or less.', 'placement': 'bottom'});
+		$('#edit_dev_sn').tooltip({'trigger':'focus', 'title': 'Must be a string shorter than 256 characters.', 'placement': 'bottom'});
+		
 		$scope.editing = $scope.myResults.indexOf(field);
 		$scope.newField = angular.copy(field);
 	}

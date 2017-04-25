@@ -1,5 +1,28 @@
 var app = angular.module('myApp', []);
 
+$(document).ready(function(){
+	$('#cont_id').tooltip({'trigger':'focus', 'title': 'Required Field. should be an integer with 9 digits or less.', 'placement': 'right'});
+	$('#cont_org_id').tooltip({'trigger':'focus', 'title': 'Required Field. should be an integer with 9 digits or less.', 'placement': 'right'});
+	$('#cont_role_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#cont_first_name').tooltip({'trigger':'focus', 'title': 'Required Field. should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#cont_middle_name').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#cont_last_name').tooltip({'trigger':'focus', 'title': 'Required Field. should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#cont_name_title').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#cont_name_suffix').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#cont_addr1').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#cont_addr2').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#cont_city').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#cont_state_prov_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#cont_post_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#cont_cntry_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#cont_office_phone').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#cont_mobile_phone').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#cont_home_phone').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#cont_email').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});	
+	$('#cont_alt_email').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
+	
+});
+
 var types = {
 	'cont_id': "Integer",
 	'cont_org_id': "Integer",
@@ -55,6 +78,27 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
     $scope.editing = false;
 
 	$scope.editResults = function(field) {
+		$('#edit_cont_id').tooltip({'trigger':'focus', 'title': 'Required Field. should be an integer with 9 digits or less.', 'placement': 'bottom'});
+		$('#edit_cont_org_id').tooltip({'trigger':'focus', 'title': 'Required Field. should be an integer with 9 digits or less.', 'placement': 'bottom'});
+		$('#edit_cont_role_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('#edit_cont_first_name').tooltip({'trigger':'focus', 'title': 'Required Field. should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('#edit_cont_middle_name').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('#edit_cont_last_name').tooltip({'trigger':'focus', 'title': 'Required Field. should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('#edit_cont_name_title').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('#edit_cont_name_suffix').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('#edit_cont_addr1').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('#edit_cont_addr2').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('#edit_cont_city').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('#edit_cont_state_prov_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('#edit_cont_post_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('#edit_cont_cntry_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('#edit_cont_office_phone').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('#edit_cont_mobile_phone').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('#edit_cont_home_phone').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('#edit_cont_email').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});	
+		$('#edit_cont_alt_email').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		
+		
 		$scope.editing = $scope.myResults.indexOf(field);
 		$scope.newField = angular.copy(field);
 		$scope.myResults.editing = false;
@@ -96,48 +140,51 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 
 app.controller('addCtrl', function($scope, $http) { 
 	$scope.addFunction = function() {
-		
-		//CHANGE THESE: ORDER ORDER IS (NAME OF COLUMN FROM DATABASE): $SCOPE.(NAME OF COLUMN FROM DATABASE)
-		var addData = {
-			'table': 'contacts', 
-		};
-		
-		addData.values = {
-			'cont_id': $scope.cont_id,
-			'cont_org_id': $scope.cont_org_id,
-			'cont_role_cd': $scope.cont_role_cd,
-			'cont_first_name': $scope.cont_first_name,
-			'cont_middle_name': $scope.cont_middle_name,
-			'cont_last_name': $scope.cont_last_name,
-			'cont_name_title': $scope.cont_name_title,
-			'cont_name_suffix': $scope.cont_name_suffix,
-			'cont_addr1': $scope.cont_addr1,
-			'cont_addr2': $scope.cont_addr2,
-			'cont_city': $scope.cont_city,
-			'cont_state_prov_cd': $scope.cont_state_prov_cd,
-			'cont_post_cd': $scope.cont_post_cd,
-			'cont_cntry_cd': $scope.cont_cntry_cd,
-			'cont_office_phone': $scope.cont_office_phone,
-			'cont_mobile_phone': $scope.cont_mobile_phone,
-			'cont_home_phone': $scope.cont_home_phone,
-			'cont_email': $scope.cont_email,
-			'cont_alt_email': $scope.cont_alt_email,
+		if ($scope.addForm.$invalid ) {
+			$('#addErrorsModal').modal('show');
+		} else {
+			//CHANGE THESE: ORDER ORDER IS (NAME OF COLUMN FROM DATABASE): $SCOPE.(NAME OF COLUMN FROM DATABASE)
+			var addData = {
+				'table': 'contacts', 
+			};
+			
+			addData.values = {
+				'cont_id': $scope.cont_id,
+				'cont_org_id': $scope.cont_org_id,
+				'cont_role_cd': $scope.cont_role_cd,
+				'cont_first_name': $scope.cont_first_name,
+				'cont_middle_name': $scope.cont_middle_name,
+				'cont_last_name': $scope.cont_last_name,
+				'cont_name_title': $scope.cont_name_title,
+				'cont_name_suffix': $scope.cont_name_suffix,
+				'cont_addr1': $scope.cont_addr1,
+				'cont_addr2': $scope.cont_addr2,
+				'cont_city': $scope.cont_city,
+				'cont_state_prov_cd': $scope.cont_state_prov_cd,
+				'cont_post_cd': $scope.cont_post_cd,
+				'cont_cntry_cd': $scope.cont_cntry_cd,
+				'cont_office_phone': $scope.cont_office_phone,
+				'cont_mobile_phone': $scope.cont_mobile_phone,
+				'cont_home_phone': $scope.cont_home_phone,
+				'cont_email': $scope.cont_email,
+				'cont_alt_email': $scope.cont_alt_email,
+			}
+			addData.types = types; 
+			
+			$http({
+				method : 'POST',
+				url : 'DatabaseInsertHandler',
+				contentType: 'application/json',
+				data : addData,
+			})
+			.then(function (response) {
+				//$scope.myResults = response.data;
+				console.log('Item Added.');
+				$('#addSuccessModal').modal('show');
+				}, function (error) {
+					console.log(error);
+			});	
 		}
-		addData.types = types; 
-		
-		$http({
-			method : 'POST',
-			url : 'DatabaseInsertHandler',
-			contentType: 'application/json',
-			data : addData,
-		})
-		.then(function (response) {
-			//$scope.myResults = response.data;
-			console.log('Item Added.');
-			}, function (error) {
-				console.log(error);
-		});	
-		
 	}	
 });
 
