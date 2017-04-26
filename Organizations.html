@@ -309,8 +309,9 @@
 								<div class="row">
 									<div class="col-lg-3">Cage code:</div>
 									<div class="col-lg-3"><input type="text"  ng-maxlength="255" data-ng-model="x.cage_cd" /></div>
-									<div class="col-lg-6"><button type="submit" value="contacts" ng-click="addFunction()" >Add New Organization</button></div>
+								
 								</div><!--row-->
+                                <div class="container-fluid" style="padding:10px;"><button type="submit" class="btn btn-sm btn-default btn-block" data-ng-disabled="!addForm.$valid" value="contacts" ng-click="addFunction()"><span class="glyphicon glyphicon-ok"></span> Add New Organization</button></div>
 							</form>
 						</div>
 						<!---End add new contact-->
