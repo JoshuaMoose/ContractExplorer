@@ -48,11 +48,11 @@
         </div>
 		<!--End Nav Tabs-->
 		
-		<div class="panel-group" id="accordion" ng-controller="resultsCtrl">
-			<div class="panel panel-default">
-			    <div class="panel-heading">
+		<div class="accordion panel-group" id="accordion" data-ng-controller="resultsCtrl">
+			<div class="accordion-default panel">
+			    <div class="accordion-heading panel-heading">
 					<h4 class="panel-title">
-						<a data-toggle="collapse" data-parent="#accordion" href="#collapse1"><h2>Search Devices</h2></a>
+						<a data-toggle="collapse" href="#collapse1"><h2>Search Devices</h2></a>
 					</h4>
 			    </div>
 				<div id="collapse1" class="panel-collapse collapse in">
@@ -143,10 +143,10 @@
 			</div>
 			
 			<!-- ADDING BLOCK ********************************-->
-			<div class="panel panel-default">
-				<div class="panel-heading">
+			<div class="accordion-default panel">
+			    <div class="accordion-heading panel-heading">
 					<h4 class="panel-title">
-						<a data-toggle="collapse" data-parent="#accordion" href="#collapse2"><h2>Add New Devices</h2></a>
+						<a data-toggle="collapse" href="#collapse2"><h2>Add New Devices</h2></a>
 					</h4>
 				</div>
 				<div id="collapse2" class="panel-collapse collapse" ng-controller="addCtrl">
