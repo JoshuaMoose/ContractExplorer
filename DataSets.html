@@ -24,7 +24,6 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="Home.html">Home</a></li>
                     <li><a href="Contracts.html">Contracts</a></li>
                     <li><a href="Organizations.html">Organizations</a></li>
                     <li><a href="Contacts.html">Contacts</a></li>
@@ -47,11 +46,11 @@
             <h1>Data Sets</h1>
         </div>
 
-        <div class="accordion panel-group" id="accordion" data-ng-controller="resultsCtrl">
-			<div class="accordion-default panel">
-			    <div class="accordion-heading panel-heading">
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
                     <h4 class="panel-title">
-                        <a data-toggle="collapse" href="#collapse1"><h2>Search Foreign Entry Data Sets</h2></a>
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1"><h2>Search Foreign Entry Data Sets</h2></a>
                     </h4>
                 </div>
                 <div id="collapse1" class="panel-collapse collapse in">
@@ -120,10 +119,10 @@
             </div>
 
             <!-- ADDING BLOCK ********************************-->
-            <div class="accordion-default panel">
-			    <div class="accordion-heading panel-heading">
+            <div class="panel panel-default">
+                <div class="panel-heading">
                     <h4 class="panel-title">
-                        <a data-toggle="collapse" href="#collapse2"><h2>Add New Foreign Entry Data Set</h2></a>
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2"><h2>Add New Foreign Entry Data Set</h2></a>
                     </h4>
                 </div>
                 <div id="collapse2" class="panel-collapse collapse" ng-controller="addCtrl">
@@ -133,18 +132,18 @@
                             <!-- ng-app="myApp" ng-controller="formCtrl" ~~removed bc unused-->
                             <div class="row">
                                 <div class="col-lg-3">Data ID:</div>
-                                <div class="col-lg-3"><input type="text" ng-model="fe_data_id"></div>
+                                <div class="col-lg-3"><input type="text" ng-model="fe_data_id" tabindex=1></div>
                                 <div class="col-lg-3">Data Description:</div>
-                                <div class="col-lg-3"><input type="textarea" cols="50" rows="10" ng-model="fe_desc"></div>
+                                <div class="col-lg-3"><input type="textarea" cols="50" rows="10" ng-model="fe_desc" tabindex=3></div>
                             </div><!--row-->
 
                             <div class="row">
                                 <div class="col-lg-3">Has Written Requirements:</div>
-                                <div class="col-lg-3"><input type="checkbox" ng-model="written_req"></div>
+                                <div class="col-lg-3"><input type="checkbox" ng-model="written_req" tabindex=2></div>
                                 <div class="col-lg-3">Documents are Reproducable:</div>
-                                <div class="col-lg-3"><input class="checkbox" ng-model="doc_repro"></div>
+                                <div class="col-lg-3"><input class="checkbox" ng-model="doc_repro" tabindex=4></div>
                             </div><!--row-->
-                            <div class="container-fluid" style="padding:10px;"><button type="submit" class="btn btn-sm btn-default btn-block" data-ng-disabled="!addForm.$valid" value="contacts" ng-click="addFunction()"><span class="glyphicon glyphicon-ok"></span> Add New Data Set</button></div>
+                            <div class="container-fluid" style="padding:10px;"><button type="submit" class="btn btn-sm btn-default btn-block" data-ng-disabled="!addForm.$valid" value="contacts" ng-click="addFunction()" tabindex=5><span class="glyphicon glyphicon-ok"></span> Add New Data Set</button></div>
                         </div>
                         <!---End add new contact-->
                     </div>
