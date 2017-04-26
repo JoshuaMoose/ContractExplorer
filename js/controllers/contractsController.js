@@ -19,6 +19,26 @@ var types = {
 	'dd254_date': 'TimeStamp',
 }
 
+$(document).ready(function(){
+	$('#contr_id').tooltip({'trigger':'focus', 'title': 'Required Field. Should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#contr_org_id').tooltip({'trigger':'focus', 'title': 'Required Field. Should be an integer with 9 digits or less.', 'placement': 'right'});
+	$('#contr_end_cust_id').tooltip({'trigger':'focus', 'title': 'Should be an integer with 9 digits or less.', 'placement': 'right'});
+	$('#contr_type_cd').tooltip({'trigger':'focus', 'title': 'Required Field.  Should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#prime_contr_id').tooltip({'trigger':'focus', 'title': 'Should be an integer with 9 digits or less.', 'placement': 'right'});
+	$('#prime_contract_no').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#contr_prog_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#contr_vehicle_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#contr_sec_level_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#contr_info_safe_level_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#contr_open_date').tooltip({'trigger':'focus', 'title': 'Timestamp in the format of yyyy-dd-mm hh:mm:ss.', 'placement': 'right'});
+	$('#contr_close_date').tooltip({'trigger':'focus', 'title': 'Timestamp in the format of yyyy-dd-mm hh:mm:ss.', 'placement': 'right'});
+	$('#is_open').tooltip({'trigger':'focus', 'title': 'Boolean value', 'placement': 'right'});
+	$('#exemptions').tooltip({'trigger':'focus', 'title': 'Text field.', 'placement': 'right'});
+	$('#dd254_recv').tooltip({'trigger':'focus', 'title': 'Boolean value.', 'placement': 'right'});
+	$('#dd254_date').tooltip({'trigger':'focus', 'title': 'Timestamp in the format of yyyy-dd-mm hh:mm:ss.', 'placement': 'right'});
+		
+});
+
 app.controller('searchCtrl', function($scope) {
     $scope.searchParameter = "";
 	$scope.searchKeyword = "";
@@ -79,6 +99,24 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 	$scope.editResults = function(field) {
 		$scope.editing = $scope.myResults.indexOf(field);
 		$scope.newField = angular.copy(field);
+	
+		$('.edit_contr_id').tooltip({'trigger':'focus', 'title': 'Required Field. Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_contr_org_id').tooltip({'trigger':'focus', 'title': 'Required Field. Should be an integer with 9 digits or less.', 'placement': 'bottom'});
+		$('.edit_contr_end_cust_id').tooltip({'trigger':'focus', 'title': 'Should be an integer with 9 digits or less.', 'placement': 'bottom'});
+		$('.edit_contr_type_cd').tooltip({'trigger':'focus', 'title': 'Required Field.  Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_prime_contr_id').tooltip({'trigger':'focus', 'title': 'Should be an integer with 9 digits or less.', 'placement': 'bottom'});
+		$('.edit_prime_contract_no').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_contr_prog_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_contr_vehicle_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_contr_sec_level_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_contr_info_safe_level_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_contr_open_date').tooltip({'trigger':'focus', 'title': 'Timestamp in the format of yyyy-dd-mm hh:mm:ss.', 'placement': 'bottom'});
+		$('.edit_contr_close_date').tooltip({'trigger':'focus', 'title': 'Timestamp in the format of yyyy-dd-mm hh:mm:ss.', 'placement': 'bottom'});
+		//$('.edit_is_open').tooltip({'trigger':'focus', 'title': 'Boolean value', 'placement': 'bottom'});
+		$('.edit_exemptions').tooltip({'trigger':'focus', 'title': 'Text field.', 'placement': 'bottom'});
+		//$('.edit_dd254_recv').tooltip({'trigger':'focus', 'title': 'Boolean value.', 'placement': 'bottom'});
+		$('.edit_dd254_date').tooltip({'trigger':'focus', 'title': 'Timestamp in the format of yyyy-dd-mm hh:mm:ss.', 'placement': 'bottom'});
+		
 	}
 
 	$scope.saveField = function(index) {		

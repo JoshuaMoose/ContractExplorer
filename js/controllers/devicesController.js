@@ -68,7 +68,6 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 				console.log(error);
 		});	
 		
-		//$scope.$apply();
 	}
 	
 	////// EDITING RESULTS //////

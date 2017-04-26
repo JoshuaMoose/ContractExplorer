@@ -44,7 +44,7 @@ public class DatabaseSearchHandler extends HttpServlet {
 		//Read the relevant data (table for this servlet)
 		String tableName = jsonRequestObject.get("table").getAsString();
 		
-		System.out.println("Table to be Queried: " + tableName); //Log query to console
+		//System.out.println("Table to be Queried: " + tableName); //Log query to console
 		
 		////// End parsing block //////
 		

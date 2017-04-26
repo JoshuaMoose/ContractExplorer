@@ -194,7 +194,10 @@
 }
 
 .scrollView {
-	width: 70%;
+	max-height:100%; 
+	overflow:auto; 
+	margin: 10px; 
+	margin-right: 155px;
 }
 
 table{
@@ -214,7 +217,7 @@ th, td {
 }
 
 .editColumn {
-	position:absolute; -webkit-transform: translateZ(0);
+	position:absolute; -webkit-transform: translateZ(0); /* -webkit-transform needed to resolve Chrome rendering bug with fixed elements in table */
 	right: 30px;
 	width: 155px;
 }

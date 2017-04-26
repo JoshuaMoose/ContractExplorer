@@ -73,30 +73,52 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 	}
 	////// END RESULTS //////
 	
+	$scope.refreshSearch = function() {
+		var pageData = {
+			table: 'contacts', //CHANGE THIS TO NAME OF TABLE (CHECK ACCESS FOR TABLE NAME)
+		};		
+		
+		$http({
+			method : 'POST',
+			url : 'DatabaseSearchHandler',
+			contentType: 'application/json',
+			data : pageData,
+		})
+		.then(function (response) {
+			$scope.myResults = response.data;
+			
+			console.log($scope.myResults);
+			console.log('Data loaded.');
+		}, function (error) {
+				console.log(error);
+		});	
+		
+	}
+	
 	////// EDITING RESULTS //////
 	$scope.newField = {};
     $scope.editing = false;
 
 	$scope.editResults = function(field) {
-		$('#edit_cont_id').tooltip({'trigger':'focus', 'title': 'Required Field. should be an integer with 9 digits or less.', 'placement': 'bottom'});
-		$('#edit_cont_org_id').tooltip({'trigger':'focus', 'title': 'Required Field. should be an integer with 9 digits or less.', 'placement': 'bottom'});
-		$('#edit_cont_role_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
-		$('#edit_cont_first_name').tooltip({'trigger':'focus', 'title': 'Required Field. should be a string shorter than 256 characters.', 'placement': 'bottom'});
-		$('#edit_cont_middle_name').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
-		$('#edit_cont_last_name').tooltip({'trigger':'focus', 'title': 'Required Field. should be a string shorter than 256 characters.', 'placement': 'bottom'});
-		$('#edit_cont_name_title').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
-		$('#edit_cont_name_suffix').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
-		$('#edit_cont_addr1').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
-		$('#edit_cont_addr2').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
-		$('#edit_cont_city').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
-		$('#edit_cont_state_prov_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
-		$('#edit_cont_post_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
-		$('#edit_cont_cntry_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
-		$('#edit_cont_office_phone').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
-		$('#edit_cont_mobile_phone').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
-		$('#edit_cont_home_phone').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
-		$('#edit_cont_email').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});	
-		$('#edit_cont_alt_email').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_cont_id').tooltip({'trigger':'focus', 'title': 'Required Field. should be an integer with 9 digits or less.', 'placement': 'bottom'});
+		$('.edit_cont_org_id').tooltip({'trigger':'focus', 'title': 'Required Field. should be an integer with 9 digits or less.', 'placement': 'bottom'});
+		$('.edit_cont_role_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_cont_first_name').tooltip({'trigger':'focus', 'title': 'Required Field. should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_cont_middle_name').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_cont_last_name').tooltip({'trigger':'focus', 'title': 'Required Field. should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_cont_name_title').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_cont_name_suffix').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_cont_addr1').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_cont_addr2').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_cont_city').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_cont_state_prov_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_cont_post_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_cont_cntry_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_cont_office_phone').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_cont_mobile_phone').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_cont_home_phone').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_cont_email').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});	
+		$('.edit_cont_alt_email').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
 		
 		
 		$scope.editing = $scope.myResults.indexOf(field);
@@ -179,8 +201,29 @@ app.controller('addCtrl', function($scope, $http) {
 			})
 			.then(function (response) {
 				//$scope.myResults = response.data;
-				console.log('Item Added.');
+				console.log('Item Added.');				
 				$('#addSuccessModal').modal('show');
+				
+				$scope.cont_id = null;
+				$scope.cont_org_id = null;
+				$scope.cont_role_cd = null;
+				$scope.cont_first_name = null;
+				$scope.cont_middle_name = null;
+				$scope.cont_last_name = null;
+				$scope.cont_name_title = null;
+				$scope.cont_name_suffix = null;
+				$scope.cont_addr1 = null;
+				$scope.cont_addr2 = null;
+				$scope.cont_city = null;
+				$scope.cont_state_prov_cd = null;
+				$scope.cont_post_cd = null;
+				$scope.cont_cntry_cd = null;
+				$scope.cont_office_phone = null;
+				$scope.cont_mobile_phone = null;
+				$scope.cont_home_phone = null;
+				$scope.cont_email = null;
+				$scope.cont_alt_email = null;
+				
 				}, function (error) {
 					console.log(error);
 			});	
