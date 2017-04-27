@@ -88,20 +88,20 @@
                                     <tr ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}">
                                         <td>
                                             <span data-ng-hide="editMode">{{ x.fe_data_id }}</span>
-                                            <input type="text" data-ng-show="editMode" data-ng-model="x.fe_data_id" data-ng-required />
+                                            <input type="text" pattern="^\d+$" data-ng-show="editMode" data-ng-model="x.fe_data_id"/>
                                         </td>
                                         <!-- The special block here will swap to being input boxes when the -->
                                         <td>
                                             <span data-ng-hide="editMode">{{x.fe_desc}}</span>
-                                            <input type="text" data-ng-show="editMode" data-ng-model="x.fe_desc" data-ng-required />
+                                            <input type="text" ng-maxlength="255" data-ng-show="editMode" data-ng-model="x.fe_desc"/>
                                         </td>
                                         <td>
                                             <span data-ng-hide="editMode">{{x.written_req}}</span>
-                                            <input type="text" data-ng-show="editMode" data-ng-model="x.written_req" data-ng-required />
+                                            <input type="text" data-ng-show="editMode" data-ng-model="x.written_req"/>
                                         </td>
                                         <td>
                                             <span data-ng-hide="editMode">{{x.doc_repro}}</span>
-                                            <input type="text" data-ng-show="editMode" data-ng-model="x.doc_repro" data-ng-required />
+                                            <input type="text" data-ng-show="editMode" data-ng-model="x.doc_repro"/>
                                         </td>
                                         <td>
                                             <button type="submit" data-ng-hide="editMode" data-ng-click="editMode = true; editResults(x)" class="btn btn-default">Edit</button>
@@ -134,9 +134,9 @@
                             <!-- ng-app="myApp" ng-controller="formCtrl" ~~removed bc unused-->
                             <div class="row">
                                 <div class="col-lg-3">Data ID:</div>
-                                <div class="col-lg-3"><input type="text" ng-model="fe_data_id" tabindex=1></div>
+                                <div class="col-lg-3"><input type="text" pattern="^\d+$" ng-model="fe_data_id" tabindex=1></div>
                                 <div class="col-lg-3">Data Description:</div>
-                                <div class="col-lg-3"><input type="textarea" cols="50" rows="10" ng-model="fe_desc" tabindex=3></div>
+                                <div class="col-lg-3"><input type="textarea" cols="50" rows="10" ng-maxlength="255" ng-model="fe_desc" tabindex=3></div>
                             </div><!--row-->
 
                             <div class="row">

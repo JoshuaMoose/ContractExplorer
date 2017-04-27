@@ -98,32 +98,32 @@
                                     <tr ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}">
                                         <td>
                                             <span data-ng-hide="editMode">{{ x.dir_id }}</span>
-                                            <input type="text" data-ng-show="editMode" data-ng-model="x.dir_id" data-ng-required />
+                                            <input type="text" ng-minlength="1" ng-maxlength="255" required data-ng-show="editMode" data-ng-model="x.dir_id"/>
                                         </td>
                                         <!-- The special block here will swap to being input boxes when the -->
                                         <td>
                                             <span data-ng-hide="editMode">{{x.dir_contr_id}}</span>
-                                            <input type="text" data-ng-show="editMode" data-ng-model="x.dir_contr_id" data-ng-required />
+                                            <input type="text" ng-maxlength="255" data-ng-show="editMode" data-ng-model="x.dir_contr_id"/>
                                         </td>
                                         <td>
                                             <span data-ng-hide="editMode">{{x.dir_desc}}</span>
-                                            <input type="text" data-ng-show="editMode" data-ng-model="x.dir_desc" data-ng-required />
+                                            <input type="text" ng-maxlength="255" data-ng-show="editMode" data-ng-model="x.dir_desc"/>
                                         </td>
                                         <td>
                                             <span data-ng-hide="editMode">{{x.dir_issued_by}}</span>
-                                            <input type="text" data-ng-show="editMode" data-ng-model="x.dir_issued_by" data-ng-required />
+                                            <input type="text" pattern="^\d+$" data-ng-show="editMode" data-ng-model="x.dir_issued_by"/>
                                         </td>
                                         <td>
                                             <span data-ng-hide="editMode">{{x.dir_issued_date}}</span>
-                                            <input type="text" data-ng-show="editMode" data-ng-model="x.dir_issued_date" data-ng-required />
+                                            <input type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" required data-ng-show="editMode" data-ng-model="x.dir_issued_date"/>
                                         </td>
                                         <td>
                                             <span data-ng-hide="editMode">{{x.dir_recv_by}}</span>
-                                            <input type="text" data-ng-show="editMode" data-ng-model="x.dir_recv_by" data-ng-required />
+                                            <input type="text" pattern="^\d+$" required data-ng-show="editMode" data-ng-model="x.dir_recv_by"/>
                                         </td>
                                         <td>
                                             <span data-ng-hide="editMode">{{x.dir_recv_date}}</span>
-                                            <input type="text" data-ng-show="editMode" data-ng-model="x.dir_recv_date" data-ng-required />
+                                            <input type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" required data-ng-show="editMode" data-ng-model="x.dir_recv_date"/>
                                         </td>
                                         <td>
                                             <button type="submit" data-ng-hide="editMode" data-ng-click="editMode = true; editResults(x)" class="btn btn-default">Edit</button>
@@ -156,30 +156,30 @@
                             <!-- ng-app="myApp" ng-controller="formCtrl" ~~removed bc unused-->
                             <div class="row">
                                 <div class="col-lg-3">Directive ID:</div>
-                                <div class="col-lg-3"><input type="text" ng-model="dir_id"></div>
+                                <div class="col-lg-3"><input type="text" ng-minlength="1" ng-maxlength="255" required ng-model="dir_id"></div>
                                 <div class="col-lg-3">Contract ID:</div>
-                                <div class="col-lg-3"><input type="text" ng-model="dir_contr_id"></div>
+                                <div class="col-lg-3"><input type="text" ng-maxlength="255" ng-model="dir_contr_id"></div>
                             </div><!--row-->
 
                             <div class="row">
                                 <div class="col-lg-3">Description:</div>
-                                <div class="col-lg-3"><input type="textarea" cols="50" rows="10" ng-model="dir_desc"></div>
+                                <div class="col-lg-3"><input type="textarea" cols="50" rows="10" ng-maxlength="255" ng-model="dir_desc"></div>
                                 <div class="col-lg-3">Issued By:</div>
                                 <div class="col-lg-3">
-                                    <select class="dropdown" ng-model="dir_issued_by"></select>
+                                    <select class="dropdown" pattern="^\d+$" ng-model="dir_issued_by"></select>
                                 </div>
                             </div><!--row-->
 
                             <div class="row">
                                 <div class="col-lg-3">Issued Date:</div>
-                                <div class="col-lg-3"><input type="text" ng-model="dir_issued_date"></div>
+                                <div class="col-lg-3"><input type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" required ng-model="dir_issued_date"></div>
                                 <div class="col-lg-3">Recieved By:</div>
-                                <div class="col-lg-3"><input type="text" ng-model="role"></div>
+                                <div class="col-lg-3"><input type="text" pattern="^\d+$" required ng-model="role"></div>
                             </div><!--row-->
 
                             <div class="row">
                                 <div class="col-lg-3">Recieved Date:</div>
-                                <div class="col-lg-3"><input type="text" ng-model="dir_recv_by"></div>
+                                <div class="col-lg-3"><input type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" required ng-model="dir_recv_by"></div>
                               
                             </div><!--row-->
                             <div class="container-fluid" style="padding:10px;"><button type="submit" class="btn btn-sm btn-default btn-block" data-ng-disabled="!addForm.$valid" value="contacts" ng-click="addFunction()"><span class="glyphicon glyphicon-ok"></span> Add New Directive</button></div>
