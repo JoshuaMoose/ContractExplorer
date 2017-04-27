@@ -234,9 +234,10 @@
 						<form name="addForm" > <!-- ng-app="myApp" ng-controller="formCtrl" ~~removed bc unused-->
 							<div class="row">
 								<div class="col-lg-3">Contract Number:</div>
-								<div class="col-lg-3"><input id="contr_id" type="text" data-ng-minlength="1" data-ng-maxlength="255" required data-ng-model="contr_id"/></div>
+								<div class="col-lg-3"><input type="text" data-ng-minlength="1" data-ng-maxlength="255" required data-ng-model="contr_id" 
+														title="Contract ID: Required; String" tabindex=1></script></div>
 								<div class="col-lg-3">Customer Organization ID:</div>
-								<div class="col-lg-3"><select class = "dropdown" data-ng-model="contr_org_id" >
+								<div class="col-lg-3"><select class = "dropdown" data-ng-model="contr_org_id" tabindex=9>
 											<option value="2">TRANSCOM
 											<option value="3">Air Mobility Command (AMC)
 											<option value="4">SAIC
@@ -246,12 +247,12 @@
 							
 							<div class="row">
 								<div class="col-lg-3">Contract Type:</div>
-								<div class="col-lg-3"><select class = "dropdown" data-ng-model="contr_type_cd" required>
+								<div class="col-lg-3"><select class = "dropdown" data-ng-model="contr_type_cd" required tabindex=2>
 											<option value="Prime">Prime
 											<option value="Sub">Sub
 									</select></div>
 								<div class="col-lg-3">Prime Contractor ID:</div>
-								<div class="col-lg-3"><select class = "dropdown" data-ng-model="prime_contr_id">
+								<div class="col-lg-3"><select class = "dropdown" data-ng-model="prime_contr_id" tabindex=10>
 											<option value="2">TRANSCOM
 											<option value="3">Air Mobility Command (AMC)
 											<option value="4">SAIC
@@ -261,21 +262,23 @@
 							
 							<div class="row">
 								<div class="col-lg-3">Prime Contract Number:</div>
-								<div class="col-lg-3"><input id="prime_contr_id" type="text" pattern="\d+" ng-maxlength="9" data-ng-model="prime_contr_id"/></div>
+								<div class="col-lg-3"><input type="text" pattern="\d+" ng-maxlength="9" data-ng-model="prime_contr_id"
+														title="Prime Contractor ID: Integer" tabindex=3></script></div>
 								<div class="col-lg-3">Contract Program:</div>
-								<div class="col-lg-3"><input id="contr_prog_cd" type="text" ng-maxlength="255" data-ng-model="contr_prog_cd"/></div>
+								<div class="col-lg-3"><input type="text" ng-maxlength="255" data-ng-model="contr_prog_cd"
+														title="Contract Program: String" tabindex=11></script></div>
 							</div><!--row-->
 							
 							<div class="row">
 								<div class="col-lg-3">Contract End Customer:</div>
-								<div class="col-lg-3"><select class = "dropdown" data-ng-model="contr_end_cust_id">
+								<div class="col-lg-3"><select class = "dropdown" data-ng-model="contr_end_cust_id" tabindex=4>
 											<option value="2">TRANSCOM
 											<option value="3">Air Mobility Command (AMC)
 											<option value="4">SAIC
 											<option value="1">SuprTEK
 									</select></div>
 								<div class="col-lg-3">Contract Vehicle:</div>
-								<div class="col-lg-3"><select class = "dropdown" data-ng-model="contr_vehicle_id">
+								<div class="col-lg-3"><select class = "dropdown" data-ng-model="contr_vehicle_id" tabindex=12>
 										<option value="SMB">SMB
 										<option value="VET">VET
 									</select></div>
@@ -283,27 +286,31 @@
 							
 							<div class="row">
 								<div class="col-lg-3">Date Contract Opened:</div>
-								<div class="col-lg-3"><input id="contr_open_date" type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" data-ng-model="contr_open_date"/></div>
+								<div class="col-lg-3"><input type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" data-ng-model="contr_open_date"
+											title="Contract Opened Date: yyyy-dd-mm hh:mm:ss" tabindex=5></script></div>
 								<div class="col-lg-3">Date Contract Closed:</div>
-								<div class="col-lg-3"><input id="contr_close_date" type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" data-ng-model="contr_close_date"/></div>
+								<div class="col-lg-3"><input type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" data-ng-model="contr_close_date" 
+											title="Contract Close Date: yyyy-dd-mm hh:mm:ss" tabindex=13></div>
 							</div><!--row-->
 							
 							<div class="row">
 								<div class="col-lg-3">Exemptions and Restrictions:</div>
-								<div class="col-lg-3"><input id="exemptions" type="text" data-ng-model="x.exemptions"/></div>
+								<div class="col-lg-3"><input type="text" data-ng-model="x.exemptions"
+														title="Exemptions and Exceptions: Text, no length limit" tabindex=6></script></div>
 								<div class="col-lg-3">Current DD254 Date:</div>
-								<div class="col-lg-3"><input id="dd254_date" type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" data-ng-model="dd254_date"/></div>
+								<div class="col-lg-3"><input type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" data-ng-model="dd254_date"
+														title="DD254 date: yyyy-dd-mm hh:mm:ss" tabindex=14></script></div>
 							</div><!--row-->
 							
 							<div class="row">
 								<div class="col-lg-3">DD254 Recieved:</div>
-								<div class="col-lg-3"><select id="dd254_recv" class = "dropdown" data-ng-model="dd254_recv">
+								<div class="col-lg-3"><select class = "dropdown" data-ng-model="dd254_recv" tabindex=7>
 														<option value="">
 														<option value="t">True
 														<option value="f">False
 												</select></div>
 								<div class="col-lg-3">Is Open?:</div>
-								<div class="col-lg-3"><select class = "dropdown" data-ng-model="is_open">
+								<div class="col-lg-3"><select class = "dropdown" data-ng-model="is_open" tabindex=15>
 												<option value="">
 												<option value="t">True
 												<option value="f">False
@@ -312,14 +319,14 @@
 							
 							<div class="row">
 								<div class="col-lg-3">Contract Security Level:</div>
-								<div class="col-lg-3"><select class = "dropdown" data-ng-model="contr_sec_level_cd">
+								<div class="col-lg-3"><select class = "dropdown" data-ng-model="contr_sec_level_cd" tabindex=8>
 											<option value="CN">CN
 											<option value="NO">NO
 											<option value="SC">SC
 											<option value="TS">TS
 									</select></div>
 								<div class="col-lg-3">Information Security Level:</div>
-								<div class="col-lg-3"><select class = "dropdown" data-ng-model="contr_info_safe_level_cd">
+								<div class="col-lg-3"><select class = "dropdown" data-ng-model="contr_info_safe_level_cd" tabindex=16>
 											<option value="CN">CN
 											<option value="NO">NO
 											<option value="SC">SC

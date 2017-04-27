@@ -24,7 +24,7 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <!--<!--<li><a href="Home.html">Home</a></li>-->-->
+                    <!--<!--<li><a href="Home.html">Home</a></li>-->
                     <li><a href="Contracts.html">Contracts</a></li>
                     <li class="active"><a href="Organizations.html">Organizations</a></li>
                     <li><a href="Contacts.html">Contacts</a></li>
@@ -181,13 +181,13 @@
 							<form name="addForm"
 								<div class="row">
 									<div class="col-lg-3">Organization ID:</div>
-									<div class="col-lg-3"><input type="text"  pattern="^\d+$" required data-ng-model="x.org_id" /></div>
+									<div class="col-lg-3"><input type="text"  pattern="^\d+$" required data-ng-model="x.org_id" tabindex=1/></div>
 									<!--Insert vehicle code-->
 								</div><!--row-->
 								
 								<div class="row">
 									<div class="col-lg-3">Organization Type:</div>
-									<div class="col-lg-3"><select class = "dropdown" ng-model="org_type_cd">
+									<div class="col-lg-3"><select class = "dropdown" ng-model="org_type_cd" tabindex=2>
 											<option value="contr">Contr
 											<option value="cust">Cust
 											<option value="part">Part
@@ -197,33 +197,33 @@
 								
 								<div class="row">
 									<div class="col-lg-3">Organization Name:</div>
-									<div class="col-lg-3"><input type="text"  ng-maxlength="255" required data-ng-model="x.org_name" /></div>			
+									<div class="col-lg-3"><input type="text"  ng-maxlength="255" required data-ng-model="x.org_name" tabindex=3/></div>			
 								</div><!--row-->
 								
 								<div class="row">
 									<div class="col-lg-3">Division or Business Unit:</div>
-									<div class="col-lg-3"><input type="text"  ng-maxlength="255" data-ng-model="x.org_div" /></div>
+									<div class="col-lg-3"><input type="text"  ng-maxlength="255" data-ng-model="x.org_div" tabindex=4/></div>
 								</div><!--row-->
 								
 								<div class="row">
 									<div class="col-lg-3">Address Line 1:</div>
-									<div class="col-lg-3"><input type="text"  ng-maxlength="255" data-ng-model="x.org_addr1" /></div>
+									<div class="col-lg-3"><input type="text"  ng-maxlength="255" data-ng-model="x.org_addr1" tabindex=5/></div>
 								</div><!--row-->
 								
 								<div class="row">
 									<div class="col-lg-3">Address Line 2:</div>
-									<div class="col-lg-3"><input type="text"  ng-maxlength="255" data-ng-model="x.org_addr2" /></div>
+									<div class="col-lg-3"><input type="text"  ng-maxlength="255" data-ng-model="x.org_addr2" tabindex=6/></div>
 									
 								</div><!--row-->
 								
 								<div class="row">
 									<div class="col-lg-3">City:</div>
-									<div class="col-lg-3"><input type="text"  ng-maxlength="255" data-ng-model="x.org_city" /></div>
+									<div class="col-lg-3"><input type="text"  ng-maxlength="255" data-ng-model="x.org_city" tabindex=7/></div>
 								</div><!--row-->
 								
 								<div class="row">
 										<div class="col-lg-3">State or Province:</div>
-									<div class="col-lg-3"><select class = "dropdown" ng-model="org_state_prov_cd">
+									<div class="col-lg-3"><select class = "dropdown" ng-model="org_state_prov_cd" tabindex=8>
 												<option value="AB">AB
 												<option value="AL">AL
 												<option value="AK">AK
@@ -297,22 +297,22 @@
 								
 								<div class="row">
 									<div class="col-lg-3">Postal Code:</div>
-									<div class="col-lg-3"><input type="text"  ng-maxlength="255" data-ng-model="x.org_post_cd" /></div>
+									<div class="col-lg-3"><input type="text"  ng-maxlength="255" data-ng-model="x.org_post_cd" tabindex=9/></div>
 								</div><!--row-->
 								
 								<div class="row">
 									<div class="col-lg-3">Country:</div>
-									<div class="col-lg-3"><select class = "dropdown" ng-model="org_cntry_cd">
+									<div class="col-lg-3"><select class = "dropdown" ng-model="org_cntry_cd" tabindex=10>
 											<option value="USA">USA
 											<option value="CAN">CAN
 										</select></div>
 								</div>
 								<div class="row">
 									<div class="col-lg-3">Cage code:</div>
-									<div class="col-lg-3"><input type="text"  ng-maxlength="255" data-ng-model="x.cage_cd" /></div>
+									<div class="col-lg-3"><input type="text"  ng-maxlength="255" data-ng-model="x.cage_cd" tabindex=11/></div>
 								
 								</div><!--row-->
-                                <div class="container-fluid" style="padding:10px;"><button type="submit" class="btn btn-sm btn-default btn-block" data-ng-disabled="!addForm.$valid" value="contacts" ng-click="addFunction()"><span class="glyphicon glyphicon-ok"></span> Add New Organization</button></div>
+                                <div class="container-fluid" style="padding:10px;"><button type="submit" class="btn btn-sm btn-default btn-block" data-ng-disabled="!addForm.$valid" value="contacts" ng-click="addFunction()" tabindex=12><span class="glyphicon glyphicon-ok"></span> Add New Organization</button></div>
 							</form>
 						</div>
 						<!---End add new contact-->
@@ -330,7 +330,7 @@
 </body>
 	<section id="footer" style="background-color:#292b34;">
         <div class="container">
-    	    <div class="navbar-default navbar-fixed-bottom"  style="color: #fff; text-align: center; background-color:#000000; border:0px; padding: 20px;">
+    	    <div class="navbar-default navbar-fixed-bottom"  style="color: #fff; text-align: center; background-color:#292b34; border:0px; padding: 20px;">
 			©Copyright 2017 | SUPERLATIVE TECHNOLOGIES, INC. (dba SUPRTEK)
     	    </div><!--end .well .well-sm .main-footer-->
     	</div><!--end .container-->

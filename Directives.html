@@ -156,33 +156,33 @@
                             <!-- ng-app="myApp" ng-controller="formCtrl" ~~removed bc unused-->
                             <div class="row">
                                 <div class="col-lg-3">Directive ID:</div>
-                                <div class="col-lg-3"><input type="text" ng-minlength="1" ng-maxlength="255" required ng-model="dir_id"></div>
+                                <div class="col-lg-3"><input type="text" ng-model="dir_id" tabindex=1></div>
                                 <div class="col-lg-3">Contract ID:</div>
-                                <div class="col-lg-3"><input type="text" ng-maxlength="255" ng-model="dir_contr_id"></div>
+                                <div class="col-lg-3"><input type="text" ng-model="dir_contr_id" tabindex=5></div>
                             </div><!--row-->
 
                             <div class="row">
                                 <div class="col-lg-3">Description:</div>
-                                <div class="col-lg-3"><input type="textarea" cols="50" rows="10" ng-maxlength="255" ng-model="dir_desc"></div>
+                                <div class="col-lg-3"><input type="textarea" cols="50" rows="10" ng-model="dir_desc" tabindex=2></div>
                                 <div class="col-lg-3">Issued By:</div>
                                 <div class="col-lg-3">
-                                    <select class="dropdown" pattern="^\d+$" ng-model="dir_issued_by"></select>
+                                    <select class="dropdown" ng-model="dir_issued_by" tabindex=6></select>
                                 </div>
                             </div><!--row-->
 
                             <div class="row">
                                 <div class="col-lg-3">Issued Date:</div>
-                                <div class="col-lg-3"><input type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" required ng-model="dir_issued_date"></div>
+                                <div class="col-lg-3"><input type="text" ng-model="dir_issued_date" tabindex=3></div>
                                 <div class="col-lg-3">Recieved By:</div>
-                                <div class="col-lg-3"><input type="text" pattern="^\d+$" required ng-model="role"></div>
+                                <div class="col-lg-3"><input type="text" ng-model="role" tabindex=7></div>
                             </div><!--row-->
 
                             <div class="row">
                                 <div class="col-lg-3">Recieved Date:</div>
-                                <div class="col-lg-3"><input type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" required ng-model="dir_recv_by"></div>
+                                <div class="col-lg-3"><input type="text" ng-model="dir_recv_by" tabindex=4></div>
                               
                             </div><!--row-->
-                            <div class="container-fluid" style="padding:10px;"><button type="submit" class="btn btn-sm btn-default btn-block" data-ng-disabled="!addForm.$valid" value="contacts" ng-click="addFunction()"><span class="glyphicon glyphicon-ok"></span> Add New Directive</button></div>
+                            <div class="container-fluid" style="padding:10px;"><button type="submit" class="btn btn-sm btn-default btn-block" data-ng-disabled="!addForm.$valid" value="contacts" ng-click="addFunction()" tabindex=8><span class="glyphicon glyphicon-ok"></span> Add New Directive</button></div>
                         </div>
                         <!---End add new contact-->
                     </div>

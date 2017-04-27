@@ -156,25 +156,25 @@
 							<form name="addForm" novalidate>
 								<div class="row">
 									<div class="col-lg-3">Device ID:</div>
-									<div class="col-lg-3"><input id="dev_id" type="text" name="devid" pattern="^\d+$" ng-maxlength="9" ng-model="dev_id" required></div>
+									<div class="col-lg-3"><input id="dev_id" type="text" name="devid" pattern="^\d+$" ng-maxlength="9" ng-model="dev_id" required tabindex=1></div>
 									<div class="col-lg-3">Device Type:</div>
-									<div class="col-lg-3"><input id="dev_type" type="text" name="devtype" ng-maxlength="255" ng-model="dev_type" required></div>
+									<div class="col-lg-3"><input id="dev_type" type="text" name="devtype" ng-maxlength="255" ng-model="dev_type" required tabindex=4></div>
 								</div><!--row-->
 								
 								<div class="row">
 									<div class="col-lg-3">Device Description:</div>
-									<div class="col-lg-3"><input id="dev_desc" type="text" name="devdesc" ng-maxlength="255" ng-model="dev_desc" required></div>
+									<div class="col-lg-3"><input id="dev_desc" type="text" name="devdesc" ng-maxlength="255" ng-model="dev_desc" required tabindex=2></div>
 									<div class="col-lg-3">Device Owner:</div>
-									<div class="col-lg-3"><input id="dev_owner_id" type="text" name="devownerid" pattern="^\d+$" ng-maxlength="9" ng-model="dev_owner_id" required></div>
+									<div class="col-lg-3"><input id="dev_owner_id" type="text" name="devownerid" pattern="^\d+$" ng-maxlength="9" ng-model="dev_owner_id" required tabindex=6></div>
 								</div><!--row-->
 								
 								<div class="row">
 									<div class="col-lg-3">Device User ID:</div>
-									<div class="col-lg-3"><input id="dev_user_id" type="text" name="devuserid" pattern="^\d+$" ng-maxlength="9" ng-model="dev_user_id" required></div>
+									<div class="col-lg-3"><input id="dev_user_id" type="text" name="devuserid" pattern="^\d+$" ng-maxlength="9" ng-model="dev_user_id" required tabindex=3></div>
 									<div class="col-lg-3">Device Serial Number:</div>
-									<div class="col-lg-3"><input id="dev_sn" type="text" name="devsn" pattern="^\d+$" ng-maxlength="9" ng-model="dev_sn"></div>
+									<div class="col-lg-3"><input id="dev_sn" type="text" name="devsn" pattern="^\d+$" ng-maxlength="9" ng-model="dev_sn" tabindex=7></div>
 								</div><!--row-->
-                                <div class="container-fluid" style="padding:10px;"><button type="submit" class="btn btn-sm btn-default btn-block" data-ng-disabled="!addForm.$valid" value="contacts" ng-click="addFunction()"><span class="glyphicon glyphicon-ok"></span> Add New Device</button></div>
+                                <div class="container-fluid" style="padding:10px;"><button type="submit" class="btn btn-sm btn-default btn-block" data-ng-disabled="!addForm.$valid" value="contacts" ng-click="addFunction()"><span class="glyphicon glyphicon-ok" tabindex=8></span> Add New Device</button></div>
 									
 								<!-- Modal -->
 								<div id="addErrorsModal" class="modal fade" role="dialog">

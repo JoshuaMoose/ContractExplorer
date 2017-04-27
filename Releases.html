@@ -169,29 +169,29 @@
                             <!-- ng-app="myApp" ng-controller="formCtrl" ~~removed bc unused-->
                             <div class="row">
                                 <div class="col-lg-3">Release ID:</div>
-                                <div class="col-lg-3"><input type="text" pattern="^\d+$" ng-model="rel_id"></div>
+                                <div class="col-lg-3"><input type="text" ng-model="rel_id" tabindex=1></div>
                                 <div class="col-lg-3">Directive ID:</div>
-                                <div class="col-lg-3"><input type="text" ng-minlength="1" ng-maxlength="255" required ng-model="dir_id"></div>
+                                <div class="col-lg-3"><input type="text" ng-model="dir_id" tabindex=5></div>
                             </div><!--row-->
 
                             <div class="row">
                                 <div class="col-lg-3">Released by ID:</div>
-                                <div class="col-lg-3"><input type="text" pattern="^\d+$" ng-model="rel_by"></div>
+                                <div class="col-lg-3"><input type="text" ng-model="rel_by" tabindex=2></div>
                                 <div class="col-lg-3">Release Date:</div>
-                                <div class="col-lg-3"><input type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" required ng-model="rel_date"></div>
+                                <div class="col-lg-3"><input type="text" ng-model="rel_date" tabindex=6></div>
                             </div><!--row-->
 
                             <div class="row">
                                 <div class="col-lg-3">Recieved by ID:</div>
-                                <div class="col-lg-3"><input type="text" pattern="^\d+$" required ng-model="recv_by"></div>
+                                <div class="col-lg-3"><input type="text" ng-model="recv_by" tabindex=3></div>
                                 <div class="col-lg-3">Recieved Date:</div>
-                                <div class="col-lg-3"><input type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" required ng-model="recv_date"></div>
+                                <div class="col-lg-3"><input type="text" ng-model="recv_date" tabindex=7></div>
                             </div>
                         </div><!--row-->
 
                         <div class="row">
                             <div class="col-lg-3">Release Country:</div>
-                            <div class="col-lg-3"><input type="text" ng-maxlength="255" ng-model="rel_cntry_cd"></div>
+                            <div class="col-lg-3"><input type="text" ng-model="rel_cntry_cd" tabindex=4></div>
                         </div><!--row-->
 
                         <div class="container-fluid" style="padding:10px;"><button type="submit" class="btn btn-sm btn-default btn-block" data-ng-disabled="!addForm.$valid" value="contacts" ng-click="addFunction()"><span class="glyphicon glyphicon-ok"></span> Add New Release</button></div>

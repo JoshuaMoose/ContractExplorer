@@ -241,17 +241,17 @@
 								<div class="row">
 									<div class="col-lg-3">Contact ID:</div>
 									<div class="col-lg-3"><input id="cont_id" type="text" data-ng-minlength="1" data-ng-maxlength="255" required
-															data-ng-model="cont_id"></div>
+															data-ng-model="cont_id" tabindex=1></div>
 									<div class="col-lg-3">City:</div>
-									<div class="col-lg-3"><input id="cont_city" type="text" data-ng-model="cont_city"></div>
+									<div class="col-lg-3"><input id="cont_city" type="text" data-ng-model="cont_city" tabindex=11></div>
 								</div><!--row-->
 								
 								<div class="row">
 									<div class="col-lg-3">Organization ID:</div>
 									<div class="col-lg-3"><input id="cont_org_id" type="text" data-ng-minlength="1" data-ng-maxlength="255" required
-															data-ng-model="cont_org_id"></div>
+															data-ng-model="cont_org_id" tabindex=2></div>
 									<div class="col-lg-3">State or Province:</div>
-									<div class="col-lg-3"><select class = "dropdown" data-ng-model="cont_state_prov_cd">
+									<div class="col-lg-3"><select class = "dropdown" data-ng-model="cont_state_prov_cd" tabindex=12>
 												<option value="AB">AB
 												<option value="AL">AL
 												<option value="AK">AK
@@ -325,17 +325,17 @@
 								
 								<div class="row">
 									<div class="col-lg-3">Role:</div>
-									<div class="col-lg-3"><input id="cont_role_cd" type="text" data-ng-model="cont_role_cd"></div>
+									<div class="col-lg-3"><input id="cont_role_cd" type="text" data-ng-model="cont_role_cd" tabindex=3></div>
 									<div class="col-lg-3">Postal Code:</div>
-									<div class="col-lg-3"><input id="cont_post_cd" type="text" data-ng-model="cont_post_cd"></div>
+									<div class="col-lg-3"><input id="cont_post_cd" type="text" data-ng-model="cont_post_cd" tabindex=13></div>
 								</div><!--row-->
 								
 								<div class="row">
 									<div class="col-lg-3">First Name:</div>
 									<div class="col-lg-3"><input id="cont_first_name" type="text" data-ng-maxlength="255" required
-															data-ng-model="cont_first_name"></div>
+															data-ng-model="cont_first_name" tabindex=4></div>
 									<div class="col-lg-3">Country:</div>
-									<div class="col-lg-3"><select class="dropdown" data-ng-model="cont_cntry_Cd">
+									<div class="col-lg-3"><select class="dropdown" data-ng-model="cont_cntry_Cd" tabindex=14>
 											<option value="USA">USA
 											<option value="CAN">CAN
 										</select></div>
@@ -343,24 +343,24 @@
 								
 								<div class="row">
 									<div class="col-lg-3">Middle Name:</div>
-									<div class="col-lg-3"><input id="cont_middle_name" type="text" data-ng-model="cont_middle_name"></div>
+									<div class="col-lg-3"><input id="cont_middle_name" type="text" data-ng-model="cont_middle_name" tabindex=5></div>
 									<div class="col-lg-3">Office Phone:</div>
-									<div class="col-lg-3"><input id="cont_office_phone" type="text" data-ng-model="cont_office_phone"></div>
+									<div class="col-lg-3"><input id="cont_office_phone" type="text" data-ng-model="cont_office_phone" tabindex=15></div>
 								</div><!--row-->
 								
 								<div class="row">
 									<div class="col-lg-3">Last Name:</div>
 									<div class="col-lg-3"><input id="cont_last_name" type="text" data-ng-maxlength="255" required
-															data-ng-model="cont_last_name"></div>
+															data-ng-model="cont_last_name" tabindex=6></div>
 									<div class="col-lg-3">Mobile Phone:</div>
-									<div class="col-lg-3"><input id="cont_mobile_phone" type="text" data-ng-model="cont_mobile_phone"></div>
+									<div class="col-lg-3"><input id="cont_mobile_phone" type="text" data-ng-model="cont_mobile_phone" tabindex=16></div>
 								</div><!--row-->
 								
 								<div class="row">
 									<div class="col-lg-3">Name Title:</div>
-									<div class="col-lg-3"><input id="cont_name_title" type="text" data-ng-model="cont_name_title"></div>
+									<div class="col-lg-3"><input id="cont_name_title" type="text" data-ng-model="cont_name_title" tabindex=7></div>
 									<div class="col-lg-3">Home Phone:</div>
-									<div class="col-lg-3"><input id="cont_home_phone" type="text" data-ng-model="cont_home_phone"></div>
+									<div class="col-lg-3"><input id="cont_home_phone" type="text" data-ng-model="cont_home_phone" tabindex=17></div>
 								</div><!--row-->
 								
 								<div class="row">
@@ -372,17 +372,17 @@
 								
 								<div class="row">
 									<div class="col-lg-3">Address Line 1:</div>
-									<div class="col-lg-3"><input id="cont_addr1" type="text" data-ng-model="cont_addr1"></div>
+									<div class="col-lg-3"><input id="cont_name_suffix" type="text" data-ng-model="cont_name_suffix" tabindex=8></div>
 									<div class="col-lg-3">Alt Email:</div>
-									<div class="col-lg-3"><input id="cont_alt_email" type="text" data-ng-model="cont_alt_email"></div>
+									<div class="col-lg-3"><input id="cont_alt_email" type="text" data-ng-model="cont_alt_email" tabindex=19></div>
 								</div><!--row-->
 								
 								<div class="row">
 									<div class="col-lg-3">Address Line 2:</div>
-									<div class="col-lg-3"><input id="cont_addr2" type="text" data-ng-model="cont_addr1"></div>
+									<div class="col-lg-3"><input id="cont_addr2" type="text" data-ng-model="cont_addr1" tabindex=10></div>
 						
 								</div><!--row-->
-                                <div class="container-fluid" style="padding:10px;"><button type="submit" class="btn btn-sm btn-default btn-block" data-ng-disabled="!addForm.$valid" value="contacts" ng-click="addFunction()"><span class="glyphicon glyphicon-ok"></span> Add New Contact</button></div>
+                                <div class="container-fluid" style="padding:10px;"><button type="submit" class="btn btn-sm btn-default btn-block" data-ng-disabled="!addForm.$valid" value="contacts" ng-click="addFunction()" tabindex=20><span class="glyphicon glyphicon-ok"></span> Add New Contact</button></div>
 							</div>
 							
 							<!-- Modal -->
