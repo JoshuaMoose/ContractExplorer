@@ -71,7 +71,7 @@
 
                             <!--button type="submit" value="clearResults">Clear Results</button-->
 
-                            <div id="scrollView" style="max-height:100%; overflow:auto; margin: 10px">
+                            <div id="scrollView" style="max-height:100%; overflow:auto; margin: 10px; margin-right: 155px;">
                                 <table style="padding: 3px;">
 
                                     <tr>
@@ -82,6 +82,7 @@
                                         <td><input ng-model="f.dir_issued_date" placeholder="Filter by Directive Issue Date"></td>
                                         <td><input ng-model="f.dir_recv_by" placeholder="Filter by Directive Received By"></td>
                                         <td><input ng-model="f.dir_recv_date" placeholder="Filter by Directive Recieved Date"></td>
+										<td class="editColumn"></td>
                                     </tr>
 
                                     <tr>
@@ -92,7 +93,7 @@
                                         <th value="dir_issued_date">Issue Date</th>
                                         <th value="dir_recv_by">Recieved By</th>
                                         <th value="dir_recv_date">Recieved Date</th>
-                                        <th>Edit</th>
+                                        <th class="editColumn">Edit</th>
                                     </tr>
 
                                     <tr ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}">

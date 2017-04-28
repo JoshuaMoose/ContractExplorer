@@ -67,7 +67,7 @@
 
                             <!--button type="submit" value="clearResults">Clear Results</button-->
 
-                            <div id="scrollView" style="max-height:100%; overflow:auto; margin: 10px">
+                            <div id="scrollView" style="max-height:100%; overflow:auto; margin: 10px; margin-right: 155px;">
                                 <table style="padding: 3px;">
 
                                     <tr>
@@ -75,6 +75,7 @@
                                         <td><input ng-model="f.fe_desc" placeholder="Filter by Description"></td>
                                         <td><input ng-model="f.written_req" placeholder="Filter by Written Requirements"></td>
                                         <td><input ng-model="f.doc_repro" placeholder="Filter by Reproducable"></td>
+										<td class="editColumn"></td>
                                     </tr>
 
                                     <tr>
@@ -82,7 +83,7 @@
                                         <th value="fe_desc">Description</th>
                                         <th value="written_req">Has Written Requirements</th>
                                         <th value="doc_repro">Documents are Reproducable</th>
-                                        <th>Edit</th>
+                                        <th class="editColumn">Edit</th>
                                     </tr>
 
                                     <tr ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}">

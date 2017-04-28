@@ -67,7 +67,7 @@
 					
 					<!--button type="submit" value="clearResults">Clear Results</button-->
 					
-					<div id="scrollView" style="max-height:100%; overflow:auto; margin: 10px">
+					<div id="scrollView" style="max-height:100%; overflow:auto; margin: 10px; margin-right: 155px;">
 						<form name="updateForm">
 							<table style="padding: 3px;">
 								
@@ -83,6 +83,7 @@
 									<td><input ng-model="f.org_post_cd" placeholder="Filter by Postal Code"></td>
 									<td><input ng-model="f.org_cntry_cd" placeholder="Filter by Country"></td>
 									<td><input ng-model="f.cage_cd" placeholder="Filter by Cage Code"></td>
+									<td class="editColumn"></td>
 									<!-- Contract vehicle code-->
 								</tr>
 												
@@ -98,7 +99,7 @@
 									<th value="org_post_cd">Postal Code</th>
 									<th value="org_cntry_cd">Country</th>
 									<th value="cage_cd">Cage Code</th>
-									<th>Edit</th>
+									<th class="editColumn">Edit</th>
 								</tr>
 	
 								<tr ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}">
@@ -146,9 +147,9 @@
 										<span data-ng-hide="editMode">{{x.cage_cd}}</span>
 										<input type="text" data-ng-show="editMode" ng-maxlength="255" data-ng-model="x.cage_cd" />
 									</td>
-									<td>
+									<td class="editColumn">
 										<button type="submit" data-ng-hide="editMode" data-ng-click="editMode = true; editResults(x)" class="btn btn-default">Edit</button>
-										<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; saveField(x)" class="btn btn-default">Save</button>
+										<button ng-disabled="!updateForm.$valid" type="submit" data-ng-show="editMode" data-ng-click="editMode = false; saveField(x)" class="btn btn-default">Save</button>
 										<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; cancel()" class="btn btn-default">Cancel</button>
 									</td>
 								</tr>	

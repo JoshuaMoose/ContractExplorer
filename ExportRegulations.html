@@ -70,7 +70,7 @@
 
                                 <!--button type="submit" value="clearResults">Clear Results</button-->
 
-                                <div id="scrollView" style="max-height:100%; overflow:auto; margin: 10px">
+                                <div id="scrollView" style="max-height:100%; overflow:auto; margin: 10px; margin-right: 155px;">
                                     <table style="padding: 3px;">
 
                                         <tr>
@@ -78,6 +78,7 @@
                                             <td><input ng-model="f.reg_title" placeholder="Filter by Title"></td>
                                             <td><input ng-model="f.reg_desc" placeholder="Filter by Description">
                                             <td><input ng-model="f.appl_cntries" placeholder="Filter by Applicable Countries"></td>
+											<td class="editColumn"></td>
                                         </tr>
 
                                         <tr>
@@ -85,7 +86,7 @@
                                             <th value="reg_title">Title</th>
                                             <th value="reg_desc">Description</th>
                                             <th value="appl_cntries">Applicable Countries</th>
-                                            <th>Edit</th>
+                                            <th class="editColumn">Edit</th>
                                         </tr>
 
                                         <tr ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}">

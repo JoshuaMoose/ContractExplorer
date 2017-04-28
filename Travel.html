@@ -70,7 +70,7 @@
 									
 					<!--button type="submit" value="clearResults">Clear Results</button-->
 					
-					<div id="scrollView" style="max-height:100%; overflow:auto; margin: 10px">
+					<div id="scrollView" style="max-height:100%; overflow:auto; margin: 10px; margin-right: 155px;">
 						<table style="padding: 3px;">
 							
 							<tr>
@@ -81,6 +81,7 @@
 								<td><input ng-model="f.travel_end_date" placeholder="Filter by Travel End Date"></td>
 								<td><input ng-model="f.tech_restrict_cd" placeholder="Filter by Max Tech Restriction Level"></td>
 								<td><input data-ng-model="f.recv_travel_brief" placeholder="Filter by Travel Brief Given"></td>
+								<td class="editColumn"></td>
 							</tr>
 											
 							<tr>
@@ -91,7 +92,7 @@
 								<th value="cont_middle_name">Travel End Date</th>
 								<th value="cont_last_name">Tech Restriction Level</th>
 								<th value="cont_name_title">Travel Brief Recieved</th>
-								<th>Edit</th>
+								<th class="editColumn">Edit</th>
 							</tr>
 
 							<tr data-ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}">

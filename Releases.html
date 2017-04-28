@@ -24,7 +24,7 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <!--<!--<li><a href="Home.html">Home</a></li>-->-->
+                    <!--<!--<li><a href="Home.html">Home</a></li>-->
                     <li><a href="Contracts.html">Contracts</a></li>
                     <li><a href="Organizations.html">Organizations</a></li>
                     <li><a href="Contacts.html">Contacts</a></li>
@@ -69,7 +69,7 @@
 
                             <!--button type="submit" value="clearResults">Clear Results</button-->
 
-                            <div id="scrollView" style="max-height:100%; overflow:auto; margin: 10px">
+                            <div id="scrollView" style="max-height:100%; overflow:auto; margin: 10px; margin-right: 155px;">
                                 <table style="padding: 3px;">
 
                                     <tr>
@@ -80,6 +80,7 @@
                                         <td><input ng-model="f.recv_by" placeholder="Filter by Recipient of the Relase"></td>
                                         <td><input ng-model="f.recv_date" placeholder="Filter by Date Recieved"></td>
                                         <td><input ng-model="f.rel_cntry_cd" placeholder="Filter by Country of Release"></td>
+										<td class="editColumn"></td>
                                     </tr>
 
                                     <!--tr>
@@ -105,7 +106,7 @@
                                         <th value="recv_by">Recieved by ID</th>
                                         <th value="recv_date">Recieved Date</th>
                                         <th value="rel_cntry_cd">Recieving Country</th>
-                                        <th>Edit</th>
+                                        <th class="editColumn">Edit</th>
                                     </tr>
 
                                     <tr ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}">
