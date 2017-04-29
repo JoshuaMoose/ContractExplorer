@@ -89,20 +89,20 @@
                                     <tr ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}">
                                         <td>
                                             <span data-ng-hide="editMode">{{ x.fe_data_id }}</span>
-                                            <input type="text" pattern="^\d+$" data-ng-show="editMode" data-ng-model="x.fe_data_id"/>
+                                            <input class="edit_fe_data_id" type="text" pattern="^\d+$" data-ng-show="editMode" data-ng-model="x.fe_data_id"/>
                                         </td>
                                         <!-- The special block here will swap to being input boxes when the -->
                                         <td>
                                             <span data-ng-hide="editMode">{{x.fe_desc}}</span>
-                                            <input type="text" ng-maxlength="255" data-ng-show="editMode" data-ng-model="x.fe_desc"/>
+                                            <input class="edit_fe_desc" type="text" ng-maxlength="255" data-ng-show="editMode" data-ng-model="x.fe_desc"/>
                                         </td>
                                         <td>
                                             <span data-ng-hide="editMode">{{x.written_req}}</span>
-                                            <input type="text" data-ng-show="editMode" data-ng-model="x.written_req"/>
+                                            <input class="edit_written_req" type="text" data-ng-show="editMode" data-ng-model="x.written_req"/>
                                         </td>
                                         <td>
                                             <span data-ng-hide="editMode">{{x.doc_repro}}</span>
-                                            <input type="text" data-ng-show="editMode" data-ng-model="x.doc_repro"/>
+                                            <input class="edit_doc_repro" type="text" data-ng-show="editMode" data-ng-model="x.doc_repro"/>
                                         </td>
                                         <td>
                                             <button type="submit" data-ng-hide="editMode" data-ng-click="editMode = true; editResults(x)" class="btn btn-default">Edit</button>

@@ -98,32 +98,32 @@
 							<tr data-ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}">
 								<td>
 									<span data-ng-hide="editMode">{{ x.travel_id }}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.travel_id" data-ng-required />
+									<input class="edit_travel_id" type="text" data-ng-show="editMode" data-ng-model="x.travel_id" data-ng-required />
 								</td>
 								<!-- The special block here will swap to being input boxes when the -->
 								<td>
 									<span data-ng-hide="editMode">{{x.contr_id}}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.contr_id" data-ng-required />
+									<input class="edit_contr_id" type="text" data-ng-show="editMode" data-ng-model="x.contr_id" data-ng-required />
 								</td>
 								<td>
 									<span data-ng-hide="editMode">{{x.destination}}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.destination" data-ng-required />
+									<input class="edit_destination" type="text" data-ng-show="editMode" data-ng-model="x.destination" data-ng-required />
 								</td>
 								<td>
 									<span data-ng-hide="editMode">{{x.travel_begin_date}}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.travel_begin_date" data-ng-required />
+									<input class="edit_travel_begin_date" type="text" data-ng-show="editMode" data-ng-model="x.travel_begin_date" data-ng-required />
 								</td>
 								<td>
 									<span data-ng-hide="editMode">{{x.travel_end_date}}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.travel_end_date" data-ng-required />
+									<input class="edit_travel_end_date" type="text" data-ng-show="editMode" data-ng-model="x.travel_end_date" data-ng-required />
 								</td>
 								<td>
 									<span data-ng-hide="editMode">{{x.tech_restrict_cd}}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.tech_restrict_cd" data-ng-required />
+									<input class="edit_tech_restrict_cd" type="text" data-ng-show="editMode" data-ng-model="x.tech_restrict_cd" data-ng-required />
 								</td>
 								<td>
 									<span data-ng-hide="editMode">{{x.recv_travel_brief}}</span>
-									<input type="text" data-ng-show="editMode" data-ng-model="x.recv_travel_brief" data-ng-required />
+									<input class="edit_recv_travel_brief" type="text" data-ng-show="editMode" data-ng-model="x.recv_travel_brief" data-ng-required />
 								</td>
 								<td>
 									<button type="submit" data-ng-hide="editMode" data-ng-click="editMode = true; editResults(x)" class="btn btn-default">Edit</button>

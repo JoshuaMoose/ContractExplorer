@@ -10,6 +10,17 @@ var types = {
 	'rel_cntry_cd': 'String',
 }
 
+$(document).ready(function(){
+	$('#rel_id').tooltip({'trigger':'focus', 'title': 'Required Field. Should be an integer with 9 digits or less.', 'placement': 'right'});
+	$('#dir_id').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#rel_by').tooltip({'trigger':'focus', 'title': 'Required Field. Should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#rel_date').tooltip({'trigger':'focus', 'title': 'Required Field.  Timestamp in the format of yyyy-dd-mm hh:mm:ss.', 'placement': 'right'});
+	$('#recv_by').tooltip({'trigger':'focus', 'title': 'Required Field. Should be an integer with 9 digits or less.', 'placement': 'right'});
+	$('#recv_date').tooltip({'trigger':'focus', 'title': 'Required Field. Timestamp in the format of yyyy-dd-mm hh:mm:ss.', 'placement': 'right'});
+	$('#rel_cntry_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
+	
+});
+
 app.controller('searchCtrl', function($scope) {
     $scope.searchParameter = "";
 	$scope.searchKeyword = "";
@@ -45,6 +56,15 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 	$scope.editResults = function(field) {
 		$scope.editing = $scope.myResults.indexOf(field);
 		$scope.newField = angular.copy(field);
+		
+		$('.edit_rel_id').tooltip({'trigger':'focus', 'title': 'Required Field. Should be an integer with 9 digits or less.', 'placement': 'bottom'});
+		$('.edit_dir_id').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_rel_by').tooltip({'trigger':'focus', 'title': 'Required Field. Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_rel_date').tooltip({'trigger':'focus', 'title': 'Required Field.  Timestamp in the format of yyyy-dd-mm hh:mm:ss.', 'placement': 'bottom'});
+		$('.edit_recv_by').tooltip({'trigger':'focus', 'title': 'Required Field. Should be an integer with 9 digits or less.', 'placement': 'bottom'});
+		$('.edit_recv_date').tooltip({'trigger':'focus', 'title': 'Required Field. Timestamp in the format of yyyy-dd-mm hh:mm:ss.', 'placement': 'bottom'});
+		$('.edit_rel_cntry_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+	
 	}
 
 	$scope.saveField = function(index) {		

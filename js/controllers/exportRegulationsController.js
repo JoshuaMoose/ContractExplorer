@@ -7,6 +7,14 @@ var types = {
 	'appl_countries': "String",
 }
 
+$(document).ready(function(){
+	$('#reg_id').tooltip({'trigger':'focus', 'title': 'Required Field. Should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#reg_title').tooltip({'trigger':'focus', 'title': 'Required Field. Should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#reg_desc').tooltip({'trigger':'focus', 'title': 'Required Field. Should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#appl_cntries').tooltip({'trigger':'focus', 'title': 'Required Field. Should be a string shorter than 256 characters.', 'placement': 'right'});
+	
+});
+
 app.controller('searchCtrl', function($scope) {
     $scope.searchParameter = "";
 	$scope.searchKeyword = "";
@@ -42,6 +50,12 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 	$scope.editResults = function(field) {
 		$scope.editing = $scope.myResults.indexOf(field);
 		$scope.newField = angular.copy(field);
+		
+		$('.edit_reg_id').tooltip({'trigger':'focus', 'title': 'Required Field. Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_reg_title').tooltip({'trigger':'focus', 'title': 'Required Field. Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_reg_desc').tooltip({'trigger':'focus', 'title': 'Required Field. Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_appl_cntries').tooltip({'trigger':'focus', 'title': 'Required Field. Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+	
 	}
 
 	$scope.saveField = function(index) {		

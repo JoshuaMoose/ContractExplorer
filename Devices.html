@@ -99,28 +99,28 @@
 								<tr ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}">
 									<td>
 										<span data-ng-hide="editMode">{{ x.dev_id }}</span>
-										<input id="edit_dev_id" type="text" pattern="^\d+$" ng-maxlength="9" data-ng-show="editMode" data-ng-model="x.dev_id" required />
+										<input class="edit_dev_id" id="edit_dev_id" type="text" pattern="^\d+$" ng-maxlength="9" data-ng-show="editMode" data-ng-model="x.dev_id" required />
 									</td>
 									<!-- The special block here will swap to being input boxes when the -->
 									<td>
 										<span data-ng-hide="editMode">{{x.dev_type}}</span>
-										<input id="edit_dev_type" type="text" ng-maxlength="255" data-ng-show="editMode" data-ng-model="x.dev_type" required />
+										<input class="edit_dev_type" id="edit_dev_type" type="text" ng-maxlength="255" data-ng-show="editMode" data-ng-model="x.dev_type" required />
 									</td>
 									<td>
 										<span data-ng-hide="editMode">{{x.dev_desc}}</span>
-										<input id="edit_dev_desc" type="text" ng-maxlength="255" data-ng-show="editMode" data-ng-model="x.dev_desc" required />
+										<input class="edit_dev_desc" id="edit_dev_desc" type="text" ng-maxlength="255" data-ng-show="editMode" data-ng-model="x.dev_desc" required />
 									</td>
 									<td>
 										<span data-ng-hide="editMode">{{x.dev_owner_id}}</span>
-										<input id="edit_dev_owner_id" type="text" pattern="^\d+$" ng-maxlength="9" data-ng-show="editMode" data-ng-model="x.dev_owner_id" required />
+										<input class="edit_dev_owner_id" id="edit_dev_owner_id" type="text" pattern="^\d+$" ng-maxlength="9" data-ng-show="editMode" data-ng-model="x.dev_owner_id" required />
 									</td>
 									<td>
 										<span data-ng-hide="editMode">{{x.dev_user_id}}</span>
-										<input id="edit_dev_user_id" type="text" pattern="^\d+$" ng-maxlength="9" data-ng-show="editMode" data-ng-model="x.dev_user_id" required />
+										<input class="edit_dev_user_id" id="edit_dev_user_id" type="text" pattern="^\d+$" ng-maxlength="9" data-ng-show="editMode" data-ng-model="x.dev_user_id" required />
 									</td>
 									<td>
 										<span data-ng-hide="editMode">{{x.dev_sn}}</span>
-										<input id="edit_dev_sn" type="text" pattern="^\d+$" ng-maxlength="9" data-ng-show="editMode" data-ng-model="x.dev_sn"/>
+										<input class="edit_dev_sn" id="edit_dev_sn" type="text" pattern="^\d+$" ng-maxlength="9" data-ng-show="editMode" data-ng-model="x.dev_sn"/>
 									</td>
 									<td >
 											<button type="submit" data-ng-hide="editMode" data-ng-click="editMode = true; editResults(x)" class="btn btn-default">Edit</button>
@@ -189,7 +189,7 @@
 									      	</div>
 									      	
 											<div class="modal-body">
-												<span ng-cloaked="addForm.devid.$error.required">Device ID is required.<br/></span>
+												<span ng-show="addForm.devid.$error.required">Device ID is required.<br/></span>
 										        <span ng-show="addForm.devid.$error.pattern">Device ID should be an integer.<br/></span>
 										        <span ng-show="addForm.devid.$error.maxlength">Device ID should be 9 digits or fewer.<br/></span>
 										        <span ng-show="addForm.devtype.$error.required">Device type is required.<br/></span>
@@ -213,6 +213,30 @@
 								
 								  	</div>
 								</div>
+								
+								<!-- Modal -->
+								<div id="addSuccessModal" class="modal fade" role="dialog">
+									<div class="modal-dialog">
+									
+										<!-- Modal content-->
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal">&times;</button>
+												<h4 class="modal-title">Item Added</h4>
+											</div>
+											
+											<div class="modal-body">
+											Item added successfully, refresh results to see it.
+											</div>
+												
+											<div class="modal-footer">
+												<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+											</div>
+										</div>
+								
+									</div>
+								</div>
+								
 																
 							</form>
 						</div>

@@ -14,6 +14,21 @@ var types = {
 	'cage_cd': "String",
 }
 
+$(document).ready(function(){
+	$('#org_id').tooltip({'trigger':'focus', 'title': 'Required Field. Should be an integer with 9 digits or less.', 'placement': 'right'});
+	$('#org_type_cd').tooltip({'trigger':'focus', 'title': 'Required Field. Should be a string shorter than 50 characters.', 'placement': 'right'});
+	$('#org_name').tooltip({'trigger':'focus', 'title': 'Required Field. Should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#org_div').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#org_addr1').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#org_addr2').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#org_city').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#org_state_prov_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#org_post_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#org_cntry_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#cage_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
+	
+});
+
 app.controller('searchCtrl', function($scope) {
     $scope.searchParameter = "";
 	$scope.searchKeyword = "";
@@ -49,6 +64,19 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 	$scope.editResults = function(field) {
 		$scope.editing = $scope.myResults.indexOf(field);
 		$scope.newField = angular.copy(field);
+		
+		$('.edit_org_id').tooltip({'trigger':'focus', 'title': 'Required Field. Should be an integer with 9 digits or less.', 'placement': 'bottom'});
+		$('.edit_org_type_cd').tooltip({'trigger':'focus', 'title': 'Required Field. Should be a string shorter than 50 characters.', 'placement': 'bottom'});
+		$('.edit_org_name').tooltip({'trigger':'focus', 'title': 'Required Field. Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_org_div').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_org_addr1').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_org_addr2').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_org_city').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_org_state_prov_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_org_post_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_org_cntry_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_cage_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+			
 	}
 
 	$scope.saveField = function(index) {		

@@ -10,6 +10,17 @@ var types = {
 	'recv_travel_brief': 'String',
 }
 
+$(document).ready(function(){
+	$('#travel_id').tooltip({'trigger':'focus', 'title': 'Required Field. Should be an integer with 9 digits or less.', 'placement': 'right'});
+	$('#contr_id').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#destination').tooltip({'trigger':'focus', 'title': 'Required Field. Should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#travel_begin_date').tooltip({'trigger':'focus', 'title': 'Required Field.  Timestamp in the format of yyyy-dd-mm hh:mm:ss.', 'placement': 'right'});
+	$('#travel_end_date').tooltip({'trigger':'focus', 'title': 'Timestamp in the format of yyyy-dd-mm hh:mm:ss.', 'placement': 'right'});
+	$('#tech_restrict_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#recv_travel_brief').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
+	
+});
+
 app.controller('searchCtrl', function($scope) {
     $scope.searchParameter = "";
 	$scope.searchKeyword = "";
@@ -45,6 +56,15 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 	$scope.editResults = function(field) {
 		$scope.editing = $scope.myResults.indexOf(field);
 		$scope.newField = angular.copy(field);
+		
+		$('.edit_travel_id').tooltip({'trigger':'focus', 'title': 'Required Field. Should be an integer with 9 digits or less.', 'placement': 'bottom'});
+		$('.edit_contr_id').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_destination').tooltip({'trigger':'focus', 'title': 'Required Field. Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_travel_begin_date').tooltip({'trigger':'focus', 'title': 'Required Field.  Timestamp in the format of yyyy-dd-mm hh:mm:ss.', 'placement': 'bottom'});
+		$('.edit_travel_end_date').tooltip({'trigger':'focus', 'title': 'Timestamp in the format of yyyy-dd-mm hh:mm:ss.', 'placement': 'bottom'});
+		$('.edit_tech_restrict_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_recv_travel_brief').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+	
 	}
 
 	$scope.saveField = function(index) {		

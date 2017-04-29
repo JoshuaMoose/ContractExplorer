@@ -10,6 +10,17 @@ var types = {
 	'dir_recv_date': "TimeStamp",
 }
 
+$(document).ready(function(){
+	$('#dir_id').tooltip({'trigger':'focus', 'title': 'Required Field. Should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#dir_contr_id').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#dir_desc').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#dir_issued_by').tooltip({'trigger':'focus', 'title': 'Required Field.  Should be an integer with 9 digits or less.', 'placement': 'right'});
+	$('#dir_issued_date').tooltip({'trigger':'focus', 'title': 'Required Field. Timestamp in the format of yyyy-dd-mm hh:mm:ss.', 'placement': 'right'});
+	$('#dir_recv_by').tooltip({'trigger':'focus', 'title': 'Required Field. Should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#dir_recv_date').tooltip({'trigger':'focus', 'title': 'Required Field. Timestamp in the format of yyyy-dd-mm hh:mm:ss.', 'placement': 'right'});
+	
+});
+
 app.controller('searchCtrl', function($scope) {
     $scope.searchParameter = "";
 	$scope.searchKeyword = "";
@@ -45,6 +56,15 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 	$scope.editResults = function(field) {
 		$scope.editing = $scope.myResults.indexOf(field);
 		$scope.newField = angular.copy(field);
+		
+		$('.edit_dir_id').tooltip({'trigger':'focus', 'title': 'Required Field. Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_dir_contr_id').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_dir_desc').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_dir_issued_by').tooltip({'trigger':'focus', 'title': 'Required Field.  Should be an integer with 9 digits or less.', 'placement': 'bottom'});
+		$('.edit_dir_issued_date').tooltip({'trigger':'focus', 'title': 'Required Field. Timestamp in the format of yyyy-dd-mm hh:mm:ss.', 'placement': 'bottom'});
+		$('.edit_dir_recv_by').tooltip({'trigger':'focus', 'title': 'Required Field. Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_dir_recv_date').tooltip({'trigger':'focus', 'title': 'Required Field. Timestamp in the format of yyyy-dd-mm hh:mm:ss.', 'placement': 'bottom'});
+	
 	}
 
 	$scope.saveField = function(index) {		

@@ -105,47 +105,47 @@
 								<tr ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}">
 									<td>
 										<span data-ng-hide="editMode">{{ x.org_id }}</span>
-										<input type="text" data-ng-show="editMode" pattern="^\d+$" required data-ng-model="x.org_id" />
+										<input class="edit_org_id" type="text" data-ng-show="editMode" pattern="^\d+$" required data-ng-model="x.org_id" />
 									</td>
 									<td>
 										<span data-ng-hide="editMode">{{ x.org_type_cd }}</span>
-										<input type="text" data-ng-show="editMode" ng-maxlength="255" required data-ng-model="x.org_type_cd" />
+										<input class="edit_org_type_cd" type="text" data-ng-show="editMode" ng-maxlength="255" required data-ng-model="x.org_type_cd" />
 									</td>
 									<td>
 										<span data-ng-hide="editMode">{{x.org_name}}</span>
-										<input type="text" data-ng-show="editMode" ng-maxlength="255" required data-ng-model="x.org_name" />
+										<input class="edit_org_name" type="text" data-ng-show="editMode" ng-maxlength="255" required data-ng-model="x.org_name" />
 									</td>
 									<td>
 										<span data-ng-hide="editMode">{{x.org_div}}</span>
-										<input type="text" data-ng-show="editMode" ng-maxlength="255" data-ng-model="x.org_div" />
+										<input class="edit_org_div" type="text" data-ng-show="editMode" ng-maxlength="255" data-ng-model="x.org_div" />
 									</td>
 									<td>
 										<span data-ng-hide="editMode">{{x.org_addr1}}</span>
-										<input type="text" data-ng-show="editMode" ng-maxlength="255" data-ng-model="x.org_addr1" />
+										<input class="edit_org_addr1" type="text" data-ng-show="editMode" ng-maxlength="255" data-ng-model="x.org_addr1" />
 									</td>
 									<td>
 										<span data-ng-hide="editMode">{{x.org_addr2}}</span>
-										<input type="text" data-ng-show="editMode" ng-maxlength="255" data-ng-model="x.org_addr2" />
+										<input class="edit_org_addr2" type="text" data-ng-show="editMode" ng-maxlength="255" data-ng-model="x.org_addr2" />
 									</td>
 									<td>
 										<span data-ng-hide="editMode">{{x.org_city}}</span>
-										<input type="text" data-ng-show="editMode" ng-maxlength="255" data-ng-model="x.org_city" />
+										<input class="edit_org_city" type="text" data-ng-show="editMode" ng-maxlength="255" data-ng-model="x.org_city" />
 									</td>
 									<td>
 										<span data-ng-hide="editMode">{{x.org_state_prov_cd}}</span>
-										<input type="text" data-ng-show="editMode" ng-maxlength="255" data-ng-model="x.org_state_prov_cd" />
+										<input class="edit_org_state_prov_cd" type="text" data-ng-show="editMode" ng-maxlength="255" data-ng-model="x.org_state_prov_cd" />
 									</td>
 									<td>
 										<span data-ng-hide="editMode">{{x.org_post_cd}}</span>
-										<input type="text" data-ng-show="editMode" ng-maxlength="255" data-ng-model="x.org_post_cd" />
+										<input class="edit_org_post_cd" type="text" data-ng-show="editMode" ng-maxlength="255" data-ng-model="x.org_post_cd" />
 									</td>
 									<td>
 										<span data-ng-hide="editMode">{{x.org_cntry_cd}}</span>
-										<input type="text" data-ng-show="editMode" ng-maxlength="255" data-ng-model="x.org_cntry_cd" />
+										<input class="edit_org_cntry_cd" type="text" data-ng-show="editMode" ng-maxlength="255" data-ng-model="x.org_cntry_cd" />
 									</td>
 									<td>
 										<span data-ng-hide="editMode">{{x.cage_cd}}</span>
-										<input type="text" data-ng-show="editMode" ng-maxlength="255" data-ng-model="x.cage_cd" />
+										<input class="edit_cage_cd" type="text" data-ng-show="editMode" ng-maxlength="255" data-ng-model="x.cage_cd" />
 									</td>
 									<td class="editColumn">
 										<button type="submit" data-ng-hide="editMode" data-ng-click="editMode = true; editResults(x)" class="btn btn-default">Edit</button>
@@ -198,28 +198,28 @@
 								
 								<div class="row">
 									<div class="col-lg-3">Organization Name:</div>
-									<div class="col-lg-3"><input type="text"  ng-maxlength="255" required data-ng-model="x.org_name" tabindex=3/></div>			
+									<div class="col-lg-3"><input id="org_name" type="text"  ng-maxlength="255" required data-ng-model="x.org_name" tabindex=3/></div>			
 								</div><!--row-->
 								
 								<div class="row">
 									<div class="col-lg-3">Division or Business Unit:</div>
-									<div class="col-lg-3"><input type="text"  ng-maxlength="255" data-ng-model="x.org_div" tabindex=4/></div>
+									<div class="col-lg-3"><input id="org_div" type="text"  ng-maxlength="255" data-ng-model="x.org_div" tabindex=4/></div>
 								</div><!--row-->
 								
 								<div class="row">
 									<div class="col-lg-3">Address Line 1:</div>
-									<div class="col-lg-3"><input type="text"  ng-maxlength="255" data-ng-model="x.org_addr1" tabindex=5/></div>
+									<div class="col-lg-3"><input id="org_addr1" type="text"  ng-maxlength="255" data-ng-model="x.org_addr1" tabindex=5/></div>
 								</div><!--row-->
 								
 								<div class="row">
 									<div class="col-lg-3">Address Line 2:</div>
-									<div class="col-lg-3"><input type="text"  ng-maxlength="255" data-ng-model="x.org_addr2" tabindex=6/></div>
+									<div class="col-lg-3"><input id="org_addr2" type="text"  ng-maxlength="255" data-ng-model="x.org_addr2" tabindex=6/></div>
 									
 								</div><!--row-->
 								
 								<div class="row">
 									<div class="col-lg-3">City:</div>
-									<div class="col-lg-3"><input type="text"  ng-maxlength="255" data-ng-model="x.org_city" tabindex=7/></div>
+									<div class="col-lg-3"><input id="org_city" type="text"  ng-maxlength="255" data-ng-model="x.org_city" tabindex=7/></div>
 								</div><!--row-->
 								
 								<div class="row">
