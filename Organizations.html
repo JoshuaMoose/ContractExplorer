@@ -198,28 +198,28 @@
 								
 								<div class="row">
 									<div class="col-lg-3">Organization Name:</div>
-									<div class="col-lg-3"><input id="org_name" type="text"  ng-maxlength="255" required data-ng-model="x.org_name" tabindex=3/></div>			
+									<div class="col-lg-3"><input id="org_name" type="text" name="orgname" ng-maxlength="255" required data-ng-model="x.org_div" tabindex=3/></div>			
 								</div><!--row-->
 								
 								<div class="row">
 									<div class="col-lg-3">Division or Business Unit:</div>
-									<div class="col-lg-3"><input id="org_div" type="text"  ng-maxlength="255" data-ng-model="x.org_div" tabindex=4/></div>
+									<div class="col-lg-3"><input id="org_div" type="text" name="orgdiv" ng-maxlength="255" data-ng-model="x.org_div" tabindex=4/></div>
 								</div><!--row-->
 								
 								<div class="row">
 									<div class="col-lg-3">Address Line 1:</div>
-									<div class="col-lg-3"><input id="org_addr1" type="text"  ng-maxlength="255" data-ng-model="x.org_addr1" tabindex=5/></div>
+									<div class="col-lg-3"><input id="org_addr1" type="text" name="orgaddr1"  ng-maxlength="255" data-ng-model="x.org_addr1" tabindex=5/></div>
 								</div><!--row-->
 								
 								<div class="row">
 									<div class="col-lg-3">Address Line 2:</div>
-									<div class="col-lg-3"><input id="org_addr2" type="text"  ng-maxlength="255" data-ng-model="x.org_addr2" tabindex=6/></div>
+									<div class="col-lg-3"><input id="org_addr2" type="text" name="orgaddr2"  ng-maxlength="255" data-ng-model="x.org_addr2" tabindex=6/></div>
 									
 								</div><!--row-->
 								
 								<div class="row">
 									<div class="col-lg-3">City:</div>
-									<div class="col-lg-3"><input id="org_city" type="text"  ng-maxlength="255" data-ng-model="x.org_city" tabindex=7/></div>
+									<div class="col-lg-3"><input id="org_city" type="text" name="orgcity"  ng-maxlength="255" data-ng-model="x.org_city" tabindex=7/></div>
 								</div><!--row-->
 								
 								<div class="row">
@@ -298,7 +298,7 @@
 								
 								<div class="row">
 									<div class="col-lg-3">Postal Code:</div>
-									<div class="col-lg-3"><input type="text"  ng-maxlength="255" data-ng-model="x.org_post_cd" tabindex=9/></div>
+									<div class="col-lg-3"><input id="org_post_cd" type="text" name="orgpostcd" ng-maxlength="255" data-ng-model="x.org_post_cd" tabindex=9/></div>
 								</div><!--row-->
 								
 								<div class="row">
@@ -310,10 +310,88 @@
 								</div>
 								<div class="row">
 									<div class="col-lg-3">Cage code:</div>
-									<div class="col-lg-3"><input type="text"  ng-maxlength="255" data-ng-model="x.cage_cd" tabindex=11/></div>
+									<div class="col-lg-3"><input id="cage_cd" type="text" name="cagecd" ng-maxlength="255" data-ng-model="x.cage_cd" tabindex=11/></div>
 								
 								</div><!--row-->
                                 <div class="container-fluid" style="padding:10px;"><button type="submit" class="btn btn-sm btn-default btn-block" data-ng-disabled="!addForm.$valid" value="contacts" ng-click="addFunction()" tabindex=12><span class="glyphicon glyphicon-ok"></span> Add New Organization</button></div>
+							
+								<!-- Modal -->
+								<div id="addErrorsModal" class="modal fade" role="dialog">
+								  	<div class="modal-dialog">
+									
+									    <!-- Modal content-->
+									    <div class="modal-content">
+									   		<div class="modal-header">
+									        	<button type="button" class="close" data-dismiss="modal">&times;</button>
+									        	<h4 class="modal-title">Adding New Record Validation Errors</h4>
+									      	</div>
+									      	
+											<div class="modal-body">
+												
+												<span ng-show="addForm.orgid.$error.required">Device ID is required.<br/></span>
+										        <span ng-show="addForm.orgid.$error.pattern">Device ID should be an integer.<br/></span>
+										        <span ng-show="addForm.orgid.$error.maxlength">Device ID should be 9 digits or fewer.<br/></span>
+												<span ng-show="addForm.orgtypecd.$error.required">Device ID is required.<br/></span>
+												<span ng-show="addForm.orgtypecd.$error.required">Device type is required.<br/></span>
+										        <span ng-show="addForm.orgtypecd.$error.maxlength">Device type should be less than 255 characters.<br/></span>
+												<span ng-show="addForm.orgname.$error.required">Device ID is required.<br/></span>
+												<span ng-show="addForm.orgname.$error.required">Device type is required.<br/></span>
+										        <span ng-show="addForm.orgname.$error.maxlength">Device type should be less than 255 characters.<br/></span>
+												<span ng-show="addForm.orgdiv.$error.required">Device type is required.<br/></span>
+										        <span ng-show="addForm.orgdiv.$error.maxlength">Device type should be less than 255 characters.<br/></span>
+												<span ng-show="addForm.orgaddr1.$error.required">Device type is required.<br/></span>
+										        <span ng-show="addForm.orgaddr1.$error.maxlength">Device type should be less than 255 characters.<br/></span>
+												<span ng-show="addForm.orgaddr2.$error.required">Device type is required.<br/></span>
+										        <span ng-show="addForm.orgaddr2.$error.maxlength">Device type should be less than 255 characters.<br/></span>
+												<span ng-show="addForm.orgcity.$error.required">Device type is required.<br/></span>
+										        <span ng-show="addForm.orgcity.$error.maxlength">Device type should be less than 255 characters.<br/></span>
+												<span ng-show="addForm.orgstateprovcd.$error.required">Device type is required.<br/></span>
+										        <span ng-show="addForm.orgstateprovcd.$error.maxlength">Device type should be less than 255 characters.<br/></span>
+												<span ng-show="addForm.orgpostcd.$error.required">Device type is required.<br/></span>
+										        <span ng-show="addForm.orgpostcd.$error.maxlength">Device type should be less than 255 characters.<br/></span>
+												<span ng-show="addForm.orgcntrycd.$error.required">Device type is required.<br/></span>
+										        <span ng-show="addForm.orgcntrycd.$error.maxlength">Device type should be less than 255 characters.<br/></span>
+												<span ng-show="addForm.cagecd.$error.required">Device type is required.<br/></span>
+										        <span ng-show="addForm.cagecd.$error.maxlength">Device type should be less than 255 characters.<br/></span>
+												
+												
+										    </div>
+										   		
+										   	<div class="modal-footer">
+										        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+										    </div>
+									    </div>
+								
+								  	</div>
+								</div>
+						
+							<!-- Modal -->
+							<div id="addSuccessModal" class="modal fade" role="dialog">
+							  	<div class="modal-dialog">
+								
+								    <!-- Modal content-->
+								    <div class="modal-content">
+								   		<div class="modal-header">
+								        	<button type="button" class="close" data-dismiss="modal">&times;</button>
+								        	<h4 class="modal-title">Item Added</h4>
+								      	</div>
+								      	
+										<div class="modal-body">
+										Item added successfully, refresh results to see it.
+										</div>
+									   		
+									   	<div class="modal-footer">
+									        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									    </div>
+								    </div>
+							
+							  	</div>
+							</div>
+							
+							
+							
+							
+							
 							</form>
 						</div>
 						<!---End add new contact-->

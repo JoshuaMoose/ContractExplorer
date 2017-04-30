@@ -372,14 +372,14 @@
 								
 								<div class="row">
 									<div class="col-lg-3">Address Line 1:</div>
-									<div class="col-lg-3"><input id="cont_name_suffix" type="text" name="contnamesuffix" data-ng-model="cont_name_suffix" tabindex=8></div>
+									<div class="col-lg-3"><input id="cont_addr1" type="text" name="contaddr1" data-ng-model="cont_addr1" tabindex=8></div>
 									<div class="col-lg-3">Alt Email:</div>
 									<div class="col-lg-3"><input id="cont_alt_email" type="text" name="contaltemail" data-ng-model="cont_alt_email" tabindex=19></div>
 								</div><!--row-->
 								
 								<div class="row">
 									<div class="col-lg-3">Address Line 2:</div>
-									<div class="col-lg-3"><input id="cont_addr2" type="text" name="devid" data-ng-model="cont_addr1" tabindex=10></div>
+									<div class="col-lg-3"><input id="cont_addr2" type="text" name="contaddr2" data-ng-model="cont_addr2" tabindex=10></div>
 						
 								</div><!--row-->
                                 <div class="container-fluid" style="padding:10px;"><button type="submit" class="btn btn-sm btn-default btn-block" data-ng-disabled="!addForm.$valid" value="contacts" ng-click="addFunction()" tabindex=20><span class="glyphicon glyphicon-ok"></span> Add New Contact</button></div>
@@ -397,21 +397,60 @@
 									      	</div>
 									      	
 											<div class="modal-body">
-												<span ng-show="addForm.devid.$error.required">Device ID is required.<br/></span>
-										        <span ng-show="addForm.devid.$error.pattern">Device ID should be an integer.<br/></span>
-										        <span ng-show="addForm.devid.$error.maxlength">Device ID should be 9 digits or fewer.<br/></span>
-										        <span ng-show="addForm.devtype.$error.required">Device type is required.<br/></span>
-										        <span ng-show="addForm.devtype.$error.maxlength">Device type should be less than 255 characters.<br/></span>
-										        <span ng-show="addForm.devdesc.$error.required">Device Description is required<br/></span>
-										        <span ng-show="addForm.devdesc.$error.maxlength">Device Description should less than 255 characters.<br/></span>
-										        <span ng-show="addForm.devdesc.$error.required">Device Description is required.<br/></span>
-										        <span ng-show="addForm.devownerid.$error.pattern">Device Owner ID should be a number<br/></span>
-										        <span ng-show="addForm.devownerid.$error.maxlength">Device Owner ID should be 9 digits or fewer.<br/></span>
-										        <span ng-show="addForm.devuserid.$error.required">Device User ID is required<br/></span>
-										        <span ng-show="addForm.devuserid.$error.pattern">Device User ID should be an Integer<br/></span>
-										        <span ng-show="addForm.devuserid.$error.maxlength">Device User ID should be 9 digits or fewer.<br/></span>
-										        <span ng-show="addForm.devsn.$error.pattern">Device Serial Number should be a number.<br/></span>
-										        <span ng-show="addForm.devsn.$error.maxlength">Device Serial Number should be 9 digits or less<br/></span>
+											
+												
+												<span ng-show="addForm.l_______l.$error.required">Device ID is required.<br/></span>
+												
+										        <span ng-show="addForm.l_______l.$error.pattern">Device ID should be an integer.<br/></span>
+										        <span ng-show="addForm.l_______l.$error.maxlength">Device ID should be 9 digits or fewer.<br/></span>
+												
+												<span ng-show="addForm.l_______l.$error.required">Device type is required.<br/></span>
+										        <span ng-show="addForm.l_______l.$error.maxlength">Device type should be less than 255 characters.<br/></span>
+												
+												<span ng-show="addForm.contid.$error.required">Device ID is required.<br/></span>
+										        <span ng-show="addForm.contid.$error.pattern">Device ID should be an integer.<br/></span>
+										        <span ng-show="addForm.contid.$error.maxlength">Device ID should be 9 digits or fewer.<br/></span>
+												<span ng-show="addForm.contorgid.$error.required">Device ID is required.<br/></span>
+												<span ng-show="addForm.contorgid.$error.pattern">Device ID should be an integer.<br/></span>
+										        <span ng-show="addForm.contorgid.$error.maxlength">Device ID should be 9 digits or fewer.<br/></span>
+												<span ng-show="addForm.controlecd.$error.required">Device type is required.<br/></span>
+										        <span ng-show="addForm.controlecd.$error.maxlength">Device type should be less than 255 characters.<br/></span>
+												<span ng-show="addForm.contfirstname.$error.required">Device ID is required.<br/></span>
+												<span ng-show="addForm.contfirstname.$error.required">Device type is required.<br/></span>
+										        <span ng-show="addForm.contfirstname.$error.maxlength">Device type should be less than 255 characters.<br/></span>
+												<span ng-show="addForm.contmiddlename.$error.required">Device type is required.<br/></span>
+										        <span ng-show="addForm.contmiddlename.$error.maxlength">Device type should be less than 255 characters.<br/></span>
+												<span ng-show="addForm.contlastname.$error.required">Device ID is required.<br/></span>
+												<span ng-show="addForm.contlastname.$error.required">Device type is required.<br/></span>
+										        <span ng-show="addForm.contlastname.$error.maxlength">Device type should be less than 255 characters.<br/></span>
+												<span ng-show="addForm.contnametitle.$error.required">Device type is required.<br/></span>
+										        <span ng-show="addForm.contnametitle.$error.maxlength">Device type should be less than 255 characters.<br/></span>
+												<span ng-show="addForm.contnamesuffix.$error.required">Device type is required.<br/></span>
+										        <span ng-show="addForm.contnamesuffix.$error.maxlength">Device type should be less than 255 characters.<br/></span>
+												<span ng-show="addForm.contaddr1.$error.required">Device type is required.<br/></span>
+										        <span ng-show="addForm.contaddr1.$error.maxlength">Device type should be less than 255 characters.<br/></span>
+												<span ng-show="addForm.contaddr2.$error.required">Device type is required.<br/></span>
+										        <span ng-show="addForm.contaddr2.$error.maxlength">Device type should be less than 255 characters.<br/></span>
+												<span ng-show="addForm.contcity.$error.required">Device type is required.<br/></span>
+										        <span ng-show="addForm.contcity.$error.maxlength">Device type should be less than 255 characters.<br/></span>
+												<span ng-show="addForm.contstateprovcd.$error.required">Device type is required.<br/></span>
+										        <span ng-show="addForm.contstateprovcd.$error.maxlength">Device type should be less than 255 characters.<br/></span>
+												<span ng-show="addForm.contpostcd.$error.required">Device type is required.<br/></span>
+										        <span ng-show="addForm.contpostcd.$error.maxlength">Device type should be less than 255 characters.<br/></span>
+												<span ng-show="addForm.contcntryCd.$error.required">Device type is required.<br/></span>
+										        <span ng-show="addForm.contcntryCd.$error.maxlength">Device type should be less than 255 characters.<br/></span>
+												<span ng-show="addForm.contofficephone.$error.required">Device type is required.<br/></span>
+										        <span ng-show="addForm.contofficephone.$error.maxlength">Device type should be less than 255 characters.<br/></span>
+												<span ng-show="addForm.contmobilephone.$error.required">Device type is required.<br/></span>
+										        <span ng-show="addForm.contmobilephone.$error.maxlength">Device type should be less than 255 characters.<br/></span>
+												<span ng-show="addForm.conthomephone.$error.required">Device type is required.<br/></span>
+										        <span ng-show="addForm.conthomephone.$error.maxlength">Device type should be less than 255 characters.<br/></span>
+												<span ng-show="addForm.contemail.$error.required">Device type is required.<br/></span>
+										        <span ng-show="addForm.contemail.$error.maxlength">Device type should be less than 255 characters.<br/></span>
+												<span ng-show="addForm.contaltemail.$error.required">Device type is required.<br/></span>
+										        <span ng-show="addForm.contaltemail.$error.maxlength">Device type should be less than 255 characters.<br/></span>
+												
+												
 										    </div>
 										   		
 										   	<div class="modal-footer">

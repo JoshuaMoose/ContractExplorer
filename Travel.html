@@ -158,22 +158,22 @@
 						<div> <!-- data-ng-app="myApp" data-ng-controller="formCtrl" ~~removed bc unused-->
 							<div class="row">
 								<div class="col-lg-3">Travel ID:</div>
-								<div class="col-lg-3"><input type="text" data-ng-model="travel_id" tabindex=1></div>
+								<div class="col-lg-3"><input id="travel_id" type="text" name="travelid" data-ng-model="travel_id" tabindex=1></div>
 								<div class="col-lg-3">Contract ID:</div>
-								<div class="col-lg-3"><input type="text" data-ng-model="contr_id" tabindex=5></div>
+								<div class="col-lg-3"><input id="contr_id" type="text" name="travelid" data-ng-model="contr_id" tabindex=5></div>
 							</div><!--row-->							
 							<div class="row">
 								<div class="col-lg-3">Destination:</div>
-								<div class="col-lg-3"><input type="text" data-ng-model="destination" tabindex=2></div>
+								<div class="col-lg-3"><input id="destination" type="text" name="destination" data-ng-model="destination" tabindex=2></div>
 								<div class="col-lg-3">Travel Begin Date:</div>
-								<div class="col-lg-3"><input type="text" data-ng-model="travel_begin_date" tabindex=6></div>
+								<div class="col-lg-3"><input id="travel_begin_date" type="text" name="travelbegindate" data-ng-model="travel_begin_date" tabindex=6></div>
 							</div><!--row-->
 							
 							<div class="row">
 								<div class="col-lg-3">Travel End Date:</div>
-								<div class="col-lg-3"><input type="text" data-ng-model="travel_end_date" tabindex=3></div>
+								<div class="col-lg-3"><input id="travel_end_date" type="text" name="travelenddate" data-ng-model="travel_end_date" tabindex=3></div>
 								<div class="col-lg-3">Technology Restriction Level:</div>
-								<div class="col-lg-3"><input type="text" data-ng-model="tech_restrict_cd" tabindex=7></div>
+								<div class="col-lg-3"><input id="tech_restrict_cd" type="text" name="techrestrictcd" data-ng-model="tech_restrict_cd" tabindex=7></div>
 							</div><!--row-->
 							
 							<div class="row">
@@ -182,6 +182,71 @@
 								
 							</div><!--row-->
                             <div class="container-fluid" style="padding:10px;"><button type="submit" class="btn btn-sm btn-default btn-block" data-ng-disabled="!addForm.$valid" value="contacts" ng-click="addFunction()"><span class="glyphicon glyphicon-ok"></span> Add New Travel</button></div>
+							
+							<!-- Modal -->
+								<div id="addErrorsModal" class="modal fade" role="dialog">
+								  	<div class="modal-dialog">
+									
+									    <!-- Modal content-->
+									    <div class="modal-content">
+									   		<div class="modal-header">
+									        	<button type="button" class="close" data-dismiss="modal">&times;</button>
+									        	<h4 class="modal-title">Adding New Record Validation Errors</h4>
+									      	</div>
+									      	
+											<div class="modal-body">
+												
+												<span ng-show="addForm.travelid.$error.required">Device ID is required.<br/></span>
+												<span ng-show="addForm.travelid.$error.pattern">Device ID should be an integer.<br/></span>
+										        <span ng-show="addForm.travelid.$error.maxlength">Device ID should be 9 digits or fewer.<br/></span>
+												<span ng-show="addForm.contrid.$error.required">Device type is required.<br/></span>
+										        <span ng-show="addForm.contrid.$error.maxlength">Device type should be less than 255 characters.<br/></span>
+												<span ng-show="addForm.destination.$error.required">Device ID is required.<br/></span>
+												<span ng-show="addForm.destination.$error.required">Device type is required.<br/></span>
+										        <span ng-show="addForm.destination.$error.maxlength">Device type should be less than 255 characters.<br/></span>
+												<span ng-show="addForm.travelbegindate.$error.required">Device ID is required.<br/></span>
+												<span ng-show="addForm.travelbegindate.$error.pattern">Device type is required.<br/></span>
+										        <span ng-show="addForm.travelbegindate.$error.maxlength">Timestamp in the format of yyyy-dd-mm hh:mm:ss.<br/></span>
+												<span ng-show="addForm.travelenddate.$error.pattern">Device type is required.<br/></span>
+										        <span ng-show="addForm.travelenddate.$error.maxlength">Timestamp in the format of yyyy-dd-mm hh:mm:ss.<br/></span>
+												<span ng-show="addForm.techrestrictcd.$error.required">Device type is required.<br/></span>
+										        <span ng-show="addForm.techrestrictcd.$error.maxlength">Device type should be less than 255 characters.<br/></span>
+												<span ng-show="addForm.recvtravelbrief.$error.required">Device type is required.<br/></span>
+										        <span ng-show="addForm.recvtravelbrief.$error.maxlength">Device type should be less than 255 characters.<br/></span>
+												
+										    </div>
+										   		
+										   	<div class="modal-footer">
+										        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+										    </div>
+									    </div>
+								
+								  	</div>
+								</div>
+						
+							<!-- Modal -->
+							<div id="addSuccessModal" class="modal fade" role="dialog">
+							  	<div class="modal-dialog">
+								
+								    <!-- Modal content-->
+								    <div class="modal-content">
+								   		<div class="modal-header">
+								        	<button type="button" class="close" data-dismiss="modal">&times;</button>
+								        	<h4 class="modal-title">Item Added</h4>
+								      	</div>
+								      	
+										<div class="modal-body">
+										Item added successfully, refresh results to see it.
+										</div>
+									   		
+									   	<div class="modal-footer">
+									        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									    </div>
+								    </div>
+							
+							  	</div>
+							</div>
+							
 						</div>
 						<!---End add new contact-->
 					</div>

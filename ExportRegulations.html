@@ -138,16 +138,16 @@
                                 <!-- ng-app="myApp" ng-controller="formCtrl" ~~removed bc unused-->
                                 <div class="row">
                                     <div class="col-lg-3">Regulation ID:</div>
-                                    <div class="col-lg-3"><input id="reg_id" type="textarea" cols="50" rows="10" ng-model="reg_id" tabindex=1></div>
+                                    <div class="col-lg-3"><input id="reg_id" type="textarea" name="regid" cols="50" rows="10" ng-model="reg_id" tabindex=1></div>
                                     <div class="col-lg-3">Title:</div>
-                                    <div class="col-lg-3"><input id="reg_title" type="textarea" cols="50" rows="10" ng-model="reg_title" tabindex=12></div>
+                                    <div class="col-lg-3"><input id="reg_title" type="textarea" name="regtitle" cols="50" rows="10" ng-model="reg_title" tabindex=12></div>
                                 </div><!--row-->
 
                                 <div class="row">
                                     <div class="col-lg-3">Description:</div>
-                                    <div class="col-lg-3"><input id="reg_desc" type="textarea" cols="50" rows="10" ng-model="reg_desc" tabindex=2></div>
+                                    <div class="col-lg-3"><input id="reg_desc" type="textarea" name="regdesc" cols="50" rows="10" ng-model="reg_desc" tabindex=2></div>
                                     <div class="col-lg-3">Applicable Countries:</div>
-                                    <div class="col-lg-3"><input id="appl_cntries" type="textarea" cols="50" rows="10" ng-model="appl_cntries" tabindex=13></div>
+                                    <div class="col-lg-3"><input id="appl_cntries" type="textarea" name="applcntries" cols="50" rows="10" ng-model="appl_cntries" tabindex=13></div>
                                 </div><!--row-->
 
                                 <div class="row">
@@ -171,46 +171,108 @@
 
                                 <div class="row">
                                     <div class="col-lg-3">Middle Name:</div>
-                                    <div class="col-lg-3"><input id="midName" type="text" ng-model="midName" tabindex=5></div>
+                                    <div class="col-lg-3"><input id="midName" type="text" name="midName" ng-model="midName" tabindex=5></div>
                                     <div class="col-lg-3">Office Phone:</div>
-                                    <div class="col-lg-3"><input id="phoneOff" type="text" ng-model="phoneOff" tabindex=16></div>
+                                    <div class="col-lg-3"><input id="phoneOff" type="text" name="phoneOff" ng-model="phoneOff" tabindex=16></div>
                                 </div><!--row-->
 
                                 <div class="row">
                                     <div class="col-lg-3">Last Name:</div>
-                                    <div class="col-lg-3"><input id="lastName" type="text" ng-model="lastName" tabindex=6></div>
+                                    <div class="col-lg-3"><input id="lastName" type="text" name="lastName" ng-model="lastName" tabindex=6></div>
                                     <div class="col-lg-3">Mobile Phone:</div>
-                                    <div class="col-lg-3"><input id="phoneMobl" type="text" ng-model="phoneMobl" tabindex=17></div>
+                                    <div class="col-lg-3"><input id="phoneMobl" type="text" name="phoneMobl" ng-model="phoneMobl" tabindex=17></div>
                                 </div><!--row-->
 
                                 <div class="row">
                                     <div class="col-lg-3">Name Title:</div>
-                                    <div class="col-lg-3"><input id="nameTitle" type="text" ng-model="nameTitle" tabindex=7></div>
+                                    <div class="col-lg-3"><input id="nameTitle" type="text" name="nameTitle" ng-model="nameTitle" tabindex=7></div>
                                     <div class="col-lg-3">Home Phone:</div>
-                                    <div class="col-lg-3"><input id="phoneHome" type="text" ng-model="phoneHome" tabindex=18></div>
+                                    <div class="col-lg-3"><input id="phoneHome" type="text" name="phoneHome" ng-model="phoneHome" tabindex=18></div>
                                 </div><!--row-->
 
                                 <div class="row">
                                     <div class="col-lg-3">Name Suffix:</div>
-                                    <div class="col-lg-3"><input id="nameSufx" type="text" ng-model="nameSufx" tabindex=8></div>
+                                    <div class="col-lg-3"><input id="nameSufx" type="text" name="nameSufx" ng-model="nameSufx" tabindex=8></div>
                                     <div class="col-lg-3">Email:</div>
-                                    <div class="col-lg-3"><input id="email" type="text" ng-model="email" tabindex=19></div>
+                                    <div class="col-lg-3"><input id="email" type="text" name="email" ng-model="email" tabindex=19></div>
                                 </div><!--row-->
 
                                 <div class="row">
                                     <div class="col-lg-3">Address Line 1:</div>
-                                    <div class="col-lg-3"><input id="addLine1" type="text" ng-model="addLine1" tabindex=9></div>
+                                    <div class="col-lg-3"><input id="addLine1" type="text" name="addLine1" ng-model="addLine1" tabindex=9></div>
                                     <div class="col-lg-3">Alt Email:</div>
-                                    <div class="col-lg-3"><input id="emailAlt" type="text" ng-model="emailAlt" tabindex=20></div>
+                                    <div class="col-lg-3"><input id="emailAlt" type="text" name="emailAlt" ng-model="emailAlt" tabindex=20></div>
                                 </div><!--row-->
 
                                 <div class="row">
                                     <div class="col-lg-3">Address Line 2:</div>
-                                    <div class="col-lg-3"><input id="addLine2" type="text" ng-model="addLine2" tabindex=10></div>
+                                    <div class="col-lg-3"><input id="addLine2" type="text" name="addLine2" ng-model="addLine2" tabindex=10></div>
                                    
                                 </div><!--row-->
                                 <div class="container-fluid" style="padding:10px;"><button type="submit" class="btn btn-sm btn-default btn-block" data-ng-disabled="!addForm.$valid" value="contacts" ng-click="addFunction()" tabindex=20><span class="glyphicon glyphicon-ok"></span> Add New Export Regulation</button></div>
-                            </div>
+                            
+								<!-- Modal -->
+								<div id="addErrorsModal" class="modal fade" role="dialog">
+								  	<div class="modal-dialog">
+									
+									    <!-- Modal content-->
+									    <div class="modal-content">
+									   		<div class="modal-header">
+									        	<button type="button" class="close" data-dismiss="modal">&times;</button>
+									        	<h4 class="modal-title">Adding New Record Validation Errors</h4>
+									      	</div>
+									      	
+											<div class="modal-body">
+												
+												<span ng-show="addForm.regid.$error.required">Device ID is required.<br/></span>
+												<span ng-show="addForm.regid.$error.required">Device type is required.<br/></span>
+										        <span ng-show="addForm.regid.$error.maxlength">Device type should be less than 255 characters.<br/></span>
+												<span ng-show="addForm.regtitle.$error.required">Device ID is required.<br/></span>
+												<span ng-show="addForm.regtitle.$error.required">Device type is required.<br/></span>
+										        <span ng-show="addForm.regtitle.$error.maxlength">Device type should be less than 255 characters.<br/></span>
+												<span ng-show="addForm.regdesc.$error.required">Device ID is required.<br/></span>
+												<span ng-show="addForm.regdesc.$error.required">Device type is required.<br/></span>
+										        <span ng-show="addForm.regdesc.$error.maxlength">Device type should be less than 255 characters.<br/></span>
+												<span ng-show="addForm.applcntries.$error.required">Device ID is required.<br/></span>
+												<span ng-show="addForm.applcntries.$error.required">Device type is required.<br/></span>
+										        <span ng-show="addForm.applcntries.$error.maxlength">Device type should be less than 255 characters.<br/></span>
+												
+										    </div>
+										   		
+										   	<div class="modal-footer">
+										        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+										    </div>
+									    </div>
+								
+								  	</div>
+								</div>
+						
+							<!-- Modal -->
+							<div id="addSuccessModal" class="modal fade" role="dialog">
+							  	<div class="modal-dialog">
+								
+								    <!-- Modal content-->
+								    <div class="modal-content">
+								   		<div class="modal-header">
+								        	<button type="button" class="close" data-dismiss="modal">&times;</button>
+								        	<h4 class="modal-title">Item Added</h4>
+								      	</div>
+								      	
+										<div class="modal-body">
+										Item added successfully, refresh results to see it.
+										</div>
+									   		
+									   	<div class="modal-footer">
+									        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									    </div>
+								    </div>
+							
+							  	</div>
+							</div>
+							
+							
+							
+							</div>
                             <!---End add new contact-->
                         </div>
                     </div>
