@@ -40,8 +40,8 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 		.then(function (response) {
 			$scope.myResults = response.data;
 
-			console.log($scope.myResults);
 			console.log('Data loaded.');
+			$('#search').collapse("show");
 		}, function (error) {
 				console.log(error);
 		});	

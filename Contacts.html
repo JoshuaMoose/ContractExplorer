@@ -64,8 +64,8 @@
 						
 						<input type="text" name="SearchBy" style="margin: 20px;" data-ng-model="f.$" placeholder="Search All Fields">
 						
-						<button type="submit" style="margin-bottom: 10px; margin-top: 10px; margin-left: 1px;" class="btn btn-default" value="contacts" name="SearchButton" data-toggle="collapse" data-target="#search" data-ng-click="myFunction()">Search Contacts</button>
-						<button type="submit" style="margin-bottom: 10px; margin-top: 10px" class="btn btn-default" value="contacts" name="refreshButton" ng-click="refreshSearch()"><span class="glyphicon glyphicon-refresh
+						<button type="submit" style="margin-bottom: 10px; margin-top: 10px; margin-left: 1px;" class="btn btn-default" value="contacts" name="SearchButton" data-ng-click="myFunction()">Search Contacts</button>
+						<button type="submit" style="margin-bottom: 10px; margin-top: 10px" class="btn btn-default" value="contacts" name="refreshButton" ng-click="myFunction()"><span class="glyphicon glyphicon-refresh
 						" aria-hidden="true"></span></button>
 						<!--span><a href="ResultsAsTable.html">Advanced Search</a></span-->
 		
@@ -183,7 +183,76 @@
 									</td>
 									<td>
 										<span data-ng-hide="editMode">{{x.cont_cntry_Cd}}</span>
-										<input class="edit_cont_cntry_Cd" type="text" data-ng-show="editMode" data-ng-model="x.cont_cntry_Cd" data-ng-required />
+										<select class = "dropdown" data-ng-model="x.cont_state_prov_Cd">
+												<option value="AB">AB
+												<option value="AL">AL
+												<option value="AK">AK
+												<option value="AZ">AZ
+												<option value="AR">AR
+												<option value="AS">AS
+												<option value="BC">BC
+												<option value="CA">CA
+												<option value="CO">CO
+												<option value="CT">CT
+												<option value="DE">DE
+												<option value="DC">DC
+												<option value="FL">FL
+												<option value="GA">GA
+												<option value="GU">GU
+												<option value="HI">HI
+												<option value="ID">ID
+												<option value="IL">IL
+												<option value="IN">IN
+												<option value="IA">IA
+												<option value="KS">KS
+												<option value="KY">KY
+												<option value="LA">LA
+												<option value="MB">MB
+												<option value="ME">ME
+												<option value="MD">MD
+												<option value="MA">MA
+												<option value="MI">MI
+												<option value="MN">MN
+												<option value="MS">MS
+												<option value="MO">MO
+												<option value="MP">MP
+												<option value="MT">MT
+												<option value="NB">NB
+												<option value="NE">NE
+												<option value="NL">NL
+												<option value="NV">NV
+												<option value="NH">NH
+												<option value="NS">NS
+												<option value="NT">NT
+												<option value="NU">NU
+												<option value="NJ">NJ
+												<option value="NM">NM
+												<option value="NY">NY
+												<option value="NC">NC
+												<option value="ND">ND
+												<option value="OH">OH
+												<option value="OK">OK
+												<option value="ON">ON
+												<option value="OR">OR
+												<option value="QC">QC
+												<option value="PA">PA
+												<option value="PE">PE
+												<option value="PR">PR
+												<option value="RI">RI
+												<option value="SC">SC
+												<option value="SD">SD
+												<option value="SK">SK
+												<option value="TN">TN
+												<option value="TX">TX
+												<option value="UT">UT
+												<option value="VT">VT
+												<option value="VA">VA
+												<option value="VI">VI
+												<option value="WA">WA
+												<option value="WV">WV
+												<option value="WI">WI
+												<option value="YT">YT
+										</select>
 									</td>
 									<td>
 										<span data-ng-hide="editMode">{{x.cont_office_phone}}</span>
@@ -382,7 +451,10 @@
 									<div class="col-lg-3"><input id="cont_addr2" type="text" name="contaddr2" data-ng-model="cont_addr2" tabindex=10></div>
 						
 								</div><!--row-->
-                                <div class="container-fluid" style="padding:10px;"><button type="submit" class="btn btn-sm btn-default btn-block" data-ng-disabled="!addForm.$valid" value="contacts" ng-click="addFunction()" tabindex=20><span class="glyphicon glyphicon-ok"></span> Add New Contact</button></div>
+                                <div class="container-fluid" style="padding:10px;">
+									<button type="submit" class="btn btn-sm btn-default btn-block" value="contacts" ng-click="addFunction()" tabindex=20>
+										<span ng-show="addForm.$valid" class="glyphicon glyphicon-ok"></span><span ng-show="addForm.$invalid" class="glyphicon glyphicon-remove"/></span> Add New Contact</button>
+								</div>
 							</div>
 							
 							<!-- Modal -->

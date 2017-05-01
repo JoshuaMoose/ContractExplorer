@@ -43,6 +43,7 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 			$scope.myResults = response.data;
 
 			console.log('Data loaded.');
+			$('#search').collapse("show");
 		}, function (error) {
 				console.log(error);
 		});	
@@ -104,34 +105,38 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 app.controller('addCtrl', function($scope, $http) { 
 	$scope.addFunction = function() {
 		
-		//CHANGE THESE: ORDER ORDER IS (NAME OF COLUMN FROM DATABASE): $SCOPE.(NAME OF COLUMN FROM DATABASE)
-		var addData = {
-			'table': 'travel', 
-		};
-		
-		addData.values = {
-			'travel_id': $scope.travel_id,
-			'contr_id': $scope.contr_id,
-			'destination': $scope.destination,
-			'travel_begin_date': $scope.travel_begin_date,
-			'travel_end_date': $scope.travel_end_date,
-			'tech_restrict_cd': $scope.tech_restrict_cd,
-			'recv_travel_brief': $scope.recv_travel_brief,
+		if ($scope.addForm.$invalid ) {
+			$('#addErrorsModal').modal('show');
+		} else {
+			//CHANGE THESE: ORDER ORDER IS (NAME OF COLUMN FROM DATABASE): $SCOPE.(NAME OF COLUMN FROM DATABASE)
+			var addData = {
+				'table': 'travel', 
+			};
+			
+			addData.values = {
+				'travel_id': $scope.travel_id,
+				'contr_id': $scope.contr_id,
+				'destination': $scope.destination,
+				'travel_begin_date': $scope.travel_begin_date,
+				'travel_end_date': $scope.travel_end_date,
+				'tech_restrict_cd': $scope.tech_restrict_cd,
+				'recv_travel_brief': $scope.recv_travel_brief,
+			}
+			addData.types = types; 
+			
+			$http({
+				method : 'POST',
+				url : 'DatabaseInsertHandler',
+				contentType: 'application/json',
+				data : addData,
+			})
+			.then(function (response) {
+				//$scope.myResults = response.data;
+				console.log('Item Added.');
+				}, function (error) {
+					console.log(error);
+			});	
 		}
-		addData.types = types; 
-		
-		$http({
-			method : 'POST',
-			url : 'DatabaseInsertHandler',
-			contentType: 'application/json',
-			data : addData,
-		})
-		.then(function (response) {
-			//$scope.myResults = response.data;
-			console.log('Item Added.');
-			}, function (error) {
-				console.log(error);
-		});	
 		
 	}	
 });

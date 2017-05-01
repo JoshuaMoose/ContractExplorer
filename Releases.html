@@ -9,7 +9,7 @@
 	<script src="js\jquery-3.2.1.min.js"></script>
     <script src="js\bootstrap.min.js"></script>
     <script src="js\angular.min.js"></script>
-    <script src="js\controllers\contactsController.js"></script>
+    <script src="js\controllers\releasesController.js"></script>
 </head>
 <body data-ng-app="myApp">
     <nav class="navbar navbar-default navbar-fixed-top" style="margin-bottom: 30px;-webkit-box-shadow: 0 8px 6px -6px #999;
@@ -61,7 +61,7 @@
 
 						<input type="text" name="SearchBy" style="margin: 20px; margin-bottom: -25px;" ng-model="f.$" placeholder="Search All Fields">
                         <button type="submit" style="margin-bottom: 10px; margin-top: 10px; margin-left: 1px;" class="btn btn-default" value="contacts" name="SearchButton" data-toggle="collapse" data-target="#search" ng-click="myFunction()">Search Releases</button>
-                        <button type="submit" style="margin-bottom: 10px; margin-top: 10px" class="btn btn-default" value="contacts" name="refreshButton" ng-click="refreshSearch()"><span class="glyphicon glyphicon-refresh
+                        <button type="submit" style="margin-bottom: 10px; margin-top: 10px" class="btn btn-default" value="contacts" name="refreshButton" ng-click="myFunction()"><span class="glyphicon glyphicon-refresh
 						" aria-hidden="true"></span></button>
 						<!--span><a href="ResultsAsTable.html">Advanced Search</a></span-->
                         <!-- Table Start**************************** -->
@@ -70,82 +70,83 @@
                             <!--button type="submit" value="clearResults">Clear Results</button-->
 
                             <div id="scrollView" style="max-height:100%; overflow:auto; margin: 10px; margin-right: 155px;">
-                                <table style="padding: 3px;">
+                                <form name="updateForm">
+									<table style="padding: 3px;">
 
-                                    <tr>
-                                        <td><input ng-model="f.rel_id" placeholder="Filter by Release ID"></td>
-                                        <td><input ng-model="f.dir_id" placeholder="Filter by Directive ID"></td>
-                                        <td><input ng-model="f.rel_by" placeholder="Filter by Release Employee"></td>
-                                        <td><input ng-model="f.rel_date" placeholder="Filter by Release Date"></td>
-                                        <td><input ng-model="f.recv_by" placeholder="Filter by Recipient of the Relase"></td>
-                                        <td><input ng-model="f.recv_date" placeholder="Filter by Date Recieved"></td>
-                                        <td><input ng-model="f.rel_cntry_cd" placeholder="Filter by Country of Release"></td>
-										<td class="editColumn"></td>
-                                    </tr>
+										<tr>
+											<td><input ng-model="f.rel_id" placeholder="Filter by Release ID"></td>
+											<td><input ng-model="f.dir_id" placeholder="Filter by Directive ID"></td>
+											<td><input ng-model="f.rel_by" placeholder="Filter by Release Employee"></td>
+											<td><input ng-model="f.rel_date" placeholder="Filter by Release Date"></td>
+											<td><input ng-model="f.recv_by" placeholder="Filter by Recipient of the Relase"></td>
+											<td><input ng-model="f.recv_date" placeholder="Filter by Date Recieved"></td>
+											<td><input ng-model="f.rel_cntry_cd" placeholder="Filter by Country of Release"></td>
+										</tr>
 
-                                    <!--tr>
-                                        <th value="rel_id">Contact ID</th>
-                                        <th value="dir_id">Organization ID</th>
-                                        <th value="rel_by">Role</th>
-                                        <th value="rel_date">First Name</th>
-                                        <th value="recv_by">Middle Name</th>
-                                        <th value="recv_date">Last Name</th>
-                                        <th value="rel_cntry_cd">Title</th>
-                                        <td><input ng-model="f.rel_by" placeholder="Filter by Released by ID"></td>
-                                        <td><input ng-model="f.rel_date" placeholder="Filter by Release Date"></td>
-                                        <td><input ng-model="f.recv_by" placeholder="Filter by Recieved by ID"></td>
-                                        <td><input ng-model="f.recv_date" placeholder="Filter by Recieved Date"></td>
-                                        <td><input ng-model="f.rel_cntry_cd" placeholder="Filter by Recieving Countries"></td>
-                                    </tr-->
+										<!--tr>
+											<th value="rel_id">Contact ID</th>
+											<th value="dir_id">Organization ID</th>
+											<th value="rel_by">Role</th>
+											<th value="rel_date">First Name</th>
+											<th value="recv_by">Middle Name</th>
+											<th value="recv_date">Last Name</th>
+											<th value="rel_cntry_cd">Title</th>
+											<td><input ng-model="f.rel_by" placeholder="Filter by Released by ID"></td>
+											<td><input ng-model="f.rel_date" placeholder="Filter by Release Date"></td>
+											<td><input ng-model="f.recv_by" placeholder="Filter by Recieved by ID"></td>
+											<td><input ng-model="f.recv_date" placeholder="Filter by Recieved Date"></td>
+											<td><input ng-model="f.rel_cntry_cd" placeholder="Filter by Recieving Countries"></td>
+										</tr-->
 
-                                    <tr>
-                                        <th value="rel_id">Release ID</th>
-                                        <th value="dir_id">Directive ID</th>
-                                        <th value="rel_by">Released by ID</th>
-                                        <th value="rel_date">Release Date</th>
-                                        <th value="recv_by">Recieved by ID</th>
-                                        <th value="recv_date">Recieved Date</th>
-                                        <th value="rel_cntry_cd">Recieving Country</th>
-                                        <th class="editColumn">Edit</th>
-                                    </tr>
+										<tr>
+											<th value="rel_id">Release ID</th>
+											<th value="dir_id">Directive ID</th>
+											<th value="rel_by">Released by ID</th>
+											<th value="rel_date">Release Date</th>
+											<th value="recv_by">Recieved by ID</th>
+											<th value="recv_date">Recieved Date</th>
+											<th value="rel_cntry_cd">Recieving Country</th>
+											<th class="editColumn">Edit</th>
+										</tr>
 
-                                    <tr ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}">
-                                        <td>
-                                            <span data-ng-hide="editMode">{{ x.rel_id }}</span>
-                                            <input class="edit_rel_id" type="text" pattern="^\d+$" data-ng-show="editMode" data-ng-model="x.rel_id"/>
-                                        </td>
-                                        <!-- The special block here will swap to being input boxes when the -->
-                                        <td>
-                                            <span data-ng-hide="editMode">{{x.dir_id}}</span>
-                                            <input class="edit_dir_id" type="text" ng-minlength="1" ng-maxlength="255" required data-ng-show="editMode" data-ng-model="x.dir_id"/>
-                                        </td>
-                                        <td>
-                                            <span data-ng-hide="editMode">{{x.rel_by}}</span>
-                                            <input class="edit_rel_by" type="text" pattern="^\d+$" required data-ng-show="editMode" data-ng-model="x.rel_by"/>
-                                        </td>
-                                        <td>
-                                            <span data-ng-hide="editMode">{{x.rel_date}}</span>
-                                            <input class="edit_rel_date" type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" required data-ng-show="editMode" data-ng-model="x.rel_date"/>
-                                        </td>
-                                        <td>
-                                            <span data-ng-hide="editMode">{{x.recv_by}}</span>
-                                            <input class="edit_recv_by" type="text" pattern="^\d+$" required data-ng-show="editMode" data-ng-model="x.recv_by"/>
-                                        </td>
-                                        <td>
-                                            <span data-ng-hide="editMode">{{x.recv_date}}</span>
-                                            <input class="edit_recv_date" type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" required data-ng-show="editMode" data-ng-model="x.recv_date"/>
-                                        </td>
-                                        <td>
-                                            <span data-ng-hide="editMode">{{x.rel_cntry_cd}}</span>
-                                            <input class="edit_rel_cntry_cd" type="text" ng-maxlength="255" data-ng-show="editMode" data-ng-model="x.rel_cntry_cd"/>
-                                        </td>
-                                        <td>
-                                            <button type="submit" data-ng-hide="editMode" data-ng-click="editMode = true; editResults(x)" class="btn btn-default">Edit</button>
-                                            <button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; saveField(x)" class="btn btn-default">Save</button>
-                                            <button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; cancel()" class="btn btn-default">Cancel</button>
-                                        </td>
-                                    </tr>
-                                </table>
+										<tr ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}">
+											<td>
+												<span data-ng-hide="editMode">{{ x.rel_id }}</span>
+												<input class="edit_rel_id" type="text" pattern="^\d+$" ng-maxlength="9" required data-ng-show="editMode" data-ng-model="x.rel_id"/>
+											</td>
+											<!-- The special block here will swap to being input boxes when the -->
+											<td>
+												<span data-ng-hide="editMode">{{x.dir_id}}</span>
+												<input class="edit_dir_id" type="text" ng-maxlength="255" data-ng-show="editMode" data-ng-model="x.dir_id"/>
+											</td>
+											<td>
+												<span data-ng-hide="editMode">{{x.rel_by}}</span>
+												<input class="edit_rel_by" type="text" pattern="^\d+$" ng-maxlength="9" required data-ng-show="editMode" data-ng-model="x.rel_by"/>
+											</td>
+											<td>
+												<span data-ng-hide="editMode">{{x.rel_date}}</span>
+												<input class="edit_rel_date" type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" required data-ng-show="editMode" data-ng-model="x.rel_date"/>
+											</td>
+											<td>
+												<span data-ng-hide="editMode">{{x.recv_by}}</span>
+												<input class="edit_recv_by" type="text" pattern="^\d+$" required data-ng-show="editMode" data-ng-model="x.recv_by"/>
+											</td>
+											<td>
+												<span data-ng-hide="editMode">{{x.recv_date}}</span>
+												<input class="edit_recv_date" type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" required data-ng-show="editMode" data-ng-model="x.recv_date"/>
+											</td>
+											<td>
+												<span data-ng-hide="editMode">{{x.rel_cntry_cd}}</span>
+												<input class="edit_rel_cntry_cd" type="text" ng-maxlength="255" data-ng-show="editMode" data-ng-model="x.rel_cntry_cd"/>
+											</td>
+											<td class="editColumn">
+												<button type="submit" data-ng-hide="editMode" data-ng-click="editMode = true; editResults(x)" class="btn btn-default">Edit</button>
+												<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; saveField(x)" class="btn btn-default">Save</button>
+												<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; cancel()" class="btn btn-default">Cancel</button>
+											</td>
+										</tr>
+									</table>
+								</form>
                             </div>
 
                             <!--End search for contacts-->
@@ -167,36 +168,48 @@
                     <div class="panel-body">
                         <!--Add new contact-->
                         <div>
-                            <!-- ng-app="myApp" ng-controller="formCtrl" ~~removed bc unused-->
-                            <div class="row">
-                                <div class="col-lg-3">Release ID:</div>
-                                <div class="col-lg-3"><input id="rel_id" type="text" name="relid" ng-model="rel_id" tabindex=1></div>
-                                <div class="col-lg-3">Directive ID:</div>
-                                <div class="col-lg-3"><input id="dir_id" type="text" name="dirid" ng-model="dir_id" tabindex=5></div>
-                            </div><!--row-->
+                            <form name="addForm">
+								<!-- ng-app="myApp" ng-controller="formCtrl" ~~removed bc unused-->
+								<div class="row">
+									<div class="col-lg-3">Release ID:</div>
+									<div class="col-lg-3"><input id="rel_id" type="text" name="relid" ng-model="rel_id" tabindex=1
+															pattern="^\d+$" ng-maxlength="9" required></div>
+									<div class="col-lg-3">Directive ID:</div>
+									<div class="col-lg-3"><input id="dir_id" type="text" name="dirid" ng-model="dir_id" tabindex=5
+															ng-maxlength="255"></div>
+								</div><!--row-->
 
-                            <div class="row">
-                                <div class="col-lg-3">Released by ID:</div>
-                                <div class="col-lg-3"><input id="rel_by" type="text" name="relby" ng-model="rel_by" tabindex=2></div>
-                                <div class="col-lg-3">Release Date:</div>
-                                <div class="col-lg-3"><input id="rel_date" type="text" name="reldate" ng-model="rel_date" tabindex=6></div>
-                            </div><!--row-->
+								<div class="row">
+									<div class="col-lg-3">Released by ID:</div>
+									<div class="col-lg-3"><input id="rel_by" type="text" name="relby" ng-model="rel_by" tabindex=2
+															pattern="^\d+$" ng-maxlength="9" required></div>
+									<div class="col-lg-3">Release Date:</div>
+									<div class="col-lg-3"><input id="rel_date" type="text" name="reldate" ng-model="rel_date" tabindex=6
+															pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$"></div>
+								</div><!--row-->
 
-                            <div class="row">
-                                <div class="col-lg-3">Recieved by ID:</div>
-                                <div class="col-lg-3"><input id="recv_by" type="text" name="recvby" ng-model="recv_by" tabindex=3></div>
-                                <div class="col-lg-3">Recieved Date:</div>
-                                <div class="col-lg-3"><input id="recv_date" type="text" name="recvdate" ng-model="recv_date" tabindex=7></div>
-                            </div>
-                        </div><!--row-->
+								<div class="row">
+									<div class="col-lg-3">Recieved by ID:</div>
+									<div class="col-lg-3"><input id="recv_by" type="text" name="recvby" ng-model="recv_by" tabindex=3
+															pattern="^\d+$" ng-maxlength="9" required></div>
+									<div class="col-lg-3">Recieved Date:</div>
+									<div class="col-lg-3"><input id="recv_date" type="text" name="recvdate" ng-model="recv_date" tabindex=7
+															pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$"></div>
+								</div><!--row-->
+								
+								<div class="row">
+									<div class="col-lg-3">Release Country:</div>
+									<div class="col-lg-3"><input id="rel_cntry_cd" type="text" name="relcntrycd" ng-model="rel_cntry_cd" tabindex=4
+															ng-maxlength="255"></div>
+								</div><!--row-->
+							</form>	
+                      
 
-                        <div class="row">
-                            <div class="col-lg-3">Release Country:</div>
-                            <div class="col-lg-3"><input id="rel_cntry_cd" type="text" name="relcntrycd" ng-model="rel_cntry_cd" tabindex=4></div>
-                        </div><!--row-->
-
-                        <div class="container-fluid" style="padding:10px;"><button type="submit" class="btn btn-sm btn-default btn-block" data-ng-disabled="!addForm.$valid" value="contacts" ng-click="addFunction()"><span class="glyphicon glyphicon-ok"></span> Add New Release</button></div>
-						
+                        <div class="container-fluid" style="padding:10px;">
+							<button type="submit" class="btn btn-sm btn-default btn-block" value="contacts" ng-click="addFunction()" tabindex=20>
+								<span ng-show="addForm.$valid" class="glyphicon glyphicon-ok"></span><span ng-show="addForm.$invalid" class="glyphicon glyphicon-remove"/></span> Add New Release</button>
+						</div>
+								
 						<!-- Modal -->
 								<div id="addErrorsModal" class="modal fade" role="dialog">
 								  	<div class="modal-dialog">

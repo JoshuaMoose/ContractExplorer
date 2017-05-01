@@ -66,14 +66,15 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 		.then(function (response) {
 			$scope.myResults = response.data;
 
-			console.log('Data loaded.');
+			console.log('Data loaded.');	
+			$('#search').collapse("show");
 		}, function (error) {
 				console.log(error);
 		});	
 	}
 	////// END RESULTS //////
 	
-	$scope.refreshSearch = function() {
+	/*$scope.refreshSearch = function() {
 		var pageData = {
 			table: 'contacts', //CHANGE THIS TO NAME OF TABLE (CHECK ACCESS FOR TABLE NAME)
 		};		
@@ -93,7 +94,7 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 				console.log(error);
 		});	
 		
-	}
+	}*/
 	
 	////// EDITING RESULTS //////
 	$scope.newField = {};

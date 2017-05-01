@@ -43,6 +43,7 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 			$scope.myResults = response.data;
 
 			console.log('Data loaded.');
+			$('#search').collapse("show");
 		}, function (error) {
 				console.log(error);
 		});	
@@ -104,34 +105,38 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 app.controller('addCtrl', function($scope, $http) { 
 	$scope.addFunction = function() {
 		
-		//CHANGE THESE: ORDER ORDER IS (NAME OF COLUMN FROM DATABASE): $SCOPE.(NAME OF COLUMN FROM DATABASE)
-		var addData = {
-			'table': 'contacts', 
-		};
-		
-		addData.values = {
-			'dir_id': $scope.dir_id,
-			'dir_contr_id': $scope.dir_contr_id,
-			'dir_desc': $scope.dir_desc,
-			'dir_issued_by': $scope.dir_issued_by,
-			'dir_issued_date': $scope.dir_issued_date,
-			'dir_recv_by': $scope.dir_recv_by,
-			'dir_recv_date': $scope.dir_recv_date,
+		if ($scope.addForm.$invalid ) {
+			$('#addErrorsModal').modal('show');
+		} else {
+			//CHANGE THESE: ORDER ORDER IS (NAME OF COLUMN FROM DATABASE): $SCOPE.(NAME OF COLUMN FROM DATABASE)
+			var addData = {
+				'table': 'contacts', 
+			};
+			
+			addData.values = {
+				'dir_id': $scope.dir_id,
+				'dir_contr_id': $scope.dir_contr_id,
+				'dir_desc': $scope.dir_desc,
+				'dir_issued_by': $scope.dir_issued_by,
+				'dir_issued_date': $scope.dir_issued_date,
+				'dir_recv_by': $scope.dir_recv_by,
+				'dir_recv_date': $scope.dir_recv_date,
+			}
+			addData.types = types; 
+			
+			$http({
+				method : 'POST',
+				url : 'DatabaseInsertHandler',
+				contentType: 'application/json',
+				data : addData,
+			})
+			.then(function (response) {
+				//$scope.myResults = response.data;
+				console.log('Item Added.');
+				}, function (error) {
+					console.log(error);
+			});	
 		}
-		addData.types = types; 
-		
-		$http({
-			method : 'POST',
-			url : 'DatabaseInsertHandler',
-			contentType: 'application/json',
-			data : addData,
-		})
-		.then(function (response) {
-			//$scope.myResults = response.data;
-			console.log('Item Added.');
-			}, function (error) {
-				console.log(error);
-		});	
 		
 	}	
 });

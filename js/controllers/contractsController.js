@@ -61,6 +61,7 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 			$scope.myResults = response.data;
 
 			console.log('Data loaded.');
+			$('#search').collapse("show");			
 		}, function (error) {
 				console.log(error);
 		});	
@@ -154,45 +155,48 @@ app.controller('addCtrl', function($scope, $http) {
 	
 	$scope.addFunction = function() {
 		
-		//CHANGE THESE: ORDER ORDER IS (NAME OF COLUMN FROM DATABASE): $SCOPE.(NAME OF COLUMN FROM DATABASE)
-		var addData = {
-			'table': 'contracts',
-		};
-		
-		addData.values = {
-			'contr_id': $scope.contr_id,
-			'contr_org_id': $scope.contr_org_id,
-			'contr_end_cust_id': $scope.contr_end_cust_id,
-			'contr_type_cd': $scope.contr_type_cd,
-			'prime_contr_id': $scope.prime_contr_id,
-			'prime_contract_no': $scope.prime_contract_no,
-			'contr_prog_cd': $scope.contr_prog_cd,
-			'contr_vehicle_cd': $scope.contr_vehicle_cd,
-			'contr_sec_level_cd': $scope.contr_sec_level_cd,
-			'contr_info_safe_level_cd': $scope.contr_info_safe_level_cd,
-			'contr_open_date': $scope.contr_open_date,
-			'contr_close_date': $scope.contr_close_date,
-			'is_open': $scope.is_open,
-			'exemptions': $scope.exemptions,
-			'dd254_recv': $scope.dd254_recv,
-			'dd254_date': $scope.dd254_date,
+		if ($scope.addForm.$invalid ) {
+			$('#addErrorsModal').modal('show');
+		} else {
+			//CHANGE THESE: ORDER ORDER IS (NAME OF COLUMN FROM DATABASE): $SCOPE.(NAME OF COLUMN FROM DATABASE)
+			var addData = {
+				'table': 'contracts',
+			};
+			
+			addData.values = {
+				'contr_id': $scope.contr_id,
+				'contr_org_id': $scope.contr_org_id,
+				'contr_end_cust_id': $scope.contr_end_cust_id,
+				'contr_type_cd': $scope.contr_type_cd,
+				'prime_contr_id': $scope.prime_contr_id,
+				'prime_contract_no': $scope.prime_contract_no,
+				'contr_prog_cd': $scope.contr_prog_cd,
+				'contr_vehicle_cd': $scope.contr_vehicle_cd,
+				'contr_sec_level_cd': $scope.contr_sec_level_cd,
+				'contr_info_safe_level_cd': $scope.contr_info_safe_level_cd,
+				'contr_open_date': $scope.contr_open_date,
+				'contr_close_date': $scope.contr_close_date,
+				'is_open': $scope.is_open,
+				'exemptions': $scope.exemptions,
+				'dd254_recv': $scope.dd254_recv,
+				'dd254_date': $scope.dd254_date,
+			}
+			addData.types = types;
+			
+			$http({
+				method : 'POST',
+				url : 'DatabaseInsertHandler',
+				contentType: 'application/json',
+				data : addData,
+			})
+			.then(function (response) {
+				//$scope.myResults = response.data;
+				console.log('Item Added.');
+				console.log(addData);
+				}, function (error) {
+					console.log(error);
+			});	
 		}
-		addData.types = types;
-		
-		$http({
-			method : 'POST',
-			url : 'DatabaseInsertHandler',
-			contentType: 'application/json',
-			data : addData,
-		})
-		.then(function (response) {
-			//$scope.myResults = response.data;
-			console.log('Item Added.');
-			console.log(addData);
-			}, function (error) {
-				console.log(error);
-		});	
-		
 	}	
 });
 

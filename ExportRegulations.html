@@ -62,7 +62,7 @@
 
 							<input type="text" name="SearchBy" style="margin: 20px; margin-bottom: -25px;" ng-model="f.$" placeholder="Search All Fields">
                             <button type="submit" style="margin-bottom: 10px; margin-top: 10px; margin-left: 1px;" class="btn btn-default" value="contacts" name="SearchButton" data-toggle="collapse" data-target="#search" ng-click="myFunction()">Search Export Regulations</button>
-							<button type="submit" style="margin-bottom: 10px; margin-top: 10px" class="btn btn-default" value="contacts" name="refreshButton" ng-click="refreshSearch()"><span class="glyphicon glyphicon-refresh
+							<button type="submit" style="margin-bottom: 10px; margin-top: 10px" class="btn btn-default" value="contacts" name="refreshButton" ng-click="myFunction()"><span class="glyphicon glyphicon-refresh
 						" aria-hidden="true"></span></button>	
 						   <!--span><a href="ResultsAsTable.html">Advanced Search</a></span-->
                             <!-- Table Start**************************** -->
@@ -71,49 +71,50 @@
                                 <!--button type="submit" value="clearResults">Clear Results</button-->
 
                                 <div id="scrollView" style="max-height:100%; overflow:auto; margin: 10px; margin-right: 155px;">
-                                    <table style="padding: 3px;">
+                                    <form name="updateForm" novalidate>
+										<table style="padding: 3px;">
 
-                                        <tr>
-                                            <td><input ng-model="f.reg_id" placeholder="Filter by Regulation ID"></td>
-                                            <td><input ng-model="f.reg_title" placeholder="Filter by Title"></td>
-                                            <td><input ng-model="f.reg_desc" placeholder="Filter by Description">
-                                            <td><input ng-model="f.appl_cntries" placeholder="Filter by Applicable Countries"></td>
-											<td class="editColumn"></td>
-                                        </tr>
+											<tr>
+												<td><input ng-model="f.reg_id" placeholder="Filter by Regulation ID"></td>
+												<td><input ng-model="f.reg_title" placeholder="Filter by Title"></td>
+												<td><input ng-model="f.reg_desc" placeholder="Filter by Description">
+												<td><input ng-model="f.appl_cntries" placeholder="Filter by Applicable Countries"></td>
+											</tr>
 
-                                        <tr>
-                                            <th value="reg_id">Regulation ID</th>
-                                            <th value="reg_title">Title</th>
-                                            <th value="reg_desc">Description</th>
-                                            <th value="appl_cntries">Applicable Countries</th>
-                                            <th class="editColumn">Edit</th>
-                                        </tr>
+											<tr>
+												<th value="reg_id">Regulation ID</th>
+												<th value="reg_title">Title</th>
+												<th value="reg_desc">Description</th>
+												<th value="appl_cntries">Applicable Countries</th>
+												<th class="editColumn">Edit</th>
+											</tr>
 
-                                        <tr ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}">
-                                            <td>
-                                                <span data-ng-hide="editMode">{{ x.reg_id }}</span>
-                                                <input class="edit_reg_id" type="text" data-ng-show="editMode" data-ng-model="x.reg_id" data-ng-required />
-                                            </td>
-                                            <!-- The special block here will swap to being input boxes when the -->
-                                            <td>
-                                                <span data-ng-hide="editMode">{{x.reg_title}}</span>
-                                                <input class="edit_reg_title" type="text" data-ng-show="editMode" data-ng-model="x.reg_title" data-ng-required />
-                                            </td>
-                                            <td>
-                                                <span data-ng-hide="editMode">{{x.reg_desc}}</span>
-                                                <input class="edit_reg_desc" type="text" data-ng-show="editMode" data-ng-model="x.reg_desc" data-ng-required />
-                                            </td>
-                                            <td>
-                                                <span data-ng-hide="editMode">{{x.appl_cntries}}</span>
-                                                <input class="edit_appl_cntries" type="text" data-ng-show="editMode" data-ng-model="x.appl_cntries" data-ng-required />
-                                            </td>
-                                            <td>
-                                                <button type="submit" data-ng-hide="editMode" data-ng-click="editMode = true; editResults(x)" class="btn btn-default">Edit</button>
-                                                <button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; saveField(x)" class="btn btn-default">Save</button>
-                                                <button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; cancel()" class="btn btn-default">Cancel</button>
-                                            </td>
-                                        </tr>
-                                    </table>
+											<tr ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}">
+												<td>
+													<span data-ng-hide="editMode">{{ x.reg_id }}</span>
+													<input class="edit_reg_id" type="text" data-ng-show="editMode" data-ng-model="x.reg_id" ng-maxlength="255" required />
+												</td>
+												<!-- The special block here will swap to being input boxes when the -->
+												<td>
+													<span data-ng-hide="editMode">{{x.reg_title}}</span>
+													<input class="edit_reg_title" type="text" data-ng-show="editMode" data-ng-model="x.reg_title" ng-maxlength="255" required />
+												</td>
+												<td>
+													<span data-ng-hide="editMode">{{x.reg_desc}}</span>
+													<input class="edit_reg_desc" type="text" data-ng-show="editMode" data-ng-model="x.reg_desc" ng-maxlength="255" required />
+												</td>
+												<td>
+													<span data-ng-hide="editMode">{{x.appl_cntries}}</span>
+													<input class="edit_appl_cntries" type="text" data-ng-show="editMode" data-ng-model="x.appl_cntries" ng-maxlength="255" required />
+												</td>
+												<td class="editColumn">
+													<button type="submit" data-ng-hide="editMode" data-ng-click="editMode = true; editResults(x)" class="btn btn-default">Edit</button>
+													<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; saveField(x)" class="btn btn-default">Save</button>
+													<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; cancel()" class="btn btn-default">Cancel</button>
+												</td>
+											</tr>
+										</table>
+									</form>
                                 </div>
 
                                 <!--End search for contacts-->
@@ -135,82 +136,32 @@
                         <div class="panel-body">
                             <!--Add new contact-->
                             <div>
-                                <!-- ng-app="myApp" ng-controller="formCtrl" ~~removed bc unused-->
-                                <div class="row">
-                                    <div class="col-lg-3">Regulation ID:</div>
-                                    <div class="col-lg-3"><input id="reg_id" type="textarea" name="regid" cols="50" rows="10" ng-model="reg_id" tabindex=1></div>
-                                    <div class="col-lg-3">Title:</div>
-                                    <div class="col-lg-3"><input id="reg_title" type="textarea" name="regtitle" cols="50" rows="10" ng-model="reg_title" tabindex=12></div>
-                                </div><!--row-->
+                                <form name="addForm" novalidate>
+									<!-- ng-app="myApp" ng-controller="formCtrl" ~~removed bc unused-->
+									<div class="row">
+										<div class="col-lg-3">Regulation ID:</div>
+										<div class="col-lg-3"><input id="reg_id" type="textarea" name="regid" cols="50" rows="10" ng-model="reg_id" tabindex=1
+																ng-maxlength="255" required></div>
+										<div class="col-lg-3">Title:</div>
+										<div class="col-lg-3"><input id="reg_title" type="textarea" name="regtitle" cols="50" rows="10" ng-model="reg_title" tabindex=12
+																ng-maxlength="255" required></div>
+									</div><!--row-->
 
-                                <div class="row">
-                                    <div class="col-lg-3">Description:</div>
-                                    <div class="col-lg-3"><input id="reg_desc" type="textarea" name="regdesc" cols="50" rows="10" ng-model="reg_desc" tabindex=2></div>
-                                    <div class="col-lg-3">Applicable Countries:</div>
-                                    <div class="col-lg-3"><input id="appl_cntries" type="textarea" name="applcntries" cols="50" rows="10" ng-model="appl_cntries" tabindex=13></div>
-                                </div><!--row-->
-
-                                <div class="row">
-                                    <div class="col-lg-3">Role:</div>
-                                    <div class="col-lg-3"><input id="role" type="text" ng-model="role" tabindex=3></div>
-                                    <div class="col-lg-3">Postal Code:</div>
-                                    <div class="col-lg-3"><input id="addPost" type="text" ng-model="addPost" tabindex=14></div>
-                                </div><!--row-->
-
-                                <div class="row">
-                                    <div class="col-lg-3">First Name:</div>
-                                    <div class="col-lg-3"><input id="firstName" type="text" ng-model="firstName" tabindex=4></div>
-                                    <div class="col-lg-3">Country:</div>
-                                    <div class="col-lg-3">
-                                        <select class="dropdown" ng-model="addCountry" tabindex=15>
-                                            <option value="USA">USA
-                                            <option value="CAN">CAN
-                                        </select>
-                                    </div>
-                                </div><!--row-->
-
-                                <div class="row">
-                                    <div class="col-lg-3">Middle Name:</div>
-                                    <div class="col-lg-3"><input id="midName" type="text" name="midName" ng-model="midName" tabindex=5></div>
-                                    <div class="col-lg-3">Office Phone:</div>
-                                    <div class="col-lg-3"><input id="phoneOff" type="text" name="phoneOff" ng-model="phoneOff" tabindex=16></div>
-                                </div><!--row-->
-
-                                <div class="row">
-                                    <div class="col-lg-3">Last Name:</div>
-                                    <div class="col-lg-3"><input id="lastName" type="text" name="lastName" ng-model="lastName" tabindex=6></div>
-                                    <div class="col-lg-3">Mobile Phone:</div>
-                                    <div class="col-lg-3"><input id="phoneMobl" type="text" name="phoneMobl" ng-model="phoneMobl" tabindex=17></div>
-                                </div><!--row-->
-
-                                <div class="row">
-                                    <div class="col-lg-3">Name Title:</div>
-                                    <div class="col-lg-3"><input id="nameTitle" type="text" name="nameTitle" ng-model="nameTitle" tabindex=7></div>
-                                    <div class="col-lg-3">Home Phone:</div>
-                                    <div class="col-lg-3"><input id="phoneHome" type="text" name="phoneHome" ng-model="phoneHome" tabindex=18></div>
-                                </div><!--row-->
-
-                                <div class="row">
-                                    <div class="col-lg-3">Name Suffix:</div>
-                                    <div class="col-lg-3"><input id="nameSufx" type="text" name="nameSufx" ng-model="nameSufx" tabindex=8></div>
-                                    <div class="col-lg-3">Email:</div>
-                                    <div class="col-lg-3"><input id="email" type="text" name="email" ng-model="email" tabindex=19></div>
-                                </div><!--row-->
-
-                                <div class="row">
-                                    <div class="col-lg-3">Address Line 1:</div>
-                                    <div class="col-lg-3"><input id="addLine1" type="text" name="addLine1" ng-model="addLine1" tabindex=9></div>
-                                    <div class="col-lg-3">Alt Email:</div>
-                                    <div class="col-lg-3"><input id="emailAlt" type="text" name="emailAlt" ng-model="emailAlt" tabindex=20></div>
-                                </div><!--row-->
-
-                                <div class="row">
-                                    <div class="col-lg-3">Address Line 2:</div>
-                                    <div class="col-lg-3"><input id="addLine2" type="text" name="addLine2" ng-model="addLine2" tabindex=10></div>
-                                   
-                                </div><!--row-->
-                                <div class="container-fluid" style="padding:10px;"><button type="submit" class="btn btn-sm btn-default btn-block" data-ng-disabled="!addForm.$valid" value="contacts" ng-click="addFunction()" tabindex=20><span class="glyphicon glyphicon-ok"></span> Add New Export Regulation</button></div>
-                            
+									<div class="row">
+										<div class="col-lg-3">Description:</div>
+										<div class="col-lg-3"><input id="reg_desc" type="textarea" name="regdesc" cols="50" rows="10" ng-model="reg_desc" tabindex=2
+																ng-maxlength="255" required></div>
+										<div class="col-lg-3">Applicable Countries:</div>
+										<div class="col-lg-3"><input id="appl_cntries" type="textarea" name="applcntries" cols="50" rows="10" ng-model="appl_cntries" tabindex=13
+																ng-maxlength="255" required></div>
+									</div><!--row-->
+								</form>
+                                
+                                <div class="container-fluid" style="padding:10px;">
+									<button type="submit" class="btn btn-sm btn-default btn-block" value="contacts" ng-click="addFunction()" tabindex=20>
+										<span ng-show="addForm.$valid" class="glyphicon glyphicon-ok"></span><span ng-show="addForm.$invalid" class="glyphicon glyphicon-remove"/></span> Add New Export Regulation</button>
+								</div>
+								
 								<!-- Modal -->
 								<div id="addErrorsModal" class="modal fade" role="dialog">
 								  	<div class="modal-dialog">

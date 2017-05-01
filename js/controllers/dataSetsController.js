@@ -38,6 +38,7 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 			$scope.myResults = response.data;
 
 			console.log('Data loaded.');
+			$('#search').collapse("show");
 		}, function (error) {
 				console.log(error);
 		});	
@@ -96,32 +97,35 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 app.controller('addCtrl', function($scope, $http) { 
 	$scope.addFunction = function() {
 		
-		//CHANGE THESE: ORDER ORDER IS (NAME OF COLUMN FROM DATABASE): $SCOPE.(NAME OF COLUMN FROM DATABASE)
-		var addData = {
-			'table': 'fe_data', 
-		};
-		
-		addData.values = {
-			'fe_data_id': $scope.fe_data_id,
-			'fe_desc': $scope.fe_desc,
-			'written_req': $scope.written_req,
-			'doc_repro': $scope.doc_repro,
+		if ($scope.addForm.$invalid ) {
+			$('#addErrorsModal').modal('show');
+		} else {
+			//CHANGE THESE: ORDER ORDER IS (NAME OF COLUMN FROM DATABASE): $SCOPE.(NAME OF COLUMN FROM DATABASE)
+			var addData = {
+				'table': 'fe_data', 
+			};
+			
+			addData.values = {
+				'fe_data_id': $scope.fe_data_id,
+				'fe_desc': $scope.fe_desc,
+				'written_req': $scope.written_req,
+				'doc_repro': $scope.doc_repro,
+			}
+			addData.types = types; 
+			
+			$http({
+				method : 'POST',
+				url : 'DatabaseInsertHandler',
+				contentType: 'application/json',
+				data : addData,
+			})
+			.then(function (response) {
+				//$scope.myResults = response.data;
+				console.log('Item Added.');
+				}, function (error) {
+					console.log(error);
+			});	
 		}
-		addData.types = types; 
-		
-		$http({
-			method : 'POST',
-			url : 'DatabaseInsertHandler',
-			contentType: 'application/json',
-			data : addData,
-		})
-		.then(function (response) {
-			//$scope.myResults = response.data;
-			console.log('Item Added.');
-			}, function (error) {
-				console.log(error);
-		});	
-		
 	}	
 });
 

@@ -4,7 +4,7 @@ var types = {
 	'reg_id': "String",
 	'reg_title': "String",
 	'reg_desc': "String",
-	'appl_countries': "String",
+	'appl_cntries': "String",
 }
 
 $(document).ready(function(){
@@ -37,6 +37,7 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 			$scope.myResults = response.data;
 
 			console.log('Data loaded.');
+			$('#search').collapse("show");
 		}, function (error) {
 				console.log(error);
 		});	
@@ -95,31 +96,35 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 app.controller('addCtrl', function($scope, $http) { 
 	$scope.addFunction = function() {
 		
-		//CHANGE THESE: ORDER ORDER IS (NAME OF COLUMN FROM DATABASE): $SCOPE.(NAME OF COLUMN FROM DATABASE)
-		var addData = {
-			'table': 'export_regulations', 
-		};
-		
-		addData.values = {
-			'reg_id': $scope.reg_id,
-			'reg_title': $scope.reg_title,
-			'reg_desc': $scope.reg_desc,
-			'appl_countries': $scope.appl_countries,
+		if ($scope.addForm.$invalid ) {
+			$('#addErrorsModal').modal('show');
+		} else {
+			//CHANGE THESE: ORDER ORDER IS (NAME OF COLUMN FROM DATABASE): $SCOPE.(NAME OF COLUMN FROM DATABASE)
+			var addData = {
+				'table': 'export_regulations', 
+			};
+			
+			addData.values = {
+				'reg_id': $scope.reg_id,
+				'reg_title': $scope.reg_title,
+				'reg_desc': $scope.reg_desc,
+				'appl_cntries': $scope.appl_cntries,
+			}
+			addData.types = types; 
+			
+			$http({
+				method : 'POST',
+				url : 'DatabaseInsertHandler',
+				contentType: 'application/json',
+				data : addData,
+			})
+			.then(function (response) {
+				//$scope.myResults = response.data;
+				console.log('Item Added.');
+				}, function (error) {
+					console.log(error);
+			});	
 		}
-		addData.types = types; 
-		
-		$http({
-			method : 'POST',
-			url : 'DatabaseInsertHandler',
-			contentType: 'application/json',
-			data : addData,
-		})
-		.then(function (response) {
-			//$scope.myResults = response.data;
-			console.log('Item Added.');
-			}, function (error) {
-				console.log(error);
-		});	
 		
 	}	
 });

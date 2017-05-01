@@ -63,7 +63,7 @@
 						
 						<input type="text" name="SearchBy" style="margin: 20px; margin-bottom: -25px;" data-ng-model="f.$" placeholder="Search All Fields">
 						<button type="submit" style="margin-bottom: 10px; margin-top: 10px; margin-left: 1px;" class="btn btn-default" value="contacts" name="SearchButton" data-toggle="collapse" data-target="#search" ng-click="myFunction()">Search Travel</button>
-                        <button type="submit" style="margin-bottom: 10px; margin-top: 10px" class="btn btn-default" value="contacts" name="refreshButton" ng-click="refreshSearch()"><span class="glyphicon glyphicon-refresh
+                        <button type="submit" style="margin-bottom: 10px; margin-top: 10px" class="btn btn-default" value="contacts" name="refreshButton" ng-click="myFunction()"><span class="glyphicon glyphicon-refresh
 						" aria-hidden="true"></span></button>    
 		<!-- Table Start**************************** -->				
 				<div id="search" class="collapse">
@@ -71,67 +71,76 @@
 					<!--button type="submit" value="clearResults">Clear Results</button-->
 					
 					<div id="scrollView" style="max-height:100%; overflow:auto; margin: 10px; margin-right: 155px;">
-						<table style="padding: 3px;">
-							
-							<tr>
-								<td><input ng-model="f.travel_id" placeholder="Filter by Travel ID"></td>
-								<td><input ng-model="f.contr_id" placeholder="Filter by Contract ID"></td>
-								<td><input ng-model="f.destination" placeholder="Filter by Destination"></td>
-								<td><input ng-model="f.travel_begin_date" placeholder="Filter by Travel Begin Date"></td>
-								<td><input ng-model="f.travel_end_date" placeholder="Filter by Travel End Date"></td>
-								<td><input ng-model="f.tech_restrict_cd" placeholder="Filter by Max Tech Restriction Level"></td>
-								<td><input data-ng-model="f.recv_travel_brief" placeholder="Filter by Travel Brief Given"></td>
-								<td class="editColumn"></td>
-							</tr>
-											
-							<tr>
-								<th value="cont_id">Travel ID</th>
-								<th value="cont_org_id">Contract ID</th>
-								<th value="cont_role_cd">Destination</th>
-								<th value="cont_first_name">Travel Begin Date</th>
-								<th value="cont_middle_name">Travel End Date</th>
-								<th value="cont_last_name">Tech Restriction Level</th>
-								<th value="cont_name_title">Travel Brief Recieved</th>
-								<th class="editColumn">Edit</th>
-							</tr>
+						<form name="updateForm" novalidate>
+							<table style="padding: 3px;">
+								
+								<tr>
+									<td><input ng-model="f.travel_id" placeholder="Filter by Travel ID"></td>
+									<td><input ng-model="f.contr_id" placeholder="Filter by Contract ID"></td>
+									<td><input ng-model="f.destination" placeholder="Filter by Destination"></td>
+									<td><input ng-model="f.travel_begin_date" placeholder="Filter by Travel Begin Date"></td>
+									<td><input ng-model="f.travel_end_date" placeholder="Filter by Travel End Date"></td>
+									<td><input ng-model="f.tech_restrict_cd" placeholder="Filter by Max Tech Restriction Level"></td>
+									<td><input data-ng-model="f.recv_travel_brief" placeholder="Filter by Travel Brief Given"></td>
+									<td class="editColumn"></td>
+								</tr>
+												
+								<tr>
+									<th value="cont_id">Travel ID</th>
+									<th value="cont_org_id">Contract ID</th>
+									<th value="cont_role_cd">Destination</th>
+									<th value="cont_first_name">Travel Begin Date</th>
+									<th value="cont_middle_name">Travel End Date</th>
+									<th value="cont_last_name">Tech Restriction Level</th>
+									<th value="cont_name_title">Travel Brief Recieved</th>
+									<th class="editColumn">Edit</th>
+								</tr>
 
-							<tr data-ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}">
-								<td>
-									<span data-ng-hide="editMode">{{ x.travel_id }}</span>
-									<input class="edit_travel_id" type="text" data-ng-show="editMode" data-ng-model="x.travel_id" data-ng-required />
-								</td>
-								<!-- The special block here will swap to being input boxes when the -->
-								<td>
-									<span data-ng-hide="editMode">{{x.contr_id}}</span>
-									<input class="edit_contr_id" type="text" data-ng-show="editMode" data-ng-model="x.contr_id" data-ng-required />
-								</td>
-								<td>
-									<span data-ng-hide="editMode">{{x.destination}}</span>
-									<input class="edit_destination" type="text" data-ng-show="editMode" data-ng-model="x.destination" data-ng-required />
-								</td>
-								<td>
-									<span data-ng-hide="editMode">{{x.travel_begin_date}}</span>
-									<input class="edit_travel_begin_date" type="text" data-ng-show="editMode" data-ng-model="x.travel_begin_date" data-ng-required />
-								</td>
-								<td>
-									<span data-ng-hide="editMode">{{x.travel_end_date}}</span>
-									<input class="edit_travel_end_date" type="text" data-ng-show="editMode" data-ng-model="x.travel_end_date" data-ng-required />
-								</td>
-								<td>
-									<span data-ng-hide="editMode">{{x.tech_restrict_cd}}</span>
-									<input class="edit_tech_restrict_cd" type="text" data-ng-show="editMode" data-ng-model="x.tech_restrict_cd" data-ng-required />
-								</td>
-								<td>
-									<span data-ng-hide="editMode">{{x.recv_travel_brief}}</span>
-									<input class="edit_recv_travel_brief" type="text" data-ng-show="editMode" data-ng-model="x.recv_travel_brief" data-ng-required />
-								</td>
-								<td>
-									<button type="submit" data-ng-hide="editMode" data-ng-click="editMode = true; editResults(x)" class="btn btn-default">Edit</button>
-									<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; saveField(x)" class="btn btn-default">Save</button>
-									<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; cancel()" class="btn btn-default">Cancel</button>
-								</td>
-							</tr>	
-						</table>
+								<tr data-ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}">
+									<td>
+										<span data-ng-hide="editMode">{{ x.travel_id }}</span>
+										<input class="edit_travel_id" type="text" data-ng-show="editMode" data-ng-model="x.travel_id" 
+											pattern="^\d+$" ng-maxlength="9" required />
+									</td>
+									<!-- The special block here will swap to being input boxes when the -->
+									<td>
+										<span data-ng-hide="editMode">{{x.contr_id}}</span>
+										<input class="edit_contr_id" type="text" data-ng-show="editMode" data-ng-model="x.contr_id" data-ng-required 
+											ng-maxlength="255"/>
+									</td>
+									<td>
+										<span data-ng-hide="editMode">{{x.destination}}</span>
+										<input class="edit_destination" type="text" data-ng-show="editMode" data-ng-model="x.destination" data-ng-required 
+											ng-maxlength="255" required />
+									</td>
+									<td>
+										<span data-ng-hide="editMode">{{x.travel_begin_date}}</span>
+										<input class="edit_travel_begin_date" type="text" data-ng-show="editMode" data-ng-model="x.travel_begin_date" data-ng-required 
+											pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" required />
+									</td>
+									<td>
+										<span data-ng-hide="editMode">{{x.travel_end_date}}</span>
+										<input class="edit_travel_end_date" type="text" data-ng-show="editMode" data-ng-model="x.travel_end_date" data-ng-required 
+											pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$"/>
+									</td>
+									<td>
+										<span data-ng-hide="editMode">{{x.tech_restrict_cd}}</span>
+										<input class="edit_tech_restrict_cd" type="text" data-ng-show="editMode" data-ng-model="x.tech_restrict_cd" data-ng-required 
+											ng-maxlength="255"/>
+									</td>
+									<td>
+										<span data-ng-hide="editMode">{{x.recv_travel_brief}}</span>
+										<input class="edit_recv_travel_brief" type="text" data-ng-show="editMode" data-ng-model="x.recv_travel_brief" data-ng-required 
+											ng-maxlength="5"/>
+									</td>
+									<td>
+										<button type="submit" data-ng-hide="editMode" data-ng-click="editMode = true; editResults(x)" class="btn btn-default">Edit</button>
+										<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; saveField(x)" class="btn btn-default">Save</button>
+										<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; cancel()" class="btn btn-default">Cancel</button>
+									</td>
+								</tr>	
+							</table>
+						</form>
 					</div>
 	
 						<!--End search for contacts-->
@@ -156,33 +165,46 @@
 					<div class="panel-body">
 						<!--Add new contact-->
 						<div> <!-- data-ng-app="myApp" data-ng-controller="formCtrl" ~~removed bc unused-->
-							<div class="row">
-								<div class="col-lg-3">Travel ID:</div>
-								<div class="col-lg-3"><input id="travel_id" type="text" name="travelid" data-ng-model="travel_id" tabindex=1></div>
-								<div class="col-lg-3">Contract ID:</div>
-								<div class="col-lg-3"><input id="contr_id" type="text" name="travelid" data-ng-model="contr_id" tabindex=5></div>
-							</div><!--row-->							
-							<div class="row">
-								<div class="col-lg-3">Destination:</div>
-								<div class="col-lg-3"><input id="destination" type="text" name="destination" data-ng-model="destination" tabindex=2></div>
-								<div class="col-lg-3">Travel Begin Date:</div>
-								<div class="col-lg-3"><input id="travel_begin_date" type="text" name="travelbegindate" data-ng-model="travel_begin_date" tabindex=6></div>
-							</div><!--row-->
-							
-							<div class="row">
-								<div class="col-lg-3">Travel End Date:</div>
-								<div class="col-lg-3"><input id="travel_end_date" type="text" name="travelenddate" data-ng-model="travel_end_date" tabindex=3></div>
-								<div class="col-lg-3">Technology Restriction Level:</div>
-								<div class="col-lg-3"><input id="tech_restrict_cd" type="text" name="techrestrictcd" data-ng-model="tech_restrict_cd" tabindex=7></div>
-							</div><!--row-->
-							
-							<div class="row">
-								<div class="col-lg-3">Received Travel Brief:</div>
-								<div class="col-lg-3"><input type="text" data-ng-model="recv_travel_brief" tabindex=4></div>
+							<form name="addForm" novalidate>
+								<div class="row">
+									<div class="col-lg-3">Travel ID:</div>
+									<div class="col-lg-3"><input id="travel_id" type="text" name="travelid" data-ng-model="travel_id" tabindex=1
+															pattern="^\d+$" ng-maxlength="9" required ></div>
+									<div class="col-lg-3">Contract ID:</div>
+									<div class="col-lg-3"><input id="contr_id" type="text" name="travelid" data-ng-model="contr_id" tabindex=5
+															ng-maxlength="255" ></div>
+								</div><!--row-->							
+								<div class="row">
+									<div class="col-lg-3">Destination:</div>
+									<div class="col-lg-3"><input id="destination" type="text" name="destination" data-ng-model="destination" tabindex=2
+															ng-maxlength="255" required ></div>
+									<div class="col-lg-3">Travel Begin Date:</div>
+									<div class="col-lg-3"><input id="travel_begin_date" type="text" name="travelbegindate" data-ng-model="travel_begin_date" tabindex=6
+															pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" required ></div>
+								</div><!--row-->
 								
-							</div><!--row-->
-                            <div class="container-fluid" style="padding:10px;"><button type="submit" class="btn btn-sm btn-default btn-block" data-ng-disabled="!addForm.$valid" value="contacts" ng-click="addFunction()"><span class="glyphicon glyphicon-ok"></span> Add New Travel</button></div>
-							
+								<div class="row">
+									<div class="col-lg-3">Travel End Date:</div>
+									<div class="col-lg-3"><input id="travel_end_date" type="text" name="travelenddate" data-ng-model="travel_end_date" tabindex=3
+															pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" ></div>
+									<div class="col-lg-3">Technology Restriction Level:</div>
+									<div class="col-lg-3"><input id="tech_restrict_cd" type="text" name="techrestrictcd" data-ng-model="tech_restrict_cd" tabindex=7
+															ng-maxlength="255" ></div>
+								</div><!--row-->
+								
+								<div class="row">
+									<div class="col-lg-3">Received Travel Brief:</div>
+									<div class="col-lg-3"><input type="text" data-ng-model="recv_travel_brief" tabindex=4
+															ng-maxlength="5"></div>
+									
+								</div><!--row-->
+							</form>
+                            
+							<div class="container-fluid" style="padding:10px;">
+								<button type="submit" class="btn btn-sm btn-default btn-block" value="contacts" ng-click="addFunction()" tabindex=20>
+									<span ng-show="addForm.$valid" class="glyphicon glyphicon-ok"></span><span ng-show="addForm.$invalid" class="glyphicon glyphicon-remove"/></span> Add New Travel</button>
+							</div>
+								
 							<!-- Modal -->
 								<div id="addErrorsModal" class="modal fade" role="dialog">
 								  	<div class="modal-dialog">

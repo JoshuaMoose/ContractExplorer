@@ -61,7 +61,7 @@
 						
 						<input type="text" name="SearchBy" style="margin: 20px; margin-bottom: -25px;" ng-model="f.$" placeholder="Search All Fields">
 						<button type="submit" style="margin-bottom: 10px; margin-top: 10px" class="btn btn-default" value="contacts" name="SearchButton" data-toggle="collapse" data-target="#search" ng-click="myFunction()">Search Contracts</button>
-						<button type="submit" style="margin-bottom: 10px; margin-top: 10px" class="btn btn-default" value="contacts" name="refreshButton" ng-click="refreshSearch()"><span class="glyphicon glyphicon-refresh
+						<button type="submit" style="margin-bottom: 10px; margin-top: 10px" class="btn btn-default" value="contacts" name="refreshButton" ng-click="myFunction()"><span class="glyphicon glyphicon-refresh
 						" aria-hidden="true"></span></button>
 						<!--span><a href="ResultsAsTable.html">Advanced Search</a></span-->
 		
@@ -234,7 +234,7 @@
 						<form name="addForm" > <!-- ng-app="myApp" ng-controller="formCtrl" ~~removed bc unused-->
 							<div class="row">
 								<div class="col-lg-3">Contract Number:</div>
-								<div class="col-lg-3"><input type="text" data-ng-minlength="1" data-ng-maxlength="255" required data-ng-model="contr_id" 
+								<div class="col-lg-3"><input id="contr_id" type="text" data-ng-minlength="1" data-ng-maxlength="255" required data-ng-model="contr_id" 
 														title="Contract ID: Required; String" tabindex=1></script></div>
 								<div class="col-lg-3">Customer Organization ID:</div>
 								<div class="col-lg-3"><select class = "dropdown" data-ng-model="contr_org_id" tabindex=9>
@@ -262,10 +262,10 @@
 							
 							<div class="row">
 								<div class="col-lg-3">Prime Contract Number:</div>
-								<div class="col-lg-3"><input type="text" pattern="\d+" ng-maxlength="9" data-ng-model="prime_contr_id"
+								<div class="col-lg-3"><input id="prime_contr_id" type="text" pattern="\d+" ng-maxlength="9" data-ng-model="prime_contr_id"
 														title="Prime Contractor ID: Integer" tabindex=3></script></div>
 								<div class="col-lg-3">Contract Program:</div>
-								<div class="col-lg-3"><input type="text" ng-maxlength="255" data-ng-model="contr_prog_cd"
+								<div class="col-lg-3"><input id="contr_prog_cd" type="text" ng-maxlength="255" data-ng-model="contr_prog_cd"
 														title="Contract Program: String" tabindex=11></script></div>
 							</div><!--row-->
 							
@@ -286,19 +286,19 @@
 							
 							<div class="row">
 								<div class="col-lg-3">Date Contract Opened:</div>
-								<div class="col-lg-3"><input type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" data-ng-model="contr_open_date"
+								<div class="col-lg-3"><input id="contr_open_date" type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" data-ng-model="contr_open_date"
 											title="Contract Opened Date: yyyy-dd-mm hh:mm:ss" tabindex=5></script></div>
 								<div class="col-lg-3">Date Contract Closed:</div>
-								<div class="col-lg-3"><input type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" data-ng-model="contr_close_date" 
+								<div class="col-lg-3"><input id="contr_close_date" type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" data-ng-model="contr_close_date" 
 											title="Contract Close Date: yyyy-dd-mm hh:mm:ss" tabindex=13></div>
 							</div><!--row-->
 							
 							<div class="row">
 								<div class="col-lg-3">Exemptions and Restrictions:</div>
-								<div class="col-lg-3"><input type="text" data-ng-model="x.exemptions"
+								<div class="col-lg-3"><input id="exemptions" type="text" data-ng-model="x.exemptions"
 														title="Exemptions and Exceptions: Text, no length limit" tabindex=6></script></div>
 								<div class="col-lg-3">Current DD254 Date:</div>
-								<div class="col-lg-3"><input type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" data-ng-model="dd254_date"
+								<div class="col-lg-3"><input id="dd254_date" type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" data-ng-model="dd254_date"
 														title="DD254 date: yyyy-dd-mm hh:mm:ss" tabindex=14></script></div>
 							</div><!--row-->
 							
@@ -334,8 +334,10 @@
 									</select></div>
 							</div><!--row-->
 							
-							<div class="container-fluid" style="padding:10px;"><button type="submit" class="btn btn-sm btn-default btn-block" data-ng-disabled="!addForm.$valid" value="contacts" ng-click="addFunction()"><span class="glyphicon glyphicon-ok"></span> Add New Contract</button></div>
-							
+							<div class="container-fluid" style="padding:10px;">
+								<button type="submit" class="btn btn-sm btn-default btn-block" value="contacts" ng-click="addFunction()" tabindex=20>
+									<span ng-show="addForm.$valid" class="glyphicon glyphicon-ok"></span><span ng-show="addForm.$invalid" class="glyphicon glyphicon-remove"/></span> Add New Contract</button>
+							</div>
 						</form>
 						<!---End add new contact-->
 					</div>

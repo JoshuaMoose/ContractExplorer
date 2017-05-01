@@ -60,7 +60,7 @@
 						
 						<input type="text" name="SearchBy" style="margin: 20px; margin-bottom: -25px;" ng-model="f.$" placeholder="Search All Fields">
 						<button type="submit" style="margin-bottom: 10px; margin-top: 10px; margin-left: 1px;" class="btn btn-default" value="contacts" name="SearchButton" data-toggle="collapse" data-target="#search" ng-click="myFunction()">Search Organizations</button>
-						<button type="submit" style="margin-bottom: 10px; margin-top: 10px" class="btn btn-default" value="contacts" name="refreshButton" ng-click="refreshSearch()"><span class="glyphicon glyphicon-refresh
+						<button type="submit" style="margin-bottom: 10px; margin-top: 10px" class="btn btn-default" value="contacts" name="refreshButton" ng-click="myFunction()"><span class="glyphicon glyphicon-refresh
 						" aria-hidden="true"></span></button>
 		<!-- Table Start**************************** -->				
 				<div id="search" class="collapse" >
@@ -68,7 +68,7 @@
 					<!--button type="submit" value="clearResults">Clear Results</button-->
 					
 					<div id="scrollView" style="max-height:100%; overflow:auto; margin: 10px; margin-right: 155px;">
-						<form name="updateForm">
+						<form name="updateForm" novalidate>
 							<table style="padding: 3px;">
 								
 								<tr>
@@ -179,7 +179,7 @@
 					<div class="panel-body">
 						<!--Add new contact-->
 						<div> <!-- ng-app="myApp" ng-controller="formCtrl" ~~removed bc unused-->
-							<form name="addForm"
+							<form name="addForm" novalidate>
 								<div class="row">
 									<div class="col-lg-3">Organization ID:</div>
 									<div class="col-lg-3"><input type="text"  pattern="^\d+$" required data-ng-model="x.org_id" tabindex=1/></div>
@@ -313,8 +313,14 @@
 									<div class="col-lg-3"><input id="cage_cd" type="text" name="cagecd" ng-maxlength="255" data-ng-model="x.cage_cd" tabindex=11/></div>
 								
 								</div><!--row-->
-                                <div class="container-fluid" style="padding:10px;"><button type="submit" class="btn btn-sm btn-default btn-block" data-ng-disabled="!addForm.$valid" value="contacts" ng-click="addFunction()" tabindex=12><span class="glyphicon glyphicon-ok"></span> Add New Organization</button></div>
-							
+								
+							</form>
+								
+                                <div class="container-fluid" style="padding:10px;">
+									<button type="submit" class="btn btn-sm btn-default btn-block" value="contacts" ng-click="addFunction()" tabindex=20>
+										<span ng-show="addForm.$valid" class="glyphicon glyphicon-ok"></span><span ng-show="addForm.$invalid" class="glyphicon glyphicon-remove"/></span> Add New Organization</button>
+								</div>
+								
 								<!-- Modal -->
 								<div id="addErrorsModal" class="modal fade" role="dialog">
 								  	<div class="modal-dialog">
@@ -387,12 +393,6 @@
 							
 							  	</div>
 							</div>
-							
-							
-							
-							
-							
-							</form>
 						</div>
 						<!---End add new contact-->
 					</div>
