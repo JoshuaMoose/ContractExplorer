@@ -110,7 +110,7 @@ app.controller('addCtrl', function($scope, $http) {
 		} else {
 			//CHANGE THESE: ORDER ORDER IS (NAME OF COLUMN FROM DATABASE): $SCOPE.(NAME OF COLUMN FROM DATABASE)
 			var addData = {
-				'table': 'contacts', 
+				'table': 'directives', 
 			};
 			
 			addData.values = {

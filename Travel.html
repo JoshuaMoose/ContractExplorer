@@ -82,7 +82,6 @@
 									<td><input ng-model="f.travel_end_date" placeholder="Filter by Travel End Date"></td>
 									<td><input ng-model="f.tech_restrict_cd" placeholder="Filter by Max Tech Restriction Level"></td>
 									<td><input data-ng-model="f.recv_travel_brief" placeholder="Filter by Travel Brief Given"></td>
-									<td class="editColumn"></td>
 								</tr>
 												
 								<tr>
@@ -133,7 +132,7 @@
 										<input class="edit_recv_travel_brief" type="text" data-ng-show="editMode" data-ng-model="x.recv_travel_brief" data-ng-required 
 											ng-maxlength="5"/>
 									</td>
-									<td>
+									<td class="editColumn">
 										<button type="submit" data-ng-hide="editMode" data-ng-click="editMode = true; editResults(x)" class="btn btn-default">Edit</button>
 										<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; saveField(x)" class="btn btn-default">Save</button>
 										<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; cancel()" class="btn btn-default">Cancel</button>

@@ -83,7 +83,6 @@
 									<td><input ng-model="f.dev_owner_id" placeholder="Filter by Device Owner"></td>
 									<td><input ng-model="f.dev_user_id" placeholder="Filter by Device User ID"></td>
 									<td><input ng-model="f.dev_sn" placeholder="Filter by Device Serial Number"></td>
-									<td class="editColumn"></td>
 								</tr>
 												
 								<tr>
@@ -122,7 +121,7 @@
 										<span data-ng-hide="editMode">{{x.dev_sn}}</span>
 										<input class="edit_dev_sn" id="edit_dev_sn" type="text" pattern="^\d+$" ng-maxlength="9" data-ng-show="editMode" data-ng-model="x.dev_sn"/>
 									</td>
-									<td >
+									<td class="editColumn">
 											<button type="submit" data-ng-hide="editMode" data-ng-click="editMode = true; editResults(x)" class="btn btn-default">Edit</button>
 											<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; saveField(x)" class="btn btn-default" ng-disabled="!updateForm.$valid" >Save</button>
 											<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; cancel()" class="btn btn-default">Cancel</button>
