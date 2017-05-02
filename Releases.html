@@ -189,10 +189,10 @@
 								</div><!--row-->
 
 								<div class="row">
-									<div class="col-lg-3">Recieved by ID:</div>
+									<div class="col-lg-3">Received by ID:</div>
 									<div class="col-lg-3"><input id="recv_by" type="text" name="recvby" ng-model="recv_by" tabindex=3
 															pattern="^\d+$" ng-maxlength="9" required></div>
-									<div class="col-lg-3">Recieved Date:</div>
+									<div class="col-lg-3">Received Date:</div>
 									<div class="col-lg-3"><input id="recv_date" type="text" name="recvdate" ng-model="recv_date" tabindex=7
 															pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$"></div>
 								</div><!--row-->
@@ -223,25 +223,20 @@
 									      	
 											<div class="modal-body">
 												
-												<span ng-show="addForm.relid.$error.required">Device ID is required.<br/></span>
-										        <span ng-show="addForm.relid.$error.pattern">Device ID should be an integer.<br/></span>
-										        <span ng-show="addForm.relid.$error.maxlength">Device ID should be 9 digits or fewer.<br/></span>
-												<span ng-show="addForm.dirid.$error.required">Device type is required.<br/></span>
-										        <span ng-show="addForm.dirid.$error.maxlength">Device type should be less than 255 characters.<br/></span>
-												<span ng-show="addForm.relby.$error.required">Device ID is required.<br/></span>
-												<span ng-show="addForm.relby.$error.required">Device type is required.<br/></span>
-										        <span ng-show="addForm.relby.$error.maxlength">Device type should be less than 255 characters.<br/></span>
-												<span ng-show="addForm.reldate.$error.required">Device ID is required.<br/></span>
-												<span ng-show="addForm.reldate.$error.pattern">Device type is required.<br/></span>
-										        <span ng-show="addForm.reldate.$error.maxlength">Timestamp in the format of yyyy-dd-mm hh:mm:ss.<br/></span>
-												<span ng-show="addForm.recvby.$error.required">Device ID is required.<br/></span>
-												<span ng-show="addForm.recvby.$error.pattern">Device ID should be an integer.<br/></span>
-										        <span ng-show="addForm.recvby.$error.maxlength">Device ID should be 9 digits or fewer.<br/></span>
-												<span ng-show="addForm.recvdate.$error.required">Device ID is required.<br/></span>
-												<span ng-show="addForm.recvdate.$error.pattern">Device type is required.<br/></span>
-										        <span ng-show="addForm.recvdate.$error.maxlength">Timestamp in the format of yyyy-dd-mm hh:mm:ss.<br/></span>
-												<span ng-show="addForm.relcntrycd.$error.required">Device type is required.<br/></span>
-										        <span ng-show="addForm.relcntrycd.$error.maxlength">Device type should be less than 255 characters.<br/></span>
+												<span ng-show="addForm.travelid.$error.required">Release ID is required.<br/></span>
+												<span ng-show="addForm.travelid.$error.pattern">Release ID should be an integer.<br/></span>
+										        <span ng-show="addForm.travelid.$error.maxlength">Release ID should be 9 digits or fewer.<br/></span>
+												<span ng-show="addForm.contrid.$error.maxlength">Directive ID should be less than 255 characters.<br/></span>
+												<span ng-show="addForm.contrid.$error.required">Released by ID is required.<br/></span>
+										        <span ng-show="addForm.contrid.$error.maxlength">Released by ID should be less than 255 characters.<br/></span>
+												<span ng-show="addForm.travelbegindate.$error.required">Release Date is required.<br/></span>
+												<span ng-show="addForm.travelbegindate.$error.pattern">Release Date should be in the format of yyyy-dd-mm hh:mm:ss.<br/></span>
+												<span ng-show="addForm.travelid.$error.required">Received by ID is required.<br/></span>
+												<span ng-show="addForm.travelid.$error.pattern">Received by ID should be an integer.<br/></span>
+										        <span ng-show="addForm.travelid.$error.maxlength">Received by ID should be 9 digits or fewer.<br/></span>
+												<span ng-show="addForm.travelbegindate.$error.required">Received Date is required.<br/></span>
+												<span ng-show="addForm.travelbegindate.$error.pattern">Received Date should be in the format of yyyy-dd-mm hh:mm:ss.<br/></span>
+												<span ng-show="addForm.contrid.$error.maxlength">Release Country should be less than 255 characters.<br/></span>
 												
 										    </div>
 										   		

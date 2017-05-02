@@ -309,7 +309,7 @@
 										</select></div>
 								</div>
 								<div class="row">
-									<div class="col-lg-3">Cage code:</div>
+									<div class="col-lg-3">Cage Code:</div>
 									<div class="col-lg-3"><input id="cage_cd" type="text" name="cagecd" ng-maxlength="255" data-ng-model="cage_cd" tabindex=11/></div>
 								
 								</div><!--row-->
@@ -334,32 +334,21 @@
 									      	
 											<div class="modal-body">
 												
-												<span ng-show="addForm.orgid.$error.required">Device ID is required.<br/></span>
-										        <span ng-show="addForm.orgid.$error.pattern">Device ID should be an integer.<br/></span>
-										        <span ng-show="addForm.orgid.$error.maxlength">Device ID should be 9 digits or fewer.<br/></span>
-												<span ng-show="addForm.orgtypecd.$error.required">Device ID is required.<br/></span>
-												<span ng-show="addForm.orgtypecd.$error.required">Device type is required.<br/></span>
-										        <span ng-show="addForm.orgtypecd.$error.maxlength">Device type should be less than 255 characters.<br/></span>
-												<span ng-show="addForm.orgname.$error.required">Device ID is required.<br/></span>
-												<span ng-show="addForm.orgname.$error.required">Device type is required.<br/></span>
-										        <span ng-show="addForm.orgname.$error.maxlength">Device type should be less than 255 characters.<br/></span>
-												<span ng-show="addForm.orgdiv.$error.required">Device type is required.<br/></span>
-										        <span ng-show="addForm.orgdiv.$error.maxlength">Device type should be less than 255 characters.<br/></span>
-												<span ng-show="addForm.orgaddr1.$error.required">Device type is required.<br/></span>
-										        <span ng-show="addForm.orgaddr1.$error.maxlength">Device type should be less than 255 characters.<br/></span>
-												<span ng-show="addForm.orgaddr2.$error.required">Device type is required.<br/></span>
-										        <span ng-show="addForm.orgaddr2.$error.maxlength">Device type should be less than 255 characters.<br/></span>
-												<span ng-show="addForm.orgcity.$error.required">Device type is required.<br/></span>
-										        <span ng-show="addForm.orgcity.$error.maxlength">Device type should be less than 255 characters.<br/></span>
-												<span ng-show="addForm.orgstateprovcd.$error.required">Device type is required.<br/></span>
-										        <span ng-show="addForm.orgstateprovcd.$error.maxlength">Device type should be less than 255 characters.<br/></span>
-												<span ng-show="addForm.orgpostcd.$error.required">Device type is required.<br/></span>
-										        <span ng-show="addForm.orgpostcd.$error.maxlength">Device type should be less than 255 characters.<br/></span>
-												<span ng-show="addForm.orgcntrycd.$error.required">Device type is required.<br/></span>
-										        <span ng-show="addForm.orgcntrycd.$error.maxlength">Device type should be less than 255 characters.<br/></span>
-												<span ng-show="addForm.cagecd.$error.required">Device type is required.<br/></span>
-										        <span ng-show="addForm.cagecd.$error.maxlength">Device type should be less than 255 characters.<br/></span>
-												
+												<span ng-show="addForm.travelid.$error.required">Organization ID is required.<br/></span>
+												<span ng-show="addForm.travelid.$error.pattern">Organization ID should be an integer.<br/></span>
+										        <span ng-show="addForm.travelid.$error.maxlength">Organization ID should be 9 digits or fewer.<br/></span>
+												<span ng-show="addForm.contrid.$error.required">Organization Type is required.<br/></span>
+										        <span ng-show="addForm.contrid.$error.maxlength">Organization Type should be less than 255 characters.<br/></span>
+												<span ng-show="addForm.contrid.$error.required">Organization Name is required.<br/></span>
+										        <span ng-show="addForm.contrid.$error.maxlength">Organization Name should be less than 255 characters.<br/></span>
+										        <span ng-show="addForm.contrid.$error.maxlength">Division or Business Unit should be less than 255 characters.<br/></span>
+										        <span ng-show="addForm.contrid.$error.maxlength">Address Line 1 should be less than 255 characters.<br/></span>
+										        <span ng-show="addForm.contrid.$error.maxlength">Address Line 2 should be less than 255 characters.<br/></span>
+										        <span ng-show="addForm.contrid.$error.maxlength">City should be less than 255 characters.<br/></span>
+										        <span ng-show="addForm.contrid.$error.maxlength">State or Province should be less than 255 characters.<br/></span>
+										        <span ng-show="addForm.contrid.$error.maxlength">Postal Code should be less than 255 characters.<br/></span>
+										        <span ng-show="addForm.contrid.$error.maxlength">Country should be less than 255 characters.<br/></span>
+										        <span ng-show="addForm.contrid.$error.maxlength">Cage Code should be less than 255 characters.<br/></span>
 												
 										    </div>
 										   		

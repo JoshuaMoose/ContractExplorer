@@ -217,23 +217,18 @@
 									      	
 											<div class="modal-body">
 												
-												<span ng-show="addForm.travelid.$error.required">Device ID is required.<br/></span>
-												<span ng-show="addForm.travelid.$error.pattern">Device ID should be an integer.<br/></span>
-										        <span ng-show="addForm.travelid.$error.maxlength">Device ID should be 9 digits or fewer.<br/></span>
-												<span ng-show="addForm.contrid.$error.required">Device type is required.<br/></span>
-										        <span ng-show="addForm.contrid.$error.maxlength">Device type should be less than 255 characters.<br/></span>
-												<span ng-show="addForm.destination.$error.required">Device ID is required.<br/></span>
-												<span ng-show="addForm.destination.$error.required">Device type is required.<br/></span>
-										        <span ng-show="addForm.destination.$error.maxlength">Device type should be less than 255 characters.<br/></span>
-												<span ng-show="addForm.travelbegindate.$error.required">Device ID is required.<br/></span>
-												<span ng-show="addForm.travelbegindate.$error.pattern">Device type is required.<br/></span>
-										        <span ng-show="addForm.travelbegindate.$error.maxlength">Timestamp in the format of yyyy-dd-mm hh:mm:ss.<br/></span>
-												<span ng-show="addForm.travelenddate.$error.pattern">Device type is required.<br/></span>
-										        <span ng-show="addForm.travelenddate.$error.maxlength">Timestamp in the format of yyyy-dd-mm hh:mm:ss.<br/></span>
-												<span ng-show="addForm.techrestrictcd.$error.required">Device type is required.<br/></span>
-										        <span ng-show="addForm.techrestrictcd.$error.maxlength">Device type should be less than 255 characters.<br/></span>
-												<span ng-show="addForm.recvtravelbrief.$error.required">Device type is required.<br/></span>
-										        <span ng-show="addForm.recvtravelbrief.$error.maxlength">Device type should be less than 255 characters.<br/></span>
+												<span ng-show="addForm.travelid.$error.required">Travel ID is required.<br/></span>
+												<span ng-show="addForm.travelid.$error.pattern">Travel ID should be an integer.<br/></span>
+										        <span ng-show="addForm.travelid.$error.maxlength">Travel ID should be 9 digits or fewer.<br/></span>
+										        <span ng-show="addForm.contrid.$error.maxlength">Contract ID should be less than 255 characters.<br/></span>
+												<span ng-show="addForm.destination.$error.required">Destination is required.<br/></span>
+										        <span ng-show="addForm.destination.$error.maxlength">Destination should be less than 255 characters.<br/></span>
+												<span ng-show="addForm.travelbegindate.$error.required">Travel Begin Date is required.<br/></span>
+												<span ng-show="addForm.travelbegindate.$error.pattern">Travel Begin Date should be in the format of yyyy-dd-mm hh:mm:ss.<br/></span>
+												<span ng-show="addForm.travelbegindate.$error.required">Travel End Date is required.<br/></span>
+												<span ng-show="addForm.travelbegindate.$error.pattern">Travel End Date should be in the format of yyyy-dd-mm hh:mm:ss.<br/></span>
+										        <span ng-show="addForm.contrid.$error.maxlength">Technology Restriction Level should be less than 255 characters.<br/></span>
+										        <span ng-show="addForm.contrid.$error.maxlength">Received Travel Brief should be less than 255 characters.<br/></span>
 												
 										    </div>
 										   		
