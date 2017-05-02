@@ -1,6 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
-
+import java.io.PrintWriter;
 import java.util.Map;
 import java.util.Set;
 import java.util.List;
@@ -120,105 +120,139 @@ public class DatabaseUpdateHandler extends HttpServlet {
 		
 			if (ds != null) //datasourse exists
 			{
-				Connection conn = ds.getConnection(); //gets connection from datasource
-				if(conn != null) 
-				{		
-					//Use a prepared statement: avoids injection issues and escape characters
-					PreparedStatement stmt = conn.prepareStatement( updateTable + updateSet + updateWhere ); 
-					
-					//Loop through prepared statement and replace values where appropriate
-					for (int i = 0; i < addNamesUpdated.size(); i++ ) {
-						
-						//Placeholder assignment
-						columnName =  addNamesUpdated.get(i);
-						value = updated.get(columnName).getAsString();
-						dataType = types.get(columnName).getAsString();
-						
-						//Handle different data types
-						switch( dataType ) {
-							case "String" :
-								if ( value == null || value.equals("")) {
-									stmt.setNull(prepIndex, java.sql.Types.CHAR);
-								} else {
-									stmt.setString(prepIndex, value);
-								}
-								break;
+				
+				try ( Connection conn = ds.getConnection() ) { // try-with-resource : auto closes database connection normally and with errors
 								
-							case "Boolean" :
-								if( value == null || value.equals("")) {
-									stmt.setNull(prepIndex, java.sql.Types.BOOLEAN);
-								} else if ( ( value ).equals("t") ) {
-									stmt.setBoolean(prepIndex, true);
-								} else {
-									stmt.setBoolean(prepIndex, false);
-								}								
-								break;
-								
-							case "Integer" :
-								if ( value == null || value.equals("")) {
-									stmt.setNull(prepIndex, java.sql.Types.INTEGER);
-								} else {
-									stmt.setInt(prepIndex, Integer.parseInt(value));
-								}
-								break;
+					if(conn != null) 
+					{		
+						//Use a prepared statement: avoids injection issues and escape characters
+						PreparedStatement stmt = conn.prepareStatement( updateTable + updateSet + updateWhere ); 
+						
+						//Loop through prepared statement and replace values where appropriate
+						for (int i = 0; i < addNamesUpdated.size(); i++ ) {
 							
-							case "TimeStamp":
-								if ( value == null || value.equals("")) {
-									stmt.setNull(prepIndex, java.sql.Types.TIMESTAMP);
-								} else {
+							//Placeholder assignment
+							columnName =  addNamesUpdated.get(i);
+							value = updated.get(columnName).getAsString();
+							dataType = types.get(columnName).getAsString();
+							
+							//Handle different data types
+							switch( dataType ) {
+								case "String" :
+									if ( value == null || value.equals("")) {
+										stmt.setNull(prepIndex, java.sql.Types.CHAR);
+									} else {
+										stmt.setString(prepIndex, value);
+									}
+									break;
+									
+								case "Boolean" :
+									if( value == null || value.equals("")) {
+										stmt.setNull(prepIndex, java.sql.Types.BOOLEAN);
+									} else if ( ( value ).equals("t") ) {
+										stmt.setBoolean(prepIndex, true);
+									} else {
+										stmt.setBoolean(prepIndex, false);
+									}								
+									break;
+									
+								case "Integer" :
+									if ( value == null || value.equals("")) {
+										stmt.setNull(prepIndex, java.sql.Types.INTEGER);
+									} else {
+										stmt.setInt(prepIndex, Integer.parseInt(value));
+									}
+									break;
+								
+								case "TimeStamp":
+									if ( value == null || value.equals("")) {
+										stmt.setNull(prepIndex, java.sql.Types.TIMESTAMP);
+									} else {
+										Timestamp timeStamp = Timestamp.valueOf(value);
+										stmt.setTimestamp(prepIndex, timeStamp);
+									}
+									break;
+							}
+							
+							prepIndex++;
+						}
+						
+						//Loop through prepared statement and replace values where appropriate
+						for (int i = 0; i < addNamesOriginal.size(); i++ ) {
+							
+							//Placeholder assignment
+							columnName =  addNamesOriginal.get(i);
+							value = original.get(columnName).getAsString();
+							dataType = types.get(columnName).getAsString();
+							
+							//Handle different data types
+							switch( dataType ) {
+								case "String" :
+									stmt.setString(prepIndex, value);
+									break;
+									
+								case "Boolean" :
+									if ( ( value ).equals("t") ) {
+										stmt.setBoolean(prepIndex, true);
+									} else {
+										stmt.setBoolean(prepIndex, false);
+									}								
+									break;
+									
+								case "Integer" :
+									stmt.setInt(prepIndex, Integer.parseInt(value));
+									break;
+									
+								case "TimeStamp":
 									Timestamp timeStamp = Timestamp.valueOf(value);
 									stmt.setTimestamp(prepIndex, timeStamp);
-								}
-								break;
+									break;
+							}
+							
+							prepIndex++;
 						}
 						
-						prepIndex++;
+						stmt.executeUpdate();
+													
+						JsonObject errorObject = new JsonObject();
+						
+						errorObject.addProperty("Success", true);
+						
+						PrintWriter out = response.getWriter();
+						String jsonString = new Gson().toJson(errorObject);
+						
+						out.println(jsonString);
+						
 					}
+				} catch (Exception e1) {
 					
-					//Loop through prepared statement and replace values where appropriate
-					for (int i = 0; i < addNamesOriginal.size(); i++ ) {
-						
-						//Placeholder assignment
-						columnName =  addNamesOriginal.get(i);
-						value = original.get(columnName).getAsString();
-						dataType = types.get(columnName).getAsString();
-						
-						//Handle different data types
-						switch( dataType ) {
-							case "String" :
-								stmt.setString(prepIndex, value);
-								break;
-								
-							case "Boolean" :
-								if ( ( value ).equals("t") ) {
-									stmt.setBoolean(prepIndex, true);
-								} else {
-									stmt.setBoolean(prepIndex, false);
-								}								
-								break;
-								
-							case "Integer" :
-								stmt.setInt(prepIndex, Integer.parseInt(value));
-								break;
-								
-							case "TimeStamp":
-								Timestamp timeStamp = Timestamp.valueOf(value);
-								stmt.setTimestamp(prepIndex, timeStamp);
-								break;
-						}
-						
-						prepIndex++;
-					}
+					String issue = e1.getMessage();
 					
-					stmt.executeUpdate();
-												
-					conn.close();
+					JsonObject errorObject = new JsonObject();
+					
+					errorObject.addProperty("Success", false);
+					errorObject.addProperty("Message", issue);
+					
+					PrintWriter out = response.getWriter();
+					String jsonString = new Gson().toJson(errorObject);
+					
+					out.println(jsonString);
 				}
 			}
 		}
         catch(Exception e) //error handling
         {
-            e.printStackTrace(); // Default -- to be changed later
+        	String issue = e.getMessage();
+			
+			JsonObject errorObject = new JsonObject();
+			
+			errorObject.addProperty("Success", false);
+			errorObject.addProperty("Message", issue);
+			
+			PrintWriter out = response.getWriter();
+			String jsonString = new Gson().toJson(errorObject);
+			
+			out.println(jsonString);
         }
 	}
 

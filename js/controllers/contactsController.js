@@ -1,5 +1,21 @@
 var app = angular.module('myApp', []);
 
+app.directive('deleteIfEmpty', function () {
+    return {
+        restrict: 'A',
+        scope: {
+            ngModel: '='
+        },
+        link: function (scope, element, attrs) {
+            scope.$watch("ngModel", function (newValue, oldValue) {
+                if (typeof scope.ngModel !== 'undefined' && scope.ngModel.length === 0) {
+                    delete scope.ngModel;
+                }
+            });
+        }
+    };
+});
+
 $(document).ready(function(){
 	$('#cont_id').tooltip({'trigger':'focus', 'title': 'Required Field. should be an integer with 9 digits or less.', 'placement': 'right'});
 	$('#cont_org_id').tooltip({'trigger':'focus', 'title': 'Required Field. should be an integer with 9 digits or less.', 'placement': 'right'});
@@ -147,6 +163,23 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 				contentType: 'application/json',
 				data : editData,
 			})
+			.then(function (response) {
+				if( response.data.Success ) {
+					//$scope.myResults = response.data;
+					console.log('Item Edited.');				
+					console.log(response.data); //////////////////////////***********************
+					$scope.editing = false;
+				} else {
+					console.log('Item Failure.');
+					console.log(response.data.Message);
+					$scope.databaseIssue = response.data.Message;
+					$('#updateDatabaseErrorModal').modal('show');
+					$scope.myResults[$scope.editing] = $scope.newField;					
+				}
+				
+			}, function (error) {
+				console.log(error);
+			});	
 			
 		}       
 	};
@@ -203,30 +236,39 @@ app.controller('addCtrl', function($scope, $http) {
 			.then(function (response) {
 				//$scope.myResults = response.data;
 				console.log('Item Added.');				
-				$('#addSuccessModal').modal('show');
+				console.log(response.data); //////////////////////////***********************
 				
-				$scope.cont_id = null;
-				$scope.cont_org_id = null;
-				$scope.cont_role_cd = null;
-				$scope.cont_first_name = null;
-				$scope.cont_middle_name = null;
-				$scope.cont_last_name = null;
-				$scope.cont_name_title = null;
-				$scope.cont_name_suffix = null;
-				$scope.cont_addr1 = null;
-				$scope.cont_addr2 = null;
-				$scope.cont_city = null;
-				$scope.cont_state_prov_cd = null;
-				$scope.cont_post_cd = null;
-				$scope.cont_cntry_cd = null;
-				$scope.cont_office_phone = null;
-				$scope.cont_mobile_phone = null;
-				$scope.cont_home_phone = null;
-				$scope.cont_email = null;
-				$scope.cont_alt_email = null;
+				if( response.data.Success ) {
+					$('#addSuccessModal').modal('show');
+					
+					$scope.cont_id = null;
+					$scope.cont_org_id = null;
+					$scope.cont_role_cd = null;
+					$scope.cont_first_name = null;
+					$scope.cont_middle_name = null;
+					$scope.cont_last_name = null;
+					$scope.cont_name_title = null;
+					$scope.cont_name_suffix = null;
+					$scope.cont_addr1 = null;
+					$scope.cont_addr2 = null;
+					$scope.cont_city = null;
+					$scope.cont_state_prov_cd = null;
+					$scope.cont_post_cd = null;
+					$scope.cont_cntry_cd = null;
+					$scope.cont_office_phone = null;
+					$scope.cont_mobile_phone = null;
+					$scope.cont_home_phone = null;
+					$scope.cont_email = null;
+					$scope.cont_alt_email = null;
+				} else {
+					
+					console.log(response.data.Message);
+					$scope.databaseIssue = response.data.Message;
+					$('#addDatabaseErrorModal').modal('show');
+				}
 				
-				}, function (error) {
-					console.log(error);
+			}, function (error) {
+				console.log(error);
 			});	
 		}
 	}	

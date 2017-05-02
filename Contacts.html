@@ -82,25 +82,25 @@
 							<table style="padding: 3px;">
 								
 								<tr>
-									<td><input data-ng-model="f.cont_id" placeholder="Filter by Contact ID"></td>
-									<td><input data-ng-model="f.cont_org_id" placeholder="Filter by Organization ID"></td>
-									<td><input data-ng-model="f.cont_role_cd" placeholder="Filter by Role CD"></td>
-									<td><input data-ng-model="f.cont_first_name" placeholder="Filter by First Name"></td>
-									<td><input data-ng-model="f.cont_middle_name" placeholder="Filter by Middle Name"></td>
-									<td><input data-ng-model="f.cont_last_name" placeholder="Filter by Last name"></td>
-									<td><input data-ng-model="f.cont_name_title" placeholder="Filter by Name Title"></td>
-									<td><input data-ng-model="f.cont_name_suffix" placeholder="Filter by Name Suffix"></td>
-									<td><input data-ng-model="f.cont_addr1" placeholder="Filter by Address 1"></td>
-									<td><input data-ng-model="f.cont_addr2" placeholder="Filter by Address 2"></td>
-									<td><input data-ng-model="f.cont_city" placeholder="Filter by City"></td>
-									<td><input data-ng-model="f.cont_state_prov_cd" placeholder="Filter by State/Province"></td>
-									<td><input data-ng-model="f.cont_post_cd" placeholder="Filter by Postal Code"></td>
-									<td><input data-ng-model="f.cont_cntry_Cd" placeholder="Filter by Country"></td>
-									<td><input data-ng-model="f.cont_office_phone" placeholder="Filter by Office Number"></td>
-									<td><input data-ng-model="f.cont_mobile_phone" placeholder="Filter by Mobile Number"></td>
-									<td><input data-ng-model="f.cont_home_phone" placeholder="Filter by Home Number"></td>
-									<td><input data-ng-model="f.cont_email" placeholder="Filter by Email"></td>
-									<td><input data-ng-model="f.cont_alt_email" placeholder="Filter by Alt Email"></td>
+									<td><input data-ng-model="f.cont_id" placeholder="Filter by Contact ID" delete-if-empty></td>
+									<td><input data-ng-model="f.cont_org_id" placeholder="Filter by Organization ID" delete-if-empty></td>
+									<td><input data-ng-model="f.cont_role_cd" placeholder="Filter by Role CD" delete-if-empty></td>
+									<td><input data-ng-model="f.cont_first_name" placeholder="Filter by First Name" delete-if-empty></td>
+									<td><input data-ng-model="f.cont_middle_name" placeholder="Filter by Middle Name" delete-if-empty></td>
+									<td><input data-ng-model="f.cont_last_name" placeholder="Filter by Last name" delete-if-empty></td>
+									<td><input data-ng-model="f.cont_name_title" placeholder="Filter by Name Title" delete-if-empty></td>
+									<td><input data-ng-model="f.cont_name_suffix" placeholder="Filter by Name Suffix" delete-if-empty></td>
+									<td><input data-ng-model="f.cont_addr1" placeholder="Filter by Address 1" delete-if-empty></td>
+									<td><input data-ng-model="f.cont_addr2" placeholder="Filter by Address 2" delete-if-empty></td>
+									<td><input data-ng-model="f.cont_city" placeholder="Filter by City" delete-if-empty></td>
+									<td><input data-ng-model="f.cont_state_prov_cd" placeholder="Filter by State/Province" delete-if-empty></td>
+									<td><input data-ng-model="f.cont_post_cd" placeholder="Filter by Postal Code" delete-if-empty></td>
+									<td><input data-ng-model="f.cont_cntry_Cd" placeholder="Filter by Country" delete-if-empty></td>
+									<td><input data-ng-model="f.cont_office_phone" placeholder="Filter by Office Number" delete-if-empty></td>
+									<td><input data-ng-model="f.cont_mobile_phone" placeholder="Filter by Mobile Number" delete-if-empty></td>
+									<td><input data-ng-model="f.cont_home_phone" placeholder="Filter by Home Number" delete-if-empty></td>
+									<td><input data-ng-model="f.cont_email" placeholder="Filter by Email" delete-if-empty></td>
+									<td><input data-ng-model="f.cont_alt_email" placeholder="Filter by Alt Email" delete-if-empty></td>
 									<td class="editColumn"></td>
 								</tr>
 												
@@ -281,6 +281,30 @@
 									</td>
 								</tr>	
 							</table>
+							
+							<!-- Modal -->
+							<div id="updateDatabaseErrorModal" class="modal fade" role="dialog">
+							  	<div class="modal-dialog">
+								
+								    <!-- Modal content-->
+								    <div class="modal-content">
+								   		<div class="modal-header">
+								        	<button type="button" class="close" data-dismiss="modal">&times;</button>
+								        	<h4 class="modal-title">Updating New Record Database Issue</h4>
+								      	</div>
+								      	
+										<div class="modal-body">
+											{{databaseIssue}}
+										</div>
+									   		
+									   	<div class="modal-footer">
+									        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									    </div>
+								    </div>
+							
+							  	</div>
+							</div>
+							
 						</form>
 					</div>
 	
@@ -458,53 +482,53 @@
 							</div>
 							
 							<!-- Modal -->
-								<div id="addErrorsModal" class="modal fade" role="dialog">
-								  	<div class="modal-dialog">
-									
-									    <!-- Modal content-->
-									    <div class="modal-content">
-									   		<div class="modal-header">
-									        	<button type="button" class="close" data-dismiss="modal">&times;</button>
-									        	<h4 class="modal-title">Adding New Record Validation Errors</h4>
-									      	</div>
-									      	
-											<div class="modal-body">
-												
-												<span ng-show="addForm.travelid.$error.required">Contact ID is required.<br/></span>
-												<span ng-show="addForm.travelid.$error.pattern">Contact ID should be an integer.<br/></span>
-										        <span ng-show="addForm.travelid.$error.maxlength">Contact ID should be 9 digits or fewer.<br/></span>
-												<span ng-show="addForm.travelid.$error.required">Organization ID is required.<br/></span>
-												<span ng-show="addForm.travelid.$error.pattern">Organization ID should be an integer.<br/></span>
-										        <span ng-show="addForm.travelid.$error.maxlength">Organization ID should be 9 digits or fewer.<br/></span>
-												<span ng-show="addForm.contrid.$error.maxlength">Role should be less than 255 characters.<br/></span>
-												<span ng-show="addForm.contrid.$error.required">First Name is required.<br/></span>
-										        <span ng-show="addForm.contrid.$error.maxlength">First Name should be less than 255 characters.<br/></span>
-										        <span ng-show="addForm.contrid.$error.maxlength">Middle Name should be less than 255 characters.<br/></span>
-												<span ng-show="addForm.contrid.$error.required">Last Name is required.<br/></span>
-										        <span ng-show="addForm.contrid.$error.maxlength">Last Name should be less than 255 characters.<br/></span>
-												<span ng-show="addForm.contrid.$error.maxlength">Name Title should be less than 255 characters.<br/></span>
-												<span ng-show="addForm.contrid.$error.maxlength">Name Suffix should be less than 255 characters.<br/></span>
-												<span ng-show="addForm.contrid.$error.maxlength">Address Line 1 should be less than 255 characters.<br/></span>
-												<span ng-show="addForm.contrid.$error.maxlength">Address Line 2 should be less than 255 characters.<br/></span>
-												<span ng-show="addForm.contrid.$error.maxlength">City should be less than 255 characters.<br/></span>
-												<span ng-show="addForm.contrid.$error.maxlength">State or Province should be less than 255 characters.<br/></span>
-												<span ng-show="addForm.contrid.$error.maxlength">Postal Code should be less than 255 characters.<br/></span>
-												<span ng-show="addForm.contrid.$error.maxlength">Country should be less than 255 characters.<br/></span>
-												<span ng-show="addForm.contrid.$error.maxlength">Office Phone should be less than 255 characters.<br/></span>
-												<span ng-show="addForm.contrid.$error.maxlength">Mobile Phone should be less than 255 characters.<br/></span>
-												<span ng-show="addForm.contrid.$error.maxlength">Home Phone should be less than 255 characters.<br/></span>
-												<span ng-show="addForm.contrid.$error.maxlength">Email should be less than 255 characters.<br/></span>
-												<span ng-show="addForm.contrid.$error.maxlength">Alt Email should be less than 255 characters.<br/></span>
-												
-										    </div>
-										   		
-										   	<div class="modal-footer">
-										        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-										    </div>
-									    </div>
+							<div id="addErrorsModal" class="modal fade" role="dialog">
+							  	<div class="modal-dialog">
 								
-								  	</div>
-								</div>
+								    <!-- Modal content-->
+								    <div class="modal-content">
+								   		<div class="modal-header">
+								        	<button type="button" class="close" data-dismiss="modal">&times;</button>
+								        	<h4 class="modal-title">Adding New Record Validation Errors</h4>
+								      	</div>
+								      	
+										<div class="modal-body">
+											
+											<span ng-show="addForm.travelid.$error.required">Contact ID is required.<br/></span>
+											<span ng-show="addForm.travelid.$error.pattern">Contact ID should be an integer.<br/></span>
+									        <span ng-show="addForm.travelid.$error.maxlength">Contact ID should be 9 digits or fewer.<br/></span>
+											<span ng-show="addForm.travelid.$error.required">Organization ID is required.<br/></span>
+											<span ng-show="addForm.travelid.$error.pattern">Organization ID should be an integer.<br/></span>
+									        <span ng-show="addForm.travelid.$error.maxlength">Organization ID should be 9 digits or fewer.<br/></span>
+											<span ng-show="addForm.contrid.$error.maxlength">Role should be less than 255 characters.<br/></span>
+											<span ng-show="addForm.contrid.$error.required">First Name is required.<br/></span>
+									        <span ng-show="addForm.contrid.$error.maxlength">First Name should be less than 255 characters.<br/></span>
+									        <span ng-show="addForm.contrid.$error.maxlength">Middle Name should be less than 255 characters.<br/></span>
+											<span ng-show="addForm.contrid.$error.required">Last Name is required.<br/></span>
+									        <span ng-show="addForm.contrid.$error.maxlength">Last Name should be less than 255 characters.<br/></span>
+											<span ng-show="addForm.contrid.$error.maxlength">Name Title should be less than 255 characters.<br/></span>
+											<span ng-show="addForm.contrid.$error.maxlength">Name Suffix should be less than 255 characters.<br/></span>
+											<span ng-show="addForm.contrid.$error.maxlength">Address Line 1 should be less than 255 characters.<br/></span>
+											<span ng-show="addForm.contrid.$error.maxlength">Address Line 2 should be less than 255 characters.<br/></span>
+											<span ng-show="addForm.contrid.$error.maxlength">City should be less than 255 characters.<br/></span>
+											<span ng-show="addForm.contrid.$error.maxlength">State or Province should be less than 255 characters.<br/></span>
+											<span ng-show="addForm.contrid.$error.maxlength">Postal Code should be less than 255 characters.<br/></span>
+											<span ng-show="addForm.contrid.$error.maxlength">Country should be less than 255 characters.<br/></span>
+											<span ng-show="addForm.contrid.$error.maxlength">Office Phone should be less than 255 characters.<br/></span>
+											<span ng-show="addForm.contrid.$error.maxlength">Mobile Phone should be less than 255 characters.<br/></span>
+											<span ng-show="addForm.contrid.$error.maxlength">Home Phone should be less than 255 characters.<br/></span>
+											<span ng-show="addForm.contrid.$error.maxlength">Email should be less than 255 characters.<br/></span>
+											<span ng-show="addForm.contrid.$error.maxlength">Alt Email should be less than 255 characters.<br/></span>
+											
+									    </div>
+										   		
+									   	<div class="modal-footer">
+									        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									    </div>
+								    </div>
+							
+							  	</div>
+							</div>
 						
 							<!-- Modal -->
 							<div id="addSuccessModal" class="modal fade" role="dialog">
@@ -528,7 +552,30 @@
 							
 							  	</div>
 							</div>
-						
+							
+							<!-- Modal -->
+							<div id="addDatabaseErrorModal" class="modal fade" role="dialog">
+							  	<div class="modal-dialog">
+								
+								    <!-- Modal content-->
+								    <div class="modal-content">
+								   		<div class="modal-header">
+								        	<button type="button" class="close" data-dismiss="modal">&times;</button>
+								        	<h4 class="modal-title">Adding New Record Database Issue</h4>
+								      	</div>
+								      	
+										<div class="modal-body">
+											{{databaseIssue}}
+										</div>
+									   		
+									   	<div class="modal-footer">
+									        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									    </div>
+								    </div>
+							
+							  	</div>
+							</div>
+							
 						</form>
 						<!---End add new contact-->
 					</div>

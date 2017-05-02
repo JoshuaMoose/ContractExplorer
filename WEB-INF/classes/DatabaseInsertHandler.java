@@ -1,6 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
-
+import java.io.PrintWriter;
 import java.util.Map;
 import java.util.Set;
 import java.util.List;
@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import javax.sql.DataSource;
 
@@ -100,76 +101,116 @@ public class DatabaseInsertHandler extends HttpServlet {
 		
 			if (ds != null) //data source exists
 			{
-				Connection conn = ds.getConnection(); //gets connection from datasource
-				if(conn != null) 
-				{		
-					//Use a prepared statement: avoids injection issues and escape characters
-					PreparedStatement stmt = conn.prepareStatement( insertTable + insertValue ); 
+				
+				try ( Connection conn = ds.getConnection() ) { // try-with-resource : auto closes database connection normally and with errors
 					
-					//Loop through prepared statement and replace values where appropriate
-					for (int i = 0; i < addNames.size(); i++ ) {
+					if(conn != null) 
+					{		
+						//Use a prepared statement: avoids injection issues and escape characters
+						PreparedStatement stmt = conn.prepareStatement( insertTable + insertValue ); 
 						
-						//Placeholder assignment
-						columnName =  addNames.get(i);
-						
-						if (newValues.has(columnName)) {
-							value = newValues.get(columnName).getAsString();
-						} else {
-							value = null;
-						}
-						
-						dataType = types.get(columnName).getAsString();					
-						
-						//Handle different data types
-						switch( dataType ) {
-							case "String" :
-								if ( value == null || value.equals("")) {
-									stmt.setNull(prepIndex, java.sql.Types.CHAR);
-								} else {
-									stmt.setString(prepIndex, value);
-								}
-								break;
-								
-							case "Boolean" :
-								if( value == null || value.equals("")) {
-									stmt.setNull(prepIndex, java.sql.Types.BOOLEAN);
-								} else if ( ( value ).equals("t") ) {
-									stmt.setBoolean(prepIndex, true);
-								} else {
-									stmt.setBoolean(prepIndex, false);
-								}								
-								break;
-								
-							case "Integer" :
-								if ( value == null || value.equals("")) {
-									stmt.setNull(prepIndex, java.sql.Types.INTEGER);
-								} else {
-									stmt.setInt(prepIndex, Integer.parseInt(value));
-								}
-								break;
+						//Loop through prepared statement and replace values where appropriate
+						for (int i = 0; i < addNames.size(); i++ ) {
 							
-							case "TimeStamp":
-								if ( value == null || value.equals("")) {
-									stmt.setNull(prepIndex, java.sql.Types.TIMESTAMP);
-								} else {
-									Timestamp timeStamp = Timestamp.valueOf(value);
-									stmt.setTimestamp(prepIndex, timeStamp);
-								}
-								break;
+							//Placeholder assignment
+							columnName =  addNames.get(i);
+							
+							if (newValues.has(columnName)) {
+								value = newValues.get(columnName).getAsString();
+							} else {
+								value = null;
+							}
+							
+							dataType = types.get(columnName).getAsString();					
+							
+							//Handle different data types
+							switch( dataType ) {
+								case "String" :
+									if ( value == null || value.equals("")) {
+										stmt.setNull(prepIndex, java.sql.Types.CHAR);
+									} else {
+										stmt.setString(prepIndex, value);
+									}
+									break;
+									
+								case "Boolean" :
+									if( value == null || value.equals("")) {
+										stmt.setNull(prepIndex, java.sql.Types.BOOLEAN);
+									} else if ( ( value ).equals("t") ) {
+										stmt.setBoolean(prepIndex, true);
+									} else {
+										stmt.setBoolean(prepIndex, false);
+									}								
+									break;
+									
+								case "Integer" :
+									if ( value == null || value.equals("")) {
+										stmt.setNull(prepIndex, java.sql.Types.INTEGER);
+									} else {
+										stmt.setInt(prepIndex, Integer.parseInt(value));
+									}
+									break;
+								
+								case "TimeStamp":
+									if ( value == null || value.equals("")) {
+										stmt.setNull(prepIndex, java.sql.Types.TIMESTAMP);
+									} else {
+										Timestamp timeStamp = Timestamp.valueOf(value);
+										stmt.setTimestamp(prepIndex, timeStamp);
+									}
+									break;
+							}
+							
+							prepIndex++;
 						}
 						
-						prepIndex++;
+						stmt.executeUpdate(); //execute insert
+						
+						JsonObject errorObject = new JsonObject();
+						
+						errorObject.addProperty("Success", true);
+						
+						PrintWriter out = response.getWriter();
+						String jsonString = new Gson().toJson(errorObject);
+						
+						out.println(jsonString);
+						
 					}
 					
-					stmt.executeUpdate(); //execute insert
-												
-					conn.close();
+				} catch (Exception e1) {
+					// handle exception
+					String issue = e1.getMessage();
+					
+					JsonObject errorObject = new JsonObject();
+					
+					errorObject.addProperty("Success", false);
+					errorObject.addProperty("Message", issue);
+					
+					PrintWriter out = response.getWriter();
+					String jsonString = new Gson().toJson(errorObject);
+					
+					out.println(jsonString);
 				}
+								
 			}
 		}
         catch(Exception e) //error handling
         {
+        	
+        	//String errorDescription = e.getMessage();
             e.printStackTrace(); //Default -- to be changed later
+           
+            String issue = e.getMessage();
+			
+			JsonObject errorObject = new JsonObject();
+			
+			errorObject.addProperty("Success", false);
+			errorObject.addProperty("Message", issue);
+			
+			PrintWriter out = response.getWriter();
+			String jsonString = new Gson().toJson(errorObject);
+			
+			out.println(jsonString);
         }
 	}
 
