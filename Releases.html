@@ -74,13 +74,13 @@
 									<table style="padding: 3px;">
 
 										<tr>
-											<td><input ng-model="f.rel_id" placeholder="Filter by Release ID"></td>
-											<td><input ng-model="f.dir_id" placeholder="Filter by Directive ID"></td>
-											<td><input ng-model="f.rel_by" placeholder="Filter by Release Employee"></td>
-											<td><input ng-model="f.rel_date" placeholder="Filter by Release Date"></td>
-											<td><input ng-model="f.recv_by" placeholder="Filter by Recipient of the Relase"></td>
-											<td><input ng-model="f.recv_date" placeholder="Filter by Date Recieved"></td>
-											<td><input ng-model="f.rel_cntry_cd" placeholder="Filter by Country of Release"></td>
+											<td><input ng-model="f.rel_id" placeholder="Filter by Release ID"delete-if-empty></td>
+											<td><input ng-model="f.dir_id" placeholder="Filter by Directive ID"delete-if-empty></td>
+											<td><input ng-model="f.rel_by" placeholder="Filter by Release Employee"delete-if-empty></td>
+											<td><input ng-model="f.rel_date" placeholder="Filter by Release Date"delete-if-empty></td>
+											<td><input ng-model="f.recv_by" placeholder="Filter by Recipient of the Relase"delete-if-empty></td>
+											<td><input ng-model="f.recv_date" placeholder="Filter by Date Recieved"delete-if-empty></td>
+											<td><input ng-model="f.rel_cntry_cd" placeholder="Filter by Country of Release"delete-if-empty></td>
 										</tr>
 
 										<!--tr>
