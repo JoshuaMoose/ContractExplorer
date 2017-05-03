@@ -82,7 +82,7 @@
 							<table style="padding: 3px;">
 								
 								<tr>
-									<td><input data-ng-model="f.cont_id" placeholder="Filter by Contact ID" delete-if-empty></td>
+									<td><input data-ng-model="f.cont_id" placeholder="Filter by Contact ID" delete-if-empty></td> <!-- needs delete if empty in the filter input to clear for null values -->
 									<td><input data-ng-model="f.cont_org_id" placeholder="Filter by Organization ID" delete-if-empty></td>
 									<td><input data-ng-model="f.cont_role_cd" placeholder="Filter by Role CD" delete-if-empty></td>
 									<td><input data-ng-model="f.cont_first_name" placeholder="Filter by First Name" delete-if-empty></td>
@@ -341,8 +341,10 @@
 								
 								<div class="row">
 									<div class="col-lg-3">Organization ID:</div>
-									<div class="col-lg-3"><input id="cont_org_id" type="text" data-ng-minlength="1" data-ng-maxlength="255" required
-															data-ng-model="cont_org_id" tabindex=2></div>
+									<div class="col-lg-3"><select ng-model="cont_org_id" name="contorgid" id="cont_org_id" tabindex=2 required
+																ng-options="y.org_id as y.org_name for y in orgSelect"> <!-- Select option example that populates based on database -->
+															<option value="">Select Organization</option>
+														</select></div>
 									<div class="col-lg-3">State or Province:</div>
 									<div class="col-lg-3"><select class = "dropdown" data-ng-model="cont_state_prov_cd" tabindex=12>
 												<option value="AB">AB

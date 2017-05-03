@@ -63,7 +63,7 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 		$('.edit_dir_desc').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
 		$('.edit_dir_issued_by').tooltip({'trigger':'focus', 'title': 'Required Field.  Should be an integer with 9 digits or less.', 'placement': 'bottom'});
 		$('.edit_dir_issued_date').tooltip({'trigger':'focus', 'title': 'Required Field. Timestamp in the format of yyyy-dd-mm hh:mm:ss.', 'placement': 'bottom'});
-		$('.edit_dir_recv_by').tooltip({'trigger':'focus', 'title': 'Required Field. Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_dir_recv_by').tooltip({'trigger':'focus', 'title': 'Required Field. Should be an integer with 9 digits or less.', 'placement': 'bottom'});
 		$('.edit_dir_recv_date').tooltip({'trigger':'focus', 'title': 'Required Field. Timestamp in the format of yyyy-dd-mm hh:mm:ss.', 'placement': 'bottom'});
 	
 	}

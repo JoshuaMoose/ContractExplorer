@@ -235,6 +235,7 @@ app.controller('addCtrl', function($scope, $http) {
 			})
 			.then(function (response) {
 				//$scope.myResults = response.data;
+				
 				console.log('Item Added.');				
 				console.log(response.data); //////////////////////////***********************
 				
