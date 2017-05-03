@@ -333,10 +333,10 @@
 							<form name="addForm" novalidate>
 								<div class="row">
 									<div class="col-lg-3">Contact ID:</div>
-									<div class="col-lg-3"><input id="cont_id" type="text" data-ng-minlength="1" data-ng-maxlength="255" required
+									<div class="col-lg-3"><input id="cont_id" name="contid" type="text" data-ng-minlength="1" data-ng-maxlength="255" required
 															data-ng-model="cont_id" tabindex=1></div>
 									<div class="col-lg-3">City:</div>
-									<div class="col-lg-3"><input id="cont_city" type="text" data-ng-model="cont_city" tabindex=11></div>
+									<div class="col-lg-3"><input id="cont_city" type="text" name="contcity" data-ng-model="cont_city" tabindex=11></div>
 								</div><!--row-->
 								
 								<div class="row">
@@ -494,9 +494,9 @@
 								      	
 										<div class="modal-body">
 											
-											<span ng-show="addForm.travelid.$error.required">Contact ID is required.<br/></span>
-											<span ng-show="addForm.travelid.$error.pattern">Contact ID should be an integer.<br/></span>
-									        <span ng-show="addForm.travelid.$error.maxlength">Contact ID should be 9 digits or fewer.<br/></span>
+											<span ng-show="addForm.cont_id.$error.required">Contact ID is required.<br/></span>
+											<span ng-show="addForm.cont_id.$error.pattern">Contact ID should be an integer.<br/></span>
+									        <span ng-show="addForm.cont_id.$error.maxlength">Contact ID should be 9 digits or fewer.<br/></span>
 											<span ng-show="addForm.travelid.$error.required">Organization ID is required.<br/></span>
 											<span ng-show="addForm.travelid.$error.pattern">Organization ID should be an integer.<br/></span>
 									        <span ng-show="addForm.travelid.$error.maxlength">Organization ID should be 9 digits or fewer.<br/></span>
