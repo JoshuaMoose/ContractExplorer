@@ -63,7 +63,16 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 		});	
 	}
 	////// END RESULTS //////
-	
+	////// Clear search filter ////// ************************************** Add this to all pages, adapt it to the filter inputs on the page
+	$scope.clearFilters = function () {
+		delete $scope.f.dev_id;
+		delete $scope.f.dev_type;
+		delete $scope.f.dev_desc;
+		delete $scope.f.dev_owner_id;
+		delete $scope.f.dev_user_id;
+		delete $scope.f.dev_sn;
+	}
+	////// End clear search filters //////
 	$scope.refreshSearch = function() {
 		var pageData = {
 			table: 'devices', //CHANGE THIS TO NAME OF TABLE (CHECK ACCESS FOR TABLE NAME)

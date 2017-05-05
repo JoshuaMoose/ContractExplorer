@@ -45,6 +45,7 @@ $(document).ready(function(){
 	
 });
 
+
 app.controller('searchCtrl', function($scope) {
     $scope.searchParameter = "";
 	$scope.searchKeyword = "";
@@ -72,8 +73,23 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 				console.log(error);
 		});	
 	}
-	////// END RESULTS //////
 	
+	////// END RESULTS //////
+	////// Clear search filter ////// ************************************** Add this to all pages, adapt it to the filter inputs on the page
+	$scope.clearFilters = function () {
+		delete $scope.f.org_id;
+		delete $scope.f.org_type_cd;
+		delete $scope.f.org_name;
+		delete $scope.f.org_div;
+		delete $scope.f.org_addr1;
+		delete $scope.f.org_addr2;
+		delete $scope.f.org_city;
+		delete $scope.f.org_state_prov_cd;
+		delete $scope.f.org_post_cd;
+		delete $scope.f.org_cntry_cd;
+		delete $scope.f.cage_cd;
+	}
+	////// End clear search filters //////
 	////// EDITING RESULTS //////
 	$scope.newField = {};
     $scope.editing = false;

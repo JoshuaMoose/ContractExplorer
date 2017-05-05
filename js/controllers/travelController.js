@@ -65,7 +65,17 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 		});	
 	}
 	////// END RESULTS //////
-	
+	////// Clear search filter ////// ************************************** Add this to all pages, adapt it to the filter inputs on the page
+	$scope.clearFilters = function () {
+		delete $scope.f.travel_id;
+		delete $scope.f.contr_id;
+		delete $scope.f.destination;
+		delete $scope.f.travel_begin_date;
+		delete $scope.f.travel_end_date;
+		delete $scope.f.tech_restrict_cd;
+		delete $scope.f.recv_travel_brief;
+	}
+	////// End clear search filters //////
 	////// EDITING RESULTS //////
 	$scope.newField = {};
     $scope.editing = false;

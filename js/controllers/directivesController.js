@@ -49,7 +49,15 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 		});	
 	}
 	////// END RESULTS //////
-	
+		$scope.clearFilters = function () {
+		delete $scope.f.dir_id;
+		delete $scope.f.dir_contr_id;
+		delete $scope.f.dir_desc;
+		delete $scope.f.dir_issued_by;
+		delete $scope.f.dir_issued_date;
+		delete $scope.f.dir_recv_by;
+		delete $scope.f.dir_recv_date;
+	}
 	////// EDITING RESULTS //////
 	$scope.newField = {};
     $scope.editing = false;

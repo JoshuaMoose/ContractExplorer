@@ -43,7 +43,15 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 		});	
 	}
 	////// END RESULTS //////
-	
+		////// Clear search filter ////// ************************************** Add this to all pages, adapt it to the filter inputs on the page
+	$scope.clearFilters = function () {
+		delete $scope.f.reg_id;
+		delete $scope.f.reg_title;
+		delete $scope.f.reg_desc;
+		delete $scope.f.appl_cntries;
+
+	}
+	////// End clear search filters //////
 	////// EDITING RESULTS //////
 	$scope.newField = {};
     $scope.editing = false;

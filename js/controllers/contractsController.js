@@ -84,7 +84,26 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 	}
 	
 	////// END RESULTS //////
-	
+	////// Clear search filter ////// ************************************** Add this to all pages, adapt it to the filter inputs on the page
+	$scope.clearFilters = function () {
+		delete $scope.f.contr_id;
+		delete $scope.f.contr_org_id;
+		delete $scope.f.cont_end_cust_id;
+		delete $scope.f.contr_type_cd;
+		delete $scope.f.prime_contr_id;
+		delete $scope.f.prime_contract_no;
+		delete $scope.f.contr_prog_cd;
+		delete $scope.f.contr_vehicle_cd;
+		delete $scope.f.contr_sec_level_cd;
+		delete $scope.f.contr_info_safe_level_cd;
+		delete $scope.f.contr_open_date;
+		delete $scope.f.contr_close_date;
+		delete $scope.f.is_open;
+		delete $scope.f.exemptions;
+		delete $scope.f.dd254_recv;
+		delete $scope.f.dd254_date;
+	}
+	////// End clear search filters //////
 	
 	///// REFRESH RESULTS //////
 	$scope.refreshSearch = function() {
