@@ -182,19 +182,28 @@
 									<div class="col-lg-3">Device ID:</div>
 									<div class="col-lg-3"><input id="dev_id" type="text" name="devid" pattern="^\d+$" ng-maxlength="9" ng-model="dev_id" required tabindex=1></div>
 									<div class="col-lg-3">Device Type:</div>
-									<div class="col-lg-3"><input id="dev_type" type="text" name="devtype" ng-maxlength="255" ng-model="dev_type" required tabindex=4></div>
+									<div class="col-lg-3"><select ng-model="dev_type" name="devtype" id="dev_type" tabindex=4 required
+																ng-options="y.dev_type_cd as y.dev_type_desc for y in devSelect">
+																<option value="">Select Device Type</option>
+															</select></div>
 								</div><!--row-->
 								
 								<div class="row">
 									<div class="col-lg-3">Device Description:</div>
 									<div class="col-lg-3"><input id="dev_desc" type="text" name="devdesc" ng-maxlength="255" ng-model="dev_desc" required tabindex=2></div>
-									<div class="col-lg-3">Device Owner:</div>
-									<div class="col-lg-3"><input id="dev_owner_id" type="text" name="devownerid" pattern="^\d+$" ng-maxlength="9" ng-model="dev_owner_id" required tabindex=6></div>
+									<div class="col-lg-3">Device Owner ID:</div>
+									<div class="col-lg-3"><select ng-model="dev_owner_id" name="devownerid" id="dev_owner_id" tabindex=6
+																ng-options="y.emp_id as y.reciever for y in nameSelect">
+															<option value="">Select Employee</option>
+														</select></div>
 								</div><!--row-->
 								
 								<div class="row">
 									<div class="col-lg-3">Device User ID:</div>
-									<div class="col-lg-3"><input id="dev_user_id" type="text" name="devuserid" pattern="^\d+$" ng-maxlength="9" ng-model="dev_user_id" required tabindex=3></div>
+									<div class="col-lg-3"><select ng-model="dev_user_id" name="devuserid" id="dev_user_id" tabindex=6
+																ng-options="y.emp_id as y.reciever for y in nameSelect">
+															<option value="">Select Employee</option>
+														</select></div>
 									<div class="col-lg-3">Device Serial Number:</div>
 									<div class="col-lg-3"><input id="dev_sn" type="text" name="devsn" pattern="^\d+$" ng-maxlength="9" ng-model="dev_sn" tabindex=7></div>
 								</div><!--row-->

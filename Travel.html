@@ -217,8 +217,10 @@
 									<div class="col-lg-3"><input id="travel_id" type="text" name="travelid" data-ng-model="travel_id" tabindex=1
 															pattern="^\d+$" ng-maxlength="9" required ></div>
 									<div class="col-lg-3">Contract ID:</div>
-									<div class="col-lg-3"><input id="contr_id" type="text" name="travelid" data-ng-model="contr_id" tabindex=5
-															ng-maxlength="255" ></div>
+									<div class="col-lg-3"><select ng-model="contr_id" name="travelid" id="contr_id" tabindex=5
+															ng-options="y.contr_id as y.contr_id for y in contrSelect">
+															<option value="">Select Contract</option>
+														</select></div>
 								</div><!--row-->							
 								<div class="row">
 									<div class="col-lg-3">Destination:</div>
@@ -234,14 +236,20 @@
 									<div class="col-lg-3"><input id="travel_end_date" type="text" name="travelenddate" data-ng-model="travel_end_date" tabindex=3
 															pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" ></div>
 									<div class="col-lg-3">Technology Restriction Level:</div>
-									<div class="col-lg-3"><input id="tech_restrict_cd" type="text" name="techrestrictcd" data-ng-model="tech_restrict_cd" tabindex=7
-															ng-maxlength="255" ></div>
+									<div class="col-lg-3"><select ng-model="tech_restrict_cd" name="techrestrictcd" id="tech_restrict_cd" tabindex=7
+															ng-options="y.tech_restrict_cd as y.tech_restrict_desc for y in techSelect">
+															<option value="">Select Contract</option>
+														</select></div>
 								</div><!--row-->
 								
 								<div class="row">
 									<div class="col-lg-3">Received Travel Brief:</div>
-									<div class="col-lg-3"><input type="text" data-ng-model="recv_travel_brief" tabindex=4
-															ng-maxlength="5"></div>
+									<div class="col-lg-3"><select class="dropdown" data-ng-model="recv_travel_brief" tabindex=4>
+															<option value="">Select
+															<option value="1">Yes
+															<option value="2">No
+															<option value="3">N/A
+														</select></div>
 									
 								</div><!--row-->
 							</form>
