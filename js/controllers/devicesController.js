@@ -173,11 +173,31 @@ app.controller('addCtrl', function($scope, $http) {
 				contentType: 'application/json',
 				data : addData,
 			})
-			.then(function (response) {
+				.then(function (response) {
 				//$scope.myResults = response.data;
-				console.log(addData);
-				}, function (error) {
-					console.log(error);
+				
+				console.log('Item Added.');				
+				console.log(response.data); //////////////////////////***********************
+				
+				///////////////////////////////////////// Clears fields when successfully adding a contract; apply to all pages and use for clear buttons ////////////////////////
+				if( response.data.Success ) {
+					console.log("Item added successfully.");
+					$('#addSuccessModal').modal('show');
+					delete $scope.f.dev_id;
+					delete $scope.f.dev_type;
+					delete $scope.f.dev_desc;
+					delete $scope.f.dev_owner_id;
+					delete $scope.f.dev_user_id;
+					delete $scope.f.dev_sn;
+	
+				} else {
+					console.log(response.data.Message);
+					$scope.databaseIssue = response.data.Message;
+					$('#addDatabaseErrorModal').modal('show');
+				}
+				
+			}, function (error) {
+				console.log(error);
 			});	
 		}
 	}	
