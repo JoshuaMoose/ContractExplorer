@@ -4,6 +4,22 @@ app.controller('searchCtrl', function($scope) {
     $scope.searchParameter = "";
 	$scope.searchKeyword = "";
 });
+/////////////////////////////// Directive to clear fields when they are empty (set them from "" to null)//////////////////////(
+app.directive('deleteIfEmpty', function () {
+    return {
+        restrict: 'A',
+        scope: {
+            ngModel: '='
+        },
+        link: function (scope, element, attrs) {
+            scope.$watch("ngModel", function (newValue, oldValue) {
+                if (typeof scope.ngModel !== 'undefined' && scope.ngModel.length === 0) {
+                    delete scope.ngModel;
+                }
+            });
+        }
+    };
+});
 
 app.controller('resultsCtrl', function($scope, $http) { //On button click this function will populate table
 	////// GET RESULTS //////

@@ -9,6 +9,22 @@ var types = {
 	'recv_date': 'TimeStamp',
 	'rel_cntry_cd': 'String',
 }
+/////////////////////////////// Directive to clear fields when they are empty (set them from "" to null)//////////////////////(
+app.directive('deleteIfEmpty', function () {
+    return {
+        restrict: 'A',
+        scope: {
+            ngModel: '='
+        },
+        link: function (scope, element, attrs) {
+            scope.$watch("ngModel", function (newValue, oldValue) {
+                if (typeof scope.ngModel !== 'undefined' && scope.ngModel.length === 0) {
+                    delete scope.ngModel;
+                }
+            });
+        }
+    };
+});
 
 $(document).ready(function(){
 	$('#rel_id').tooltip({'trigger':'focus', 'title': 'Required Field. Should be an integer with 9 digits or less.', 'placement': 'right'});
