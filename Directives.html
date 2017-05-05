@@ -186,8 +186,10 @@
 									<div class="col-lg-3"><input id="dir_id" type="text" name="dirid" ng-model="dir_id" tabindex=1
 															required ng-maxlength="255"></div>
 									<div class="col-lg-3">Contract ID:</div>
-									<div class="col-lg-3"><input id="dir_contr_id" type="text" name="dircontrid" ng-model="dir_contr_id" tabindex=5
-															ng-maxlength="255"></div>
+									<div class="col-lg-3"><select ng-model="dir_contr_id" name="dircontrid" id="dir_contr_id" tabindex=5
+																ng-options="y.contr_id as y.contr_name for y in contrSelect"> <!-- Select option example that populates based on database -->
+															<option value="">Select Contract</option>
+														</select></div>
 								</div><!--row-->
 
 								<div class="row">
@@ -195,8 +197,10 @@
 									<div class="col-lg-3"><input id="dir_desc" type="textarea" name="dirdesc" cols="50" rows="10" ng-model="dir_desc" tabindex=2
 															ng-maxlength="255"></div>
 									<div class="col-lg-3">Issued By:</div>
-									<div class="col-lg-3">
-										<select class="dropdown" name="dirissuedby" ng-model="dir_issued_by" tabindex=6></select>
+									<div class="col-lg-3"><select ng-model="dir_issued_by" name="dirissuedby" id="dir_issued_by" tabindex=6
+																ng-options="y.emp_id as y.emp_name for y in empSelect"> <!-- Select option example that populates based on database -->
+															<option value="">Select Employee</option>
+														</select></div>
 									</div>
 								</div><!--row-->
 
