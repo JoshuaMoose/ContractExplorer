@@ -1,4 +1,7 @@
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -15,7 +18,9 @@ import javax.sql.*;
 import java.sql.*; 
  
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
  
 public class DatabaseSearchHandler extends HttpServlet {
  
@@ -44,102 +49,118 @@ public class DatabaseSearchHandler extends HttpServlet {
 		//Read the relevant data (table for this servlet)
 		String tableName = jsonRequestObject.get("table").getAsString();
 		
-		//System.out.println("Table to be Queried: " + tableName); //Log query to console
-		
-		////// End parsing block //////
-		
-		
-		
-		try // Documentation https://jdbc.postgresql.org/documentation/94/tomcat.html
-        {
-            //attempt to connect to the database
-			Context ctx = new InitialContext();
-            
-			//if(ctx == null )
-            //    throw new Exception("Boom - No Context");
-    
-            // /jdbc/postgres is the name of the resource above 
-            DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/postgres");
+		// Read from File to String
+        JsonObject queries = new JsonObject();
         
-            if (ds != null) //datasourse exists
-            {
-                //Connection conn = ds.getConnection(); //gets connection from datasource
-                
-                try ( Connection conn = ds.getConnection() ) {
-                	
-                	if(conn != null) 
-                    {
-                        
-    					/////// This code block will fetch database results using only table name passed in from get request ////////
-    					
-    					Statement stmt = conn.createStatement(); 
-                        rst = stmt.executeQuery("select * from contrs." + tableName); //contains query Contact
-                        
-    					ResultSetMetaData rstm = rst.getMetaData(); //Contains details like row count and column names for auto populating and creating table
-    					int numOfColumns = rstm.getColumnCount(); //metadata from table to know how to build dynamically
-    					
-    					for(int i=1;i<=numOfColumns;i++) {
-    						columnNames.add(rstm.getColumnName(i)); //loop through to get all column names
-    					}
-    					
-    			        while(rst.next()) { // convert each object to an human readable JSON object
-    						JsonObject jsonObject = new JsonObject();
-    						
-    						for(int i=1; i<=numOfColumns; i++) {
-    							//Get column name and associated value for this result
-    							String key = columnNames.get(i - 1);
-    							String value = rst.getString(i);
-    							
-    							jsonObject.addProperty(key, value); //Add a json element in format key: value -- ie. cont_first_name: Bill
-    						}
-    						
-    						resultList.add(jsonObject);
-    					}		
-    					
-                        conn.close();
-    					
-    					/////// End database fetch ////////
-                        
-                    	// Send results back to front-end
-                		PrintWriter out = response.getWriter();
-                		String jsonString = new Gson().toJson(resultList);
-                		
-                		out.println(jsonString);
-                    }
-                	
-                } catch (Exception e1) {
-                	
-                	String issue = e1.getMessage();
-					
-					JsonObject errorObject = new JsonObject();
-					
-					errorObject.addProperty("Success", false);
-					errorObject.addProperty("Message", issue);
-					
-					PrintWriter out = response.getWriter();
-					String jsonString = new Gson().toJson(errorObject);
-					
-					out.println(jsonString);
-                	
-                }
-                
-            }
-        }
-        catch(Exception e) //error handling
-        {
-        	
-        	String issue = e.getMessage();
+        try {
+            
+        	// Try to read in json file with query
+        	JsonParser parser = new JsonParser();
+            JsonElement jsonElement = parser.parse(new FileReader("../webapps/ContractExplorer/WEB-INF/queries.json"));
+            queries = jsonElement.getAsJsonObject();
+            
+            String query = queries.get(tableName).getAsString(); //query is full search string
+            //System.out.println(query);
+            
+			////// End parsing block //////
 			
-			JsonObject errorObject = new JsonObject();
 			
-			errorObject.addProperty("Success", false);
-			errorObject.addProperty("Message", issue);
 			
-			PrintWriter out = response.getWriter();
-			String jsonString = new Gson().toJson(errorObject);
-			
-			out.println(jsonString);
-			
+			try // Documentation https://jdbc.postgresql.org/documentation/94/tomcat.html
+	        {
+	            //attempt to connect to the database
+				Context ctx = new InitialContext();
+	            
+				//if(ctx == null )
+	            //    throw new Exception("Boom - No Context");
+	    
+	            // /jdbc/postgres is the name of the resource above 
+	            DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/postgres");
+	        
+	            if (ds != null) //datasourse exists
+	            {
+	                //Connection conn = ds.getConnection(); //gets connection from datasource
+	                
+	                try ( Connection conn = ds.getConnection() ) {
+	                	
+	                	if(conn != null) 
+	                    {
+	                        
+	    					/////// This code block will fetch database results using only table name passed in from get request ////////
+	    					
+	    					Statement stmt = conn.createStatement(); 
+	                        rst = stmt.executeQuery(query); //contains query Contact
+	                        
+	    					ResultSetMetaData rstm = rst.getMetaData(); //Contains details like row count and column names for auto populating and creating table
+	    					int numOfColumns = rstm.getColumnCount(); //metadata from table to know how to build dynamically
+	    					
+	    					for(int i=1;i<=numOfColumns;i++) {
+	    						columnNames.add(rstm.getColumnName(i)); //loop through to get all column names
+	    					}
+	    					
+	    			        while(rst.next()) { // convert each object to an human readable JSON object
+	    						JsonObject jsonObject = new JsonObject();
+	    						
+	    						for(int i=1; i<=numOfColumns; i++) {
+	    							//Get column name and associated value for this result
+	    							String key = columnNames.get(i - 1);
+	    							String value = rst.getString(i);
+	    							
+	    							jsonObject.addProperty(key, value); //Add a json element in format key: value -- ie. cont_first_name: Bill
+	    						}
+	    						
+	    						resultList.add(jsonObject);
+	    					}		
+	    					
+	                        conn.close();
+	    					
+	    					/////// End database fetch ////////
+	                        
+	                    	// Send results back to front-end
+	                		PrintWriter out = response.getWriter();
+	                		String jsonString = new Gson().toJson(resultList);
+	                		
+	                		out.println(jsonString);
+	                    }
+	                	
+	                } catch (Exception e2) {
+	                	
+	                	String issue = e2.getMessage();
+						
+						JsonObject errorObject = new JsonObject();
+						
+						errorObject.addProperty("Success", false);
+						errorObject.addProperty("Message", issue);
+						
+						PrintWriter out = response.getWriter();
+						String jsonString = new Gson().toJson(errorObject);
+						
+						out.println(jsonString);
+	                	
+	                }
+	                
+	            }
+	        }
+	        catch(Exception e1) //error handling
+	        {
+	        	
+	        	String issue = e1.getMessage();
+				
+				JsonObject errorObject = new JsonObject();
+				
+				errorObject.addProperty("Success", false);
+				errorObject.addProperty("Message", issue);
+				
+				PrintWriter out = response.getWriter();
+				String jsonString = new Gson().toJson(errorObject);
+				
+				out.println(jsonString);
+				
+	        }
+        } catch (FileNotFoundException e) {
+        	System.out.println("Queries file not found.");
+        } catch (IOException ioe){
+        	System.out.println("IO error.");
         }
     }
  

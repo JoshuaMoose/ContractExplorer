@@ -1,0 +1,26 @@
+{
+	"contact_id" : "SELECT cont_id, issuer FROM contrs.qryDirIssueBy;",
+	"organization_id" : "SELECT org_id, org_name FROM contrs.organizations;",
+	"contract_type" : "SELECT contr_type_cd, cont_type_desc FROM contrs.contract_type_codes;",
+	"program_codes" : "SELECT prog_cd FROM contrs.program_codes;",
+	"contract_vehicle_codes" : "SELECT contr_veh_id FROM contrs.contract_vehicle_codes;",
+	"security_level" : "SELECT sec_class_cd FROM contrs.security_class_codes;",
+	"organization_type" : "SELECT org_type_code FROM contrs.organization_type_codes;",
+	"state_province" : "SELECT state_prov_cd, state_prov_name FROM contrs.state_prov_cntry_codes;",
+	"contract_id" : "SELECT contr_id FROM contrs.contracts;",
+	"employee_id" : "SELECT emp_id, reciever FROM contrs.qryDirRecvBy",
+	"directive_id" : "SELECT dir_id FROM contrs.directives;",
+	"role_codes" : "SELECT role_cd FROM contrs.role_codes;",
+	"device_type" : "SELECT dev_type_cd, dev_type_desc FROM contrs.device_type_codes;",
+	
+	"contracts" : "SELECT * FROM contrs.contracts;",
+	"organizations" : "SELECT * FROM contrs.organizations;",
+	"contacts" : "SELECT * FROM contrs.contacts;",
+	"directives" : "SELECT * FROM contrs.directives;",
+	"releases" : "SELECT * FROM contrs.releases;",
+	"fe_data" : "SELECT * FROM contrs.fe_data;",
+	"employees" : "SELECT * FROM contrs.employees:",
+	"export_regulations" : "SELECT * FROM contrs.export_regulations;",
+	"travel" : "SELECT * FROM contrs.travel;",
+	"devices" : "SELECT * FROM contrs.devices;"
+}

@@ -1,8 +1,0 @@
-{
-	"cont_id" : "SELECT cont_id, issuer FROM contrs.qryDirIssueBy;",
-	"org_id" : "SELECT org_id, org_name FROM contrs.organizations;",
-	"contr_type" : "SELECT contrt_type_cd, cont_type_desc FROM contrs.contract_type_codes;",
-	"program_code" : "SELECT prog_cd FROM contrs.program_codes;",
-	"contract_vehicle_codes" : "SELECT contr_veh_id FROM contrs.contract_vehicle_codes;",
-	"security_level"
-	

@@ -5,12 +5,14 @@
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
-	overflow-y: scroll; /* Added - stops page from repositioning when scroll-bar appears */
+	overflow: -moz-scrollbars-vertical; 
+    overflow-y: scroll; /* Added - stops page from repositioning when scroll-bar appears */
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
 body {
+  padding-right: 0 !important;  /* Added: needed to stop bootstrap admin panel glitch that adds right padding to body on modal open */
   margin: 0;
   padding-bottom: 70px;
 }

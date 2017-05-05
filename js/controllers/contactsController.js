@@ -1,5 +1,6 @@
 var app = angular.module('myApp', []);
 
+/////////////////////////////// Directive to clear fields when they are empty (set them from "" to null)//////////////////////(
 app.directive('deleteIfEmpty', function () {
     return {
         restrict: 'A',
@@ -16,9 +17,11 @@ app.directive('deleteIfEmpty', function () {
     };
 });
 
+
+//////////////////////////////////   Adjust tooltips on fields which get turned to selects (they only need required or nothing ////////////////////////////////////////////////////////
 $(document).ready(function(){
 	$('#cont_id').tooltip({'trigger':'focus', 'title': 'Required Field. should be an integer with 9 digits or less.', 'placement': 'right'});
-	$('#cont_org_id').tooltip({'trigger':'focus', 'title': 'Required Field. should be an integer with 9 digits or less.', 'placement': 'right'});
+	$('#cont_org_id').tooltip({'trigger':'focus', 'title': 'Required Field.', 'placement': 'right'}); // should be an integer with 9 digits or less.', 'placement': 'right'});
 	$('#cont_role_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
 	$('#cont_first_name').tooltip({'trigger':'focus', 'title': 'Required Field. should be a string shorter than 256 characters.', 'placement': 'right'});
 	$('#cont_middle_name').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
@@ -89,31 +92,10 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 		});	
 	}
 	////// END RESULTS //////
-	
-	/*$scope.refreshSearch = function() {
-		var pageData = {
-			table: 'contacts', //CHANGE THIS TO NAME OF TABLE (CHECK ACCESS FOR TABLE NAME)
-		};		
-		
-		$http({
-			method : 'POST',
-			url : 'DatabaseSearchHandler',
-			contentType: 'application/json',
-			data : pageData,
-		})
-		.then(function (response) {
-			$scope.myResults = response.data;
-			
-			console.log($scope.myResults);
-			console.log('Data loaded.');
-		}, function (error) {
-				console.log(error);
-		});	
-		
-	}*/
+
 	
 	////// EDITING RESULTS //////
-	$scope.newField = {};
+	var newField = [];
     $scope.editing = false;
 
 	$scope.editResults = function(field) {
@@ -139,62 +121,107 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 		
 		
 		$scope.editing = $scope.myResults.indexOf(field);
-		$scope.newField = angular.copy(field);
+		newField[$scope.myResults.indexOf(field)] = angular.copy(field);
 		$scope.myResults.editing = false;
 	}
 
-	$scope.saveField = function(index) {		
+	$scope.saveField = function(field) {	///////////////////////////////////////////////////////////Update all saveField functions to this (just need to update table in editData	
+		
+		var index = $scope.myResults.indexOf(field);
+		
 		var editData = {
-			'table': 'contacts',
+			'table': 'contacts', //////////////////////////////*******
 		}
 		
-		editData.original =	$scope.newField;
-		editData.updated = $scope.myResults[$scope.editing];
+		//console.log( "field = " + field + "Result field = " + $scope.myResults.indexOf(field) );
+		
+		editData.original =	newField[index];
+		editData.updated = field;
 		editData.types = types;
 		
-		if ($scope.editing !== false) {
-			//$scope.myResults[$scope.editing] = $scope.newField;
-			//$scope.editing = false;
-			console.log(editData);
-			
-			$http({
-				method : 'POST',
-				url : 'DatabaseUpdateHandler',
-				contentType: 'application/json',
-				data : editData,
-			})
-			.then(function (response) {
-				if( response.data.Success ) {
-					//$scope.myResults = response.data;
-					console.log('Item Edited.');				
-					console.log(response.data); //////////////////////////***********************
-					$scope.editing = false;
-				} else {
-					console.log('Item Failure.');
-					console.log(response.data.Message);
-					$scope.databaseIssue = response.data.Message;
-					$('#updateDatabaseErrorModal').modal('show');
-					$scope.myResults[$scope.editing] = $scope.newField;					
-				}
+		$http({
+			method : 'POST',
+			url : 'DatabaseUpdateHandler',
+			contentType: 'application/json',
+			data : editData,
+		})
+		.then(function (response) { ///////////////////////////////////////////////////////// Add code like this to saveField function of all pages /////////////////////////////////////
+			if( response.data.Success ) {
+				//$scope.myResults = response.data;
+				console.log('Item edited successfully.');
 				
-			}, function (error) {
-				console.log(error);
-			});	
-			
-		}       
+				$scope.editing = false;
+			} else {
+				console.log('Item Failure.');
+				console.log(response.data.Message);
+				
+				$scope.databaseIssue = response.data.Message;
+				$('#updateDatabaseErrorModal').modal('show');
+				$scope.myResults[$scope.editing] = newField[index];					
+			}	
+		}, function (error) {
+			console.log(error);
+		});	
+		
 	};
 
-	$scope.cancel = function(index) {
-		if ($scope.editing !== false) {
-			$scope.myResults[$scope.editing] = $scope.newField;
-			$scope.editing = false;
-		}
+	$scope.cancel = function(field) {
+		var index = $scope.myResults.indexOf(field);
+		$scope.myResults[index] = newField[index];
+		$scope.editing = false;
 	};
 	////// END EDITING RESULTS //////
 	
 });
 
 app.controller('addCtrl', function($scope, $http) { 
+	
+	/////////////////////////////////////////// Load Options block here is for populating new selects, adapt it per page ///////////////////////////////////////////////////////
+	loadOptions = function() {
+		
+		$http({
+			method : 'POST',
+			url : 'DatabaseSearchHandler',
+			contentType: 'application/json',
+			data : {table: 'organization_id'},
+		})
+		.then(function (response) {
+			$scope.orgSelect = response.data;
+			console.log($scope.orgSelect);
+		}, function (error) {
+			console.log(error);
+		});	
+		
+		$http({
+			method : 'POST',
+			url : 'DatabaseSearchHandler',
+			contentType: 'application/json',
+			data : {table: 'role_codes'},
+		})
+		.then(function (response) {
+			$scope.roleSelect = response.data;
+			console.log($scope.roleSelect);
+		}, function (error) {
+			console.log(error);
+		});	
+
+		$http({
+			method : 'POST',
+			url : 'DatabaseSearchHandler',
+			contentType: 'application/json',
+			data : {table: 'state_province'},
+		})
+		.then(function (response) {
+			$scope.stateProvSelect = response.data;
+			console.log($scope.stateProvSelect);
+		}, function (error) {
+			console.log(error);
+		});	
+	}
+	loadOptions();
+	//////////////////////////////////// End loading options for selects ///////////////////////////////////////////////
+	
+	/////////////////////////////////// Verify all pages add functions are similiar to this ////////////////////////////
 	$scope.addFunction = function() {
 		if ($scope.addForm.$invalid ) {
 			$('#addErrorsModal').modal('show');
@@ -239,7 +266,9 @@ app.controller('addCtrl', function($scope, $http) {
 				console.log('Item Added.');				
 				console.log(response.data); //////////////////////////***********************
 				
+				///////////////////////////////////////// Clears fields when successfully adding a contract; apply to all pages and use for clear buttons ////////////////////////
 				if( response.data.Success ) {
+					console.log("Item added successfully.");
 					$('#addSuccessModal').modal('show');
 					
 					$scope.cont_id = null;
@@ -262,7 +291,6 @@ app.controller('addCtrl', function($scope, $http) {
 					$scope.cont_email = null;
 					$scope.cont_alt_email = null;
 				} else {
-					
 					console.log(response.data.Message);
 					$scope.databaseIssue = response.data.Message;
 					$('#addDatabaseErrorModal').modal('show');
