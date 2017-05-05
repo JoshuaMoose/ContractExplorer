@@ -63,7 +63,6 @@
 						<button type="submit" style="margin-bottom: 10px; margin-top: 10px" class="btn btn-default" value="contacts" name="SearchButton" data-toggle="collapse" data-target="#search" ng-click="myFunction()">Search Contracts</button>
 						<button type="submit" style="margin-bottom: 10px; margin-top: 10px" class="btn btn-default" value="contacts" name="refreshButton" ng-click="myFunction()"><span class="glyphicon glyphicon-refresh
 						" aria-hidden="true"></span></button>
-						<button type="submit" style="margin-bottom: 10px; margin-top: 10px; margin-left: 15px;" class="btn btn-default"data-ng-click="clearFilters()">Clear Search Filters</button>
 						<!--span><a href="ResultsAsTable.html">Advanced Search</a></span-->
 		
 		
@@ -262,27 +261,23 @@
 								<div class="col-lg-3"><input id="contr_id" type="text" data-ng-minlength="1" data-ng-maxlength="255" required data-ng-model="contr_id" 
 														title="Contract ID: Required; String" tabindex=1></script></div>
 								<div class="col-lg-3">Customer Organization ID:</div>
-								<div class="col-lg-3"><select class = "dropdown" data-ng-model="contr_org_id" tabindex=9>
-											<option value="2">TRANSCOM
-											<option value="3">Air Mobility Command (AMC)
-											<option value="4">SAIC
-											<option value="1">SuprTEK
-									</select></div>
+								<div class="col-lg-3"><select ng-model="contr_id" id="contr_org_id" tabindex=9
+															ng-options="y.org_id as y.org_name for y in orgSelect">
+														<option value="">Select Organization</option>
+													</select></div>
 							</div><!--row-->
 							
 							<div class="row">
 								<div class="col-lg-3">Contract Type:</div>
-								<div class="col-lg-3"><select class = "dropdown" data-ng-model="contr_type_cd" required tabindex=2>
-											<option value="Prime">Prime
-											<option value="Sub">Sub
-									</select></div>
+								<div class="col-lg-3"><select ng-model="contr_type_cd" id="contr_type_id" tabindex=2 required
+															ng-options="y.contr_type as y.contr_type_desc for y in contrSelect">
+														<option value="">Select Type</option>
+													</select></div>
 								<div class="col-lg-3">Prime Contractor ID:</div>
-								<div class="col-lg-3"><select class = "dropdown" data-ng-model="prime_contr_id" tabindex=10>
-											<option value="2">TRANSCOM
-											<option value="3">Air Mobility Command (AMC)
-											<option value="4">SAIC
-											<option value="1">SuprTEK
-									</select></div>
+								<div class="col-lg-3"><select ng-model="prime_contr_id" id="prime_contr_id" tabindex=10
+															ng-options="y.org_id as y.org_name for y in orgSelect">
+														<option value="">Select Organization</option>
+													</select></div>
 							</div><!--row-->
 							
 							<div class="row">
@@ -290,23 +285,23 @@
 								<div class="col-lg-3"><input id="prime_contr_id" type="text" pattern="\d+" ng-maxlength="9" data-ng-model="prime_contr_id"
 														title="Prime Contractor ID: Integer" tabindex=3></script></div>
 								<div class="col-lg-3">Contract Program:</div>
-								<div class="col-lg-3"><input id="contr_prog_cd" type="text" ng-maxlength="255" data-ng-model="contr_prog_cd"
-														title="Contract Program: String" tabindex=11></script></div>
+								<div class="col-lg-3"><select ng-model="contr_prog_cd" id="contr_prog_cd" tabindex=11
+															ng-options="y.prog_cd as y.prog_desc for y in progSelect">
+														<option value="">Select Program</option>
+													</select></div>
 							</div><!--row-->
 							
 							<div class="row">
 								<div class="col-lg-3">Contract End Customer:</div>
-								<div class="col-lg-3"><select class = "dropdown" data-ng-model="contr_end_cust_id" tabindex=4>
-											<option value="2">TRANSCOM
-											<option value="3">Air Mobility Command (AMC)
-											<option value="4">SAIC
-											<option value="1">SuprTEK
-									</select></div>
+								<div class="col-lg-3"><select ng-model="contr_end_cust_id" id="contr_end_cust_id" tabindex=4
+															ng-options="y.org_id as y.org_name for y in orgSelect">
+														<option value="">Select Organization</option>
+													</select></div>
 								<div class="col-lg-3">Contract Vehicle:</div>
-								<div class="col-lg-3"><select class = "dropdown" data-ng-model="contr_vehicle_id" tabindex=12>
-										<option value="SMB">SMB
-										<option value="VET">VET
-									</select></div>
+								<div class="col-lg-3"><select ng-model="contr_vehicle_id" id="contr_vehicle_id" tabindex=12
+															ng-options="y.contr_veh_id as y.contr_veh_desc for y in vehSelect">
+														<option value="">Select Vehicle</option>
+													</select></div>
 							</div><!--row-->
 							
 							<div class="row">
@@ -344,19 +339,16 @@
 							
 							<div class="row">
 								<div class="col-lg-3">Contract Security Level:</div>
-								<div class="col-lg-3"><select class = "dropdown" data-ng-model="contr_sec_level_cd" tabindex=8>
-											<option value="CN">CN
-											<option value="NO">NO
-											<option value="SC">SC
-											<option value="TS">TS
-									</select></div>
+								<div class="col-lg-3"><select ng-model="contr_sec_level_cd" id="contr_sec_level_cd" tabindex=8
+															ng-options="y.sec_class_cd as y.sec_class_desc for y in secSelect">
+														<option value="">Select Vehicle</option>
+													</select></div>
+
 								<div class="col-lg-3">Information Security Level:</div>
-								<div class="col-lg-3"><select class = "dropdown" data-ng-model="contr_info_safe_level_cd" tabindex=16>
-											<option value="CN">CN
-											<option value="NO">NO
-											<option value="SC">SC
-											<option value="TS">TS
-									</select></div>
+								<div class="col-lg-3"><select ng-model="contr_info_safe_level_cd" id="contr_info_safe_level_cd" tabindex=16
+															ng-options="y.sec_class_cd as y.sec_class_desc for y in secSelect">
+														<option value="">Select Vehicle</option>
+													</select></div>
 							</div><!--row-->
 							
 							<div class="container-fluid" style="padding:10px;">
