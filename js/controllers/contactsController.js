@@ -133,14 +133,13 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 		var index = $scope.myResults.indexOf(field);
 		
 		var editData = {
-			'table': 'contacts', //////////////////////////////*******
+			'table': 'contacts', //////////////////////////////***************************************************************
 		}
 		
 		//console.log( "field = " + field + "Result field = " + $scope.myResults.indexOf(field) );
 		
 		editData.original =	newField[index];
 		editData.updated = field;
-		editData.types = types;
 		
 		$http({
 			method : 'POST',
@@ -148,7 +147,7 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 			contentType: 'application/json',
 			data : editData,
 		})
-		.then(function (response) { ///////////////////////////////////////////////////////// Add code like this to saveField function of all pages /////////////////////////////////////
+		.then(function (response) { 
 			if( response.data.Success ) {
 				//$scope.myResults = response.data;
 				console.log('Item edited successfully.');
@@ -256,7 +255,6 @@ app.controller('addCtrl', function($scope, $http) {
 				'cont_email': $scope.cont_email,
 				'cont_alt_email': $scope.cont_alt_email,
 			}
-			addData.types = types; 
 			
 			$http({
 				method : 'POST',
