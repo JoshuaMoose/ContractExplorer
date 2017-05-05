@@ -109,38 +109,55 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 		$('#edit_dev_sn').tooltip({'trigger':'focus', 'title': 'Must be a string shorter than 256 characters.', 'placement': 'bottom'});
 		
 		$scope.editing = $scope.myResults.indexOf(field);
-		$scope.newField = angular.copy(field);
+		newField[$scope.myResults.indexOf(field)] = angular.copy(field);
+		$scope.myResults.editing = false;
 	}
 
-	$scope.saveField = function(index) {		
+	$scope.saveField = function(field) {	///////////////////////////////////////////////////////////Update all saveField functions to this (just need to update table in editData	
+		
+		var index = $scope.myResults.indexOf(field);
+		
 		var editData = {
-			'table': 'devices',
+			'table': 'devices', //////////////////////////////*******
 		}
 		
-		editData.original =	$scope.newField;
-		editData.updated = $scope.myResults[$scope.editing];
+		//console.log( "field = " + field + "Result field = " + $scope.myResults.indexOf(field) );
+		
+		editData.original =	newField[index];
+		editData.updated = field;
 		editData.types = types;
 		
-		if ($scope.editing !== false) {
-			//$scope.myResults[$scope.editing] = $scope.newField;
-			//$scope.editing = false;
-			console.log(editData);
-			
-			$http({
-				method : 'POST',
-				url : 'DatabaseUpdateHandler',
-				contentType: 'application/json',
-				data : editData,
-			})
-			
-		}       
+		$http({
+			method : 'POST',
+			url : 'DatabaseUpdateHandler',
+			contentType: 'application/json',
+			data : editData,
+		})
+		.then(function (response) { ///////////////////////////////////////////////////////// Add code like this to saveField function of all pages /////////////////////////////////////
+			if( response.data.Success ) {
+				//$scope.myResults = response.data;
+				console.log('Item edited successfully.');
+				
+				$scope.editing = false;
+			} else {
+				console.log('Item edit failure.');
+				console.log(editData);
+				console.log(response.data.Message);
+				
+				$scope.databaseIssue = response.data.Message;
+				$('#updateDatabaseErrorModal').modal('show');
+				$scope.myResults[$scope.editing] = newField[index];					
+			}	
+		}, function (error) {
+			console.log(error);
+		});	
+		
 	};
 
-	$scope.cancel = function(index) {
-		if ($scope.editing !== false) {
-			$scope.myResults[$scope.editing] = $scope.newField;
-			$scope.editing = false;
-		}
+	$scope.cancel = function(field) {
+		var index = $scope.myResults.indexOf(field);
+		$scope.myResults[index] = newField[index];
+		$scope.editing = false;
 	};
 	////// END EDITING RESULTS //////
 	

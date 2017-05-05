@@ -95,9 +95,6 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
     $scope.editing = false;
 
 	$scope.editResults = function(field) {
-		$scope.editing = $scope.myResults.indexOf(field);
-		$scope.newField = angular.copy(field);
-		
 		$('.edit_org_id').tooltip({'trigger':'focus', 'title': 'Required Field. Should be an integer with 9 digits or less.', 'placement': 'bottom'});
 		$('.edit_org_type_cd').tooltip({'trigger':'focus', 'title': 'Required Field. Should be a string shorter than 50 characters.', 'placement': 'bottom'});
 		$('.edit_org_name').tooltip({'trigger':'focus', 'title': 'Required Field. Should be a string shorter than 256 characters.', 'placement': 'bottom'});
@@ -110,37 +107,56 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 		$('.edit_org_cntry_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
 		$('.edit_cage_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
 			
+	$scope.editing = $scope.myResults.indexOf(field);
+		newField[$scope.myResults.indexOf(field)] = angular.copy(field);
+		$scope.myResults.editing = false;
 	}
 
-	$scope.saveField = function(index) {		
+	$scope.saveField = function(field) {	///////////////////////////////////////////////////////////Update all saveField functions to this (just need to update table in editData	
+		
+		var index = $scope.myResults.indexOf(field);
+		
 		var editData = {
-			'table': 'organizations',
+			'table': 'organizations', //////////////////////////////*******
 		}
 		
-		editData.original =	$scope.newField;
-		editData.updated = $scope.myResults[$scope.editing];
+		//console.log( "field = " + field + "Result field = " + $scope.myResults.indexOf(field) );
+		
+		editData.original =	newField[index];
+		editData.updated = field;
 		editData.types = types;
 		
-		if ($scope.editing !== false) {
-			//$scope.myResults[$scope.editing] = $scope.newField;
-			//$scope.editing = false;
-			console.log(editData);
-			
-			$http({
-				method : 'POST',
-				url : 'DatabaseUpdateHandler',
-				contentType: 'application/json',
-				data : editData,
-			})
-			
-		}       
+		$http({
+			method : 'POST',
+			url : 'DatabaseUpdateHandler',
+			contentType: 'application/json',
+			data : editData,
+		})
+		.then(function (response) { ///////////////////////////////////////////////////////// Add code like this to saveField function of all pages /////////////////////////////////////
+			if( response.data.Success ) {
+				//$scope.myResults = response.data;
+				console.log('Item edited successfully.');
+				
+				$scope.editing = false;
+			} else {
+				console.log('Item edit failure.');
+				console.log(editData);
+				console.log(response.data.Message);
+				
+				$scope.databaseIssue = response.data.Message;
+				$('#updateDatabaseErrorModal').modal('show');
+				$scope.myResults[$scope.editing] = newField[index];					
+			}	
+		}, function (error) {
+			console.log(error);
+		});	
+		
 	};
 
-	$scope.cancel = function(index) {
-		if ($scope.editing !== false) {
-			$scope.myResults[$scope.editing] = $scope.newField;
-			$scope.editing = false;
-		}
+	$scope.cancel = function(field) {
+		var index = $scope.myResults.indexOf(field);
+		$scope.myResults[index] = newField[index];
+		$scope.editing = false;
 	};
 	////// END EDITING RESULTS //////
 	
