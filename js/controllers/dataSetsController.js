@@ -69,7 +69,17 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 	}
 	////// End clear search filters //////
 	////// EDITING RESULTS //////
-$scope.editing = $scope.myResults.indexOf(field);
+	
+	$scope.editResults = function(field) {
+		$scope.editing = $scope.myResults.indexOf(field);
+		$scope.newField = angular.copy(field);
+		
+		$('.edit_fe_data_id').tooltip({'trigger':'focus', 'title': 'Required Field. Should be an integer with 9 digits or less.', 'placement': 'bottom'});
+		$('.edit_fe_desc').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		//$('.edit_written_req').tooltip({'trigger':'focus', 'title': '', 'placement': 'bottom'});
+		//$('.edit_doc_repro').tooltip({'trigger':'focus', 'title': '', 'placement': 'bottom'});
+		
+		$scope.editing = $scope.myResults.indexOf(field);
 		newField[$scope.myResults.indexOf(field)] = angular.copy(field);
 		$scope.myResults.editing = false;
 	}

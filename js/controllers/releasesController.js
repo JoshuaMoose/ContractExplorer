@@ -91,9 +91,7 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 		$('.edit_recv_date').tooltip({'trigger':'focus', 'title': 'Required Field. Timestamp in the format of yyyy-dd-mm hh:mm:ss.', 'placement': 'bottom'});
 		$('.edit_rel_cntry_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
 	
-	}
-
-$scope.editing = $scope.myResults.indexOf(field);
+		$scope.editing = $scope.myResults.indexOf(field);
 		newField[$scope.myResults.indexOf(field)] = angular.copy(field);
 		$scope.myResults.editing = false;
 	}

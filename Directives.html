@@ -127,7 +127,7 @@
 												<span data-ng-hide="editMode">{{x.dir_recv_date}}</span>
 												<input class="edit_dir_recv_date" type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" required data-ng-show="editMode" data-ng-model="x.dir_recv_date"/>
 											</td>
-											<td class="editColumn">
+											<td class="editColumn" style="vertical-align: center; padding: 0; padding-top: 5px;">
 												<button type="submit" data-ng-hide="editMode" data-ng-click="editMode = true; editResults(x)" class="btn btn-default">Edit</button>
 												<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; saveField(x)" class="btn btn-default">Save</button>
 												<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; cancel()" class="btn btn-default">Cancel</button>

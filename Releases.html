@@ -140,7 +140,7 @@
 												<span data-ng-hide="editMode">{{x.rel_cntry_cd}}</span>
 												<input class="edit_rel_cntry_cd" type="text" ng-maxlength="255" data-ng-show="editMode" data-ng-model="x.rel_cntry_cd"/>
 											</td>
-											<td class="editColumn">
+											<td class="editColumn" style="vertical-align: center; padding: 0; padding-top: 5px;">
 												<button type="submit" data-ng-hide="editMode" data-ng-click="editMode = true; editResults(x)" class="btn btn-default">Edit</button>
 												<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; saveField(x)" class="btn btn-default">Save</button>
 												<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; cancel()" class="btn btn-default">Cancel</button>

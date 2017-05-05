@@ -126,7 +126,14 @@ app.controller('addCtrl', function($scope, $http) {
 				contentType: 'application/json',
 				data : addData,
 			})
-						if( response.data.Success ) {
+			.then(function (response) {
+				//$scope.myResults = response.data;
+				
+				console.log('Item Added.');				
+				console.log(response.data); //////////////////////////***********************
+				
+				///////////////////////////////////////// Clears fields when successfully adding a contract; apply to all pages and use for clear buttons ////////////////////////
+				if( response.data.Success ) {
 					console.log("Item added successfully.");
 					$('#addSuccessModal').modal('show');
 						delete $scope.f.reg_id;

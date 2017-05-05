@@ -68,7 +68,7 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 			method : 'POST',
 			url : 'DatabaseSearchHandler',
 			contentType: 'application/json',
-			data : {table: 'secirity_class_codes'},
+			data : {table: 'security_class_codes'},
 		})
 		.then(function (response) {
 			$scope.securityCodes = response.data;
@@ -96,6 +96,7 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 		})
 		.then(function (response) {
 			$scope.stateProvCntryCodes = response.data;
+			console.log(response.data);
 		}, function (error) {
 				console.log(error);
 		});	

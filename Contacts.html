@@ -210,7 +210,7 @@
 										<span data-ng-hide="editMode">{{x.cont_alt_email}}</span>
 										<input class="edit_cont_alt_email" type="text" data-ng-show="editMode" data-ng-model="x.cont_alt_email" data-ng-required />
 									</td>
-									<td class="editColumn">
+									<td class="editColumn" style="vertical-align: center; padding: 0; padding-top: 5px;">
 										<button type="submit" ng-disable="editMode" data-ng-hide="editMode" data-ng-click="editMode = true; editResults(x)" class="btn btn-default">Edit</button>
 										<button ng-disabled="!updateForm.$valid" type="submit" data-ng-show="editMode" data-ng-click="editMode = false; saveField(x)" class="btn btn-default">Save</button>
 										<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; cancel(x)" class="btn btn-default">Cancel</button>
@@ -291,7 +291,7 @@
 								<div class="row">
 									<div class="col-lg-3">Role:</div>
 									<div class="col-lg-3"><select ng-model="cont_role_cd" name="controlecd" id="cont_role_cd" tabindex=3
-																ng-options="y.role_cd as y.role_name for y in roleSelect">
+																ng-options="y.role_cd as y.role_cd for y in roleSelect">
 																<option value="">Select Role</option>
 																</select></div>
 									<div class="col-lg-3">Postal Code:</div>
