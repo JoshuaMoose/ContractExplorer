@@ -224,12 +224,41 @@ app.controller('addCtrl', function($scope, $http) {
 				contentType: 'application/json',
 				data : addData,
 			})
-			.then(function (response) {
+						.then(function (response) {
 				//$scope.myResults = response.data;
-				console.log('Item Added.');
-				console.log(addData);
-				}, function (error) {
-					console.log(error);
+				
+				console.log('Item Added.');				
+				console.log(response.data); //////////////////////////***********************
+				
+				///////////////////////////////////////// Clears fields when successfully adding a contract; apply to all pages and use for clear buttons ////////////////////////
+				if( response.data.Success ) {
+					console.log("Item added successfully.");
+					$('#addSuccessModal').modal('show');
+						delete $scope.f.contr_id;
+						delete $scope.f.contr_org_id;
+						delete $scope.f.cont_end_cust_id;
+						delete $scope.f.contr_type_cd;
+						delete $scope.f.prime_contr_id;
+						delete $scope.f.prime_contract_no;
+						delete $scope.f.contr_prog_cd;
+						delete $scope.f.contr_vehicle_cd;
+						delete $scope.f.contr_sec_level_cd;
+						delete $scope.f.contr_info_safe_level_cd;
+						delete $scope.f.contr_open_date;
+						delete $scope.f.contr_close_date;
+						delete $scope.f.is_open;
+						delete $scope.f.exemptions;
+						delete $scope.f.dd254_recv;
+						delete $scope.f.dd254_date;
+					
+				} else {
+					console.log(response.data.Message);
+					$scope.databaseIssue = response.data.Message;
+					$('#addDatabaseErrorModal').modal('show');
+				}
+				
+			}, function (error) {
+				console.log(error);
 			});	
 		}
 	}	

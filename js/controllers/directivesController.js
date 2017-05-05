@@ -140,9 +140,30 @@ app.controller('addCtrl', function($scope, $http) {
 			})
 			.then(function (response) {
 				//$scope.myResults = response.data;
-				console.log('Item Added.');
-				}, function (error) {
-					console.log(error);
+				
+				console.log('Item Added.');				
+				console.log(response.data); //////////////////////////***********************
+				
+				///////////////////////////////////////// Clears fields when successfully adding a contract; apply to all pages and use for clear buttons ////////////////////////
+				if( response.data.Success ) {
+					console.log("Item added successfully.");
+					$('#addSuccessModal').modal('show');
+					delete $scope.f.dir_id;
+					delete $scope.f.dir_contr_id;
+					delete $scope.f.dir_desc;
+					delete $scope.f.dir_issued_by;
+					delete $scope.f.dir_issued_date;
+					delete $scope.f.dir_recv_by;
+					delete $scope.f.dir_recv_date;
+				
+				} else {
+					console.log(response.data.Message);
+					$scope.databaseIssue = response.data.Message;
+					$('#addDatabaseErrorModal').modal('show');
+				}
+				
+			}, function (error) {
+				console.log(error);
 			});	
 		}
 		

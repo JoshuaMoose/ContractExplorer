@@ -126,11 +126,22 @@ app.controller('addCtrl', function($scope, $http) {
 				contentType: 'application/json',
 				data : addData,
 			})
-			.then(function (response) {
-				//$scope.myResults = response.data;
-				console.log('Item Added.');
-				}, function (error) {
-					console.log(error);
+						if( response.data.Success ) {
+					console.log("Item added successfully.");
+					$('#addSuccessModal').modal('show');
+						delete $scope.f.reg_id;
+						delete $scope.f.reg_title;
+						delete $scope.f.reg_desc;
+						delete $scope.f.appl_cntries;
+				
+				} else {
+					console.log(response.data.Message);
+					$scope.databaseIssue = response.data.Message;
+					$('#addDatabaseErrorModal').modal('show');
+				}
+				
+			}, function (error) {
+				console.log(error);
 			});	
 		}
 		
