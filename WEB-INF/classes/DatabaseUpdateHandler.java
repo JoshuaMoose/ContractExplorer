@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Map;
@@ -21,6 +22,7 @@ import javax.sql.DataSource;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
  
 public class DatabaseUpdateHandler extends HttpServlet {
 
@@ -41,7 +43,12 @@ public class DatabaseUpdateHandler extends HttpServlet {
 		JsonObject jsonRequestObject = new Gson().fromJson(requestData, JsonObject.class);
 		JsonObject original = jsonRequestObject.getAsJsonObject("original");
 		JsonObject updated = jsonRequestObject.getAsJsonObject("updated");
-		JsonObject types = jsonRequestObject.getAsJsonObject("types");
+		String tableName = jsonRequestObject.get("table").getAsString();		
+		
+		JsonParser parser = new JsonParser();
+        JsonElement jsonElement = parser.parse(new FileReader("../webapps/ContractExplorer/WEB-INF/dataTypes.json"));
+        JsonObject types = (JsonObject) (jsonElement.getAsJsonObject()).get(tableName);
+		//JsonObject types = jsonRequestObject.getAsJsonObject("types");
 		
 		List<String> addNamesOriginal = new ArrayList<String>();
 		List<String> addNamesUpdated = new ArrayList<String>();
@@ -63,7 +70,7 @@ public class DatabaseUpdateHandler extends HttpServlet {
 		//System.out.println("Made it past second mapping");
 		
 		//Format for update SQL (to be combined upon SQL execution)
-		String updateTable = "UPDATE contrs." + jsonRequestObject.get("table").getAsString();
+		String updateTable = "UPDATE contrs." + tableName;
 		String updateSet = " SET ";
 		String updateWhere = " WHERE ";
 		

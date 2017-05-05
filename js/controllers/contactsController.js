@@ -33,7 +33,7 @@ $(document).ready(function(){
 	$('#cont_city').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
 	$('#cont_state_prov_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
 	$('#cont_post_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
-	$('#cont_cntry_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#cont_cntry_Cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
 	$('#cont_office_phone').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
 	$('#cont_mobile_phone').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
 	$('#cont_home_phone').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
@@ -42,28 +42,6 @@ $(document).ready(function(){
 	
 });
 
-var types = {
-	'cont_id': "Integer",
-	'cont_org_id': "Integer",
-	'cont_role_cd': "String",
-	'cont_first_name': "String",
-	'cont_middle_name': "String",
-	'cont_last_name': "String",
-	'cont_name_title': "String",
-	'cont_name_suffix': "String",
-	'cont_addr1': "String",
-	'cont_addr2': "String",
-	'cont_city': "String",
-	'cont_state_prov_cd': "String",
-	'cont_post_cd': "String",
-	'cont_cntry_cd': "String",
-	'cont_office_phone': "String",
-	'cont_mobile_phone': "String",
-	'cont_home_phone': "String",
-	'cont_email': "String",
-	'cont_alt_email': "String",
-}
-
 app.controller('searchCtrl', function($scope) {
     $scope.searchParameter = "";
 	$scope.searchKeyword = "";
@@ -71,7 +49,7 @@ app.controller('searchCtrl', function($scope) {
 
 app.controller('resultsCtrl', function($scope, $http) { //On button click this function will populate table
 	////// GET RESULTS //////
-	$scope.myFunction = function() {
+	$scope.searchResults = function() {
 		var pageData = {
 			table: 'contacts', //CHANGE THIS TO NAME OF TABLE (CHECK ACCESS FOR TABLE NAME)
 		};		
@@ -94,9 +72,34 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 	////// END RESULTS //////
 
 	
+	////// Clear search filter ////// ************************************** Add this to all pages, adapt it to the filter inputs on the page
+	$scope.clearFilters = function () {
+		delete $scope.f.cont_id;
+		delete $scope.f.cont_org_id;
+		delete $scope.f.cont_role_cd;
+		delete $scope.f.cont_first_name;
+		delete $scope.f.cont_middle_name;
+		delete $scope.f.cont_last_name;
+		delete $scope.f.cont_name_title;
+		delete $scope.f.cont_name_suffix;
+		delete $scope.f.cont_addr1;
+		delete $scope.f.cont_addr2;
+		delete $scope.f.cont_city;
+		delete $scope.f.cont_state_prov_cd;
+		delete $scope.f.cont_post_cd;
+		delete $scope.f.cont_cntry_Cd;
+		delete $scope.f.cont_office_phone;
+		delete $scope.f.cont_mobile_phone;
+		delete $scope.f.cont_home_phone;
+		delete $scope.f.cont_email;
+		delete $scope.f.cont_alt_email;
+	}
+	////// End clear search filters //////
+	
+	
 	////// EDITING RESULTS //////
-	var newField = [];
-    $scope.editing = false;
+	var newField = []; 
+    $scope.editing = false; 
 
 	$scope.editResults = function(field) {
 		$('.edit_cont_id').tooltip({'trigger':'focus', 'title': 'Required Field. should be an integer with 9 digits or less.', 'placement': 'bottom'});
@@ -112,7 +115,7 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 		$('.edit_cont_city').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
 		$('.edit_cont_state_prov_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
 		$('.edit_cont_post_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
-		$('.edit_cont_cntry_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
+		$('.edit_cont_cntry_Cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
 		$('.edit_cont_office_phone').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
 		$('.edit_cont_mobile_phone').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
 		$('.edit_cont_home_phone').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});
@@ -152,7 +155,8 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 				
 				$scope.editing = false;
 			} else {
-				console.log('Item Failure.');
+				console.log('Item edit failure.');
+				console.log(editData);
 				console.log(response.data.Message);
 				
 				$scope.databaseIssue = response.data.Message;
@@ -245,7 +249,7 @@ app.controller('addCtrl', function($scope, $http) {
 				'cont_city': $scope.cont_city,
 				'cont_state_prov_cd': $scope.cont_state_prov_cd,
 				'cont_post_cd': $scope.cont_post_cd,
-				'cont_cntry_cd': $scope.cont_cntry_cd,
+				'cont_cntry_Cd': $scope.cont_cntry_Cd,
 				'cont_office_phone': $scope.cont_office_phone,
 				'cont_mobile_phone': $scope.cont_mobile_phone,
 				'cont_home_phone': $scope.cont_home_phone,
@@ -284,7 +288,7 @@ app.controller('addCtrl', function($scope, $http) {
 					$scope.cont_city = null;
 					$scope.cont_state_prov_cd = null;
 					$scope.cont_post_cd = null;
-					$scope.cont_cntry_cd = null;
+					$scope.cont_cntry_Cd = null;
 					$scope.cont_office_phone = null;
 					$scope.cont_mobile_phone = null;
 					$scope.cont_home_phone = null;
@@ -302,5 +306,3 @@ app.controller('addCtrl', function($scope, $http) {
 		}
 	}	
 });
-
-

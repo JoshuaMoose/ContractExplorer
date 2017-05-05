@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Map;
@@ -22,6 +23,7 @@ import javax.sql.DataSource;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
  
 public class DatabaseInsertHandler extends HttpServlet {
 
@@ -43,7 +45,13 @@ public class DatabaseInsertHandler extends HttpServlet {
 		
 		JsonObject jsonRequestObject = new Gson().fromJson(requestData, JsonObject.class); //parse the json as a string to a json object
 		JsonObject newValues = jsonRequestObject.getAsJsonObject("values");
-		JsonObject types = jsonRequestObject.getAsJsonObject("types");
+		String tableName = jsonRequestObject.get("table").getAsString();
+		
+		JsonParser parser = new JsonParser();
+        JsonElement jsonElement = parser.parse(new FileReader("../webapps/ContractExplorer/WEB-INF/dataTypes.json"));
+        JsonObject types = (JsonObject) (jsonElement.getAsJsonObject()).get(tableName);
+        
+		//JsonObject types = jsonRequestObject.getAsJsonObject("types");
 		
 		//Format for the table to insert in to data and the values to be inserted (to be combined upon SQL execution)
 		String insertTable = "INSERT INTO contrs." + jsonRequestObject.get("table").getAsString() + " (";
