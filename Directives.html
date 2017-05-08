@@ -199,7 +199,7 @@
 															ng-maxlength="255"></div>
 									<div class="col-lg-3">Issued By:</div>
 									<div class="col-lg-3"><select ng-model="dir_issued_by" name="dirissuedby" id="dir_issued_by" tabindex=6 required
-																ng-options="y.cont_id as y.cont_last_name for y in contSelect">
+																ng-options="y.cont_id as y.cont_name for y in contSelect">
 															<option value="">Select Contact</option>
 														</select></div>
 									</div>
@@ -211,7 +211,7 @@
 															pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" required></div>
 									<div class="col-lg-3">Received By:</div>
 									<div class="col-lg-3"><select ng-model="dir_recv_by" name="dirrecvby" id="dir_recv_by" tabindex=7 required
-																ng-options="y.emp_id as y.cont_emp_name for y in empSelect">
+																ng-options="y.emp_id as y.emp_name for y in empSelect">
 															<option value="">Select Employee</option>
 														</select></div>
 								</div><!--row-->

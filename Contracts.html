@@ -262,7 +262,7 @@
 								<div class="col-lg-3"><input id="contr_id" name="contrid" type="text" data-ng-minlength="1" data-ng-maxlength="255" required data-ng-model="contr_id" 
 														tabindex=1></script></div>
 								<div class="col-lg-3">Customer Organization ID:</div>
-								<div class="col-lg-3"><select ng-model="contr_id" id="contr_org_id" tabindex=9 required
+								<div class="col-lg-3"><select ng-model="contr_org_id" id="contr_org_id" tabindex=9 name="controrgid" required
 															ng-options="y.org_id as y.org_name for y in orgSelect">
 														<option value="">Select Organization</option>
 													</select></div>
@@ -270,7 +270,7 @@
 							
 							<div class="row">
 								<div class="col-lg-3">Contract Type:</div>
-								<div class="col-lg-3"><select ng-model="contr_type_cd" id="contr_type_id" tabindex=2 required
+								<div class="col-lg-3"><select ng-model="contr_type_cd" id="contr_type_id" tabindex=2 name="contrtypecd" required
 															ng-options="y.contr_type_cd as y.cont_type_desc for y in contrSelect">
 														<option value="">Select Type</option>
 													</select></div>
