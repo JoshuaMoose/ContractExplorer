@@ -207,10 +207,8 @@
 
 								<div class="row">
 									<div class="col-lg-3">Released by ID:</div>
-									<div class="col-lg-3"><input id="rel_by" type="text" name="relby" ng-model="rel_by" tabindex=2
-															pattern="^\d+$" ng-maxlength="9" required>
-														<select ng-model="rel_by" name="relby" id="rel_by" tabindex=2 required
-																ng-options="y.cont_id as y.issuer for y in nameSelect"> <!-- Select option example that populates based on database -->
+									<div class="col-lg-3"><select ng-model="rel_by" name="relby" id="rel_by" tabindex=2 required
+																ng-options="y.emp_id as y.receiver for y in empSelect"> <!-- Select option example that populates based on database -->
 															<option value="">Select Name</option>
 														</select></div>
 									<div class="col-lg-3">Release Date:</div>
@@ -220,8 +218,10 @@
 
 								<div class="row">
 									<div class="col-lg-3">Received by ID:</div>
-									<div class="col-lg-3"><input id="recv_by" type="text" name="recvby" ng-model="recv_by" tabindex=3
-															pattern="^\d+$" ng-maxlength="9" required></div>
+									<div class="col-lg-3"><select ng-model="recv_by" name="recvby" id="recv_by" tabindex=3 required
+																ng-options="y.cont_id as y.issuer for y in contSelect"> <!-- Select option example that populates based on database -->
+															<option value="">Select Name</option>
+														</select></div>
 									<div class="col-lg-3">Received Date:</div>
 									<div class="col-lg-3"><input id="recv_date" type="text" name="recvdate" ng-model="recv_date" tabindex=7
 															pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$"></div>

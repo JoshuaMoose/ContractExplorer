@@ -111,6 +111,51 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 });
 
 app.controller('addCtrl', function($scope, $http) { 
+
+/////////////////////////////////////////// Load Options block here is for populating new selects, adapt it per page ///////////////////////////////////////////////////////
+	loadOptions = function() {
+		
+		$http({
+			method : 'POST',
+			url : 'DatabaseSearchHandler',
+			contentType: 'application/json',
+			data : {table: 'contr_id'},
+		})
+		.then(function (response) {
+			$scope.contrSelect = response.data;
+			console.log($scope.contrSelect);
+		}, function (error) {
+			console.log(error);
+		});	
+		
+		$http({
+			method : 'POST',
+			url : 'DatabaseSearchHandler',
+			contentType: 'application/json',
+			data : {table: 'cont_id'},
+		})
+		.then(function (response) {
+			$scope.contSelect = response.data;
+			console.log($scope.contSelect);
+		}, function (error) {
+			console.log(error);
+		});	
+		
+		$http({
+			method : 'POST',
+			url : 'DatabaseSearchHandler',
+			contentType: 'application/json',
+			data : {table: 'emp_id'},
+		})
+		.then(function (response) {
+			$scope.empSelect = response.data;
+			console.log($scope.empSelect);
+		}, function (error) {
+			console.log(error);
+		});	
+	}
+	loadOptions();
+	//////////////////////////////////// End loading options for selects ///////////////////////////////////////////////
 	$scope.addFunction = function() {
 		
 		if ($scope.addForm.$invalid ) {

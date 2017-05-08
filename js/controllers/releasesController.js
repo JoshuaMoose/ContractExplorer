@@ -148,6 +148,52 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 });
 
 app.controller('addCtrl', function($scope, $http) { 
+	
+	/////////////////////////////////////////// Load Options block here is for populating new selects, adapt it per page ///////////////////////////////////////////////////////
+	loadOptions = function() {
+		
+		$http({
+			method : 'POST',
+			url : 'DatabaseSearchHandler',
+			contentType: 'application/json',
+			data : {table: 'organization_id'},
+		})
+		.then(function (response) {
+			$scope.orgSelect = response.data;
+			console.log($scope.orgSelect);
+		}, function (error) {
+			console.log(error);
+		});	
+		
+		$http({
+			method : 'POST',
+			url : 'DatabaseSearchHandler',
+			contentType: 'application/json',
+			data : {table: 'role_codes'},
+		})
+		.then(function (response) {
+			$scope.roleSelect = response.data;
+			console.log($scope.roleSelect);
+		}, function (error) {
+			console.log(error);
+		});	
+
+		$http({
+			method : 'POST',
+			url : 'DatabaseSearchHandler',
+			contentType: 'application/json',
+			data : {table: 'state_province'},
+		})
+		.then(function (response) {
+			$scope.stateProvSelect = response.data;
+			console.log($scope.stateProvSelect);
+		}, function (error) {
+			console.log(error);
+		});	
+	}
+	loadOptions();
+	//////////////////////////////////// End loading options for selects ///////////////////////////////////////////////
+	
 	$scope.addFunction = function() {
 		
 		if ($scope.addForm.$invalid ) {

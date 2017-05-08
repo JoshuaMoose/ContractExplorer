@@ -139,7 +139,6 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 
 app.controller('addCtrl', function($scope, $http) { 
 	$scope.addFunction = function() {
-		
 		if ($scope.addForm.$invalid ) {
 			$('#addErrorsModal').modal('show');
 		} else {

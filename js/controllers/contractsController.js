@@ -205,7 +205,89 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 });
 
 app.controller('addCtrl', function($scope, $http) { 
-	
+	/////////////////////////////////////////// Load Options block here is for populating new selects, adapt it per page ///////////////////////////////////////////////////////
+	loadOptions = function() {
+		
+		$http({
+			method : 'POST',
+			url : 'DatabaseSearchHandler',
+			contentType: 'application/json',
+			data : {table: 'organization_id'},
+		})
+		.then(function (response) {
+			$scope.contrSelect = response.data;
+			console.log($scope.contrSelect);
+		}, function (error) {
+			console.log(error);
+		});	
+		
+		$http({
+			method : 'POST',
+			url : 'DatabaseSearchHandler',
+			contentType: 'application/json',
+			data : {table: 'contract_type_codes'},
+		})
+		.then(function (response) {
+			$scope.contrSelect = response.data;
+			console.log($scope.contrSelect);
+		}, function (error) {
+			console.log(error);
+		});	
+		
+		$http({
+			method : 'POST',
+			url : 'DatabaseSearchHandler',
+			contentType: 'application/json',
+			data : {table: 'contr_id'},
+		})
+		.then(function (response) {
+			$scope.orgSelect = response.data;
+			console.log($scope.orgSelect);
+		}, function (error) {
+			console.log(error);
+		});	
+
+		$http({
+			method : 'POST',
+			url : 'DatabaseSearchHandler',
+			contentType: 'application/json',
+			data : {table: 'org_id'},
+		})
+		.then(function (response) {
+			$scope.orgSelect = response.data;
+			console.log($scope.orgSelect);
+		}, function (error) {
+			console.log(error);
+		});	
+		
+		$http({
+			method : 'POST',
+			url : 'DatabaseSearchHandler',
+			contentType: 'application/json',
+			data : {table: 'sec_class_cd'},
+		})
+		.then(function (response) {
+			$scope.secSelect = response.data;
+			console.log($scope.secSelect);
+		}, function (error) {
+			console.log(error);
+		});	
+		
+		$http({
+			method : 'POST',
+			url : 'DatabaseSearchHandler',
+			contentType: 'application/json',
+			data : {table: 'sec_class_cd'},
+		})
+		.then(function (response) {
+			$scope.secSelect = response.data;
+			console.log($scope.secSelect);
+		}, function (error) {
+			console.log(error);
+		});	
+	}
+	loadOptions();
+	//////////////////////////////////// End loading options for selects ///////////////////////////////////////////////
 	$scope.addFunction = function() {
 		
 		if ($scope.addForm.$invalid ) {
