@@ -188,7 +188,7 @@
 															required ng-maxlength="255"></div>
 									<div class="col-lg-3">Contract ID:</div>
 									<div class="col-lg-3"><select ng-model="dir_contr_id" name="dircontrid" id="dir_contr_id" tabindex=5
-																ng-options="y.contr_id as y.contr_id for y in contrSelect"> <!-- Select option example that populates based on database -->
+																ng-options="y.contr_id as y.contr_name for y in contrSelect"> <!-- Select option example that populates based on database -->
 															<option value="">Select Contract</option>
 														</select></div>
 								</div><!--row-->
@@ -199,7 +199,7 @@
 															ng-maxlength="255"></div>
 									<div class="col-lg-3">Issued By:</div>
 									<div class="col-lg-3"><select ng-model="dir_issued_by" name="dirissuedby" id="dir_issued_by" tabindex=6
-																ng-options="y.cont_id as y.issuer for y in contSelect">
+																ng-options="y.cont_id as y.cont_last_name for y in contSelect">
 															<option value="">Select Contact</option>
 														</select></div>
 									</div>
@@ -211,7 +211,7 @@
 															pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" required></div>
 									<div class="col-lg-3">Received By:</div>
 									<div class="col-lg-3"><select ng-model="dir_recv_by" name="dirrecvby" id="dir_recv_by" tabindex=7
-																ng-options="y.emp_id as y.receiver for y in empSelect">
+																ng-options="y.emp_id as y.cont_emp_name for y in empSelect">
 															<option value="">Select Employee</option>
 														</select></div>
 								</div><!--row-->
@@ -242,19 +242,19 @@
 									      	
 											<div class="modal-body">
 												
-												<span ng-show="addForm.contrid.$error.required">Directive ID is required.<br/></span>
-										        <span ng-show="addForm.contrid.$error.maxlength">Directive ID should be less than 255 characters.<br/></span>
-												<span ng-show="addForm.contrid.$error.maxlength">Contract ID should be less than 255 characters.<br/></span>
-												<span ng-show="addForm.contrid.$error.maxlength">Description should be less than 255 characters.<br/></span>
-												<span ng-show="addForm.travelid.$error.required">Issued By is required.<br/></span>
-												<span ng-show="addForm.travelid.$error.pattern">Issued By should be an integer.<br/></span>
-										        <span ng-show="addForm.travelid.$error.maxlength">Issued By should be 9 digits or fewer.<br/></span>
-												<span ng-show="addForm.travelbegindate.$error.required">Issued Date is required.<br/></span>
-												<span ng-show="addForm.travelbegindate.$error.pattern">Issued Date should be in the format of yyyy-dd-mm hh:mm:ss.<br/></span>
-												<span ng-show="addForm.contrid.$error.required">Received By is required.<br/></span>
-										        <span ng-show="addForm.contrid.$error.maxlength">Received By should be less than 255 characters.<br/></span>
-												<span ng-show="addForm.travelbegindate.$error.required">Received Date is required.<br/></span>
-												<span ng-show="addForm.travelbegindate.$error.pattern">Received Date should be in the format of yyyy-dd-mm hh:mm:ss.<br/></span>
+												<span ng-show="addForm.dirid.$error.required">Directive ID is required.<br/></span>
+										        <span ng-show="addForm.dirid.$error.maxlength">Directive ID should be less than 255 characters.<br/></span>
+												<span ng-show="addForm.dircontrid.$error.maxlength">Contract ID should be less than 255 characters.<br/></span>
+												<span ng-show="addForm.dirdesc.$error.maxlength">Description should be less than 255 characters.<br/></span>
+												<span ng-show="addForm.dirissuedby.$error.required">Issued By is required.<br/></span>
+												<span ng-show="addForm.dirissuedby.$error.pattern">Issued By should be an integer.<br/></span>
+										        <span ng-show="addForm.dirissuedby.$error.maxlength">Issued By should be 9 digits or fewer.<br/></span>
+												<span ng-show="addForm.dirissueddate.$error.required">Issued Date is required.<br/></span>
+												<span ng-show="addForm.dirissueddate.$error.pattern">Issued Date should be in the format of yyyy-dd-mm hh:mm:ss.<br/></span>
+												<span ng-show="addForm.dirrecvby.$error.required">Received By is required.<br/></span>
+										        <span ng-show="addForm.dirrecvby.$error.maxlength">Received By should be less than 255 characters.<br/></span>
+												<span ng-show="addForm.dirrecvdate.$error.required">Received Date is required.<br/></span>
+												<span ng-show="addForm.dirrecvdate.$error.pattern">Received Date should be in the format of yyyy-dd-mm hh:mm:ss.<br/></span>
 												
 										    </div>
 										   		
