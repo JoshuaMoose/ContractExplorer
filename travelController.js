@@ -158,8 +158,8 @@ app.controller('addCtrl', function($scope, $http) {
 			data : {table: 'contract_id'},
 		})
 		.then(function (response) {
-			$scope.orgSelect = response.data;
-			console.log($scope.orgSelect);
+			$scope.contrSelect = response.data;
+			console.log($scope.contrSelect);
 		}, function (error) {
 			console.log(error);
 		});	
@@ -171,8 +171,8 @@ app.controller('addCtrl', function($scope, $http) {
 			data : {table: 'tech_restrict_codes'},
 		})
 		.then(function (response) {
-			$scope.roleSelect = response.data;
-			console.log($scope.roleSelect);
+			$scope.techSelect = response.data;
+			console.log($scope.techSelect);
 		}, function (error) {
 			console.log(error);
 		});	
