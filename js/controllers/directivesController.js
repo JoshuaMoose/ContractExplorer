@@ -119,7 +119,7 @@ app.controller('addCtrl', function($scope, $http) {
 			method : 'POST',
 			url : 'DatabaseSearchHandler',
 			contentType: 'application/json',
-			data : {table: 'contr_id'},
+			data : {table: 'contract_id'},
 		})
 		.then(function (response) {
 			$scope.contrSelect = response.data;
@@ -132,7 +132,7 @@ app.controller('addCtrl', function($scope, $http) {
 			method : 'POST',
 			url : 'DatabaseSearchHandler',
 			contentType: 'application/json',
-			data : {table: 'cont_id'},
+			data : {table: 'contact_name'},
 		})
 		.then(function (response) {
 			$scope.contSelect = response.data;
@@ -145,7 +145,7 @@ app.controller('addCtrl', function($scope, $http) {
 			method : 'POST',
 			url : 'DatabaseSearchHandler',
 			contentType: 'application/json',
-			data : {table: 'emp_id'},
+			data : {table: 'employee_id'},
 		})
 		.then(function (response) {
 			$scope.empSelect = response.data;

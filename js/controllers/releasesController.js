@@ -156,7 +156,7 @@ app.controller('addCtrl', function($scope, $http) {
 			method : 'POST',
 			url : 'DatabaseSearchHandler',
 			contentType: 'application/json',
-			data : {table: 'organization_id'},
+			data : {table: 'contract_type_codes'},
 		})
 		.then(function (response) {
 			$scope.orgSelect = response.data;
