@@ -186,7 +186,7 @@ app.controller('addCtrl', function($scope, $http) {
 			method : 'POST',
 			url : 'DatabaseSearchHandler',
 			contentType: 'application/json',
-			data : {table: 'organization_id'},
+			data : {table: 'organization_name'},
 		})
 		.then(function (response) {
 			$scope.orgSelect = response.data;
@@ -212,7 +212,7 @@ app.controller('addCtrl', function($scope, $http) {
 			method : 'POST',
 			url : 'DatabaseSearchHandler',
 			contentType: 'application/json',
-			data : {table: 'state_province'},
+			data : {table: 'state_prov_cntry_codes'},
 		})
 		.then(function (response) {
 			$scope.stateProvSelect = response.data;

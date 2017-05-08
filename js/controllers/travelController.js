@@ -168,7 +168,7 @@ app.controller('addCtrl', function($scope, $http) {
 			method : 'POST',
 			url : 'DatabaseSearchHandler',
 			contentType: 'application/json',
-			data : {table: 'tech_restrict_codes'},
+			data : {table: 'tech_restriction_codes'},
 		})
 		.then(function (response) {
 			$scope.techSelect = response.data;
@@ -176,7 +176,7 @@ app.controller('addCtrl', function($scope, $http) {
 		}, function (error) {
 			console.log(error);
 		});	
-
+	}		
 	loadOptions();
 	//////////////////////////////////// End loading options for selects ///////////////////////////////////////////////
 	

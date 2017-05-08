@@ -260,9 +260,9 @@
 							<div class="row">
 								<div class="col-lg-3">Contract Number:</div>
 								<div class="col-lg-3"><input id="contr_id" type="text" data-ng-minlength="1" data-ng-maxlength="255" required data-ng-model="contr_id" 
-														title="Contract ID: Required; String" tabindex=1></script></div>
+														tabindex=1></script></div>
 								<div class="col-lg-3">Customer Organization ID:</div>
-								<div class="col-lg-3"><select ng-model="contr_id" id="contr_org_id" tabindex=9
+								<div class="col-lg-3"><select ng-model="contr_id" id="contr_org_id" tabindex=9 required
 															ng-options="y.org_id as y.org_name for y in orgSelect">
 														<option value="">Select Organization</option>
 													</select></div>
@@ -271,7 +271,7 @@
 							<div class="row">
 								<div class="col-lg-3">Contract Type:</div>
 								<div class="col-lg-3"><select ng-model="contr_type_cd" id="contr_type_id" tabindex=2 required
-															ng-options="y.contr_type as y.contr_type_desc for y in contrSelect">
+															ng-options="y.contr_type_cd as y.cont_type_desc for y in contrSelect">
 														<option value="">Select Type</option>
 													</select></div>
 								<div class="col-lg-3">Prime Contractor ID:</div>
@@ -284,10 +284,10 @@
 							<div class="row">
 								<div class="col-lg-3">Prime Contract Number:</div>
 								<div class="col-lg-3"><input id="prime_contr_id" type="text" pattern="\d+" ng-maxlength="9" data-ng-model="prime_contr_id"
-														title="Prime Contractor ID: Integer" tabindex=3></script></div>
+														tabindex=3></script></div>
 								<div class="col-lg-3">Contract Program:</div>
 								<div class="col-lg-3"><select ng-model="contr_prog_cd" id="contr_prog_cd" tabindex=11
-															ng-options="y.prog_cd as y.prog_desc for y in progSelect">
+															ng-options="y.prog_cd as y.prog_cd for y in progSelect">
 														<option value="">Select Program</option>
 													</select></div>
 							</div><!--row-->
@@ -300,7 +300,7 @@
 													</select></div>
 								<div class="col-lg-3">Contract Vehicle:</div>
 								<div class="col-lg-3"><select ng-model="contr_vehicle_id" id="contr_vehicle_id" tabindex=12
-															ng-options="y.contr_veh_id as y.contr_veh_desc for y in vehSelect">
+															ng-options="y.contr_veh_id as y.contr_veh_id for y in vehSelect">
 														<option value="">Select Vehicle</option>
 													</select></div>
 							</div><!--row-->
@@ -317,10 +317,10 @@
 							<div class="row">
 								<div class="col-lg-3">Exemptions and Restrictions:</div>
 								<div class="col-lg-3"><input id="exemptions" type="text" data-ng-model="x.exemptions"
-														title="Exemptions and Exceptions: Text, no length limit" tabindex=6></script></div>
+														tabindex=6></script></div>
 								<div class="col-lg-3">Current DD254 Date:</div>
 								<div class="col-lg-3"><input id="dd254_date" type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" data-ng-model="dd254_date"
-														title="DD254 date: yyyy-dd-mm hh:mm:ss" tabindex=14></script></div>
+														tabindex=14></script></div>
 							</div><!--row-->
 							
 							<div class="row">
@@ -333,13 +333,13 @@
 							<div class="row">
 								<div class="col-lg-3">Contract Security Level:</div>
 								<div class="col-lg-3"><select ng-model="contr_sec_level_cd" id="contr_sec_level_cd" tabindex=8
-															ng-options="y.sec_class_cd as y.sec_class_desc for y in secSelect">
+															ng-options="y.sec_class_cd as y.sec_class_cd for y in secSelect">
 														<option value="">Select Vehicle</option>
 													</select></div>
 
 								<div class="col-lg-3">Information Security Level:</div>
 								<div class="col-lg-3"><select ng-model="contr_info_safe_level_cd" id="contr_info_safe_level_cd" tabindex=16
-															ng-options="y.sec_class_cd as y.sec_class_desc for y in secSelect">
+															ng-options="y.sec_class_cd as y.sec_class_cd for y in secSelect">
 														<option value="">Select Vehicle</option>
 													</select></div>
 							</div><!--row-->

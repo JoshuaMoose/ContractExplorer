@@ -212,7 +212,7 @@ app.controller('addCtrl', function($scope, $http) {
 			method : 'POST',
 			url : 'DatabaseSearchHandler',
 			contentType: 'application/json',
-			data : {table: 'contr_type_cd'},
+			data : {table: 'contract_type_codes'},
 		})
 		.then(function (response) {
 			$scope.contrSelect = response.data;
@@ -225,7 +225,7 @@ app.controller('addCtrl', function($scope, $http) {
 			method : 'POST',
 			url : 'DatabaseSearchHandler',
 			contentType: 'application/json',
-			data : {table: 'org_id'},
+			data : {table: 'organization_name'},
 		})
 		.then(function (response) {
 			$scope.orgSelect = response.data;
@@ -238,7 +238,7 @@ app.controller('addCtrl', function($scope, $http) {
 			method : 'POST',
 			url : 'DatabaseSearchHandler',
 			contentType: 'application/json',
-			data : {table: 'sec_class_cd'},
+			data : {table: 'security_class_codes'},
 		})
 		.then(function (response) {
 			$scope.secSelect = response.data;
@@ -246,38 +246,12 @@ app.controller('addCtrl', function($scope, $http) {
 		}, function (error) {
 			console.log(error);
 		});	
-
-		$http({
-			method : 'POST',
-			url : 'DatabaseSearchHandler',
-			contentType: 'application/json',
-			data : {table: 'org_id'},
-		})
-		.then(function (response) {
-			$scope.orgSelect = response.data;
-			console.log($scope.orgSelect);
-		}, function (error) {
-			console.log(error);
-		});	
 		
 		$http({
 			method : 'POST',
 			url : 'DatabaseSearchHandler',
 			contentType: 'application/json',
-			data : {table: 'org_id'},
-		})
-		.then(function (response) {
-			$scope.orgSelect = response.data;
-			console.log($scope.orgSelect);
-		}, function (error) {
-			console.log(error);
-		});	
-		
-		$http({
-			method : 'POST',
-			url : 'DatabaseSearchHandler',
-			contentType: 'application/json',
-			data : {table: 'prog_cd'},
+			data : {table: 'program_codes'},
 		})
 		.then(function (response) {
 			$scope.progSelect = response.data;
@@ -290,27 +264,14 @@ app.controller('addCtrl', function($scope, $http) {
 			method : 'POST',
 			url : 'DatabaseSearchHandler',
 			contentType: 'application/json',
-			data : {table: 'contr_veh_id'},
+			data : {table: 'contract_vehicle_codes'},
 		})
 		.then(function (response) {
 			$scope.vehSelect = response.data;
 			console.log($scope.vehSelect);
 		}, function (error) {
 			console.log(error);
-		});	
-		
-		$http({
-			method : 'POST',
-			url : 'DatabaseSearchHandler',
-			contentType: 'application/json',
-			data : {table: 'sec_class_cd'},
-		})
-		.then(function (response) {
-			$scope.secSelect = response.data;
-			console.log($scope.secSelect);
-		}, function (error) {
-			console.log(error);
-		});	
+		});		
 	}
 	loadOptions();
 	//////////////////////////////////// End loading options for selects ///////////////////////////////////////////////
