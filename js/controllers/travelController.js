@@ -76,10 +76,12 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 		delete $scope.f.recv_travel_brief;
 	}
 	////// End clear search filters //////
+	
+	
 	////// EDITING RESULTS //////
-	$scope.newField = {};
+	var newField = []; 
     $scope.editing = false;
-
+	
 	$scope.editResults = function(field) {
 		$('.edit_travel_id').tooltip({'trigger':'focus', 'title': 'Required Field. Should be an integer with 9 digits or less.', 'placement': 'bottom'});
 		$('.edit_contr_id').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'bottom'});

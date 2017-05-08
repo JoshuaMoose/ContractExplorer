@@ -10,7 +10,7 @@
     </description>
 
 	<welcome-file-list>
-        <welcome-file>Home.html</welcome-file>
+        <welcome-file>Contracts.html</welcome-file>
     </welcome-file-list>
 		
 	<resource-ref>

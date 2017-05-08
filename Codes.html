@@ -46,112 +46,84 @@
         <div class="page-header" style="text-align:center;">
             <h1><b>Codes<b></h1>
         </div>
-	
-		<div class="panel panel-default">
-			<div >
+		<div class="panel panel-default" style="padding: 30px">
+			<div>
+				<h2>Contract Codes:</h2>
 				<table style="padding: 3px; margin-bottom: 30px;">
-					<tr>
-						<td><input ng-model="f.contr_type_cd" placeholder="Filter by Contract Type Code"delete-if-empty></td>
-						<td><input ng-model="f.cont_type_desc" placeholder="Filter by Contract Type Description"delete-if-empty></td>
-					</tr>
-									
 					<tr>
 						<th>Contract Code</th>
 						<th>Contract Description</th>
 					</tr>
 
-					<tr ng-repeat="x in contractTypeCodes | filter:f">
+					<tr ng-repeat="x in contractTypeCodes">
 						<td>{{ x.contr_type_cd }}</td>
 						<td>{{ x.cont_type_desc }}</td>
 					</tr>	
 				</table>
 			</div>
 			
-			<div >
+			<div>
+				<h2>Program Codes:</h2>
 				<table style="padding: 3px; margin-bottom: 30px;">
-					<tr>
-						<td><input ng-model="f.prog_cd" placeholder="Filter by Program Code"></td>
-						<td><input ng-model="f.prog_desc" placeholder="Filter by Program Type Description"></td>
-					</tr>
-									
 					<tr>
 						<th>Program Code</th>
 						<th>Program Description</th>
 					</tr>
 
-					<tr ng-repeat="x in programCodes | filter:f">
+					<tr ng-repeat="x in programCodes ">
 						<td>{{ x.prog_cd }}</td>
 						<td>{{ x.prog_desc }}</td>
 					</tr>	
 				</table>
 			</div>
 			
-			<div >
+			<div>
+				<h2>Contract Vehicle Codes:</h2>
 				<table style="padding: 3px; margin-bottom: 30px;">
-					<tr>
-						<td><input ng-model="f.contr_veh_id" placeholder="Filter by Contract Vehicle Code"></td>
-						<td><input ng-model="f.contr_veh_desc" placeholder="Filter by Contract Vehicle Type Description"></td>
-					</tr>
-									
 					<tr>
 						<th>Contract Vehicle Code</th>
 						<th>Contract Vehicle Description</th>
 					</tr>
 
-					<tr ng-repeat="x in contractVehicleCodes | filter:f">
+					<tr ng-repeat="x in contractVehicleCodes ">
 						<td>{{ x.contr_veh_cd }}</td>
 						<td>{{ x.cont_veh_desc }}</td>
 					</tr>	
 				</table>
 			</div>
 			
-			<div >
+			<div>
+				<h2>Security Class Codes:</h2>
 				<table style="padding: 3px; margin-bottom: 30px;">
-					<tr>
-						<td><input ng-model="f.sec_class_cd" placeholder="Filter by Security Class Code"></td>
-						<td><input ng-model="f.sec_class_desc" placeholder="Filter by Security Class Description"></td>
-					</tr>
-									
 					<tr>
 						<th>Security Class Code</th>
 						<th>Security Class Description</th>
 					</tr>
 
-					<tr ng-repeat="x in securityCodes | filter:f">
+					<tr ng-repeat="x in securityCodes ">
 						<td>{{ x.sec_class_cd }}</td>
 						<td>{{ x.sec_class_desc }}</td>
 					</tr>	
 				</table>
 			</div>
 			
-			<div >
+			<div>
+				<h2>Device Type Codes:</h2>
 				<table style="padding: 3px; margin-bottom: 30px;">
-					<tr>
-						<td><input ng-model="f.dev_type_cd" placeholder="Filter by Device Type Code"></td>
-						<td><input ng-model="f.dev_type_desc" placeholder="Filter by Device Type Description"></td>
-					</tr>
-									
 					<tr>
 						<th>Device Type Code</th>
 						<th>Device Type Description</th>
 					</tr>
 
-					<tr ng-repeat="x in deviceTypeCodes | filter:f">
+					<tr ng-repeat="x in deviceTypeCodes ">
 						<td>{{ x.dev_type_cd }}</td>
 						<td>{{ x.dev_type_desc }}</td>
 					</tr>	
 				</table>
 			</div>
-			
-			<div >
-				<table style="padding: 3px; margin-bottom: 30px;">
-					<tr>
-						<td><input ng-model="f.state_prov_cd" placeholder="Filter by State/Province Code"></td>
-						<td><input ng-model="f.state_prov_desc" placeholder="Filter by State/Province Name"></td>
-						<td><input ng-model="f.cntry_cd" placeholder="Filter by Country Code"></td>
-						<td><input ng-model="f.cntry_name" placeholder="Filter by Country Name Name"></td>
-					</tr>
-									
+			<div>
+				<h2>State/Province Codes:</h2>
+				<table id="scrollView" style="padding: 3px; margin-bottom: 30px; max-height:100px;">
 					<tr>
 						<th>State/Province Code</th>
 						<th>State/Province Name</th>
@@ -159,7 +131,7 @@
 						<th>Country Name</th>
 					</tr>
 
-					<tr ng-repeat="x in stateProvCntryCodes | filter:f">
+					<tr ng-repeat="x in stateProvCntryCodes ">
 						<td>{{ x.state_prov_cd }}</td>
 						<td>{{ x.state_prov_name }}</td>
 						<td>{{ x.cntry_cd }}</td>
@@ -168,36 +140,29 @@
 				</table>
 			</div>
 
-			<div >
+			<div>
+				<h2>Organization Type Codes:</h2>
 				<table style="padding: 3px; margin-bottom: 30px;">
-					<tr>
-						<td><input ng-model="f.org_type_code" placeholder="Filter by Organization Type Code"></td>
-						<td><input ng-model="f.prg_type_desc" placeholder="Filter by Organization Type Description"></td>
-					</tr>
-									
 					<tr>
 						<th>Organization Type Code</th>
 						<th>Organization Type Description</th>
 					</tr>
 
-					<tr ng-repeat="x in contractVehicleCodes | filter:f">
+					<tr ng-repeat="x in contractVehicleCodes ">
 						<td>{{ x.org_type_code }}</td>
 						<td>{{ x.prg_type_desc }}</td>
 					</tr>	
 				</table>
 			</div>
 			
-			<div >
+			<div>
+				<h2>Role Codes:</h2>
 				<table style="padding: 3px; margin-bottom: 30px;">
-					<tr>
-						<td><input ng-model="f.sec_class_cd" placeholder="Filter by Role Code"></td>
-					</tr>
-									
 					<tr>
 						<th>Role Code</th>
 					</tr>
 
-					<tr ng-repeat="x in roleCodes | filter:f">
+					<tr ng-repeat="x in roleCodes ">
 						<td>{{ x.role_cd }}</td>
 					</tr>	
 				</table>

@@ -77,8 +77,9 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 
 	}
 	////// End clear search filters //////
+	
 	////// EDITING RESULTS //////
-	$scope.newField = {};
+	var newField = []; 
     $scope.editing = false;
 
 	$scope.editResults = function(field) {

@@ -90,8 +90,9 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 		delete $scope.f.cage_cd;
 	}
 	////// End clear search filters //////
+	
 	////// EDITING RESULTS //////
-	$scope.newField = {};
+	var newField = []; 
     $scope.editing = false;
 
 	$scope.editResults = function(field) {

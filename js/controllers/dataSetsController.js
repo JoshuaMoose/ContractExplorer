@@ -68,7 +68,10 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 		delete $scope.f.doc_repro;
 	}
 	////// End clear search filters //////
+	
 	////// EDITING RESULTS //////
+	var newField = []; 
+    $scope.editing = false;
 	
 	$scope.editResults = function(field) {
 		$scope.editing = $scope.myResults.indexOf(field);

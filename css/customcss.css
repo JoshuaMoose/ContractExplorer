@@ -196,7 +196,6 @@
 .scrollView {
 	max-height:100%; 
 	overflow:auto; 
-	margin: 10px; 
 	margin-right: 155px;
 }
 
@@ -204,6 +203,7 @@ table{
     border: 0px; 
 	border-collapse: collapse;
     table-layout: fixed;
+	background-color: #ffffff;
 }
 
 th, td {
@@ -214,6 +214,11 @@ th, td {
 	padding: 10px;
 	padding-top: 13px;
 	padding-bottom: 13px;
+	font-weight: normal;
+}
+
+th {
+	font-weight: bold;
 }
 
 .editColumn {
@@ -225,6 +230,10 @@ th, td {
 tr:nth-child(even) {
 	background: #FFF;
 }
+tr:nth-child(odd) {
+	background: #f5f5f5;
+}
+
 .panel-heading{
  margin-bottom: 30px;-webkit-box-shadow: 0 8px 6px -6px #999;
     -moz-box-shadow: 0 8px 6px -6px #999;
@@ -243,4 +252,8 @@ tr:nth-child(even) {
 
 #results input.ng-invalid, .row input.ng-invalid, .row select.ng-invalid, td input.ng-invalid {
 	border-color: #FA787E;
+}
+
+.panel div table{
+	border: 1px solid #dddddd;
 }

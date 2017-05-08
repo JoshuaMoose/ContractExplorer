@@ -129,7 +129,7 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 	
 	
 	////// EDITING RESULTS //////
-	$scope.newField = {};
+	var newField = []; 
     $scope.editing = false;
 
 	$scope.editResults = function(field) {
@@ -150,7 +150,7 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 		//$('.edit_dd254_recv').tooltip({'trigger':'focus', 'title': 'Boolean value.', 'placement': 'bottom'});
 		$('.edit_dd254_date').tooltip({'trigger':'focus', 'title': 'Timestamp in the format of yyyy-dd-mm hh:mm:ss.', 'placement': 'bottom'});
 		
-	$scope.editing = $scope.myResults.indexOf(field);
+		$scope.editing = $scope.myResults.indexOf(field);
 		newField[$scope.myResults.indexOf(field)] = angular.copy(field);
 		$scope.myResults.editing = false;
 	}
