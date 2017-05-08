@@ -86,13 +86,13 @@
 								</tr>
 												
 								<tr>
-									<th value="cont_id">Travel ID</th>
-									<th value="cont_org_id">Contract ID</th>
-									<th value="cont_role_cd">Destination</th>
-									<th value="cont_first_name">Travel Begin Date</th>
-									<th value="cont_middle_name">Travel End Date</th>
-									<th value="cont_last_name">Tech Restriction Level</th>
-									<th value="cont_name_title">Travel Brief Recieved</th>
+									<th value="travel_id">Travel ID</th>
+									<th value="contr_id">Contract ID</th>
+									<th value="destination">Destination</th>
+									<th value="travel_begin_date">Travel Begin Date</th>
+									<th value="travel_end_date">Travel End Date</th>
+									<th value="tech_restrict_cd">Tech Restriction Level</th>
+									<th value="recv_travel_brief">Travel Brief Recieved</th>
 									<th class="editColumn">Edit</th>
 								</tr>
 
@@ -112,7 +112,7 @@
 										<span data-ng-hide="editMode">{{x.destination}}</span>
 										<input class="edit_destination" type="text" data-ng-show="editMode" data-ng-model="x.destination" data-ng-required 
 											ng-maxlength="255" required />
-									</td>
+									</td> 
 									<td>
 										<span data-ng-hide="editMode">{{x.travel_begin_date}}</span>
 										<input class="edit_travel_begin_date" type="text" data-ng-show="editMode" data-ng-model="x.travel_begin_date" data-ng-required 
