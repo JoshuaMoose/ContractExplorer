@@ -259,7 +259,7 @@
 						<form name="addForm" > <!-- ng-app="myApp" ng-controller="formCtrl" ~~removed bc unused-->
 							<div class="row">
 								<div class="col-lg-3">Contract Number:</div>
-								<div class="col-lg-3"><input id="contr_id" type="text" data-ng-minlength="1" data-ng-maxlength="255" required data-ng-model="contr_id" 
+								<div class="col-lg-3"><input id="contr_id" name="contrid" type="text" data-ng-minlength="1" data-ng-maxlength="255" required data-ng-model="contr_id" 
 														tabindex=1></script></div>
 								<div class="col-lg-3">Customer Organization ID:</div>
 								<div class="col-lg-3"><select ng-model="contr_id" id="contr_org_id" tabindex=9 required
@@ -283,7 +283,7 @@
 							
 							<div class="row">
 								<div class="col-lg-3">Prime Contract Number:</div>
-								<div class="col-lg-3"><input id="prime_contr_id" type="text" pattern="\d+" ng-maxlength="9" data-ng-model="prime_contr_id"
+								<div class="col-lg-3"><input id="prime_contr_id" name="primecontrid" type="text" pattern="\d+" ng-maxlength="9" data-ng-model="prime_contr_id"
 														tabindex=3></script></div>
 								<div class="col-lg-3">Contract Program:</div>
 								<div class="col-lg-3"><select ng-model="contr_prog_cd" id="contr_prog_cd" tabindex=11
@@ -307,19 +307,19 @@
 							
 							<div class="row">
 								<div class="col-lg-3">Date Contract Opened:</div>
-								<div class="col-lg-3"><input id="contr_open_date" type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" data-ng-model="contr_open_date"
+								<div class="col-lg-3"><input id="contr_open_date" name="contropendate" type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" data-ng-model="contr_open_date"
 											title="Contract Opened Date: yyyy-dd-mm hh:mm:ss" tabindex=5></script></div>
 								<div class="col-lg-3">Date Contract Closed:</div>
-								<div class="col-lg-3"><input id="contr_close_date" type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" data-ng-model="contr_close_date" 
+								<div class="col-lg-3"><input id="contr_close_date" name="contrclosedate" type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" data-ng-model="contr_close_date" 
 											title="Contract Close Date: yyyy-dd-mm hh:mm:ss" tabindex=13></div>
 							</div><!--row-->
 							
 							<div class="row">
 								<div class="col-lg-3">Exemptions and Restrictions:</div>
-								<div class="col-lg-3"><input id="exemptions" type="text" data-ng-model="x.exemptions"
+								<div class="col-lg-3"><input id="exemptions" name="exemptions" type="text" data-ng-model="x.exemptions"
 														tabindex=6></script></div>
 								<div class="col-lg-3">Current DD254 Date:</div>
-								<div class="col-lg-3"><input id="dd254_date" type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" data-ng-model="dd254_date"
+								<div class="col-lg-3"><input id="dd254_date" name="dd254date" type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" data-ng-model="dd254_date"
 														tabindex=14></script></div>
 							</div><!--row-->
 							
@@ -366,6 +366,7 @@
 										        <span ng-show="addForm.contrid.$error.maxlength">Contract Number should be less than 255 characters.<br/></span>
 												<span ng-show="addForm.controrgid.$error.required">Customer Organization ID is required.<br/></span>
 												<span ng-show="addForm.contrtypecd.$error.required">Contract Type is required.<br/></span>
+												<span ng-show="addForm.primecontrid.$error.maxlength">Prime Contract Number should be less than 255 characters.<br/></span>
 												<span ng-show="addForm.contropendate.$error.pattern">Date Contract Opened should be in the format of yyyy-dd-mm hh:mm:ss.<br/></span>
 												<span ng-show="addForm.contrclosedate.$error.pattern">Date Contract Closed should be in the format of yyyy-dd-mm hh:mm:ss.<br/></span>
 												<span ng-show="addForm.dd254date.$error.pattern">Current DD254 Date should be in the format of yyyy-dd-mm hh:mm:ss.<br/></span>
