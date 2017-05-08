@@ -113,7 +113,7 @@
 											</td>
 											<td>
 												<span data-ng-hide="editMode">{{x.dir_issued_by}}</span>
-												<input class="edit_dir_issued_by" type="text" pattern="^\d+$" data-ng-show="editMode" data-ng-model="x.dir_issued_by"/>
+												<input class="edit_dir_issued_by" type="text" pattern="^\d+$" data-ng-show="editMode" required data-ng-model="x.dir_issued_by"/>
 											</td>
 											<td>
 												<span data-ng-hide="editMode">{{x.dir_issued_date}}</span>
@@ -121,7 +121,7 @@
 											</td>
 											<td>
 												<span data-ng-hide="editMode">{{x.dir_recv_by}}</span>
-												<input class="edit_dir_recv_by" type="text" pattern="^\d+$" required data-ng-show="editMode" data-ng-model="x.dir_recv_by"/>
+												<input class="edit_dir_recv_by" type="text" pattern="^\d+$" data-ng-show="editMode" required data-ng-model="x.dir_recv_by"/>
 											</td>
 											<td>
 												<span data-ng-hide="editMode">{{x.dir_recv_date}}</span>
