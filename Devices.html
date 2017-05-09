@@ -1,15 +1,17 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>SuprTEK Contract Application</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css\bootstrap.css">
-  <link rel="stylesheet" href="css\customcss.css">
-  <script src="js\jquery-3.2.1.min.js"></script>
-  <script src="js\bootstrap.min.js"></script>
-  <script src="js\angular.min.js"></script>
-  <script src="js\controllers\devicesController.js"></script>
+	<title>SuprTEK Contract Application</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css\bootstrap.css">
+	<link rel="stylesheet" href="css\customcss.css">
+	<script src="js\jquery-3.2.1.min.js"></script>
+	<script src="js\bootstrap.min.js"></script>
+	<script src="js\angular.min.js"></script>
+	<script src="js\angular-sanitize.min.js"></script>
+	<script src="js\ng-csv.min.js"></script>
+	<script src="js\controllers\devicesController.js"></script>
 </head>
 <body data-ng-app="myApp">
     <nav class="navbar navbar-default navbar-fixed-top" style="margin-bottom: 30px;-webkit-box-shadow: 0 8px 6px -6px #999;
@@ -155,7 +157,9 @@
 							
 						</form>
 					</div>
-	
+					
+					<button type="button" class="btn btn-default" style="margin: 10px;" ng-csv="myResults" filename="results.csv">Export Results to .CSV</button>
+						
 						<!--End search for contacts-->
 				</div>
 				<!-- Table end ********************************-->
@@ -185,7 +189,7 @@
 									<div class="col-lg-3">Device Type:</div>
 									<div class="col-lg-3"><select ng-model="dev_type" name="devtype" id="dev_type" tabindex=4 required
 																ng-options="y.dev_type_cd as y.dev_type_desc for y in devSelect">
-																<option value="">Select Device Type</option>
+																<option value=""></option>
 															</select></div>
 								</div><!--row-->
 								
@@ -194,16 +198,16 @@
 									<div class="col-lg-3"><input id="dev_desc" type="text" name="devdesc" ng-maxlength="255" ng-model="dev_desc" required tabindex=2></div>
 									<div class="col-lg-3">Device Owner ID:</div>
 									<div class="col-lg-3"><select ng-model="dev_owner_id" name="devownerid" id="dev_owner_id" tabindex=6
-																ng-options="y.emp_id as y.reciever for y in nameSelect">
-															<option value="">Select Employee</option>
+																ng-options="y.emp_id as y.emp_name for y in employeeSelect">
+															<option value=""></option>
 														</select></div>
 								</div><!--row-->
 								
 								<div class="row">
 									<div class="col-lg-3">Device User ID:</div>
 									<div class="col-lg-3"><select ng-model="dev_user_id" name="devuserid" id="dev_user_id" tabindex=6
-																ng-options="y.emp_id as y.reciever for y in nameSelect">
-															<option value="">Select Employee</option>
+																ng-options="y.emp_id as y.emp_name for y in employeeSelect">
+															<option value=""></option>
 														</select></div>
 									<div class="col-lg-3">Device Serial Number:</div>
 									<div class="col-lg-3"><input id="dev_sn" type="text" name="devsn" pattern="^\d+$" ng-maxlength="9" ng-model="dev_sn" tabindex=7></div>

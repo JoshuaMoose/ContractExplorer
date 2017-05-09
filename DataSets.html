@@ -1,15 +1,17 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>SuprTEK Contract Application</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css\bootstrap.css">
-  <link rel="stylesheet" href="css\customcss.css">
-  <script src="js\jquery-3.2.1.min.js"></script>
-  <script src="js\bootstrap.min.js"></script>
-  <script src="js\angular.min.js"></script>
-  <script src="js\controllers\dataSetsController.js"></script>
+	<title>SuprTEK Contract Application</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css\bootstrap.css">
+	<link rel="stylesheet" href="css\customcss.css">
+	<script src="js\jquery-3.2.1.min.js"></script>
+	<script src="js\bootstrap.min.js"></script>
+	<script src="js\angular.min.js"></script>
+	<script src="js\angular-sanitize.min.js"></script>
+	<script src="js\ng-csv.min.js"></script>
+	<script src="js\controllers\dataSetsController.js"></script>
 </head>
 <body data-ng-app="myApp">
     <nav class="navbar navbar-default navbar-fixed-top" style="margin-bottom: 30px;-webkit-box-shadow: 0 8px 6px -6px #999;
@@ -139,6 +141,8 @@
 								</form>
                             </div>
 
+							<button type="button" class="btn btn-default" style="margin: 10px;" ng-csv="myResults" filename="results.csv">Export Results to .CSV</button>
+					
                             <!--End search for contacts-->
                         </div>
                         <!-- Table end ********************************-->

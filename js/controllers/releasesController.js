@@ -156,11 +156,11 @@ app.controller('addCtrl', function($scope, $http) {
 			method : 'POST',
 			url : 'DatabaseSearchHandler',
 			contentType: 'application/json',
-			data : {table: 'contract_type_codes'},
+			data : {table: 'directive_id'},
 		})
 		.then(function (response) {
-			$scope.orgSelect = response.data;
-			console.log($scope.orgSelect);
+			$scope.dirSelect = response.data;
+			console.log($scope.dirSelect);
 		}, function (error) {
 			console.log(error);
 		});	
@@ -169,11 +169,11 @@ app.controller('addCtrl', function($scope, $http) {
 			method : 'POST',
 			url : 'DatabaseSearchHandler',
 			contentType: 'application/json',
-			data : {table: 'role_codes'},
+			data : {table: 'employee_id'},
 		})
 		.then(function (response) {
-			$scope.roleSelect = response.data;
-			console.log($scope.roleSelect);
+			$scope.empSelect = response.data;
+			console.log($scope.empSelect);
 		}, function (error) {
 			console.log(error);
 		});	
@@ -182,11 +182,11 @@ app.controller('addCtrl', function($scope, $http) {
 			method : 'POST',
 			url : 'DatabaseSearchHandler',
 			contentType: 'application/json',
-			data : {table: 'state_province'},
+			data : {table: 'contact_name'},
 		})
 		.then(function (response) {
-			$scope.stateProvSelect = response.data;
-			console.log($scope.stateProvSelect);
+			$scope.contSelect = response.data;
+			console.log($scope.contSelect);
 		}, function (error) {
 			console.log(error);
 		});	

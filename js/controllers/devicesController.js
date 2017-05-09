@@ -1,4 +1,5 @@
-var app = angular.module('myApp', []);
+var app = angular.module('myApp', ['ngSanitize', 'ngCsv']);
+
 /////////////////////////////// Directive to clear fields when they are empty (set them from "" to null)//////////////////////(
 app.directive('deleteIfEmpty', function () {
     return {
@@ -164,7 +165,41 @@ app.controller('resultsCtrl', function($scope, $http) { //On button click this f
 });
 
 app.controller('addCtrl', function($scope, $http) { 
+	
+	/////////////////////////////////////////// Load Options block here is for populating new selects, adapt it per page ///////////////////////////////////////////////////////
+	loadOptions = function() {
 		
+		$http({
+			method : 'POST',
+			url : 'DatabaseSearchHandler',
+			contentType: 'application/json',
+			data : {table: 'device_type_codes'},
+		})
+		.then(function (response) {
+			$scope.devSelect = response.data;
+			console.log($scope.devSelect);
+		}, function (error) {
+			console.log(error);
+  		});	
+  		
+  		$http({
+  			method : 'POST',
+  			url : 'DatabaseSearchHandler',
+  			contentType: 'application/json',
+  			data : {table: 'employee_id'},
+  		})
+  		.then(function (response) {
+  			$scope.employeeSelect = response.data;
+  			console.log($scope.employeeSelect);
+  		}, function (error) {
+  			console.log(error);
+  		});
+  		
+  	}
+  	loadOptions();
+  	//////////////////////////////////// End loading options for selects ///////////////////////////////////////////////
+  	
+	
 	$scope.addFunction = function() {
 		if ($scope.addForm.$invalid ) {
 			$('#addErrorsModal').modal('show');

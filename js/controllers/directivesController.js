@@ -1,4 +1,4 @@
-var app = angular.module('myApp', []);
+var app = angular.module('myApp', ['ngSanitize', 'ngCsv']);
 
 var types = {
 	'dir_id': "String",

@@ -10,6 +10,8 @@
   <script src="js\jquery-3.2.1.min.js"></script> <!-- imports -->
   <script src="js\bootstrap.min.js"></script>  <!-- for -->
   <script src="js\angular.min.js"></script> <!-- JavaScript Files -->
+  <script src="js\angular-sanitize.min.js"></script>
+  <script src="js\ng-csv.min.js"></script>
   <script src="js\controllers\contactsController.js"></script> <!--Import for page control -->
 </head>
 <body data-ng-app="myApp">
@@ -69,16 +71,10 @@
 						<button type="submit" style="margin-bottom: 10px; margin-top: 10px" class="btn btn-default" name="refreshButton" ng-click="searchResults()"><span class="glyphicon glyphicon-refresh
 						" aria-hidden="true"></span></button>
 						<button type="submit" style="margin-bottom: 10px; margin-top: 10px; margin-left: 15px;" class="btn btn-default"data-ng-click="clearFilters()">Clear Search Filters</button> <!-- Clears all filters -->
-						<!--span><a href="ResultsAsTable.html">Advanced Search</a></span-->
-		
 		
 		<!-- Table Start**************************** -->				
 				<div id="search" class="collapse">
-					
-					<!-- input type="text" name="SearchBy" style="margin: 20px; margin-bottom: -25px;" data-ng-model="f.$" placeholder="Search All Fields" -->
-					
-					<!--button type="submit" value="clearResults">Clear Results</button-->
-					
+				
 					<div id="scrollView" style="max-height:100%; overflow:auto; margin-right: 155px;">
 						<form name="updateForm" novalidate>
 							<table style="padding: 3px;">
@@ -241,10 +237,11 @@
 							
 							  	</div>
 							</div>
-							
 						</form>
 					</div>
 	
+					<button type="button" class="btn btn-default" style="margin: 10px;" ng-csv="myResults" filename="results.csv">Export Results to .CSV</button>
+						
 						<!--End search for contacts-->
 				</div>
 				<!-- Table end ********************************-->
@@ -280,12 +277,12 @@
 									<div class="col-lg-3">Organization ID:</div>
 									<div class="col-lg-3"><select ng-model="cont_org_id" name="contorgid" id="cont_org_id" tabindex=2 required
 																ng-options="y.org_id as y.org_name for y in orgSelect"> <!-- Select option example that populates based on database -->
-															<option value="">Select Organization</option>
+															<option value=""></option>
 														</select></div>
 									<div class="col-lg-3">State or Province:</div>
 									<div class="col-lg-3"><select ng-model="cont_state_prov_cd" name="contstateprovcd" id="cont_state_prov_cd" tabindex=12
 																ng-options="y.state_prov_cd as y.state_prov_name for y in stateProvSelect"> <!-- Select option example that populates based on database -->
-															<option value="">Select State/Province</option>
+															<option value=""></option>
 														</select></div>
 								</div><!--row-->
 								
@@ -293,7 +290,7 @@
 									<div class="col-lg-3">Role:</div>
 									<div class="col-lg-3"><select ng-model="cont_role_cd" name="controlecd" id="cont_role_cd" tabindex=3
 																ng-options="y.role_cd as y.role_cd for y in roleSelect">
-																<option value="">Select Role</option>
+																<option value=""></option>
 																</select></div>
 									<div class="col-lg-3">Postal Code:</div>
 									<div class="col-lg-3"><input id="cont_post_cd" type="text" name="contpostcd" data-ng-model="cont_post_cd" tabindex=13></div>

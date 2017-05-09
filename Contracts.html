@@ -1,15 +1,17 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>SuprTEK Contract Application</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css\bootstrap.css">
-  <link rel="stylesheet" href="css\customcss.css">
-  <script src="js\jquery-3.2.1.min.js"></script>
-  <script src="js\bootstrap.min.js"></script>
-  <script src="js\angular.min.js"></script>
-  <script src="js\controllers\contractsController.js"></script>
+	<title>SuprTEK Contract Application</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css\bootstrap.css">
+	<link rel="stylesheet" href="css\customcss.css">
+	<script src="js\jquery-3.2.1.min.js"></script>
+	<script src="js\bootstrap.min.js"></script>
+	<script src="js\angular.min.js"></script>
+	<script src="js\angular-sanitize.min.js"></script>
+	<script src="js\ng-csv.min.js"></script>
+	<script src="js\controllers\contractsController.js"></script>
 </head>
 <body data-ng-app="myApp">
     <nav class="navbar navbar-default navbar-fixed-top" style="margin-bottom: 30px;-webkit-box-shadow: 0 8px 6px -6px #999;
@@ -73,7 +75,7 @@
 					<!--button type="submit" value="clearResults">Clear Results</button-->
 					
 					<div class="scrollView">
-						<form name="updateForm">
+						<form name="updateForm" novalidate>
 							<table style="padding: 3px;">
 								
 								<tr>
@@ -234,7 +236,9 @@
 							
 						</form>
 					</div>
-	
+					
+					<button type="button" class="btn btn-default" style="margin: 10px;" ng-csv="myResults" filename="results.csv">Export Results to .CSV</button>
+						
 						<!--End search for contacts-->
 				</div>
 				<!-- Table end ********************************-->
@@ -256,7 +260,7 @@
 				<div id="collapse2" class="panel-collapse collapse" data-ng-controller="addCtrl">
 					<div class="panel-body">
 						<!--Add new contact-->
-						<form name="addForm" > <!-- ng-app="myApp" ng-controller="formCtrl" ~~removed bc unused-->
+						<form name="addForm" novalidate> <!-- ng-app="myApp" ng-controller="formCtrl" ~~removed bc unused-->
 							<div class="row">
 								<div class="col-lg-3">Contract Number:</div>
 								<div class="col-lg-3"><input id="contr_id" name="contrid" type="text" data-ng-minlength="1" data-ng-maxlength="255" required data-ng-model="contr_id" 
@@ -264,7 +268,7 @@
 								<div class="col-lg-3">Customer Organization ID:</div>
 								<div class="col-lg-3"><select ng-model="contr_org_id" id="contr_org_id" tabindex=9 name="controrgid" required
 															ng-options="y.org_id as y.org_name for y in orgSelect">
-														<option value="">Select Organization</option>
+														<option value=""></option>
 													</select></div>
 							</div><!--row-->
 							
@@ -272,12 +276,12 @@
 								<div class="col-lg-3">Contract Type:</div>
 								<div class="col-lg-3"><select ng-model="contr_type_cd" id="contr_type_id" tabindex=2 name="contrtypecd" required
 															ng-options="y.contr_type_cd as y.cont_type_desc for y in contrSelect">
-														<option value="">Select Type</option>
+														<option value=""></option>
 													</select></div>
 								<div class="col-lg-3">Prime Contractor ID:</div>
 								<div class="col-lg-3"><select ng-model="prime_contr_id" id="prime_contr_id" tabindex=10
 															ng-options="y.org_id as y.org_name for y in orgSelect">
-														<option value="">Select Organization</option>
+														<option value=""></option>
 													</select></div>
 							</div><!--row-->
 							
@@ -288,7 +292,7 @@
 								<div class="col-lg-3">Contract Program:</div>
 								<div class="col-lg-3"><select ng-model="contr_prog_cd" id="contr_prog_cd" tabindex=11
 															ng-options="y.prog_cd as y.prog_cd for y in progSelect">
-														<option value="">Select Program</option>
+														<option value=""></option>
 													</select></div>
 							</div><!--row-->
 							
@@ -296,12 +300,12 @@
 								<div class="col-lg-3">Contract End Customer:</div>
 								<div class="col-lg-3"><select ng-model="contr_end_cust_id" id="contr_end_cust_id" tabindex=4
 															ng-options="y.org_id as y.org_name for y in orgSelect">
-														<option value="">Select Organization</option>
+														<option value=""></option>
 													</select></div>
 								<div class="col-lg-3">Contract Vehicle:</div>
 								<div class="col-lg-3"><select ng-model="contr_vehicle_id" id="contr_vehicle_id" tabindex=12
 															ng-options="y.contr_veh_id as y.contr_veh_id for y in vehSelect">
-														<option value="">Select Vehicle</option>
+														<option value=""></option>
 													</select></div>
 							</div><!--row-->
 							
@@ -334,13 +338,13 @@
 								<div class="col-lg-3">Contract Security Level:</div>
 								<div class="col-lg-3"><select ng-model="contr_sec_level_cd" id="contr_sec_level_cd" tabindex=8
 															ng-options="y.sec_class_cd as y.sec_class_cd for y in secSelect">
-														<option value="">Select Vehicle</option>
+														<option value=""></option>
 													</select></div>
 
 								<div class="col-lg-3">Information Security Level:</div>
 								<div class="col-lg-3"><select ng-model="contr_info_safe_level_cd" id="contr_info_safe_level_cd" tabindex=16
 															ng-options="y.sec_class_cd as y.sec_class_cd for y in secSelect">
-														<option value="">Select Vehicle</option>
+														<option value=""></option>
 													</select></div>
 							</div><!--row-->
 							

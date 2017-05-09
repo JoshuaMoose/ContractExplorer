@@ -1,4 +1,5 @@
-var app = angular.module('myApp', []);
+var app = angular.module('myApp', ['ngSanitize', 'ngCsv']);
+
 
 /////////////////////////////// Directive to clear fields when they are empty (set them from "" to null)//////////////////////(
 app.directive('deleteIfEmpty', function () {

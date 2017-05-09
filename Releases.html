@@ -10,6 +10,8 @@
 	<script src="js\jquery-3.2.1.min.js"></script>
     <script src="js\bootstrap.min.js"></script>
     <script src="js\angular.min.js"></script>
+	<script src="js\angular-sanitize.min.js"></script>
+	<script src="js\ng-csv.min.js"></script>
     <script src="js\controllers\releasesController.js"></script>
 </head>
 <body data-ng-app="myApp">
@@ -72,7 +74,7 @@
                             <!--button type="submit" value="clearResults">Clear Results</button-->
 
                             <div id="scrollView" style="max-height:100%; overflow:auto; margin-right: 155px;">
-                                <form name="updateForm">
+                                <form name="updateForm" novalidate>
 									<table style="padding: 3px;">
 
 										<tr>
@@ -175,6 +177,8 @@
 								</form>
                             </div>
 
+							<button type="button" class="btn btn-default" style="margin: 10px;" ng-csv="myResults" filename="results.csv">Export Results to .CSV</button>
+					
                             <!--End search for contacts-->
                         </div>
                         <!-- Table end ********************************-->
@@ -194,22 +198,24 @@
                     <div class="panel-body">
                         <!--Add new contact-->
                         <div>
-                            <form name="addForm">
+                            <form name="addForm" novalidate>
 								<!-- ng-app="myApp" ng-controller="formCtrl" ~~removed bc unused-->
 								<div class="row">
 									<div class="col-lg-3">Release ID:</div>
 									<div class="col-lg-3"><input id="rel_id" type="text" name="relid" ng-model="rel_id" tabindex=1
 															pattern="^\d+$" ng-maxlength="9" required></div>
 									<div class="col-lg-3">Directive ID:</div>
-									<div class="col-lg-3"><input id="dir_id" type="text" name="dirid" ng-model="dir_id" tabindex=5
-															ng-maxlength="255"></div>
+									<div class="col-lg-3"><select ng-model="dir_id" name="dirid" id="dir_id" tabindex=5 
+																ng-options="y.dir_id as y.dir_id for y in dirSelect"> <!-- Select option example that populates based on database -->
+															<option value=""></option>
+														</select></div>
 								</div><!--row-->
 
 								<div class="row">
 									<div class="col-lg-3">Released by ID:</div>
 									<div class="col-lg-3"><select ng-model="rel_by" name="relby" id="rel_by" tabindex=2 required
-																ng-options="y.emp_id as y.receiver for y in empSelect"> <!-- Select option example that populates based on database -->
-															<option value="">Select Name</option>
+																ng-options="y.emp_id as y.emp_name for y in empSelect"> <!-- Select option example that populates based on database -->
+															<option value=""></option>
 														</select></div>
 									<div class="col-lg-3">Release Date:</div>
 									<div class="col-lg-3"><input id="rel_date" type="text" name="reldate" ng-model="rel_date" tabindex=6
@@ -219,8 +225,8 @@
 								<div class="row">
 									<div class="col-lg-3">Received by ID:</div>
 									<div class="col-lg-3"><select ng-model="recv_by" name="recvby" id="recv_by" tabindex=3 required
-																ng-options="y.cont_id as y.issuer for y in contSelect"> <!-- Select option example that populates based on database -->
-															<option value="">Select Name</option>
+																ng-options="y.cont_id as y.cont_name for y in contSelect"> <!-- Select option example that populates based on database -->
+															<option value=""></option>
 														</select></div>
 									<div class="col-lg-3">Received Date:</div>
 									<div class="col-lg-3"><input id="recv_date" type="text" name="recvdate" ng-model="recv_date" tabindex=7
