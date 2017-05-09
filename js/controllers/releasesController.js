@@ -231,13 +231,13 @@ app.controller('addCtrl', function($scope, $http) {
 				if( response.data.Success ) {
 					console.log("Item added successfully.");
 					$('#addSuccessModal').modal('show');
-						delete $scope.f.rel_id;
-						delete $scope.f.dir_id;
-						delete $scope.f.rel_by;
-						delete $scope.f.rel_date;
-						delete $scope.f.recv_by;
-						delete $scope.f.recv_date;
-						delete $scope.f.rel_cntry_cd;
+						delete $scope.rel_id;
+						delete $scope.dir_id;
+						delete $scope.rel_by;
+						delete $scope.rel_date;
+						delete $scope.recv_by;
+						delete $scope.recv_date;
+						delete $scope.rel_cntry_cd;
 
 				} else {
 					console.log(response.data.Message);

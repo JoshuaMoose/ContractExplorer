@@ -40,63 +40,63 @@ public class DatabaseInsertHandler extends HttpServlet {
 		String requestData = sb.toString();
 		//End request builder
 		
-		//Variable Declarations
-		List <String> addNames = new ArrayList<String>();
-		
-		JsonObject jsonRequestObject = new Gson().fromJson(requestData, JsonObject.class); //parse the json as a string to a json object
-		JsonObject newValues = jsonRequestObject.getAsJsonObject("values");
-		String tableName = jsonRequestObject.get("table").getAsString();
-		
-		JsonParser parser = new JsonParser();
-        JsonElement jsonElement = parser.parse(new FileReader("../webapps/ContractExplorer/WEB-INF/dataTypes.json"));
-        JsonObject types = (JsonObject) (jsonElement.getAsJsonObject()).get(tableName);
-        
-		//JsonObject types = jsonRequestObject.getAsJsonObject("types");
-		
-		//Format for the table to insert in to data and the values to be inserted (to be combined upon SQL execution)
-		String insertTable = "INSERT INTO contrs." + jsonRequestObject.get("table").getAsString() + " (";
-		String insertValue = "VALUES (";
-		
-		//Temp variables in statement building
-		String value = new String();
-		String dataType = new String();
-		String columnName = new String();
-		int prepIndex = 1;		
-		
-		//Mapping to retrieve the keys/names of the json elements which correspond to the column names for the database
-		Set<Map.Entry<String, JsonElement>> entries = newValues.entrySet();
-		
-		for (Map.Entry<String, JsonElement> entry: entries) { //loop through map, get the keys/names
-			addNames.add(entry.getKey().toString()); //add the keys/names to a list
-		}
-		
-		
-		//loop through to create the sql insert statement (using placeholder ? values to be changed in prepared statement)
-		for (int i = 0; i < addNames.size(); i++) {
-			
-			columnName = addNames.get(i);
-			
-			insertTable = insertTable + columnName;
-			
-			insertValue = insertValue + " ? ";
-			
-			if ( i < (addNames.size() - 1) ) { //commas after all but last element
-				insertTable = insertTable + ", ";
-				insertValue = insertValue + ", ";
-			}
-		}
-
-		//closing formatting for two parts of string 
-		insertTable = insertTable + ") ";
-		insertValue = insertValue + ");";
-		
-		//end INSERT building
-		
-		//System.out.println("Insert Attempted: " + insertTable + insertValue); //console logging
-		
-		
 		try // Documentation https://jdbc.postgresql.org/documentation/94/tomcat.html
         {
+		
+			//Variable Declarations
+			List <String> addNames = new ArrayList<String>();
+			
+			JsonObject jsonRequestObject = new Gson().fromJson(requestData, JsonObject.class); //parse the json as a string to a json object
+			JsonObject newValues = jsonRequestObject.getAsJsonObject("values");
+			String tableName = jsonRequestObject.get("table").getAsString();
+			
+			JsonParser parser = new JsonParser();
+	        JsonElement jsonElement = parser.parse(new FileReader("../webapps/ContractExplorer/WEB-INF/dataTypes.json"));
+	        JsonObject types = (JsonObject) (jsonElement.getAsJsonObject()).get(tableName);
+	        
+			//JsonObject types = jsonRequestObject.getAsJsonObject("types");
+			
+			//Format for the table to insert in to data and the values to be inserted (to be combined upon SQL execution)
+			String insertTable = "INSERT INTO contrs." + jsonRequestObject.get("table").getAsString() + " (";
+			String insertValue = "VALUES (";
+			
+			//Temp variables in statement building
+			String value = new String();
+			String dataType = new String();
+			String columnName = new String();
+			int prepIndex = 1;		
+			
+			//Mapping to retrieve the keys/names of the json elements which correspond to the column names for the database
+			Set<Map.Entry<String, JsonElement>> entries = newValues.entrySet();
+			
+			for (Map.Entry<String, JsonElement> entry: entries) { //loop through map, get the keys/names
+				addNames.add(entry.getKey().toString()); //add the keys/names to a list
+			}
+			
+			
+			//loop through to create the sql insert statement (using placeholder ? values to be changed in prepared statement)
+			for (int i = 0; i < addNames.size(); i++) {
+				
+				columnName = addNames.get(i);
+				
+				insertTable = insertTable + columnName;
+				
+				insertValue = insertValue + " ? ";
+				
+				if ( i < (addNames.size() - 1) ) { //commas after all but last element
+					insertTable = insertTable + ", ";
+					insertValue = insertValue + ", ";
+				}
+			}
+	
+			//closing formatting for two parts of string 
+			insertTable = insertTable + ") ";
+			insertValue = insertValue + ");";
+			
+			//end INSERT building
+			
+			//System.out.println("Insert Attempted: " + insertTable + insertValue); //console logging
+			
             //attempt to connect to the database
 			Context ctx = new InitialContext();
             
@@ -201,9 +201,7 @@ public class DatabaseInsertHandler extends HttpServlet {
 				}
 								
 			}
-		}
-        catch(Exception e) //error handling
-        {
+		} catch(Exception e) {
         	
         	//String errorDescription = e.getMessage();
             e.printStackTrace(); //Default -- to be changed later

@@ -44,16 +44,16 @@ public class DatabaseSearchHandler extends HttpServlet {
         }
 		String requestData = sb.toString();
 
-		// Convert the request data string to a JSON object so we can read it
-		JsonObject jsonRequestObject = new Gson().fromJson(requestData, JsonObject.class);
-		//Read the relevant data (table for this servlet)
-		String tableName = jsonRequestObject.get("table").getAsString();
-		
-		// Read from File to String
-        JsonObject queries = new JsonObject();
-        
-        try {
-            
+		try {
+				
+			// Convert the request data string to a JSON object so we can read it
+			JsonObject jsonRequestObject = new Gson().fromJson(requestData, JsonObject.class);
+			//Read the relevant data (table for this servlet)
+			String tableName = jsonRequestObject.get("table").getAsString();
+			
+			// Read from File to String
+	        JsonObject queries = new JsonObject();
+ 
         	// Try to read in json file with query
         	JsonParser parser = new JsonParser();
             JsonElement jsonElement = parser.parse(new FileReader("../webapps/ContractExplorer/WEB-INF/queries.json"));
@@ -63,104 +63,95 @@ public class DatabaseSearchHandler extends HttpServlet {
             //System.out.println(query);
             
 			////// End parsing block //////
-			
-			
-			
-			try // Documentation https://jdbc.postgresql.org/documentation/94/tomcat.html
-	        {
-	            //attempt to connect to the database
-				Context ctx = new InitialContext();
-	            
-				//if(ctx == null )
-	            //    throw new Exception("Boom - No Context");
-	    
-	            // /jdbc/postgres is the name of the resource above 
-	            DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/postgres");
-	        
-	            if (ds != null) //datasourse exists
-	            {
-	                //Connection conn = ds.getConnection(); //gets connection from datasource
-	                
-	                try ( Connection conn = ds.getConnection() ) {
-	                	
-	                	if(conn != null) 
-	                    {
-	                        
+
+            //attempt to connect to the database
+			Context ctx = new InitialContext();
+            
+			//if(ctx == null )
+            //    throw new Exception("Boom - No Context");
+    
+            // /jdbc/postgres is the name of the resource above 
+            DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/postgres");
+        
+            if (ds != null) //datasourse exists
+            {
+                //Connection conn = ds.getConnection(); //gets connection from datasource
+                
+                try ( Connection conn = ds.getConnection() ) {
+                	
+                	if(conn != null) 
+                    {
+                        
 	    					/////// This code block will fetch database results using only table name passed in from get request ////////
-	    					
-	    					Statement stmt = conn.createStatement(); 
-	                        rst = stmt.executeQuery(query); //contains query Contact
-	                        
-	    					ResultSetMetaData rstm = rst.getMetaData(); //Contains details like row count and column names for auto populating and creating table
-	    					int numOfColumns = rstm.getColumnCount(); //metadata from table to know how to build dynamically
-	    					
-	    					for(int i=1;i<=numOfColumns;i++) {
-	    						columnNames.add(rstm.getColumnName(i)); //loop through to get all column names
-	    					}
-	    					
-	    			        while(rst.next()) { // convert each object to an human readable JSON object
-	    						JsonObject jsonObject = new JsonObject();
-	    						
-	    						for(int i=1; i<=numOfColumns; i++) {
-	    							//Get column name and associated value for this result
-	    							String key = columnNames.get(i - 1);
-	    							String value = rst.getString(i);
-	    							
-	    							jsonObject.addProperty(key, value); //Add a json element in format key: value -- ie. cont_first_name: Bill
-	    						}
-	    						
-	    						resultList.add(jsonObject);
-	    					}		
-	    					
-	                        conn.close();
-	    					
-	    					/////// End database fetch ////////
-	                        
-	                    	// Send results back to front-end
-	                		PrintWriter out = response.getWriter();
-	                		String jsonString = new Gson().toJson(resultList);
-	                		
-	                		out.println(jsonString);
-	                    }
-	                	
-	                } catch (Exception e2) {
-	                	
-	                	String issue = e2.getMessage();
-						
-						JsonObject errorObject = new JsonObject();
-						
-						errorObject.addProperty("Success", false);
-						errorObject.addProperty("Message", issue);
-						
-						PrintWriter out = response.getWriter();
-						String jsonString = new Gson().toJson(errorObject);
-						
-						out.println(jsonString);
-	                	
-	                }
-	                
-	            }
-	        }
-	        catch(Exception e1) //error handling
-	        {
-	        	
-	        	String issue = e1.getMessage();
-				
-				JsonObject errorObject = new JsonObject();
-				
-				errorObject.addProperty("Success", false);
-				errorObject.addProperty("Message", issue);
-				
-				PrintWriter out = response.getWriter();
-				String jsonString = new Gson().toJson(errorObject);
-				
-				out.println(jsonString);
-				
-	        }
-        } catch (FileNotFoundException e) {
-        	System.out.println("Queries file not found.");
-        } catch (IOException ioe){
-        	System.out.println("IO error.");
+    					
+    					Statement stmt = conn.createStatement(); 
+                        rst = stmt.executeQuery(query); //contains query Contact
+                        
+    					ResultSetMetaData rstm = rst.getMetaData(); //Contains details like row count and column names for auto populating and creating table
+    					int numOfColumns = rstm.getColumnCount(); //metadata from table to know how to build dynamically
+    					
+    					for(int i=1;i<=numOfColumns;i++) {
+    						columnNames.add(rstm.getColumnName(i)); //loop through to get all column names
+    					}
+    					
+    			        while(rst.next()) { // convert each object to an human readable JSON object
+    						JsonObject jsonObject = new JsonObject();
+    						
+    						for(int i=1; i<=numOfColumns; i++) {
+    							//Get column name and associated value for this result
+    							String key = columnNames.get(i - 1);
+    							String value = rst.getString(i);
+    							
+    							jsonObject.addProperty(key, value); //Add a json element in format key: value -- ie. cont_first_name: Bill
+    						}
+    						
+    						resultList.add(jsonObject);
+    					}		
+    					
+                        conn.close();
+    					
+    					/////// End database fetch ////////
+                        
+                    	// Send results back to front-end
+                		PrintWriter out = response.getWriter();
+                		String jsonString = new Gson().toJson(resultList);
+                		
+                		out.println(jsonString);
+                    }
+                	
+                } catch (Exception e2) {
+                	
+                	String issue = e2.getMessage();
+					
+					JsonObject errorObject = new JsonObject();
+					
+					errorObject.addProperty("Success", false);
+					errorObject.addProperty("Message", issue);
+					
+					PrintWriter out = response.getWriter();
+					String jsonString = new Gson().toJson(errorObject);
+					
+					out.println(jsonString);
+                	
+                }
+                
+            }
+        }
+        catch(Exception e1) //error handling
+        {
+        	
+        	String issue = e1.getMessage();
+			
+			JsonObject errorObject = new JsonObject();
+			
+			errorObject.addProperty("Success", false);
+			errorObject.addProperty("Message", issue);
+			
+			PrintWriter out = response.getWriter();
+			String jsonString = new Gson().toJson(errorObject);
+			
+			out.println(jsonString);
+			
         }
     }
  

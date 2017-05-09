@@ -136,10 +136,10 @@ app.controller('addCtrl', function($scope, $http) {
 				if( response.data.Success ) {
 					console.log("Item added successfully.");
 					$('#addSuccessModal').modal('show');
-						delete $scope.f.reg_id;
-						delete $scope.f.reg_title;
-						delete $scope.f.reg_desc;
-						delete $scope.f.appl_cntries;
+						delete $scope.reg_id;
+						delete $scope.reg_title;
+						delete $scope.reg_desc;
+						delete $scope.appl_cntries;
 				
 				} else {
 					console.log(response.data.Message);
