@@ -211,7 +211,7 @@
 							<form name="addForm" novalidate>
 								<div class="row">
 									<div class="col-lg-3">Organization ID:</div>
-									<div class="col-lg-3"><input type="text"  pattern="^\d+$" required data-ng-model="org_id" tabindex=1/></div>
+									<div class="col-lg-3"><input type="text" name="orgid"  pattern="^\d+$" required data-ng-model="org_id" tabindex=1/></div>
 									<!--Insert vehicle code-->
 								</div><!--row-->
 								
@@ -264,7 +264,7 @@
 								
 								<div class="row">
 									<div class="col-lg-3">Country:</div>
-									<div class="col-lg-3"><select class = "dropdown" data-ng-model="org_cntry_cd" tabindex=10>
+									<div class="col-lg-3"><select class = "dropdown" name="orgcntrycd" data-ng-model="org_cntry_cd" tabindex=10>
 											<option value="USA">USA
 											<option value="CAN">CAN
 										</select></div>

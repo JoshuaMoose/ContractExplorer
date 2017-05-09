@@ -21,8 +21,8 @@ app.directive('deleteIfEmpty', function () {
 
 //////////////////////////////////   Adjust tooltips on fields which get turned to selects (they only need required or nothing ////////////////////////////////////////////////////////
 $(document).ready(function(){
-	$('#cont_id').tooltip({'trigger':'focus', 'title': 'Required Field. should be an integer with 9 digits or less.', 'placement': 'right'});
-	$('#cont_org_id').tooltip({'trigger':'focus', 'title': 'Required Field.', 'placement': 'right'}); // should be an integer with 9 digits or less.', 'placement': 'right'});
+	$('#cont_id').tooltip({'trigger':'focus', 'title': 'Required Field. Should be an integer with 9 digits or less.', 'placement': 'right'});
+	$('#cont_org_id').tooltip({'trigger':'focus', 'title': 'Required Field. Should be an integer with 9 digits or less.', 'placement': 'right'}); // should be an integer with 9 digits or less.', 'placement': 'right'});
 	$('#cont_role_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
 	$('#cont_first_name').tooltip({'trigger':'focus', 'title': 'Required Field. should be a string shorter than 256 characters.', 'placement': 'right'});
 	$('#cont_middle_name').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
