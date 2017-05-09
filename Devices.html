@@ -61,10 +61,10 @@
 					<div class="panel-body">
 						<!--Search for contacts-->
 						
-						<input type="text" name="SearchBy" style="margin: 20px; margin-bottom: -25px;" ng-model="f.$" placeholder="Search All Fields">
-						<button type="submit" style="margin-bottom: 10px; margin-top: 10px; margin-left: 1px;" class="btn btn-default" value="contacts" name="SearchButton" data-toggle="collapse" data-target="#search" ng-click="myFunction()">Search Devices</button>
+						<input type="text" name="SearchBy" style="margin: 20px; margin-bottom: -25px;" data-ng-model="f.$" placeholder="Search All Fields">
+						<button type="submit" style="margin-bottom: 10px; margin-top: 10px; margin-left: 1px;" class="btn btn-default" value="contacts" name="SearchButton" data-ng-click="searchResults()">Search Devices</button>
 						
-						<button type="submit" style="margin-bottom: 10px; margin-top: 10px" class="btn btn-default" value="contacts" name="refreshButton" ng-click="myFunction()"><span class="glyphicon glyphicon-refresh
+						<button type="submit" style="margin-bottom: 10px; margin-top: 10px" class="btn btn-default" value="contacts" name="refreshButton" data-ng-click="searchResults()"><span class="glyphicon glyphicon-refresh
 						" aria-hidden="true"></span></button>
 						<button type="submit" style="margin-bottom: 10px; margin-top: 10px; margin-left: 15px;" class="btn btn-default"data-ng-click="clearFilters()">Clear Search Filters</button>
 						<!--span><a href="ResultsAsTable.html">Advanced Search</a></span-->
@@ -80,12 +80,12 @@
 							<table style="padding: 3px;">
 								
 								<tr>
-									<td><input ng-model="f.dev_id" placeholder="Filter by Device ID"delete-if-empty></td>
-									<td><input ng-model="f.dev_type" placeholder="Filter by Device Type"delete-if-empty></td>
-									<td><input ng-model="f.dev_desc" placeholder="Filter by Device Describe"delete-if-empty></td>
-									<td><input ng-model="f.dev_owner_id" placeholder="Filter by Device Owner"delete-if-empty></td>
-									<td><input ng-model="f.dev_user_id" placeholder="Filter by Device User ID"delete-if-empty></td>
-									<td><input ng-model="f.dev_sn" placeholder="Filter by Device Serial Number"delete-if-empty></td>
+									<td><input data-ng-model="f.dev_id" placeholder="Filter by Device ID"delete-if-empty></td>
+									<td><input data-ng-model="f.dev_type" placeholder="Filter by Device Type"delete-if-empty></td>
+									<td><input data-ng-model="f.dev_desc" placeholder="Filter by Device Describe"delete-if-empty></td>
+									<td><input data-ng-model="f.dev_owner_id" placeholder="Filter by Device Owner"delete-if-empty></td>
+									<td><input data-ng-model="f.dev_user_id" placeholder="Filter by Device User ID"delete-if-empty></td>
+									<td><input data-ng-model="f.dev_sn" placeholder="Filter by Device Serial Number"delete-if-empty></td>
 								</tr>
 												
 								<tr>
@@ -98,35 +98,35 @@
 									<th class="editColumn">Edit</th>
 								</tr>
 	
-								<tr ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}">
+								<tr data-ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}">
 									<td>
 										<span data-ng-hide="editMode">{{ x.dev_id }}</span>
-										<input class="edit_dev_id" id="edit_dev_id" type="text" pattern="^\d+$" ng-maxlength="9" data-ng-show="editMode" data-ng-model="x.dev_id" required />
+										<input class="edit_dev_id" id="edit_dev_id" type="text" pattern="^\d+$" data-ng-maxlength="9" data-ng-show="editMode" data-ng-model="x.dev_id" required />
 									</td>
 									<!-- The special block here will swap to being input boxes when the -->
 									<td>
 										<span data-ng-hide="editMode">{{x.dev_type}}</span>
-										<input class="edit_dev_type" id="edit_dev_type" type="text" ng-maxlength="255" data-ng-show="editMode" data-ng-model="x.dev_type" required />
+										<input class="edit_dev_type" id="edit_dev_type" type="text" data-ng-maxlength="255" data-ng-show="editMode" data-ng-model="x.dev_type" required />
 									</td>
 									<td>
 										<span data-ng-hide="editMode">{{x.dev_desc}}</span>
-										<input class="edit_dev_desc" id="edit_dev_desc" type="text" ng-maxlength="255" data-ng-show="editMode" data-ng-model="x.dev_desc" required />
+										<input class="edit_dev_desc" id="edit_dev_desc" type="text" data-ng-maxlength="255" data-ng-show="editMode" data-ng-model="x.dev_desc" required />
 									</td>
 									<td>
 										<span data-ng-hide="editMode">{{x.dev_owner_id}}</span>
-										<input class="edit_dev_owner_id" id="edit_dev_owner_id" type="text" pattern="^\d+$" ng-maxlength="9" data-ng-show="editMode" data-ng-model="x.dev_owner_id" required />
+										<input class="edit_dev_owner_id" id="edit_dev_owner_id" type="text" pattern="^\d+$" data-ng-maxlength="9" data-ng-show="editMode" data-ng-model="x.dev_owner_id" required />
 									</td>
 									<td>
 										<span data-ng-hide="editMode">{{x.dev_user_id}}</span>
-										<input class="edit_dev_user_id" id="edit_dev_user_id" type="text" pattern="^\d+$" ng-maxlength="9" data-ng-show="editMode" data-ng-model="x.dev_user_id" required />
+										<input class="edit_dev_user_id" id="edit_dev_user_id" type="text" pattern="^\d+$" data-ng-maxlength="9" data-ng-show="editMode" data-ng-model="x.dev_user_id" required />
 									</td>
 									<td>
 										<span data-ng-hide="editMode">{{x.dev_sn}}</span>
-										<input class="edit_dev_sn" id="edit_dev_sn" type="text" pattern="^\d+$" ng-maxlength="9" data-ng-show="editMode" data-ng-model="x.dev_sn"/>
+										<input class="edit_dev_sn" id="edit_dev_sn" type="text" pattern="^\d+$" data-ng-maxlength="9" data-ng-show="editMode" data-ng-model="x.dev_sn"/>
 									</td>
 									<td class="editColumn" style="vertical-align: center; padding: 0; padding-top: 5px;">
 											<button type="submit" data-ng-hide="editMode" data-ng-click="editMode = true; editResults(x)" class="btn btn-default">Edit</button>
-											<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; saveField(x)" class="btn btn-default" ng-disabled="!updateForm.$valid" >Save</button>
+											<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; saveField(x)" class="btn btn-default" data-ng-disabled="!updateForm.$valid" >Save</button>
 											<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; cancel()" class="btn btn-default">Cancel</button>
 									</td>
 								</tr>	
@@ -158,7 +158,7 @@
 						</form>
 					</div>
 					
-					<button type="button" class="btn btn-default" style="margin: 10px;" ng-csv="myResults" filename="results.csv">Export Results to .CSV</button>
+					<button type="button" class="btn btn-default" style="margin: 10px;" data-ng-csv="myResults" filename="results.csv">Export Results to .CSV</button>
 						
 						<!--End search for contacts-->
 				</div>
@@ -178,44 +178,44 @@
 						<a data-toggle="collapse" href="#collapse2"><h2>Add New Devices</h2></a>
 					</h4>
 				</div>
-				<div id="collapse2" class="panel-collapse collapse" ng-controller="addCtrl">
+				<div id="collapse2" class="panel-collapse collapse" data-ng-controller="addCtrl">
 					<div class="panel-body">
 						<!--Add new contact-->
-						<div> <!-- ng-app="myApp" ng-controller="formCtrl" ~~removed bc unused-->
+						<div> <!-- data-ng-app="myApp" data-ng-controller="formCtrl" ~~removed bc unused-->
 							<form name="addForm" novalidate>
 								<div class="row">
 									<div class="col-lg-3">Device ID:</div>
-									<div class="col-lg-3"><input id="dev_id" type="text" name="devid" pattern="^\d+$" ng-maxlength="9" ng-model="dev_id" required tabindex=1></div>
+									<div class="col-lg-3"><input id="dev_id" type="text" name="devid" pattern="^\d+$" data-ng-maxlength="9" data-ng-model="dev_id" required tabindex=1></div>
 									<div class="col-lg-3">Device Type:</div>
-									<div class="col-lg-3"><select ng-model="dev_type" name="devtype" id="dev_type" tabindex=4 required
-																ng-options="y.dev_type_cd as y.dev_type_desc for y in devSelect">
+									<div class="col-lg-3"><select data-ng-model="dev_type" name="devtype" id="dev_type" tabindex=4 required
+																data-ng-options="y.dev_type_cd as y.dev_type_desc for y in devSelect">
 																<option value=""></option>
 															</select></div>
 								</div><!--row-->
 								
 								<div class="row">
 									<div class="col-lg-3">Device Description:</div>
-									<div class="col-lg-3"><input id="dev_desc" type="text" name="devdesc" ng-maxlength="255" ng-model="dev_desc" required tabindex=2></div>
+									<div class="col-lg-3"><input id="dev_desc" type="text" name="devdesc" data-ng-maxlength="255" data-ng-model="dev_desc" required tabindex=2></div>
 									<div class="col-lg-3">Device Owner ID:</div>
-									<div class="col-lg-3"><select ng-model="dev_owner_id" name="devownerid" id="dev_owner_id" tabindex=6
-																ng-options="y.emp_id as y.emp_name for y in employeeSelect">
+									<div class="col-lg-3"><select data-ng-model="dev_owner_id" name="devownerid" id="dev_owner_id" tabindex=6
+																data-ng-options="y.emp_id as y.emp_name for y in employeeSelect">
 															<option value=""></option>
 														</select></div>
 								</div><!--row-->
 								
 								<div class="row">
 									<div class="col-lg-3">Device User ID:</div>
-									<div class="col-lg-3"><select ng-model="dev_user_id" name="devuserid" id="dev_user_id" tabindex=6
-																ng-options="y.emp_id as y.emp_name for y in employeeSelect">
+									<div class="col-lg-3"><select data-ng-model="dev_user_id" name="devuserid" id="dev_user_id" tabindex=6
+																data-ng-options="y.emp_id as y.emp_name for y in employeeSelect">
 															<option value=""></option>
 														</select></div>
 									<div class="col-lg-3">Device Serial Number:</div>
-									<div class="col-lg-3"><input id="dev_sn" type="text" name="devsn" pattern="^\d+$" ng-maxlength="9" ng-model="dev_sn" tabindex=7></div>
+									<div class="col-lg-3"><input id="dev_sn" type="text" name="devsn" pattern="^\d+$" data-ng-maxlength="9" data-ng-model="dev_sn" tabindex=7></div>
 								</div><!--row-->
                                 
 								<div class="container-fluid" style="padding:10px;">
-									<button type="submit" class="btn btn-sm btn-default btn-block" value="contacts" ng-click="addFunction()" tabindex=20>
-										<span ng-show="addForm.$valid" class="glyphicon glyphicon-ok"></span><span ng-show="addForm.$invalid" class="glyphicon glyphicon-remove"/></span> Add New Device</button>
+									<button type="submit" class="btn btn-sm btn-default btn-block" value="contacts" data-ng-click="addFunction()" tabindex=20>
+										<span data-ng-show="addForm.$valid" class="glyphicon glyphicon-ok"></span><span data-ng-show="addForm.$invalid" class="glyphicon glyphicon-remove"/></span> Add New Device</button>
 								</div>
 								
 								<!-- Modal -->
@@ -231,18 +231,18 @@
 									      	
 											<div class="modal-body">
 											
-												<span ng-show="addForm.devid.$error.required">Device ID is required.<br/></span>
-												<span ng-show="addForm.devid.$error.pattern">Device ID should be an integer.<br/></span>
-										        <span ng-show="addForm.devid.$error.maxlength">Device ID should be 9 digits or fewer.<br/></span>
-												<span ng-show="addForm.devtype.$error.required">Device Type is required.<br/></span>
-										        <span ng-show="addForm.devtype.$error.maxlength">Device Type should be less than 255 characters.<br/></span>
-												<span ng-show="addForm.devdesc.$error.required">Device Description is required.<br/></span>
-										        <span ng-show="addForm.devdesc.$error.maxlength">Device Description should be less than 255 characters.<br/></span>
-												<span ng-show="addForm.devownerid.$error.required">Device Owner is required.<br/></span>
-										        <span ng-show="addForm.devownerid.$error.maxlength">Device Owner should be less than 255 characters.<br/></span>
-												<span ng-show="addForm.devuserid.$error.required">Device User ID is required.<br/></span>
-										        <span ng-show="addForm.devuserid.$error.maxlength">Device User ID should be less than 255 characters.<br/></span>
-										        <span ng-show="addForm.devsn.$error.maxlength">Device Serial Number should be less than 255 characters.<br/></span>
+												<span data-ng-show="addForm.devid.$error.required">Device ID is required.<br/></span>
+												<span data-ng-show="addForm.devid.$error.pattern">Device ID should be an integer.<br/></span>
+										        <span data-ng-show="addForm.devid.$error.maxlength">Device ID should be 9 digits or fewer.<br/></span>
+												<span data-ng-show="addForm.devtype.$error.required">Device Type is required.<br/></span>
+										        <span data-ng-show="addForm.devtype.$error.maxlength">Device Type should be less than 255 characters.<br/></span>
+												<span data-ng-show="addForm.devdesc.$error.required">Device Description is required.<br/></span>
+										        <span data-ng-show="addForm.devdesc.$error.maxlength">Device Description should be less than 255 characters.<br/></span>
+												<span data-ng-show="addForm.devownerid.$error.required">Device Owner is required.<br/></span>
+										        <span data-ng-show="addForm.devownerid.$error.maxlength">Device Owner should be less than 255 characters.<br/></span>
+												<span data-ng-show="addForm.devuserid.$error.required">Device User ID is required.<br/></span>
+										        <span data-ng-show="addForm.devuserid.$error.maxlength">Device User ID should be less than 255 characters.<br/></span>
+										        <span data-ng-show="addForm.devsn.$error.maxlength">Device Serial Number should be less than 255 characters.<br/></span>
 												
 										    </div>
 										   		

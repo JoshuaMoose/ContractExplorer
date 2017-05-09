@@ -2,17 +2,17 @@
 <!--Southwest Baptist University | Senior Project '16-'17 | Suprtek Team -->
 <html lang="en">
 <head>
-  <title>SuprTEK Contract Application</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css\bootstrap.css"> <!--import for bootstrap css-->
-  <link rel="stylesheet" href="css\customcss.css"> <!--import for team custom css-->
-  <script src="js\jquery-3.2.1.min.js"></script> <!-- imports -->
-  <script src="js\bootstrap.min.js"></script>  <!-- for -->
-  <script src="js\angular.min.js"></script> <!-- JavaScript Files -->
-  <script src="js\angular-sanitize.min.js"></script>
-  <script src="js\ng-csv.min.js"></script>
-  <script src="js\controllers\contactsController.js"></script> <!--Import for page control -->
+	<title>SuprTEK Contract Application</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css\bootstrap.css"> <!--import for bootstrap css-->
+	<link rel="stylesheet" href="css\customcss.css"> <!--import for team custom css-->
+	<script src="js\jquery-3.2.1.min.js"></script> <!-- imports -->
+	<script src="js\bootstrap.min.js"></script>  <!-- for -->
+	<script src="js\angular.min.js"></script> <!-- JavaScript Files -->
+	<script src="js\angular-sanitize.min.js"></script>
+	<script src="js\ng-csv.min.js"></script>
+	<script src="js\controllers\contactsController.js"></script> <!--Import for page control -->
 </head>
 <body data-ng-app="myApp">
 <nav class="navbar navbar-default navbar-fixed-top"style="margin-bottom: 30px;-webkit-box-shadow: 0 8px 6px -6px #999;
@@ -68,7 +68,7 @@
 						<input type="text" name="SearchBy" style="margin: 20px;" data-ng-model="f.$" placeholder="Search All Fields">
 						
 						<button type="submit" style="margin-bottom: 10px; margin-top: 10px; margin-left: 1px;" class="btn btn-default" data-ng-click="searchResults()">Search Contacts</button> <!-- Searches and expands results and edit area -->
-						<button type="submit" style="margin-bottom: 10px; margin-top: 10px" class="btn btn-default" name="refreshButton" ng-click="searchResults()"><span class="glyphicon glyphicon-refresh
+						<button type="submit" style="margin-bottom: 10px; margin-top: 10px" class="btn btn-default" name="refreshButton" data-ng-click="searchResults()"><span class="glyphicon glyphicon-refresh
 						" aria-hidden="true"></span></button>
 						<button type="submit" style="margin-bottom: 10px; margin-top: 10px; margin-left: 15px;" class="btn btn-default"data-ng-click="clearFilters()">Clear Search Filters</button> <!-- Clears all filters -->
 		
@@ -80,25 +80,25 @@
 							<table style="padding: 3px;">
 								
 								<tr>
-									<td><input data-ng-model="f.cont_id" placeholder="Filter by Contact ID" delete-if-empty></td> <!-- needs delete if empty in the filter input to clear for null values -->
-									<td><input data-ng-model="f.cont_org_id" placeholder="Filter by Organization ID" delete-if-empty></td> <!--All table values for a Contract-->
-									<td><input data-ng-model="f.cont_role_cd" placeholder="Filter by Role CD" delete-if-empty></td>
-									<td><input data-ng-model="f.cont_first_name" placeholder="Filter by First Name" delete-if-empty></td>
-									<td><input data-ng-model="f.cont_middle_name" placeholder="Filter by Middle Name" delete-if-empty></td>
-									<td><input data-ng-model="f.cont_last_name" placeholder="Filter by Last name" delete-if-empty></td>
-									<td><input data-ng-model="f.cont_name_title" placeholder="Filter by Name Title" delete-if-empty></td>
-									<td><input data-ng-model="f.cont_name_suffix" placeholder="Filter by Name Suffix" delete-if-empty></td>
-									<td><input data-ng-model="f.cont_addr1" placeholder="Filter by Address 1" delete-if-empty></td>
-									<td><input data-ng-model="f.cont_addr2" placeholder="Filter by Address 2" delete-if-empty></td>
-									<td><input data-ng-model="f.cont_city" placeholder="Filter by City" delete-if-empty></td>
-									<td><input data-ng-model="f.cont_state_prov_cd" placeholder="Filter by State/Province" delete-if-empty></td>
-									<td><input data-ng-model="f.cont_post_cd" placeholder="Filter by Postal Code" delete-if-empty></td>
-									<td><input data-ng-model="f.cont_cntry_Cd" placeholder="Filter by Country" delete-if-empty></td>
-									<td><input data-ng-model="f.cont_office_phone" placeholder="Filter by Office Number" delete-if-empty></td>
-									<td><input data-ng-model="f.cont_mobile_phone" placeholder="Filter by Mobile Number" delete-if-empty></td>
-									<td><input data-ng-model="f.cont_home_phone" placeholder="Filter by Home Number" delete-if-empty></td>
-									<td><input data-ng-model="f.cont_email" placeholder="Filter by Email" delete-if-empty></td>
-									<td><input data-ng-model="f.cont_alt_email" placeholder="Filter by Alt Email" delete-if-empty></td>
+									<td><input data-ng-model="f.cont_id" placeholder="Filter by Contact ID" data-delete-if-empty></td> <!-- needs delete if empty in the filter input to clear for null values -->
+									<td><input data-ng-model="f.cont_org_id" placeholder="Filter by Organization ID" data-delete-if-empty></td> <!--All table values for a Contract-->
+									<td><input data-ng-model="f.cont_role_cd" placeholder="Filter by Role CD" data-delete-if-empty></td>
+									<td><input data-ng-model="f.cont_first_name" placeholder="Filter by First Name" data-delete-if-empty></td>
+									<td><input data-ng-model="f.cont_middle_name" placeholder="Filter by Middle Name" data-delete-if-empty></td>
+									<td><input data-ng-model="f.cont_last_name" placeholder="Filter by Last name" data-delete-if-empty></td>
+									<td><input data-ng-model="f.cont_name_title" placeholder="Filter by Name Title" data-delete-if-empty></td>
+									<td><input data-ng-model="f.cont_name_suffix" placeholder="Filter by Name Suffix" data-delete-if-empty></td>
+									<td><input data-ng-model="f.cont_addr1" placeholder="Filter by Address 1" data-delete-if-empty></td>
+									<td><input data-ng-model="f.cont_addr2" placeholder="Filter by Address 2" data-delete-if-empty></td>
+									<td><input data-ng-model="f.cont_city" placeholder="Filter by City" data-delete-if-empty></td>
+									<td><input data-ng-model="f.cont_state_prov_cd" placeholder="Filter by State/Province" data-delete-if-empty></td>
+									<td><input data-ng-model="f.cont_post_cd" placeholder="Filter by Postal Code" data-delete-if-empty></td>
+									<td><input data-ng-model="f.cont_cntry_Cd" placeholder="Filter by Country" data-delete-if-empty></td>
+									<td><input data-ng-model="f.cont_office_phone" placeholder="Filter by Office Number" data-delete-if-empty></td>
+									<td><input data-ng-model="f.cont_mobile_phone" placeholder="Filter by Mobile Number" data-delete-if-empty></td>
+									<td><input data-ng-model="f.cont_home_phone" placeholder="Filter by Home Number" data-delete-if-empty></td>
+									<td><input data-ng-model="f.cont_email" placeholder="Filter by Email" data-delete-if-empty></td>
+									<td><input data-ng-model="f.cont_alt_email" placeholder="Filter by Alt Email" data-delete-if-empty></td>
 									<td class="editColumn"></td>
 								</tr>
 												
@@ -208,8 +208,8 @@
 										<input class="edit_cont_alt_email" type="text" data-ng-show="editMode" data-ng-model="x.cont_alt_email" data-ng-required />
 									</td>
 									<td class="editColumn" style="vertical-align: center; padding: 0; padding-top: 5px;">
-										<button type="submit" ng-disable="editMode" data-ng-hide="editMode" data-ng-click="editMode = true; editResults(x)" class="btn btn-default">Edit</button>
-										<button ng-disabled="!updateForm.$valid" type="submit" data-ng-show="editMode" data-ng-click="editMode = false; saveField(x)" class="btn btn-default">Save</button>
+										<button type="submit" data-ng-disable="editMode" data-ng-hide="editMode" data-ng-click="editMode = true; editResults(x)" class="btn btn-default">Edit</button>
+										<button data-ng-disabled="!updateForm.$valid" type="submit" data-ng-show="editMode" data-ng-click="editMode = false; saveField(x)" class="btn btn-default">Save</button>
 										<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; cancel(x)" class="btn btn-default">Cancel</button>
 									</td>
 								</tr>
@@ -240,7 +240,7 @@
 						</form>
 					</div>
 	
-					<button type="button" class="btn btn-default" style="margin: 10px;" ng-csv="myResults" filename="results.csv">Export Results to .CSV</button>
+					<button type="button" class="btn btn-default" style="margin: 10px;" data-ng-csv="myResults" filename="results.csv">Export Results to .CSV</button>
 						
 						<!--End search for contacts-->
 				</div>
@@ -275,21 +275,21 @@
 								
 								<div class="row">
 									<div class="col-lg-3">Organization ID:</div>
-									<div class="col-lg-3"><select ng-model="cont_org_id" name="contorgid" id="cont_org_id" tabindex=2 required
-																ng-options="y.org_id as y.org_name for y in orgSelect"> <!-- Select option example that populates based on database -->
+									<div class="col-lg-3"><select data-ng-model="cont_org_id" name="contorgid" id="cont_org_id" tabindex=2 required
+																data-ng-options="y.org_id as y.org_name for y in orgSelect"> <!-- Select option example that populates based on database -->
 															<option value=""></option>
 														</select></div>
 									<div class="col-lg-3">State or Province:</div>
-									<div class="col-lg-3"><select ng-model="cont_state_prov_cd" name="contstateprovcd" id="cont_state_prov_cd" tabindex=12
-																ng-options="y.state_prov_cd as y.state_prov_name for y in stateProvSelect"> <!-- Select option example that populates based on database -->
+									<div class="col-lg-3"><select data-ng-model="cont_state_prov_cd" name="contstateprovcd" id="cont_state_prov_cd" tabindex=12
+																data-ng-options="y.state_prov_cd as y.state_prov_name for y in stateProvSelect"> <!-- Select option example that populates based on database -->
 															<option value=""></option>
 														</select></div>
 								</div><!--row-->
 								
 								<div class="row">
 									<div class="col-lg-3">Role:</div>
-									<div class="col-lg-3"><select ng-model="cont_role_cd" name="controlecd" id="cont_role_cd" tabindex=3
-																ng-options="y.role_cd as y.role_cd for y in roleSelect">
+									<div class="col-lg-3"><select data-ng-model="cont_role_cd" name="controlecd" id="cont_role_cd" tabindex=3
+																data-ng-options="y.role_cd as y.role_cd for y in roleSelect">
 																<option value=""></option>
 																</select></div>
 									<div class="col-lg-3">Postal Code:</div>
@@ -302,7 +302,7 @@
 															data-ng-model="cont_first_name" tabindex=4></div>
 									<div class="col-lg-3">Country:</div>
 									<div class="col-lg-3"><select class="dropdown" data-ng-model="cont_cntry_Cd" tabindex=14>
-											<option value="">Select Country
+											<option value="">
 											<option value="USA">USA
 											<option value="CAN">CAN
 										</select></div>
@@ -350,10 +350,11 @@
 						
 								</div><!--row-->
                                 <div class="container-fluid" style="padding:10px;">
-									<button type="submit" class="btn btn-sm btn-default btn-block" value="contacts" ng-click="addFunction()" tabindex=20>
-										<span ng-show="addForm.$valid" class="glyphicon glyphicon-ok"></span><span ng-show="addForm.$invalid" class="glyphicon glyphicon-remove"/></span> Add New Contact</button>
+									<button type="submit" class="btn btn-sm btn-default btn-block" value="contacts" data-ng-click="addFunction()" tabindex=20>
+										<span data-ng-show="addForm.$valid" class="glyphicon glyphicon-ok"></span><span data-ng-show="addForm.$invalid" class="glyphicon glyphicon-remove"/></span> Add New Contact</button>
 								</div>
-							</div>
+							</form>		
+						</div>
 							
 							<!-- Modal -->
 							<div id="addErrorsModal" class="modal fade" role="dialog"> <!-- error message if input validation fails -->
@@ -368,31 +369,31 @@
 								      	
 										<div class="modal-body">
 											
-											<span ng-show="addForm.contid.$error.required">Contact ID is required.<br/></span>
-											<span ng-show="addForm.contid.$error.pattern">Contact ID should be an integer.<br/></span>
-									        <span ng-show="addForm.contid.$error.maxlength">Contact ID should be 9 digits or fewer.<br/></span>
-											<span ng-show="addForm.contorgid.$error.required">Organization ID is required.<br/></span>
-											<span ng-show="addForm.contorgid.$error.pattern">Organization ID should be an integer.<br/></span>
-									        <span ng-show="addForm.contorgid.$error.maxlength">Organization ID should be 9 digits or fewer.<br/></span>
-											<span ng-show="addForm.controlecd.$error.maxlength">Role should be less than 255 characters.<br/></span>
-											<span ng-show="addForm.contfirstname.$error.required">First Name is required.<br/></span>
-									        <span ng-show="addForm.contfirstname.$error.maxlength">First Name should be less than 255 characters.<br/></span>
-									        <span ng-show="addForm.contmiddlename.$error.maxlength">Middle Name should be less than 255 characters.<br/></span>
-											<span ng-show="addForm.contlastname.$error.required">Last Name is required.<br/></span>
-									        <span ng-show="addForm.contlastname.$error.maxlength">Last Name should be less than 255 characters.<br/></span>
-											<span ng-show="addForm.contnametitle.$error.maxlength">Name Title should be less than 255 characters.<br/></span>
-											<span ng-show="addForm.contnamesuffix.$error.maxlength">Name Suffix should be less than 255 characters.<br/></span>
-											<span ng-show="addForm.contaddr1.$error.maxlength">Address Line 1 should be less than 255 characters.<br/></span>
-											<span ng-show="addForm.contaddr2.$error.maxlength">Address Line 2 should be less than 255 characters.<br/></span>
-											<span ng-show="addForm.contcity.$error.maxlength">City should be less than 255 characters.<br/></span>
-											<span ng-show="addForm.contstateprovcd.$error.maxlength">State or Province should be less than 255 characters.<br/></span>
-											<span ng-show="addForm.contpostcd.$error.maxlength">Postal Code should be less than 255 characters.<br/></span>
-											<span ng-show="addForm.contcntryCd.$error.maxlength">Country should be less than 255 characters.<br/></span>
-											<span ng-show="addForm.contofficephone.$error.maxlength">Office Phone should be less than 255 characters.<br/></span>
-											<span ng-show="addForm.contmobilephone.$error.maxlength">Mobile Phone should be less than 255 characters.<br/></span>
-											<span ng-show="addForm.conthomephone.$error.maxlength">Home Phone should be less than 255 characters.<br/></span>
-											<span ng-show="addForm.contemail.$error.maxlength">Email should be less than 255 characters.<br/></span>
-											<span ng-show="addForm.contaltemail.$error.maxlength">Alt Email should be less than 255 characters.<br/></span>
+											<span data-ng-show="addForm.contid.$error.required">Contact ID is required.<br/></span>
+											<span data-ng-show="addForm.contid.$error.pattern">Contact ID should be an integer.<br/></span>
+									        <span data-ng-show="addForm.contid.$error.maxlength">Contact ID should be 9 digits or fewer.<br/></span>
+											<span data-ng-show="addForm.contorgid.$error.required">Organization ID is required.<br/></span>
+											<span data-ng-show="addForm.contorgid.$error.pattern">Organization ID should be an integer.<br/></span>
+									        <span data-ng-show="addForm.contorgid.$error.maxlength">Organization ID should be 9 digits or fewer.<br/></span>
+											<span data-ng-show="addForm.controlecd.$error.maxlength">Role should be less than 255 characters.<br/></span>
+											<span data-ng-show="addForm.contfirstname.$error.required">First Name is required.<br/></span>
+									        <span data-ng-show="addForm.contfirstname.$error.maxlength">First Name should be less than 255 characters.<br/></span>
+									        <span data-ng-show="addForm.contmiddlename.$error.maxlength">Middle Name should be less than 255 characters.<br/></span>
+											<span data-ng-show="addForm.contlastname.$error.required">Last Name is required.<br/></span>
+									        <span data-ng-show="addForm.contlastname.$error.maxlength">Last Name should be less than 255 characters.<br/></span>
+											<span data-ng-show="addForm.contnametitle.$error.maxlength">Name Title should be less than 255 characters.<br/></span>
+											<span data-ng-show="addForm.contnamesuffix.$error.maxlength">Name Suffix should be less than 255 characters.<br/></span>
+											<span data-ng-show="addForm.contaddr1.$error.maxlength">Address Line 1 should be less than 255 characters.<br/></span>
+											<span data-ng-show="addForm.contaddr2.$error.maxlength">Address Line 2 should be less than 255 characters.<br/></span>
+											<span data-ng-show="addForm.contcity.$error.maxlength">City should be less than 255 characters.<br/></span>
+											<span data-ng-show="addForm.contstateprovcd.$error.maxlength">State or Province should be less than 255 characters.<br/></span>
+											<span data-ng-show="addForm.contpostcd.$error.maxlength">Postal Code should be less than 255 characters.<br/></span>
+											<span data-ng-show="addForm.contcntryCd.$error.maxlength">Country should be less than 255 characters.<br/></span>
+											<span data-ng-show="addForm.contofficephone.$error.maxlength">Office Phone should be less than 255 characters.<br/></span>
+											<span data-ng-show="addForm.contmobilephone.$error.maxlength">Mobile Phone should be less than 255 characters.<br/></span>
+											<span data-ng-show="addForm.conthomephone.$error.maxlength">Home Phone should be less than 255 characters.<br/></span>
+											<span data-ng-show="addForm.contemail.$error.maxlength">Email should be less than 255 characters.<br/></span>
+											<span data-ng-show="addForm.contaltemail.$error.maxlength">Alt Email should be less than 255 characters.<br/></span>
 
 									    </div>
 										   		
@@ -449,8 +450,6 @@
 							
 							  	</div>
 							</div>
-							
-						</form>
 						<!---End add new contact-->
 					</div>
 				</div>

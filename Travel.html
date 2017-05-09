@@ -64,8 +64,8 @@
 						<!--Search for contacts-->
 						
 						<input type="text" name="SearchBy" style="margin: 20px; margin-bottom: -25px;" data-ng-model="f.$" placeholder="Search All Fields">
-						<button type="submit" style="margin-bottom: 10px; margin-top: 10px; margin-left: 1px;" class="btn btn-default" value="contacts" name="SearchButton" data-toggle="collapse" data-target="#search" ng-click="myFunction()">Search Travel</button>
-                        <button type="submit" style="margin-bottom: 10px; margin-top: 10px" class="btn btn-default" value="contacts" name="refreshButton" ng-click="myFunction()"><span class="glyphicon glyphicon-refresh
+						<button type="submit" style="margin-bottom: 10px; margin-top: 10px; margin-left: 1px;" class="btn btn-default" value="contacts" name="SearchButton" data-ng-click="searchResults()">Search Travel</button>
+                        <button type="submit" style="margin-bottom: 10px; margin-top: 10px" class="btn btn-default" value="contacts" name="refreshButton" data-ng-click="searchResults()"><span class="glyphicon glyphicon-refresh
 						" aria-hidden="true"></span></button>    
 						<button type="submit" style="margin-bottom: 10px; margin-top: 10px; margin-left: 15px;" class="btn btn-default"data-ng-click="clearFilters()">Clear Search Filters</button>
 		<!-- Table Start**************************** -->				
@@ -78,12 +78,12 @@
 							<table style="padding: 3px;">
 								
 								<tr>
-									<td><input ng-model="f.travel_id" placeholder="Filter by Travel ID"></td>
-									<td><input ng-model="f.contr_id" placeholder="Filter by Contract ID"></td>
-									<td><input ng-model="f.destination" placeholder="Filter by Destination"></td>
-									<td><input ng-model="f.travel_begin_date" placeholder="Filter by Travel Begin Date"></td>
-									<td><input ng-model="f.travel_end_date" placeholder="Filter by Travel End Date"></td>
-									<td><input ng-model="f.tech_restrict_cd" placeholder="Filter by Max Tech Restriction Level"></td>
+									<td><input data-ng-model="f.travel_id" placeholder="Filter by Travel ID"></td>
+									<td><input data-ng-model="f.contr_id" placeholder="Filter by Contract ID"></td>
+									<td><input data-ng-model="f.destination" placeholder="Filter by Destination"></td>
+									<td><input data-ng-model="f.travel_begin_date" placeholder="Filter by Travel Begin Date"></td>
+									<td><input data-ng-model="f.travel_end_date" placeholder="Filter by Travel End Date"></td>
+									<td><input data-ng-model="f.tech_restrict_cd" placeholder="Filter by Max Tech Restriction Level"></td>
 									<td><input data-ng-model="f.recv_travel_brief" placeholder="Filter by Travel Brief Given"></td>
 								</tr>
 												
@@ -102,7 +102,7 @@
 									<td>
 										<span data-ng-hide="editMode">{{ x.travel_id }}</span>
 										<input class="edit_travel_id" type="text" data-ng-show="editMode" data-ng-model="x.travel_id" 
-											pattern="^\d+$" ng-maxlength="9" required />
+											pattern="^\d+$" data-ng-maxlength="9" required />
 									</td>
 									<!-- The special block here will swap to being input boxes when the -->
 									<td>
@@ -168,7 +168,7 @@
 						</form>
 					</div>
 	
-					<button type="button" class="btn btn-default" style="margin: 10px;" ng-csv="myResults" filename="results.csv">Export Results to .CSV</button>
+					<button type="button" class="btn btn-default" style="margin: 10px;" data-ng-csv="myResults" filename="results.csv">Export Results to .CSV</button>
 					
 						<!--End search for contacts-->
 				</div>
@@ -196,10 +196,10 @@
 								<div class="row">
 									<div class="col-lg-3">Travel ID:</div>
 									<div class="col-lg-3"><input id="travel_id" type="text" name="travelid" data-ng-model="travel_id" tabindex=1
-															pattern="^\d+$" ng-maxlength="9" required ></div>
+															pattern="^\d+$" data-ng-maxlength="9" required ></div>
 									<div class="col-lg-3">Contract ID:</div>
-									<div class="col-lg-3"><select ng-model="contr_id" name="travelid" id="contr_id" tabindex=5
-															ng-options="y.contr_id as y.contr_id for y in contrSelect">
+									<div class="col-lg-3"><select data-ng-model="contr_id" name="travelid" id="contr_id" tabindex=5
+															data-ng-options="y.contr_id as y.contr_id for y in contrSelect">
 															<option value=""></option>
 														</select></div>
 								</div><!--row-->							
@@ -217,8 +217,8 @@
 									<div class="col-lg-3"><input id="travel_end_date" type="text" name="travelenddate" data-ng-model="travel_end_date" tabindex=3
 															pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" ></div>
 									<div class="col-lg-3">Technology Restriction Level:</div>
-									<div class="col-lg-3"><select ng-model="tech_restrict_cd" name="techrestrictcd" id="tech_restrict_cd" tabindex=7
-															ng-options="y.tech_restrict_cd as y.tech_restrict_desc for y in techSelect">
+									<div class="col-lg-3"><select data-ng-model="tech_restrict_cd" name="techrestrictcd" id="tech_restrict_cd" tabindex=7
+															data-ng-options="y.tech_restrict_cd as y.tech_restrict_desc for y in techSelect">
 															<option value=""></option>
 														</select></div>
 								</div><!--row-->
@@ -236,8 +236,8 @@
 							</form>
                             
 							<div class="container-fluid" style="padding:10px;">
-								<button type="submit" class="btn btn-sm btn-default btn-block" value="contacts" ng-click="addFunction()" tabindex=20>
-									<span ng-show="addForm.$valid" class="glyphicon glyphicon-ok"></span><span ng-show="addForm.$invalid" class="glyphicon glyphicon-remove"/></span> Add New Travel</button>
+								<button type="submit" class="btn btn-sm btn-default btn-block" value="contacts" data-ng-click="addFunction()" tabindex=20>
+									<span data-ng-show="addForm.$valid" class="glyphicon glyphicon-ok"></span><span data-ng-show="addForm.$invalid" class="glyphicon glyphicon-remove"/></span> Add New Travel</button>
 							</div>
 								
 							<!-- Modal -->
@@ -253,17 +253,17 @@
 								      	
 										<div class="modal-body">
 										
-											<span ng-show="addForm.travelid.$error.required">Travel ID is required.<br/></span>
-											<span ng-show="addForm.travelid.$error.pattern">Travel ID should be an integer.<br/></span>
-									        <span ng-show="addForm.travelid.$error.maxlength">Travel ID should be 9 digits or fewer.<br/></span>
-									        <span ng-show="addForm.contrid.$error.maxlength">Contract ID should be less than 255 characters.<br/></span>
-											<span ng-show="addForm.destination.$error.required">Destination is required.<br/></span>
-									        <span ng-show="addForm.destination.$error.maxlength">Destination should be less than 255 characters.<br/></span>
-											<span ng-show="addForm.travelbegindate.$error.required">Travel Begin Date is required.<br/></span>
-											<span ng-show="addForm.travelbegindate.$error.pattern">Travel Begin Date should be in the format of yyyy-dd-mm hh:mm:ss.<br/></span>
-											<span ng-show="addForm.travelbegindate.$error.pattern">Travel End Date should be in the format of yyyy-dd-mm hh:mm:ss.<br/></span>
-									        <span ng-show="addForm.techrestrictcd.$error.maxlength">Technology Restriction Level should be less than 255 characters.<br/></span>
-									        <span ng-show="addForm.recvtravelbrief.$error.maxlength">Received Travel Brief should be less than 255 characters.<br/></span>
+											<span data-ng-show="addForm.travelid.$error.required">Travel ID is required.<br/></span>
+											<span data-ng-show="addForm.travelid.$error.pattern">Travel ID should be an integer.<br/></span>
+									        <span data-ng-show="addForm.travelid.$error.maxlength">Travel ID should be 9 digits or fewer.<br/></span>
+									        <span data-ng-show="addForm.contrid.$error.maxlength">Contract ID should be less than 255 characters.<br/></span>
+											<span data-ng-show="addForm.destination.$error.required">Destination is required.<br/></span>
+									        <span data-ng-show="addForm.destination.$error.maxlength">Destination should be less than 255 characters.<br/></span>
+											<span data-ng-show="addForm.travelbegindate.$error.required">Travel Begin Date is required.<br/></span>
+											<span data-ng-show="addForm.travelbegindate.$error.pattern">Travel Begin Date should be in the format of yyyy-dd-mm hh:mm:ss.<br/></span>
+											<span data-ng-show="addForm.travelbegindate.$error.pattern">Travel End Date should be in the format of yyyy-dd-mm hh:mm:ss.<br/></span>
+									        <span data-ng-show="addForm.techrestrictcd.$error.maxlength">Technology Restriction Level should be less than 255 characters.<br/></span>
+									        <span data-ng-show="addForm.recvtravelbrief.$error.maxlength">Received Travel Brief should be less than 255 characters.<br/></span>
 											
 									    </div>
 									   		

@@ -12,7 +12,7 @@
 	<script src="js\angular.min.js"></script> <!-- JavaScript Files -->
 	<script src="js\angular-sanitize.min.js"></script>
 	<script src="js\ng-csv.min.js"></script>
-	<script src="js\controllers\__________Controller.js"></script> <!--Import for page control -->
+	<script src="js\controllers\employeesController.js"></script> <!--Import for page control -->
 </head>
 <body data-ng-app="myApp">
 	<nav class="navbar navbar-default navbar-fixed-top"style="margin-bottom: 30px;-webkit-box-shadow: 0 8px 6px -6px #999;
@@ -34,7 +34,7 @@
 					<li><a href="Releases.html">Releases</a></li>
 					<li><a href="DataSets.html">Data Sets</a></li>
 					<li><a href="ExportRegulations.html">Export Regulations</a></li>
-					<li><a href="Employees.html">Travel</a></li>
+					<li class="active"><a href="Employees.html">Employees</a></li>
 					<li><a href="Travel.html">Travel</a></li>
 					<li><a href="Devices.html">Devices</a></li>
 					<li><a href="Codes.html">Codes</a></li>		
@@ -47,14 +47,14 @@
 	<div class="container-fluid" style="margin-top:50px;">
 		<!-- Logo -->
 		<div class="page-header" style="text-align:center;">
-			<h1><b>________________</b></h1> <!-- Table Name -->
+			<h1><b>Employees</b></h1> <!-- Table Name -->
 		</div>
 		
 		<div class="accordion panel-group" id="accordion" data-ng-controller="resultsCtrl"> <!-- Accordion for search and add -->
 			<div class="accordion-default panel"> <!-- Search and Edit area -->
 				<div class="accordion-heading panel-heading"> 
 					<h4 class="panel-title">
-					<a data-toggle="collapse" href="#collapse1"><h2>Search ___________</h2></a>
+					<a data-toggle="collapse" href="#collapse1"><h2>Search Employees</h2></a>
 					</h4>
 				</div>
 				<div id="collapse1" class="panel-collapse collapse in">
@@ -63,7 +63,7 @@
 						
 						<input type="text" name="SearchBy" style="margin: 20px;" data-ng-model="f.$" placeholder="Search All Fields">
 						
-						<button type="submit" style="margin-bottom: 10px; margin-top: 10px; margin-left: 1px;" class="btn btn-default" data-ng-click="searchResults()">Search __________</button> <!-- Searches and expands results and edit area -->
+						<button type="submit" style="margin-bottom: 10px; margin-top: 10px; margin-left: 1px;" class="btn btn-default" data-ng-click="searchResults()">Search Employees</button> <!-- Searches and expands results and edit area -->
 						<button type="submit" style="margin-bottom: 10px; margin-top: 10px" class="btn btn-default" name="refreshButton" data-ng-click="searchResults()"><span class="glyphicon glyphicon-refresh
 						" aria-hidden="true"></span></button>
 						<button type="submit" style="margin-bottom: 10px; margin-top: 10px; margin-left: 15px;" class="btn btn-default"data-ng-click="clearFilters()">Clear Search Filters</button> <!-- Clears all filters -->
@@ -75,15 +75,16 @@
 								<form name="updateForm" novalidate>
 									<table style="padding: 3px;">
 										<tr>
-											<td><input data-ng-model="f.cont_email" placeholder="Filter by Email" data-delete-if-empty></td> <!-- Search filters -->
+											<td><input data-ng-model="f.emp_id" placeholder="Filter by Email" data-delete-if-empty></td> <!-- Search filters -->
 											<td><input data-ng-model="f.cont_alt_email" placeholder="Filter by Alt Email" data-delete-if-empty></td>
+
 											<!-- ..... -->
 											<td class="editColumn"></td>
 										</tr>
 														
 										<tr>
-											<th>Contact ID</th>  <!-- Column headers -->
-											<th>Organization ID</th>
+											<th>Employee ID</th>  <!-- Column headers -->
+											<th>Employee Role Code</th>
 											<!-- ..... -->
 											<th class="editColumn">Edit</th>
 										</tr>
@@ -145,7 +146,7 @@
 			<div class="accordion-default panel"> <!-- Accordion for adding new Contact -->
 				<div class="accordion-heading panel-heading">
 					<h4 class="panel-title">
-						<a data-toggle="collapse" href="#collapse2"><h2>Add New ___________</h2></a> <!-- Opens Add panel -->
+						<a data-toggle="collapse" href="#collapse2"><h2>Add New Employees</h2></a> <!-- Opens Add panel -->
 					</h4>
 				</div>
 				<div id="collapse2" class="panel-collapse collapse" data-ng-controller="addCtrl">
@@ -178,7 +179,7 @@
 								
 								<div class="container-fluid" style="padding:10px;">
 									<button type="submit" class="btn btn-sm btn-default btn-block" value="contacts" data-ng-click="addFunction()" tabindex=20>
-										<span data-ng-show="addForm.$valid" class="glyphicon glyphicon-ok"></span><span data-ng-show="addForm.$invalid" class="glyphicon glyphicon-remove"/></span> Add New ________</button>
+										<span data-ng-show="addForm.$valid" class="glyphicon glyphicon-ok"></span><span data-ng-show="addForm.$invalid" class="glyphicon glyphicon-remove"/></span> Add New Employee</button>
 								</div>
 							</form>		
 						</div>
@@ -274,7 +275,7 @@
 	<section id="footer" style="background-color:#292b34;"> <!-- footer taken from SUPRTEK's main website -->
         <div class="container">
     	    <div class="navbar-default navbar-fixed-bottom"  style="color: #fff; text-align: center; background-color:#000000; border:0px; padding: 20px;">
-			Â©Copyright 2017 | SUPERLATIVE TECHNOLOGIES, INC. (dba SUPRTEK)
+			©Copyright 2017 | SUPERLATIVE TECHNOLOGIES, INC. (dba SUPRTEK)
     	    </div><!--end .well .well-sm .main-footer-->
     	</div><!--end .container-->
     </section><!--end #footer-->

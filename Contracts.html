@@ -61,9 +61,9 @@
 					<div class="panel-body">
 						<!--Search for contacts-->
 						
-						<input type="text" name="SearchBy" style="margin: 20px; margin-bottom: -25px;" ng-model="f.$" placeholder="Search All Fields">
-						<button type="submit" style="margin-bottom: 10px; margin-top: 10px" class="btn btn-default" value="contacts" name="SearchButton" data-toggle="collapse" data-target="#search" ng-click="myFunction()">Search Contracts</button>
-						<button type="submit" style="margin-bottom: 10px; margin-top: 10px" class="btn btn-default" value="contacts" name="refreshButton" ng-click="myFunction()"><span class="glyphicon glyphicon-refresh
+						<input type="text" name="SearchBy" style="margin: 20px; margin-bottom: -25px;" data-ng-model="f.$" placeholder="Search All Fields">
+						<button type="submit" style="margin-bottom: 10px; margin-top: 10px" class="btn btn-default" value="contacts" name="SearchButton" data-ng-click="searchResults()">Search Contracts</button>
+						<button type="submit" style="margin-bottom: 10px; margin-top: 10px" class="btn btn-default" value="contacts" name="refreshButton" data-ng-click="searchResults()"><span class="glyphicon glyphicon-refresh
 						" aria-hidden="true"></span></button>
 						<button type="submit" style="margin-bottom: 10px; margin-top: 10px; margin-left: 15px;" class="btn btn-default"data-ng-click="clearFilters()">Clear Search Filters</button>
 						<!--span><a href="ResultsAsTable.html">Advanced Search</a></span-->
@@ -79,22 +79,22 @@
 							<table style="padding: 3px;">
 								
 								<tr>
-									<td><input ng-model="f.contr_id" placeholder="Filter by Contract Number"delete-if-empty></td>
-									<td><input ng-model="f.contr_org_id" placeholder="Filter by Customer Organization ID"delete-if-empty></td>
-									<td><input ng-model="f.cont_end_cust_id" placeholder="Filter by Contract End Customer"delete-if-empty></td>
-									<td><input ng-model="f.contr_type_cd" placeholder="Filter by Contract Type"delete-if-empty></td>
-									<td><input ng-model="f.prime_contr_id" placeholder="Filter by Prime Contractior ID"delete-if-empty></td>
-									<td><input ng-model="f.prime_contract_no" placeholder="Filter by Prime Contractor Number"delete-if-empty></td>
-									<td><input ng-model="f.contr_prog_cd" placeholder="Filter by Contract Program"delete-if-empty></td>
-									<td><input ng-model="f.contr_vehicle_cd" placeholder="Filter by Contract Vehicle"delete-if-empty></td>
-									<td><input ng-model="f.contr_sec_level_cd" placeholder="Filter by Contract Security Level"delete-if-empty></td>
-									<td><input ng-model="f.contr_info_safe_level_cd" placeholder="Information Security Level"delete-if-empty></td>
-									<td><input ng-model="f.contr_open_date" placeholder="Filter by Date Contract Opened"delete-if-empty></td>
-									<td><input ng-model="f.contr_close_date" placeholder="Filter by Date Contract Closed"delete-if-empty></td>
-									<td><input ng-model="f.is_open" placeholder="Canceled"delete-if-empty></td>
-									<td><input ng-model="f.exemptions" placeholder="Exemptions and Restrictions"delete-if-empty></td>
-									<td><input ng-model="f.dd254_recv" placeholder="DD254 Recieved"delete-if-empty></td>
-									<td><input ng-model="f.dd254_date" placeholder="Filter by DD254 Date"delete-if-empty></td>
+									<td><input data-ng-model="f.contr_id" placeholder="Filter by Contract Number"delete-if-empty></td>
+									<td><input data-ng-model="f.contr_org_id" placeholder="Filter by Customer Organization ID"delete-if-empty></td>
+									<td><input data-ng-model="f.cont_end_cust_id" placeholder="Filter by Contract End Customer"delete-if-empty></td>
+									<td><input data-ng-model="f.contr_type_cd" placeholder="Filter by Contract Type"delete-if-empty></td>
+									<td><input data-ng-model="f.prime_contr_id" placeholder="Filter by Prime Contractior ID"delete-if-empty></td>
+									<td><input data-ng-model="f.prime_contract_no" placeholder="Filter by Prime Contractor Number"delete-if-empty></td>
+									<td><input data-ng-model="f.contr_prog_cd" placeholder="Filter by Contract Program"delete-if-empty></td>
+									<td><input data-ng-model="f.contr_vehicle_cd" placeholder="Filter by Contract Vehicle"delete-if-empty></td>
+									<td><input data-ng-model="f.contr_sec_level_cd" placeholder="Filter by Contract Security Level"delete-if-empty></td>
+									<td><input data-ng-model="f.contr_info_safe_level_cd" placeholder="Information Security Level"delete-if-empty></td>
+									<td><input data-ng-model="f.contr_open_date" placeholder="Filter by Date Contract Opened"delete-if-empty></td>
+									<td><input data-ng-model="f.contr_close_date" placeholder="Filter by Date Contract Closed"delete-if-empty></td>
+									<td><input data-ng-model="f.is_open" placeholder="Canceled"delete-if-empty></td>
+									<td><input data-ng-model="f.exemptions" placeholder="Exemptions and Restrictions"delete-if-empty></td>
+									<td><input data-ng-model="f.dd254_recv" placeholder="DD254 Recieved"delete-if-empty></td>
+									<td><input data-ng-model="f.dd254_date" placeholder="Filter by DD254 Date"delete-if-empty></td>
 								</tr>
 												
 								<tr>
@@ -117,55 +117,55 @@
 									<th class="editColumn">Edit</th>
 								</tr>
 	
-								<tr id="results" ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}">
+								<tr id="results" data-ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}">
 									<td>
 										<span data-ng-hide="editMode">{{ x.contr_id }}</span>
-										<input class="edit_contr_id" type="text" ng-minlength="1" ng-maxlength="255" required
+										<input class="edit_contr_id" type="text" data-ng-minlength="1" data-ng-maxlength="255" required
 											data-ng-show="editMode" data-ng-model="x.contr_id"/>
 									</td>
 									<td>
 										<span data-ng-hide="editMode">{{x.contr_org_id}}</span>
-										<input class="edit_contr_org_id" type="text" pattern="^\d+$" ng-maxlength="9" 
+										<input class="edit_contr_org_id" type="text" pattern="^\d+$" data-ng-maxlength="9" 
 											data-ng-show="editMode" data-ng-model="x.contr_org_id"/>
 									</td>
 									<td>
 										<span data-ng-hide="editMode">{{x.contr_end_cust_id}}</span>
-										<input class="edit_contr_end_cust_id" type="text" pattern="^\d+$" ng-maxlength="9" 
+										<input class="edit_contr_end_cust_id" type="text" pattern="^\d+$" data-ng-maxlength="9" 
 											data-ng-show="editMode" data-ng-model="x.contr_end_cust_id"/>
 									</td>
 									<td>
 										<span data-ng-hide="editMode">{{x.contr_type_cd}}</span>
-										<input class="edit_contr_type_cd" type="text" ng-minlength="1" ng-maxlength="255" required
+										<input class="edit_contr_type_cd" type="text" data-ng-minlength="1" data-ng-maxlength="255" required
 											data-ng-show="editMode" data-ng-model="x.contr_type_cd"/>
 									</td>
 									<td>
 										<span data-ng-hide="editMode">{{x.prime_contr_id}}</span>
-										<input class="edit_prime_contr_id" type="text" pattern="\d+" ng-maxlength="9" 
+										<input class="edit_prime_contr_id" type="text" pattern="\d+" data-ng-maxlength="9" 
 											data-ng-show="editMode" data-ng-model="x.prime_contr_id"/>
 									</td>
 									<td>
 										<span data-ng-hide="editMode">{{x.prime_contract_no}}</span>
-										<input class="edit_prime_contr_no" type="text" ng-maxlength="255" 
+										<input class="edit_prime_contr_no" type="text" data-ng-maxlength="255" 
 											data-ng-show="editMode" data-ng-model="x.prime_contract_no"/>
 									</td>
 									<td>
 										<span data-ng-hide="editMode">{{x.contr_prog_cd}}</span>
-										<input class="edit_contr_prog_cd" type="text" ng-maxlength="255" 
+										<input class="edit_contr_prog_cd" type="text" data-ng-maxlength="255" 
 											data-ng-show="editMode" data-ng-model="x.contr_prog_cd"/>
 									</td>
 									<td>
 										<span data-ng-hide="editMode">{{x.contr_vehicle_cd}}</span>
-										<input class="edit_contr_vehicle_cd" type="text" ng-maxlength="255" 
+										<input class="edit_contr_vehicle_cd" type="text" data-ng-maxlength="255" 
 											data-ng-show="editMode" data-ng-model="x.contr_vehicle_cd"/>
 									</td>
 									<td>
 										<span data-ng-hide="editMode">{{x.contr_sec_level_cd}}</span>
-										<input class="edit_contr_sec_level_cd" type="text" ng-maxlength="255" 
+										<input class="edit_contr_sec_level_cd" type="text" data-ng-maxlength="255" 
 											data-ng-show="editMode" data-ng-model="x.contr_sec_level_cd"/>
 									</td>
 									<td>
 										<span data-ng-hide="editMode">{{x.contr_info_safe_level_cd}}</span>
-										<input class="edit_contr_info_safe_level_cd" type="text" ng-maxlength="255" 
+										<input class="edit_contr_info_safe_level_cd" type="text" data-ng-maxlength="255" 
 											data-ng-show="editMode" data-ng-model="x.contr_info_safe_level_cd"/>
 									</td>
 									<td>
@@ -180,7 +180,7 @@
 									</td>
 									<td>
 										<span data-ng-hide="editMode">{{x.is_open}}</span>
-										<select data-ng-show="editMode" class = "dropdown" ng-model="x.is_open">
+										<select data-ng-show="editMode" class = "dropdown" data-ng-model="x.is_open">
 												<option value="">
 												<option value="t">True
 												<option value="f">False
@@ -193,7 +193,7 @@
 									</td>
 									<td>
 										<span data-ng-hide="editMode">{{x.dd254_recv}}</span>
-										<select data-ng-show="editMode" class = "dropdown" ng-model="x.dd254_recv">
+										<select data-ng-show="editMode" class = "dropdown" data-ng-model="x.dd254_recv">
 												<option value="">
 												<option value="t">True
 												<option value="f">False
@@ -205,7 +205,7 @@
 										data-ng-show="editMode" data-ng-model="x.dd254_date" />
 									<td class="editColumn" style="vertical-align: center; padding: 0; padding-top: 5px;">
 										<button type="submit" data-ng-hide="editMode" data-ng-click="editMode = true; editResults(x)" class="btn btn-default">Edit</button>
-										<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; saveField(x)" class="btn btn-default" ng-disabled="!updateForm.$valid" >Save</button>
+										<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; saveField(x)" class="btn btn-default" data-ng-disabled="!updateForm.$valid" >Save</button>
 										<button type="submit" data-ng-show="editMode" data-ng-click="editMode = false; cancel()" class="btn btn-default">Cancel</button>
 									</td>
 								</tr>	
@@ -237,7 +237,7 @@
 						</form>
 					</div>
 					
-					<button type="button" class="btn btn-default" style="margin: 10px;" ng-csv="myResults" filename="results.csv">Export Results to .CSV</button>
+					<button type="button" class="btn btn-default" style="margin: 10px;" data-ng-csv="myResults" filename="results.csv">Export Results to .CSV</button>
 						
 						<!--End search for contacts-->
 				</div>
@@ -260,51 +260,51 @@
 				<div id="collapse2" class="panel-collapse collapse" data-ng-controller="addCtrl">
 					<div class="panel-body">
 						<!--Add new contact-->
-						<form name="addForm" novalidate> <!-- ng-app="myApp" ng-controller="formCtrl" ~~removed bc unused-->
+						<form name="addForm" novalidate> <!-- data-ng-app="myApp" data-ng-controller="formCtrl" ~~removed bc unused-->
 							<div class="row">
 								<div class="col-lg-3">Contract Number:</div>
 								<div class="col-lg-3"><input id="contr_id" name="contrid" type="text" data-ng-minlength="1" data-ng-maxlength="255" required data-ng-model="contr_id" 
 														tabindex=1></script></div>
 								<div class="col-lg-3">Customer Organization ID:</div>
-								<div class="col-lg-3"><select ng-model="contr_org_id" id="contr_org_id" tabindex=9 name="controrgid" required
-															ng-options="y.org_id as y.org_name for y in orgSelect">
+								<div class="col-lg-3"><select data-ng-model="contr_org_id" id="contr_org_id" tabindex=9 name="controrgid" required
+															data-ng-options="y.org_id as y.org_name for y in orgSelect">
 														<option value=""></option>
 													</select></div>
 							</div><!--row-->
 							
 							<div class="row">
 								<div class="col-lg-3">Contract Type:</div>
-								<div class="col-lg-3"><select ng-model="contr_type_cd" id="contr_type_id" tabindex=2 name="contrtypecd" required
-															ng-options="y.contr_type_cd as y.cont_type_desc for y in contrSelect">
+								<div class="col-lg-3"><select data-ng-model="contr_type_cd" id="contr_type_id" tabindex=2 name="contrtypecd" required
+															data-ng-options="y.contr_type_cd as y.cont_type_desc for y in contrSelect">
 														<option value=""></option>
 													</select></div>
 								<div class="col-lg-3">Prime Contractor ID:</div>
-								<div class="col-lg-3"><select ng-model="prime_contr_id" id="prime_contr_id" tabindex=10
-															ng-options="y.org_id as y.org_name for y in orgSelect">
+								<div class="col-lg-3"><select data-ng-model="prime_contr_id" id="prime_contr_id" tabindex=10
+															data-ng-options="y.org_id as y.org_name for y in orgSelect">
 														<option value=""></option>
 													</select></div>
 							</div><!--row-->
 							
 							<div class="row">
 								<div class="col-lg-3">Prime Contract Number:</div>
-								<div class="col-lg-3"><input id="prime_contr_id" name="primecontrid" type="text" pattern="\d+" ng-maxlength="9" data-ng-model="prime_contr_id"
+								<div class="col-lg-3"><input id="prime_contr_id" name="primecontrid" type="text" pattern="\d+" data-ng-maxlength="9" data-ng-model="prime_contr_id"
 														tabindex=3></script></div>
 								<div class="col-lg-3">Contract Program:</div>
-								<div class="col-lg-3"><select ng-model="contr_prog_cd" id="contr_prog_cd" tabindex=11
-															ng-options="y.prog_cd as y.prog_cd for y in progSelect">
+								<div class="col-lg-3"><select data-ng-model="contr_prog_cd" id="contr_prog_cd" tabindex=11
+															data-ng-options="y.prog_cd as y.prog_cd for y in progSelect">
 														<option value=""></option>
 													</select></div>
 							</div><!--row-->
 							
 							<div class="row">
 								<div class="col-lg-3">Contract End Customer:</div>
-								<div class="col-lg-3"><select ng-model="contr_end_cust_id" id="contr_end_cust_id" tabindex=4
-															ng-options="y.org_id as y.org_name for y in orgSelect">
+								<div class="col-lg-3"><select data-ng-model="contr_end_cust_id" id="contr_end_cust_id" tabindex=4
+															data-ng-options="y.org_id as y.org_name for y in orgSelect">
 														<option value=""></option>
 													</select></div>
 								<div class="col-lg-3">Contract Vehicle:</div>
-								<div class="col-lg-3"><select ng-model="contr_vehicle_id" id="contr_vehicle_id" tabindex=12
-															ng-options="y.contr_veh_id as y.contr_veh_id for y in vehSelect">
+								<div class="col-lg-3"><select data-ng-model="contr_vehicle_id" id="contr_vehicle_id" tabindex=12
+															data-ng-options="y.contr_veh_id as y.contr_veh_id for y in vehSelect">
 														<option value=""></option>
 													</select></div>
 							</div><!--row-->
@@ -329,28 +329,36 @@
 							
 							<div class="row">
 								<div class="col-lg-3">DD254 Recieved:</div>
-								<div class="col-lg-3"><input type="checkbox" data-ng-model="dd254_recv" tabindex=7></div>
+								<div class="col-lg-3"><select class="dropdown" data-ng-model="dd254_recv" tabindex=7> 
+															<option value="">
+															<option value="t">True
+															<option value="f">False
+													</select></div>
 								<div class="col-lg-3">Is Open?:</div>
-								<div class="col-lg-3"><input type="checkbox" data-ng-model="is_open" tabindex=15></div>
+								<div class="col-lg-3"><select class="dropdown" data-ng-model="is_open" tabindex=15>
+															<option value="">
+															<option value="t">True
+															<option value="f">False
+													</select></div>
 							</div><!--row-->
 							
 							<div class="row">
 								<div class="col-lg-3">Contract Security Level:</div>
-								<div class="col-lg-3"><select ng-model="contr_sec_level_cd" id="contr_sec_level_cd" tabindex=8
-															ng-options="y.sec_class_cd as y.sec_class_cd for y in secSelect">
+								<div class="col-lg-3"><select data-ng-model="contr_sec_level_cd" id="contr_sec_level_cd" tabindex=8
+															data-ng-options="y.sec_class_cd as y.sec_class_cd for y in secSelect">
 														<option value=""></option>
 													</select></div>
 
 								<div class="col-lg-3">Information Security Level:</div>
-								<div class="col-lg-3"><select ng-model="contr_info_safe_level_cd" id="contr_info_safe_level_cd" tabindex=16
-															ng-options="y.sec_class_cd as y.sec_class_cd for y in secSelect">
+								<div class="col-lg-3"><select data-ng-model="contr_info_safe_level_cd" id="contr_info_safe_level_cd" tabindex=16
+															data-ng-options="y.sec_class_cd as y.sec_class_cd for y in secSelect">
 														<option value=""></option>
 													</select></div>
 							</div><!--row-->
 							
 							<div class="container-fluid" style="padding:10px;">
-								<button type="submit" class="btn btn-sm btn-default btn-block" value="contacts" ng-click="addFunction()" tabindex=20>
-									<span ng-show="addForm.$valid" class="glyphicon glyphicon-ok"></span><span ng-show="addForm.$invalid" class="glyphicon glyphicon-remove"/></span> Add New Contract</button>
+								<button type="submit" class="btn btn-sm btn-default btn-block" value="contacts" data-ng-click="addFunction()" tabindex=20>
+									<span data-ng-show="addForm.$valid" class="glyphicon glyphicon-ok"></span><span data-ng-show="addForm.$invalid" class="glyphicon glyphicon-remove"/></span> Add New Contract</button>
 							</div>
 							
 							<!-- Modal -->
@@ -366,14 +374,14 @@
 									      	
 											<div class="modal-body">
 												
-												<span ng-show="addForm.contrid.$error.required">Contract Number is required.<br/></span>
-										        <span ng-show="addForm.contrid.$error.maxlength">Contract Number should be less than 255 characters.<br/></span>
-												<span ng-show="addForm.controrgid.$error.required">Customer Organization ID is required.<br/></span>
-												<span ng-show="addForm.contrtypecd.$error.required">Contract Type is required.<br/></span>
-												<span ng-show="addForm.primecontrid.$error.maxlength">Prime Contract Number should be less than 255 characters.<br/></span>
-												<span ng-show="addForm.contropendate.$error.pattern">Date Contract Opened should be in the format of yyyy-dd-mm hh:mm:ss.<br/></span>
-												<span ng-show="addForm.contrclosedate.$error.pattern">Date Contract Closed should be in the format of yyyy-dd-mm hh:mm:ss.<br/></span>
-												<span ng-show="addForm.dd254date.$error.pattern">Current DD254 Date should be in the format of yyyy-dd-mm hh:mm:ss.<br/></span>
+												<span data-ng-show="addForm.contrid.$error.required">Contract Number is required.<br/></span>
+										        <span data-ng-show="addForm.contrid.$error.maxlength">Contract Number should be less than 255 characters.<br/></span>
+												<span data-ng-show="addForm.controrgid.$error.required">Customer Organization ID is required.<br/></span>
+												<span data-ng-show="addForm.contrtypecd.$error.required">Contract Type is required.<br/></span>
+												<span data-ng-show="addForm.primecontrid.$error.maxlength">Prime Contract Number should be less than 255 characters.<br/></span>
+												<span data-ng-show="addForm.contropendate.$error.pattern">Date Contract Opened should be in the format of yyyy-dd-mm hh:mm:ss.<br/></span>
+												<span data-ng-show="addForm.contrclosedate.$error.pattern">Date Contract Closed should be in the format of yyyy-dd-mm hh:mm:ss.<br/></span>
+												<span data-ng-show="addForm.dd254date.$error.pattern">Current DD254 Date should be in the format of yyyy-dd-mm hh:mm:ss.<br/></span>
 												
 										    </div>
 										   		

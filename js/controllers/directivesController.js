@@ -28,7 +28,7 @@ app.controller('searchCtrl', function($scope) {
 
 app.controller('resultsCtrl', function($scope, $http) { //On button click this function will populate table
 	////// GET RESULTS //////
-	$scope.myFunction = function() {
+	$scope.searchResults = function() {
 		var pageData = {
 			table: 'directives', //CHANGE THIS TO NAME OF TABLE (CHECK ACCESS FOR TABLE NAME)
 		};		
