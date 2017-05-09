@@ -321,6 +321,7 @@ app.controller('addCtrl', function($scope, $http) {
 				if( response.data.Success ) {
 					console.log("Item added successfully.");
 					$('#addSuccessModal').modal('show');
+<<<<<<< HEAD
 						delete $scope.f.contr_id;
 						delete $scope.f.contr_org_id;
 						delete $scope.f.cont_end_cust_id;
@@ -337,6 +338,24 @@ app.controller('addCtrl', function($scope, $http) {
 						delete $scope.f.exemptions;
 						delete $scope.f.dd254_recv;
 						delete $scope.f.dd254_date;
+=======
+						delete $scope.contr_id;
+						delete $scope.contr_org_id;
+						delete $scope.cont_end_cust_id;
+						delete $scope.contr_type_cd;
+						delete $scope.prime_contr_id;
+						delete $scope.prime_contract_no;
+						delete $scope.contr_prog_cd;
+						delete $scope.contr_vehicle_cd;
+						delete $scope.contr_sec_level_cd;
+						delete $scope.contr_info_safe_level_cd;
+						delete $scope.contr_open_date;
+						delete $scope.contr_close_date;
+						delete $scope.is_open;
+						delete $scope.exemptions;
+						delete $scope.dd254_recv;
+						delete $scope.dd254_date;
+>>>>>>> QA
 					
 				} else {
 					console.log(response.data.Message);

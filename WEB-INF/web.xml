@@ -11,10 +11,14 @@
 
 	<welcome-file-list>
 <<<<<<< HEAD:WEB-INF/web.xml
+<<<<<<< HEAD:WEB-INF/web.xml
         <welcome-file>Contracts.html</welcome-file>
 =======
         <welcome-file>Home.html</welcome-file>
 >>>>>>> 18281110013624400916c9c61ad7f74dae21e4e3:WEB-INF/web.xml
+=======
+        <welcome-file>Contracts.html</welcome-file>
+>>>>>>> QA:WEB-INF/web.xml
     </welcome-file-list>
 		
 	<resource-ref>
@@ -25,6 +29,9 @@
 	</resource-ref>	
 	
 <<<<<<< HEAD:WEB-INF/web.xml
+<<<<<<< HEAD:WEB-INF/web.xml
+=======
+>>>>>>> QA:WEB-INF/web.xml
 	<servlet>
 		<servlet-name>DatabaseSearchHandler</servlet-name>
 		<servlet-class>DatabaseSearchHandler</servlet-class>
@@ -53,6 +60,7 @@
 	<servlet-mapping>
 		<servlet-name>DatabaseUpdateHandler</servlet-name>
 		<url-pattern>/DatabaseUpdateHandler</url-pattern>
+<<<<<<< HEAD:WEB-INF/web.xml
 =======
 	
 	<servlet>
@@ -64,6 +72,8 @@
 		<servlet-name>DatabaseHandler</servlet-name>
 		<url-pattern>/databaseHandler</url-pattern>
 >>>>>>> 18281110013624400916c9c61ad7f74dae21e4e3:WEB-INF/web.xml
+=======
+>>>>>>> QA:WEB-INF/web.xml
 	</servlet-mapping>
 	
 <!--<servlet>

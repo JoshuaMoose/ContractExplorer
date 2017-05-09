@@ -239,6 +239,7 @@ app.controller('addCtrl', function($scope, $http) {
 				if( response.data.Success ) {
 					console.log("Item added successfully.");
 					$('#addSuccessModal').modal('show');
+<<<<<<< HEAD
 						delete $scope.f.org_id;
 						delete $scope.f.org_type_cd;
 						delete $scope.f.org_name;
@@ -250,6 +251,19 @@ app.controller('addCtrl', function($scope, $http) {
 						delete $scope.f.org_post_cd;
 						delete $scope.f.org_cntry_cd;
 						delete $scope.f.cage_cd;
+=======
+						delete $scope.org_id;
+						delete $scope.org_type_cd;
+						delete $scope.org_name;
+						delete $scope.org_div;
+						delete $scope.org_addr1;
+						delete $scope.org_addr2;
+						delete $scope.org_city;
+						delete $scope.org_state_prov_cd;
+						delete $scope.org_post_cd;
+						delete $scope.org_cntry_cd;
+						delete $scope.cage_cd;
+>>>>>>> QA
 				} else {
 					console.log(response.data.Message);
 					$scope.databaseIssue = response.data.Message;
