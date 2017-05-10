@@ -273,25 +273,26 @@ app.controller('addCtrl', function($scope, $http) {
 				if( response.data.Success ) {
 					console.log("Item added successfully.");
 					$('#addSuccessModal').modal('show');
-						delete $scope.f.cont_id;
-						delete $scope.f.cont_org_id;
-						delete $scope.f.cont_role_cd;
-						delete $scope.f.cont_first_name;
-						delete $scope.f.cont_middle_name;
-						delete $scope.f.cont_last_name;
-						delete $scope.f.cont_name_title;
-						delete $scope.f.cont_name_suffix;
-						delete $scope.f.cont_addr1;
-						delete $scope.f.cont_addr2;
-						delete $scope.f.cont_city;
-						delete $scope.f.cont_state_prov_cd;
-						delete $scope.f.cont_post_cd;
-						delete $scope.f.cont_cntry_Cd;
-						delete $scope.f.cont_office_phone;
-						delete $scope.f.cont_mobile_phone;
-						delete $scope.f.cont_home_phone;
-						delete $scope.f.cont_email;
-						delete $scope.f.cont_alt_email;
+						delete $scope.cont_id;
+						delete $scope.cont_org_id;
+						delete $scope.cont_role_cd;
+						delete $scope.cont_first_name;
+						delete $scope.cont_middle_name;
+						delete $scope.cont_last_name;
+						delete $scope.cont_name_title;
+						delete $scope.cont_name_suffix;
+						delete $scope.cont_addr1;
+						delete $scope.cont_addr2;
+						delete $scope.cont_city;
+						delete $scope.cont_state_prov_cd;
+						delete $scope.cont_post_cd;
+						delete $scope.cont_cntry_Cd;
+						delete $scope.cont_office_phone;
+						delete $scope.cont_mobile_phone;
+						delete $scope.cont_home_phone;
+						delete $scope.cont_email;
+						delete $scope.cont_alt_email;
+						
 				} else {
 					console.log(response.data.Message);
 					$scope.databaseIssue = response.data.Message;
