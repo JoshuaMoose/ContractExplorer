@@ -24,6 +24,8 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
  
+//Developed by the SBU senior project team: Joshua Moose, Jimmy Schmitzer, Simon Poe, Preston Tate, Paul Kramer
+
 public class DatabaseUpdateHandler extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -39,84 +41,6 @@ public class DatabaseUpdateHandler extends HttpServlet {
 		String requestData = sb.toString();
 		//End request builder
 		
-<<<<<<< HEAD
-		//Variable Declarations
-		JsonObject jsonRequestObject = new Gson().fromJson(requestData, JsonObject.class);
-		JsonObject original = jsonRequestObject.getAsJsonObject("original");
-		JsonObject updated = jsonRequestObject.getAsJsonObject("updated");
-		String tableName = jsonRequestObject.get("table").getAsString();		
-		
-		JsonParser parser = new JsonParser();
-        JsonElement jsonElement = parser.parse(new FileReader("../webapps/ContractExplorer/WEB-INF/dataTypes.json"));
-        JsonObject types = (JsonObject) (jsonElement.getAsJsonObject()).get(tableName);
-		//JsonObject types = jsonRequestObject.getAsJsonObject("types");
-		
-		List<String> addNamesOriginal = new ArrayList<String>();
-		List<String> addNamesUpdated = new ArrayList<String>();
-		
-		Set<Map.Entry<String, JsonElement>> entriesUpdated = updated.entrySet();//will return members of your object
-		
-		//Mapping to retrieve the keys/names of the json elements which correspond to the column names for the database
-		for (Map.Entry<String, JsonElement> entry: entriesUpdated) {
-			addNamesUpdated.add(entry.getKey().toString());
-		}
-		
-		Set<Map.Entry<String, JsonElement>> entriesOriginal = original.entrySet();//will return members of your object
-		
-		
-		for (Map.Entry<String, JsonElement> entry: entriesOriginal) {
-			addNamesOriginal.add(entry.getKey().toString());
-		}
-		
-		//System.out.println("Made it past second mapping");
-		
-		//Format for update SQL (to be combined upon SQL execution)
-		String updateTable = "UPDATE contrs." + tableName;
-		String updateSet = " SET ";
-		String updateWhere = " WHERE ";
-		
-		//Temp variables in statement building
-		String value = new String();
-		String dataType = new String();
-		String columnName = new String();
-		int prepIndex = 1;
-		
-		
-		////// Insert Building //////
-		
-		//loop through to create the sql insert statement (using placeholder ? values to be changed in PreparedStatement)
-		for (int i = 0; i < addNamesUpdated.size(); i++) {
-			
-			columnName =  addNamesUpdated.get(i);
-			
-			updateSet = updateSet + columnName + " = ? ";
-				
-			if ( i < (addNamesUpdated.size() - 1) ) {
-				updateSet = updateSet + ", ";
-			}
-		}
-		
-		//loop through to create the sql insert statement (using placeholder ? values to be changed in PreparedStatement)
-		for (int i = 0; i < addNamesOriginal.size(); i++) {
-						
-			columnName =  addNamesOriginal.get(i);
-			
-			updateWhere = updateWhere + columnName + " = ? ";
-				
-			if ( i < (addNamesOriginal.size() - 1) ) {
-				updateWhere = updateWhere + " AND ";
-			}
-		}
-		
-		updateWhere = updateWhere + ";";
-		
-		///// end insert building //////
-		
-		//System.out.println("Insert Attempted: " + updateTable + updateSet + updateWhere);
-		
-		try // Documentation https://jdbc.postgresql.org/documentation/94/tomcat.html
-        {
-=======
 		try
         {
 			//Variable Declarations
@@ -193,7 +117,6 @@ public class DatabaseUpdateHandler extends HttpServlet {
 			
 			//System.out.println("Insert Attempted: " + updateTable + updateSet + updateWhere);
 			
->>>>>>> QA
             //attempt to connect to the database
 			Context ctx = new InitialContext();
 			

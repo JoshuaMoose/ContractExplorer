@@ -1,3 +1,5 @@
+// Developed by the SBU senior project team: Joshua Moose, Jimmy Schmitzer, Simon Poe, Preston Tate, Paul Kramer
+
 var app = angular.module('myApp', ['ngSanitize', 'ngCsv']);
 
 
@@ -21,9 +23,9 @@ app.directive('deleteIfEmpty', function () {
 
 //////////////////////////////////   Adjust tooltips on fields which get turned to selects (they only need required or nothing ////////////////////////////////////////////////////////
 $(document).ready(function(){
-	$('#cont_id').tooltip({'trigger':'focus', 'title': 'Required Field. should be an integer with 9 digits or less.', 'placement': 'right'});
+	$('#cont_id').tooltip({'trigger':'focus', 'title': 'Required Field. Should be an integer with 9 digits or less.', 'placement': 'right'});
 	$('#cont_org_id').tooltip({'trigger':'focus', 'title': 'Required Field.', 'placement': 'right'}); // should be an integer with 9 digits or less.', 'placement': 'right'});
-	$('#cont_role_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
+	//$('#cont_role_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
 	$('#cont_first_name').tooltip({'trigger':'focus', 'title': 'Required Field. should be a string shorter than 256 characters.', 'placement': 'right'});
 	$('#cont_middle_name').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
 	$('#cont_last_name').tooltip({'trigger':'focus', 'title': 'Required Field. should be a string shorter than 256 characters.', 'placement': 'right'});
@@ -32,9 +34,9 @@ $(document).ready(function(){
 	$('#cont_addr1').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
 	$('#cont_addr2').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
 	$('#cont_city').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
-	$('#cont_state_prov_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
+	//$('#cont_state_prov_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
 	$('#cont_post_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
-	$('#cont_cntry_Cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
+	//$('#cont_cntry_Cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
 	$('#cont_office_phone').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
 	$('#cont_mobile_phone').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
 	$('#cont_home_phone').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
@@ -273,25 +275,26 @@ app.controller('addCtrl', function($scope, $http) {
 				if( response.data.Success ) {
 					console.log("Item added successfully.");
 					$('#addSuccessModal').modal('show');
-						delete $scope.f.cont_id;
-						delete $scope.f.cont_org_id;
-						delete $scope.f.cont_role_cd;
-						delete $scope.f.cont_first_name;
-						delete $scope.f.cont_middle_name;
-						delete $scope.f.cont_last_name;
-						delete $scope.f.cont_name_title;
-						delete $scope.f.cont_name_suffix;
-						delete $scope.f.cont_addr1;
-						delete $scope.f.cont_addr2;
-						delete $scope.f.cont_city;
-						delete $scope.f.cont_state_prov_cd;
-						delete $scope.f.cont_post_cd;
-						delete $scope.f.cont_cntry_Cd;
-						delete $scope.f.cont_office_phone;
-						delete $scope.f.cont_mobile_phone;
-						delete $scope.f.cont_home_phone;
-						delete $scope.f.cont_email;
-						delete $scope.f.cont_alt_email;
+						delete $scope.cont_id;
+						delete $scope.cont_org_id;
+						delete $scope.cont_role_cd;
+						delete $scope.cont_first_name;
+						delete $scope.cont_middle_name;
+						delete $scope.cont_last_name;
+						delete $scope.cont_name_title;
+						delete $scope.cont_name_suffix;
+						delete $scope.cont_addr1;
+						delete $scope.cont_addr2;
+						delete $scope.cont_city;
+						delete $scope.cont_state_prov_cd;
+						delete $scope.cont_post_cd;
+						delete $scope.cont_cntry_Cd;
+						delete $scope.cont_office_phone;
+						delete $scope.cont_mobile_phone;
+						delete $scope.cont_home_phone;
+						delete $scope.cont_email;
+						delete $scope.cont_alt_email;
+						
 				} else {
 					console.log(response.data.Message);
 					$scope.databaseIssue = response.data.Message;

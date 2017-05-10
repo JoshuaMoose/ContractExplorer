@@ -1,3 +1,5 @@
+// Developed by the SBU senior project team: Joshua Moose, Jimmy Schmitzer, Simon Poe, Preston Tate, Paul Kramer
+
 var app = angular.module('myApp', ['ngSanitize', 'ngCsv']);
 
 var types = {
@@ -136,17 +138,10 @@ app.controller('addCtrl', function($scope, $http) {
 				if( response.data.Success ) {
 					console.log("Item added successfully.");
 					$('#addSuccessModal').modal('show');
-<<<<<<< HEAD
-						delete $scope.f.reg_id;
-						delete $scope.f.reg_title;
-						delete $scope.f.reg_desc;
-						delete $scope.f.appl_cntries;
-=======
 						delete $scope.reg_id;
 						delete $scope.reg_title;
 						delete $scope.reg_desc;
 						delete $scope.appl_cntries;
->>>>>>> QA
 				
 				} else {
 					console.log(response.data.Message);

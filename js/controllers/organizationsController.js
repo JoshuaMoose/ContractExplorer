@@ -1,3 +1,5 @@
+// Developed by the SBU senior project team: Joshua Moose, Jimmy Schmitzer, Simon Poe, Preston Tate, Paul Kramer
+
 var app = angular.module('myApp', ['ngSanitize', 'ngCsv']);
 
 var types = {
@@ -32,13 +34,13 @@ app.directive('deleteIfEmpty', function () {
 
 $(document).ready(function(){
 	$('#org_id').tooltip({'trigger':'focus', 'title': 'Required Field. Should be an integer with 9 digits or less.', 'placement': 'right'});
-	$('#org_type_cd').tooltip({'trigger':'focus', 'title': 'Required Field. Should be a string shorter than 50 characters.', 'placement': 'right'});
+	$('#org_type_cd').tooltip({'trigger':'focus', 'title': 'Required Field.', 'placement': 'right'});
 	$('#org_name').tooltip({'trigger':'focus', 'title': 'Required Field. Should be a string shorter than 256 characters.', 'placement': 'right'});
 	$('#org_div').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
 	$('#org_addr1').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
 	$('#org_addr2').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
 	$('#org_city').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
-	$('#org_state_prov_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
+	//$('#org_state_prov_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
 	$('#org_post_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
 	$('#org_cntry_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
 	$('#cage_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
@@ -239,19 +241,6 @@ app.controller('addCtrl', function($scope, $http) {
 				if( response.data.Success ) {
 					console.log("Item added successfully.");
 					$('#addSuccessModal').modal('show');
-<<<<<<< HEAD
-						delete $scope.f.org_id;
-						delete $scope.f.org_type_cd;
-						delete $scope.f.org_name;
-						delete $scope.f.org_div;
-						delete $scope.f.org_addr1;
-						delete $scope.f.org_addr2;
-						delete $scope.f.org_city;
-						delete $scope.f.org_state_prov_cd;
-						delete $scope.f.org_post_cd;
-						delete $scope.f.org_cntry_cd;
-						delete $scope.f.cage_cd;
-=======
 						delete $scope.org_id;
 						delete $scope.org_type_cd;
 						delete $scope.org_name;
@@ -263,7 +252,6 @@ app.controller('addCtrl', function($scope, $http) {
 						delete $scope.org_post_cd;
 						delete $scope.org_cntry_cd;
 						delete $scope.cage_cd;
->>>>>>> QA
 				} else {
 					console.log(response.data.Message);
 					$scope.databaseIssue = response.data.Message;

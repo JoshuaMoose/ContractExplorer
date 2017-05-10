@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!--Southwest Baptist University | Senior Project '16-'17 | Suprtek Team -->
 <html lang="en">
 <head>
 	<title>SuprTEK Contract Application</title>
@@ -88,10 +87,10 @@
 											<th class="editColumn">Edit</th>
 										</tr>
 
-										<tr data-ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}"> <!-- Activates the ability to edit contracts directly on the search results page -->
+										<tr data-ng-repeat="x in myResults | filter:f" data-ng-class="{danger:!entry.active}"> <!-- Activates the ability to edit Results directly on the search results page -->
 											<td>
-												<span data-ng-hide="editMode">{{ x.cont_id }}</span>
-												<input class="edit_cont_id" id="edit_cont_id" type="text" data-ng-show="editMode" data-ng-model="x.cont_id" required />
+												<span data-ng-hide="editMode">{{ x.emp_id }}</span>
+												<input class="edit_emp_id" type="text" data-ng-show="editMode" data-ng-model="x.emp_id" ng-maxlength=”255” required />
 											</td>
 											<td>
 												<span data-ng-hide="editMode">{{x.cont_org_id}}</span>

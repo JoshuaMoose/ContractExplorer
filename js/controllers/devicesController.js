@@ -1,3 +1,5 @@
+// Developed by the SBU senior project team: Joshua Moose, Jimmy Schmitzer, Simon Poe, Preston Tate, Paul Kramer
+
 var app = angular.module('myApp', ['ngSanitize', 'ngCsv']);
 
 /////////////////////////////// Directive to clear fields when they are empty (set them from "" to null)//////////////////////(
@@ -235,21 +237,12 @@ app.controller('addCtrl', function($scope, $http) {
 				if( response.data.Success ) {
 					console.log("Item added successfully.");
 					$('#addSuccessModal').modal('show');
-<<<<<<< HEAD
-					delete $scope.f.dev_id;
-					delete $scope.f.dev_type;
-					delete $scope.f.dev_desc;
-					delete $scope.f.dev_owner_id;
-					delete $scope.f.dev_user_id;
-					delete $scope.f.dev_sn;
-=======
 					delete $scope.dev_id;
 					delete $scope.dev_type;
 					delete $scope.dev_desc;
 					delete $scope.dev_owner_id;
 					delete $scope.dev_user_id;
 					delete $scope.dev_sn;
->>>>>>> QA
 	
 				} else {
 					console.log(response.data.Message);

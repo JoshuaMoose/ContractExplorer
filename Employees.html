@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!--Southwest Baptist University | Senior Project '16-'17 | Suprtek Team -->
+<!-- Developed by the SBU senior project team: Joshua Moose, Jimmy Schmitzer, Simon Poe, Preston Tate, Paul Kramer -->
 <html lang="en">
 <head>
 	<title>SuprTEK Contract Application</title>
@@ -75,9 +75,31 @@
 								<form name="updateForm" novalidate>
 									<table style="padding: 3px;">
 										<tr>
-											<td><input data-ng-model="f.emp_id" placeholder="Filter by Email" data-delete-if-empty></td> <!-- Search filters -->
-											<td><input data-ng-model="f.cont_alt_email" placeholder="Filter by Alt Email" data-delete-if-empty></td>
-
+											<td><input data-ng-model="f.emp_id" placeholder="Filter by Employee ID" data-delete-if-empty></td> <!-- Search filters -->
+											<td><input data-ng-model="f.emp_role_cd" placeholder="Filter by Employee Role Code" data-delete-if-empty></td>
+											<td><input data-ng-model="f.emp_first_name" placeholder="Filter by First Name" data-delete-if-empty></td>
+											<td><input data-ng-model="f.emp_middle_name" placeholder="Filter by Middle Name" data-delete-if-empty></td>
+											<td><input data-ng-model="f.emp_last_name" placeholder="Filter by Last Name" data-delete-if-empty></td>
+											<td><input data-ng-model="f.emp_name_title" placeholder="Filter by Name Title" data-delete-if-empty></td>
+											<td><input data-ng-model="f.emp_name_suffix" placeholder="Filter by Name Suffix" data-delete-if-empty></td>
+											<td><input data-ng-model="f.emp_addr1" placeholder="Filter by Address Line 1" data-delete-if-empty></td>
+											<td><input data-ng-model="f.per_org_id" placeholder="Filter by Person Organization" data-delete-if-empty></td>
+											<td><input data-ng-model="f.emp_addr2" placeholder="Filter by Address Line 2" data-delete-if-empty></td>
+											<td><input data-ng-model="f.emp_city" placeholder="Filter by Employee City" data-delete-if-empty></td>
+											<td><input data-ng-model="f.emp_state_prov_cd" placeholder="Filter by Address State/Province" data-delete-if-empty></td>
+											<td><input data-ng-model="f.emp_post_cd" placeholder="Filter by Address Postal Code" data-delete-if-empty></td>
+											<td><input data-ng-model="f.emp_cntry_Cd" placeholder="Filter by Address Country" data-delete-if-empty></td>
+											<td><input data-ng-model="f.emp_office_phone" placeholder="Filter by Office Phone Number" data-delete-if-empty></td>
+											<td><input data-ng-model="f.emp_mobile_phone" placeholder="Filter by Mobile Phone Number" data-delete-if-empty></td>
+											<td><input data-ng-model="f.emp_home_phone" placeholder="Filter by Home Phone Number" data-delete-if-empty></td>
+											<td><input data-ng-model="f.emp_email" placeholder="Filter by Email" data-delete-if-empty></td>
+											<td><input data-ng-model="f.emp_alt_email" placeholder="Filter by Alt Email" data-delete-if-empty></td>
+											<td><input data-ng-model="f.emp_date_date" placeholder="Filter by Start Date" data-delete-if-empty></td>
+											<td><input data-ng-model="f.emp_term_date" placeholder="Filter by Termination Date" data-delete-if-empty></td>
+											<td><input data-ng-model="f.emp_birthday" placeholder="Filter by Birthday" data-delete-if-empty></td>
+											<td><input data-ng-model="f.1099_emp" placeholder="Filter by IRS 1099 Status" data-delete-if-empty></td>
+											<td><input data-ng-model="f.emp_sec_level_cd" placeholder="Filter by Security Level Access" data-delete-if-empty></td>
+											<td><input data-ng-model="f.emp_pr_due_date" placeholder="Filter by Next Security PR Date" data-delete-if-empty></td>
 											<!-- ..... -->
 											<td class="editColumn"></td>
 										</tr>
@@ -85,6 +107,29 @@
 										<tr>
 											<th>Employee ID</th>  <!-- Column headers -->
 											<th>Employee Role Code</th>
+											<th>Employee First Name</th>
+											<th>Employee Middle Name</th>
+											<th>Employee Last Name</th>
+											<th>Employee Name Title</th>
+											<th>Employee Name Suffix</th>
+											<th>Employee Address Line 1</th>
+											<th>Person's Organization</th>
+											<th>Employee Address Line 2</th>
+											<th>Employee City</th>
+											<th>Employee State/Province</th>
+											<th>Employee Postal Code</th>
+											<th>Employee Country</th>
+											<th>Employee Office Phone</th>
+											<th>Employee Mobile Phone</th>
+											<th>Employee Home Phone</th>
+											<th>Employee Email</th>
+											<th>Employee Alt Email</th>
+											<th>Employee Start Date</th>
+											<th>Employee Birthday</th>
+											<th>IRS 1099 Status</th>
+											<th>Employee Security Level</th>
+											<th>Employee PR Due Date</th>
+											
 											<!-- ..... -->
 											<th class="editColumn">Edit</th>
 										</tr>
