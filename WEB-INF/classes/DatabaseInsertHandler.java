@@ -24,7 +24,9 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
- 
+
+//Developed by the SBU senior project team: Joshua Moose, Jimmy Schmitzer, Simon Poe, Preston Tate, Paul Kramer
+
 public class DatabaseInsertHandler extends HttpServlet {
 
 		protected void doPost(HttpServletRequest request, HttpServletResponse response)

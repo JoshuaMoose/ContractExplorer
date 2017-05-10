@@ -1,4 +1,5 @@
 ﻿<!DOCTYPE html>
+<!-- Developed by the SBU senior project team: Joshua Moose, Jimmy Schmitzer, Simon Poe, Preston Tate, Paul Kramer -->
 <html lang="en">
 <head>
 	<title>SuprTEK Contract Application</title>
@@ -81,7 +82,7 @@
 								<tr>
 									<td><input data-ng-model="f.contr_id" placeholder="Filter by Contract Number"delete-if-empty></td>
 									<td><input data-ng-model="f.contr_org_id" placeholder="Filter by Customer Organization ID"delete-if-empty></td>
-									<td><input data-ng-model="f.cont_end_cust_id" placeholder="Filter by Contract End Customer"delete-if-empty></td>
+									<td><input data-ng-model="f.contr_end_cust_id" placeholder="Filter by Contract End Customer"delete-if-empty></td>
 									<td><input data-ng-model="f.contr_type_cd" placeholder="Filter by Contract Type"delete-if-empty></td>
 									<td><input data-ng-model="f.prime_contr_id" placeholder="Filter by Prime Contractior ID"delete-if-empty></td>
 									<td><input data-ng-model="f.prime_contract_no" placeholder="Filter by Prime Contractor Number"delete-if-empty></td>
@@ -274,7 +275,7 @@
 							
 							<div class="row">
 								<div class="col-lg-3">Contract Type:</div>
-								<div class="col-lg-3"><select data-ng-model="contr_type_cd" id="contr_type_id" tabindex=2 name="contrtypecd" required
+								<div class="col-lg-3"><select data-ng-model="contr_type_cd" id="contr_type_cd" tabindex=2 name="contrtypecd" required
 															data-ng-options="y.contr_type_cd as y.cont_type_desc for y in contrSelect">
 														<option value=""></option>
 													</select></div>
@@ -287,7 +288,7 @@
 							
 							<div class="row">
 								<div class="col-lg-3">Prime Contract Number:</div>
-								<div class="col-lg-3"><input id="prime_contr_id" name="primecontrid" type="text" pattern="\d+" data-ng-maxlength="9" data-ng-model="prime_contr_id"
+								<div class="col-lg-3"><input id="prime_contract_no" name="primecontractno" type="text" data-ng-maxlength="255" data-ng-model="prime_contract_no"
 														tabindex=3></script></div>
 								<div class="col-lg-3">Contract Program:</div>
 								<div class="col-lg-3"><select data-ng-model="contr_prog_cd" id="contr_prog_cd" tabindex=11
@@ -320,7 +321,7 @@
 							
 							<div class="row">
 								<div class="col-lg-3">Exemptions and Restrictions:</div>
-								<div class="col-lg-3"><input id="exemptions" name="exemptions" type="text" data-ng-model="x.exemptions"
+								<div class="col-lg-3"><input id="exemptions" name="exemptions" type="text" data-ng-model="exemptions"
 														tabindex=6></script></div>
 								<div class="col-lg-3">Current DD254 Date:</div>
 								<div class="col-lg-3"><input id="dd254_date" name="dd254date" type="text" pattern="^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$" data-ng-model="dd254_date"

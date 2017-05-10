@@ -1,3 +1,5 @@
+// Developed by the SBU senior project team: Joshua Moose, Jimmy Schmitzer, Simon Poe, Preston Tate, Paul Kramer
+
 var app = angular.module('myApp', ['ngSanitize', 'ngCsv']);
 
 /////////////////////////////// Directive to clear fields when they are empty (set them from "" to null)//////////////////////(

@@ -21,7 +21,9 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
- 
+
+//Developed by the SBU senior project team: Joshua Moose, Jimmy Schmitzer, Simon Poe, Preston Tate, Paul Kramer
+
 public class DatabaseSearchHandler extends HttpServlet {
  
 	String connectionStatus = "Not Connected"; //Placeholder string to be used to validate connection
@@ -139,7 +141,7 @@ public class DatabaseSearchHandler extends HttpServlet {
         }
         catch(Exception e1) //error handling
         {
-        	
+        	//e1.printStackTrace();
         	String issue = e1.getMessage();
 			
 			JsonObject errorObject = new JsonObject();

@@ -1,3 +1,5 @@
+// Developed by the SBU senior project team: Joshua Moose, Jimmy Schmitzer, Simon Poe, Preston Tate, Paul Kramer
+
 var app = angular.module('myApp', ['ngSanitize', 'ngCsv']);
 
 var types = {
@@ -37,15 +39,15 @@ app.directive('deleteIfEmpty', function () {
 
 $(document).ready(function(){
 	$('#contr_id').tooltip({'trigger':'focus', 'title': 'Required Field. Should be a string shorter than 256 characters.', 'placement': 'right'});
-	$('#contr_org_id').tooltip({'trigger':'focus', 'title': 'Required Field. Should be an integer with 9 digits or less.', 'placement': 'right'});
+	$('#contr_org_id').tooltip({'trigger':'focus', 'title': 'Required Field.', 'placement': 'right'});
 	$('#contr_end_cust_id').tooltip({'trigger':'focus', 'title': 'Should be an integer with 9 digits or less.', 'placement': 'right'});
-	$('#contr_type_cd').tooltip({'trigger':'focus', 'title': 'Required Field.  Should be a string shorter than 256 characters.', 'placement': 'right'});
-	$('#prime_contr_id').tooltip({'trigger':'focus', 'title': 'Should be an integer with 9 digits or less.', 'placement': 'right'});
+	$('#contr_type_cd').tooltip({'trigger':'focus', 'title': 'Required Field.', 'placement': 'right'});
+	//$('#prime_contr_id').tooltip({'trigger':'focus', 'title': 'Should be an integer with 9 digits or less.', 'placement': 'right'});
 	$('#prime_contract_no').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
-	$('#contr_prog_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
+	//$('#contr_prog_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
 	$('#contr_vehicle_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
-	$('#contr_sec_level_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
-	$('#contr_info_safe_level_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
+	//$('#contr_sec_level_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
+	//$('#contr_info_safe_level_cd').tooltip({'trigger':'focus', 'title': 'Should be a string shorter than 256 characters.', 'placement': 'right'});
 	$('#contr_open_date').tooltip({'trigger':'focus', 'title': 'Timestamp in the format of yyyy-dd-mm hh:mm:ss.', 'placement': 'right'});
 	$('#contr_close_date').tooltip({'trigger':'focus', 'title': 'Timestamp in the format of yyyy-dd-mm hh:mm:ss.', 'placement': 'right'});
 	$('#is_open').tooltip({'trigger':'focus', 'title': 'Boolean value', 'placement': 'right'});
@@ -323,7 +325,7 @@ app.controller('addCtrl', function($scope, $http) {
 					$('#addSuccessModal').modal('show');
 						delete $scope.contr_id;
 						delete $scope.contr_org_id;
-						delete $scope.cont_end_cust_id;
+						delete $scope.contr_end_cust_id;
 						delete $scope.contr_type_cd;
 						delete $scope.prime_contr_id;
 						delete $scope.prime_contract_no;
