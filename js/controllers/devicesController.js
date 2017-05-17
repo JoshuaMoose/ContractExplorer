@@ -21,10 +21,10 @@ app.directive('deleteIfEmpty', function () {
 
 $(document).ready(function(){
 	$('#dev_id').tooltip({'trigger':'focus', 'title': 'Required Field. Must be an integer with 9 digits or less.', 'placement': 'right'});
-	$('#dev_type').tooltip({'trigger':'focus', 'title': 'Required Field. Must be a string shorter than 256 characters.', 'placement': 'right'});
+	$('#dev_type').tooltip({'trigger':'focus', 'title': 'Required Field.', 'placement': 'right'});
 	$('#dev_desc').tooltip({'trigger':'focus', 'title': 'Required Field. Must be a string shorter than 256 characters.', 'placement': 'right'});
-	$('#dev_owner_id').tooltip({'trigger':'focus', 'title': 'Required Field. Must be an integer with 9 digits or less.', 'placement': 'right'});
-	$('#dev_user_id').tooltip({'trigger':'focus', 'title': 'Required Field. Must be an integer with 9 digits or less.', 'placement': 'right'});
+	$('#dev_owner_id').tooltip({'trigger':'focus', 'title': 'Required Field.', 'placement': 'right'});
+	//$('#dev_user_id').tooltip({'trigger':'focus', 'title': 'Required Field. Must be an integer with 9 digits or less.', 'placement': 'right'});
 	$('#dev_sn').tooltip({'trigger':'focus', 'title': 'Must be a string shorter than 256 characters.', 'placement': 'right'});
 });
 	

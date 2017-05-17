@@ -47,6 +47,7 @@ public class DatabaseInsertHandler extends HttpServlet {
 		
 			//Variable Declarations
 			List <String> addNames = new ArrayList<String>();
+			//List <String> addNames = new ArrayList<String>();
 			
 			JsonObject jsonRequestObject = new Gson().fromJson(requestData, JsonObject.class); //parse the json as a string to a json object
 			JsonObject newValues = jsonRequestObject.getAsJsonObject("values");
@@ -75,6 +76,13 @@ public class DatabaseInsertHandler extends HttpServlet {
 				addNames.add(entry.getKey().toString()); //add the keys/names to a list
 			}
 			
+			/*Set<Map.Entry<String, JsonElement>> entriesTypes = types.entrySet();//will return members of your object
+			
+			//Mapping to retrieve the keys/names of the json elements which correspond to the column names for the database
+			for (Map.Entry<String, JsonElement> entry: entriesTypes) {
+				addTypes.add(entry.getKey().toString());
+			} */
+				
 			
 			//loop through to create the sql insert statement (using placeholder ? values to be changed in prepared statement)
 			for (int i = 0; i < addNames.size(); i++) {

@@ -79,13 +79,13 @@
 							<table style="padding: 3px;">
 								
 								<tr>
-									<td><input data-ng-model="f.travel_id" placeholder="Filter by Travel ID"></td>
-									<td><input data-ng-model="f.contr_id" placeholder="Filter by Contract ID"></td>
-									<td><input data-ng-model="f.destination" placeholder="Filter by Destination"></td>
-									<td><input data-ng-model="f.travel_begin_date" placeholder="Filter by Travel Begin Date"></td>
-									<td><input data-ng-model="f.travel_end_date" placeholder="Filter by Travel End Date"></td>
-									<td><input data-ng-model="f.tech_restrict_cd" placeholder="Filter by Max Tech Restriction Level"></td>
-									<td><input data-ng-model="f.recv_travel_brief" placeholder="Filter by Travel Brief Given"></td>
+									<td><input data-ng-model="f.travel_id" placeholder="Filter by Travel ID" delete-if-empty></td>
+									<td><input data-ng-model="f.contr_id" placeholder="Filter by Contract ID" delete-if-empty></td>
+									<td><input data-ng-model="f.destination" placeholder="Filter by Destination" delete-if-empty></td>
+									<td><input data-ng-model="f.travel_begin_date" placeholder="Filter by Travel Begin Date" delete-if-empty></td>
+									<td><input data-ng-model="f.travel_end_date" placeholder="Filter by Travel End Date" delete-if-empty></td>
+									<td><input data-ng-model="f.tech_restrict_cd" placeholder="Filter by Max Tech Restriction Level" delete-if-empty></td>
+									<td><input data-ng-model="f.recv_travel_brief" placeholder="Filter by Travel Brief Given" delete-if-empty></td>
 								</tr>
 												
 								<tr>
@@ -227,7 +227,7 @@
 								<div class="row">
 									<div class="col-lg-3">Received Travel Brief:</div>
 									<div class="col-lg-3"><select class="dropdown" data-ng-model="recv_travel_brief" tabindex=4>
-															<option value="">Select
+															<option value="">
 															<option value="1">Yes
 															<option value="2">No
 															<option value="3">N/A
