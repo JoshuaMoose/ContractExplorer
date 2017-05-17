@@ -79,7 +79,7 @@ public class DatabaseSearchHandler extends HttpServlet {
             {
                 //Connection conn = ds.getConnection(); //gets connection from datasource
                 
-                try ( Connection conn = ds.getConnection() ) {
+                try ( Connection conn = ds.getConnection() ) { //try with resource
                 	
                 	if(conn != null) 
                     {
@@ -89,28 +89,30 @@ public class DatabaseSearchHandler extends HttpServlet {
     					Statement stmt = conn.createStatement(); 
                         rst = stmt.executeQuery(query); //contains query Contact
                         
-    					ResultSetMetaData rstm = rst.getMetaData(); //Contains details like row count and column names for auto populating and creating table
-    					int numOfColumns = rstm.getColumnCount(); //metadata from table to know how to build dynamically
-    					
-    					for(int i=1;i<=numOfColumns;i++) {
-    						columnNames.add(rstm.getColumnName(i)); //loop through to get all column names
-    					}
-    					
-    			        while(rst.next()) { // convert each object to an human readable JSON object
-    						JsonObject jsonObject = new JsonObject();
-    						
-    						for(int i=1; i<=numOfColumns; i++) {
-    							//Get column name and associated value for this result
-    							String key = columnNames.get(i - 1);
-    							String value = rst.getString(i);
-    							
-    							jsonObject.addProperty(key, value); //Add a json element in format key: value -- ie. cont_first_name: Bill
-    						}
-    						
-    						resultList.add(jsonObject);
-    					}		
-    					
-                        conn.close();
+                        if (rst.isBeforeFirst()) {
+	    					ResultSetMetaData rstm = rst.getMetaData(); //Contains details like row count and column names for auto populating and creating table
+	    					int numOfColumns = rstm.getColumnCount(); //metadata from table to know how to build dynamically
+	    					
+	    					for(int i=1;i<=numOfColumns;i++) {
+	    						columnNames.add(rstm.getColumnName(i)); //loop through to get all column names
+	    					}
+	    					
+	    			        while(rst.next()) { // convert each object to an human readable JSON object
+	    						JsonObject jsonObject = new JsonObject();
+	    						
+	    						for(int i=1; i<=numOfColumns; i++) {
+	    							//Get column name and associated value for this result
+	    							String key = columnNames.get(i - 1);
+	    							String value = rst.getString(i);
+	    							
+	    							jsonObject.addProperty(key, value); //Add a json element in format key: value -- ie. cont_first_name: Bill
+	    						}
+	    						
+	    						resultList.add(jsonObject);
+	    					}		
+                        }
+                        
+                        conn.close(); //should not be necessary due to try with resource
     					
     					/////// End database fetch ////////
                         

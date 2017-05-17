@@ -198,7 +198,7 @@
 									<div class="col-lg-3">Device Description:</div>
 									<div class="col-lg-3"><input id="dev_desc" type="text" name="devdesc" data-ng-maxlength="255" data-ng-model="dev_desc" required tabindex=2></div>
 									<div class="col-lg-3">Device Owner ID:</div>
-									<div class="col-lg-3"><select data-ng-model="dev_owner_id" name="devownerid" id="dev_owner_id" tabindex=6
+									<div class="col-lg-3"><select data-ng-model="dev_owner_id" name="devownerid" id="dev_owner_id" tabindex=5 required
 																data-ng-options="y.emp_id as y.emp_name for y in employeeSelect">
 															<option value=""></option>
 														</select></div>
@@ -206,12 +206,12 @@
 								
 								<div class="row">
 									<div class="col-lg-3">Device User ID:</div>
-									<div class="col-lg-3"><select data-ng-model="dev_user_id" name="devuserid" id="dev_user_id" tabindex=6
+									<div class="col-lg-3"><select data-ng-model="dev_user_id" name="devuserid" id="dev_user_id" tabindex=3
 																data-ng-options="y.emp_id as y.emp_name for y in employeeSelect">
 															<option value=""></option>
 														</select></div>
 									<div class="col-lg-3">Device Serial Number:</div>
-									<div class="col-lg-3"><input id="dev_sn" type="text" name="devsn" pattern="^\d+$" data-ng-maxlength="9" data-ng-model="dev_sn" tabindex=7></div>
+									<div class="col-lg-3"><input id="dev_sn" type="text" name="devsn" pattern="^\d+$" data-ng-maxlength="9" data-ng-model="dev_sn" tabindex=6></div>
 								</div><!--row-->
                                 
 								<div class="container-fluid" style="padding:10px;">
@@ -324,4 +324,5 @@
     	    </div><!--end .well .well-sm .main-footer-->
     	</div><!--end .container-->
     </section><!--end #footer-->
+>>>>>>> QA
 </html>

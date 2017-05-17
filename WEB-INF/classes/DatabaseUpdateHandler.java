@@ -56,16 +56,23 @@ public class DatabaseUpdateHandler extends HttpServlet {
 			
 			List<String> addNamesOriginal = new ArrayList<String>();
 			List<String> addNamesUpdated = new ArrayList<String>();
+			//List<String> addTypes = new ArrayList<String>();
+			
+			
+			/*Set<Map.Entry<String, JsonElement>> entriesTypes = types.entrySet();//will return members of your object
+			
+			//Mapping to retrieve the keys/names of the json elements which correspond to the column names for the database
+			for (Map.Entry<String, JsonElement> entry: entriesTypes) {
+				addTypes.add(entry.getKey().toString());
+			} */
 			
 			Set<Map.Entry<String, JsonElement>> entriesUpdated = updated.entrySet();//will return members of your object
 			
-			//Mapping to retrieve the keys/names of the json elements which correspond to the column names for the database
 			for (Map.Entry<String, JsonElement> entry: entriesUpdated) {
 				addNamesUpdated.add(entry.getKey().toString());
 			}
 			
 			Set<Map.Entry<String, JsonElement>> entriesOriginal = original.entrySet();//will return members of your object
-			
 			
 			for (Map.Entry<String, JsonElement> entry: entriesOriginal) {
 				addNamesOriginal.add(entry.getKey().toString());
